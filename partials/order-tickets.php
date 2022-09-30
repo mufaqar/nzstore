@@ -55,7 +55,9 @@
                                                                         <td><?php echo get_post_meta( get_the_ID(), 'shipping', true ); ?></td>
                                                                         <td><?php the_content(); ?></td>
                                                                        
-                                                                        <td><?php //echo get_post_meta( get_the_ID(), 'address', true ); ?>Pending</td>
+                                                                        <td><?php foreach ( get_the_terms( get_the_ID(), 'ticket_type' ) as $tax ) {
+                                                                                    echo $tax->name ;
+                                                                                } ?></td>
                                                                         <td> <a href="<?php echo home_url('edit-tickets?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
                                                                         </tr>
                                             <?php endwhile; wp_reset_query(); else : ?>
