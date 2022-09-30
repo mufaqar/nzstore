@@ -8,10 +8,10 @@ global $current_user;
 $logged_user = wp_get_current_user();
 $UIL =  $logged_user->user_login;
 $uid =  $logged_user->ID;
-$url = home_url('profile');
+$url = home_url('dashboard');
 if ( is_user_logged_in() ) {
-   // wp_redirect($url);
-  //  exit();
+   wp_redirect($url);
+   exit();
 
 } else {
 
