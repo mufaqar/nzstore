@@ -2,7 +2,7 @@
     <div class="custom_container catering_wrapper mt-5 mb-5">
                  <div class="calender_wrapper d-flex justify-content-between align-items-center mt-5">
                         <div class="catering_heading d-flex align-items-center">
-                            <h2>Tickets</h2>
+                            <h2>All Tickets</h2>
                           
                         </div>
                        
@@ -31,7 +31,14 @@
                                                     'post_type' => 'tickets',
                                                     'posts_per_page' => -1,
                                                     'order' => 'desc',                                                 
-                                                    
+                                                    'meta_query' => array(   
+                                                       
+                                                            array(
+                                                                'key'     => 'order_uid',
+                                                                'value'   => $current_user->ID,
+                                                                'compare' => '='
+                                                            )
+                                                    )
                                                     
                                                 ));              
                                         
@@ -49,7 +56,7 @@
                                                                         <td><?php the_content(); ?></td>
                                                                        
                                                                         <td><?php //echo get_post_meta( get_the_ID(), 'address', true ); ?>Pending</td>
-                                                                        <td> <a href="<?php echo home_url('edit-tickets?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
+                                                                        <td> <a href="<?php echo home_url('admin-edit-tickets?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
                                                                         </tr>
                                             <?php endwhile; wp_reset_query(); else : ?>
                                                     <h2><?php _e('Nothing Found','lbt_translate'); ?></h2>

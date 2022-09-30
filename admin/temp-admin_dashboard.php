@@ -18,7 +18,7 @@
     <div class="row ">
         <div class="catering_wrapper mt-5 mb-5 col-md-8 w-100">
             <div class="catering_menu buttons">
-                <a id="1" class="showSingle _active" target="1">Tickets</a>
+                <a id="1" class="showSingle _active" target="1">All Tickets</a>
                 <!-- <a id="2" class="showSingle" target="2">Catering Orders</a>
                 <a id="3" class="showSingle" target="3">Meeting Orders</a> -->
             </div>
@@ -28,7 +28,7 @@
 
 <section id="div1" class="targetDiv activediv">
 <div class="custom_container c2 ">
-        <?php get_template_part('partials/order', 'tickets'); ?>
+        <?php get_template_part('partials/order', 'tickets_admin'); ?>
 
         </div>
 </section>
