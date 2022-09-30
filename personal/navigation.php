@@ -6,20 +6,15 @@
                     <div class="d-flex justify-content-center">
                        <a href="<?php bloginfo('url'); ?>"> <img src="<?php bloginfo('template_directory'); ?>/reources//images/logo.png" class="logo" alt=""></a>
                     </div>
-                    <div class="toggle_btn bg-light mt-4 mb-4 d-flex mx-3">
-                        <?php profile_user_nav()?>
-                    </div>
-                    <div>
-                        
+                    
+                    <div class="mt-5">                        
                         <?php 	
 								  wp_nav_menu ( array(
                                     'container'       => false,	
 									'theme_location'  => 'profile',	
 									'menu_class'      => 'myProfileNav activeNav'
 								) );
-								?>
-
-                       
+								?>                
                             
                       
 

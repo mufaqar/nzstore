@@ -17,6 +17,18 @@ function remove_admin_bar() {
 
 
 
+/* Roles & Capabilities */
+add_role('agent', 'Agent', array(
+    'read' => true, // True allows that capability, False specifically removes it.
+    'edit_posts' => true,
+    'delete_posts' => true,
+    'edit_published_posts' => true,
+    'publish_posts' => true,
+    'edit_files' => true,
+    'upload_files' => true //last in array needs no comma!
+));
+
+
 add_filter( 'manage_orders_posts_columns', 'set_custom_edit_orders_columns' );    
 add_action( 'manage_orders_posts_custom_column' , 'custom_orders_column', 10, 2 );
 function set_custom_edit_orders_columns($columns) {    
