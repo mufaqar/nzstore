@@ -33,7 +33,7 @@ if ( is_user_logged_in() ) {
             <div class="col-sm-12 col-md-6 left">
                 <div class="login_image_wrapper">
                     <div class="image_card">
-                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/Procut.png" alt="">
+                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/mobile.jpg" alt="">
                         <div class="overlay"></div>
                     </div>                    
                 </div>               
