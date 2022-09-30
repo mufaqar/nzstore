@@ -1,12 +1,12 @@
 /*
-Theme Name: Double Down Dish
-Text Domain: Double Down Dish
+Theme Name: NZ Store
+Text Domain:  NZ Store
 Version: 3.1.1
-Description: Custom Theme for Double Down Dish.
+Description: Custom Theme for  NZ Store
 Tags: blog, one-column, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images
 Author: Mufaqar 
 Author URI: http://mufaqar.com
-Theme URI: http://doubledowndish.no
+Theme URI: http://nzstore.au
 
 
 This theme, like WordPress, is licensed under the GPL.
@@ -3456,6 +3456,10 @@ body.page-template-temp-landing {
   border-radius: 20px;
   min-height: 220px;
   max-height: 220px;
+}
+
+.logo {
+  max-width: 190px;
 }
 
 /* **************************************

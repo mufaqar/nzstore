@@ -81,8 +81,8 @@ function update_ticket()
 			'shipping' => $shipping,
 			'issues' => $issues,
 			'date' => $date,
-			'user_type' => $user_type,
-			'order_uid' => $uid,
+			'user_type' => $user_type
+		
 		),
 		'tax_input'    => array(
 			'ticket_type' => array($ticket_type),
@@ -140,8 +140,7 @@ function admin_update_ticket()
 			'invoice' => $invoice,	
 			'price' => $price,			
 			'date' => $date,
-			'user_type' => $user_type,
-			'order_uid' => $uid,
+			'user_type' => $user_type		
 		),
 		'tax_input'    => array(
 			'ticket_type' => array($ticket_type),

@@ -5,49 +5,29 @@ get_header();
 
 <!-- tabs -->
 
-<div class="tab_wrapper">
-    <?php //page_title() ?>
-</div>
-
-<div class="custom_container c2 ">
-    <div class="row ">
-        <div class="catering_wrapper mt-5 mb-5 col-md-8 w-100">
-            <div class="catering_menu buttons">
-                <a id="1" class="showSingle _active" target="1">Tickets</a>
-                <!-- <a id="2" class="showSingle" target="2">Catering Orders</a>
-                <a id="3" class="showSingle" target="3">Meeting Orders</a> -->
+<div class="admin_parrent">
+            <div class="toggle_btn">
+                <div class="row ">
+                    <div class="catering_wrapper mt-5 mb-2  p-0 w-100">
+                        <div class="catering_menu buttons">
+                        <a id="1" class="showSingle _active" target="1" data="">All</a>
+                        <a id="2" class="showSingle" target="2" data="Complete">Qoutation</a>
+                        <a id="3" class="showSingle" target="3" data="Pending">Presales</a>
+                        <a id="4" class="showSingle" target="4" data="Cancel">Completed</a>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <section id="div1" class="targetDiv activediv tablediv">
+                <table id="all" class="table table-striped orders_table" style="width:100%">
+                <?php get_template_part('partials/order', 'tickets'); ?>
+                </table>
+
+            </section>
+
         </div>
-    </div>
-</div>
 
-<section id="div1" class="targetDiv activediv">
-<div class="custom_container c2 ">
-        <?php get_template_part('partials/order', 'tickets'); ?>
-
-        </div>
-</section>
-
-
-<section id="div2" class="targetDiv">
-        <div class="custom_container c2 ">
-        <?php //get_template_part('partials/order', 'catering'); ?>
-        </div>
-</section>
-
-
-<section id="div3" class="targetDiv">
-    <div class="custom_container c2 ">
-        <?php //get_template_part('partials/order', 'meetings'); ?>
-    </div>
-</section>
-
-
-</div>
-</div>
-</div>
-
-</main>
 
 <?php get_footer(); ?>
 
@@ -85,3 +65,55 @@ get_header();
         });
     });
 </script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {     
+
+            var table = $('#all').DataTable();
+            $('.catering_menu').on( 'click', 'a', function () {
+                $(".catering_menu a").removeClass("_active");
+                $(this).addClass("_active");               
+               
+            table
+                .columns( 6 )
+                .search( $(this).attr('data') )
+                .draw();
+            });
+
+        })
+        $(document).ready(function () {
+            var table = $('#allusers').DataTable();
+            $('.catering_menu').on( 'click', 'a', function () {
+                $(".catering_menu a").removeClass("_active");
+                $(this).addClass("_active"); 
+               
+            table
+                .columns( 2 )
+                .search(  $(this).attr('data') )
+                .draw();
+            });
+        })
+        $(document).ready(function () {
+           
+            var table = $('#payments').DataTable();
+            $('.catering_menu').on( 'click', 'a', function () {
+                $(".catering_menu a").removeClass("_active");
+                $(this).addClass("_active");  
+               
+            table
+                .columns( 5 )
+                .search(  $(this).attr('data') )
+                .draw();
+            });
+        })
+        $(document).ready(function () {
+            $('#cancle').DataTable();
+        })
+
+       
+
+
+    </script>
