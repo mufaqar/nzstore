@@ -21,13 +21,7 @@
 
                        
                             
-                        <?php 	
-								  wp_nav_menu ( array(
-									'theme_location'  => 'company',								
-									'container'       => false,									
-									'menu_class'      => 'companyProfileNav'
-								) );
-								?>
+                      
 
                     </div>
                     <div class="logout">                       	
@@ -57,7 +51,7 @@
 
                                     }
                                     ?></h6>
-                                <p>Agreement: <?php echo get_user_meta( $uid, 'compnay_name', true); 	?></p>                            
+                               </p>                            
 
                             </div>
                             <img src="<?php bloginfo('template_directory'); ?>/reources//images/profile.webp" alt="">

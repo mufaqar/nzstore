@@ -1,12 +1,4 @@
-    <?php /* Template Name: Admin-Dashboard  */
-
-
-
-    get_header('admin');
-
-
-    ?>
-        <?php /* Template Name: Dashboard */
+<?php /* Template Name: Dashboard */
 get_header();
 ?>
 <?php include('navigation.php'); ?>
@@ -93,7 +85,3 @@ get_header();
         });
     });
 </script>
-
-
-   
-<?php get_footer('admin') ?>

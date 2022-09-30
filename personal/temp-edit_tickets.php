@@ -1,0 +1,222 @@
+<?php /* Template Name: Edit Ticket  */ 
+get_header();
+
+$pid = $_REQUEST['id'];
+
+
+
+?> 
+ <?php include('navigation.php'); ?>
+ <?php global $current_user; wp_get_current_user();  $uid = $current_user->ID;
+ 
+
+ 
+ ?>
+
+<div class="custom_container catering_form mt-5 mb-5">
+    <div class="_info mt-5 mb-5">
+        <h2>Ticket Form</h2>
+        <p>Enter Your Ticket Details here</p>
+    </div>
+    <hr>
+    <div class="_form mt-5 p-4 pt-5 pb-5">
+    <form class="update_ticket" id="update_ticket" action="#" > 
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="">Title</label>
+                    <div class="_select">
+                        <input type="text" value="<?php echo get_the_title($pid)?>" placeholder="<?php echo get_the_title($pid)?>" id="title" required>
+                        <input type="hidden" value="<?php echo $uid ?>"  id="uid" >
+                        <input type="hidden" value="<?php echo $pid ?>"  id="pid" >
+                    </div>
+                </div>
+                <div class="col-md-6 mt-3 mt-md-0 mb-3">
+                    <label for="">Date</label>
+                    <div class="_select">
+                        <input type="date" value="<?php echo get_post_meta($pid, 'date', true ); ?>"  id="date" required>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-3 mt-md-0 mb-3">
+                    <label for="">Address</label>
+                    <div class="_select">
+                        <input type="text" value="<?php echo get_post_meta($pid, 'address', true ); ?>" id="address" required>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="">ticket_status </label>
+                    <div class="_select">
+                        <select id="ticket_status">                            
+                            <?php   
+                            $types_tax = get_terms( array('taxonomy' => 'ticket_status','hide_empty' => false ) ); 
+                            foreach( $types_tax as $type )  {
+                                        $type_slug = $type->term_id ;
+                                        $type_name = $type->name ; ?>                            
+                                        <option value="<?php echo $type_slug; ?>" > <?php echo $type_name; ?> </option>
+                                            <?php
+                                }                                                    
+                            ?>
+                        </select>
+                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for=""> ticket_type</label>
+                    <div class="_select">
+                        <select id="ticket_type">
+                        <?php   
+                            $food_categories = get_terms( array('taxonomy' => 'ticket_type','hide_empty' => false ) ); 
+                            foreach( $food_categories as $food_cat )  {
+                                        $food_cat_slug = $food_cat->term_id ;
+                                        $food_cat_name = $food_cat->name ; ?>                            
+                                        <option value="<?php echo $food_cat_slug; ?>" > <?php echo $food_cat_name; ?> </option>
+                                            <?php
+                                }                                                    
+                            ?>
+                        </select>
+                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for=""> ticket_priority</label>
+                    <div class="_select">
+                        <select id="ticket_priority">
+                    <?php   
+                            $product_tax = get_terms( array('taxonomy' => 'ticket_priority','hide_empty' => false ) ); 
+                            foreach( $product_tax as $product_cat )  {
+                                        $product_cat_slug = $product_cat->term_id ;
+                                        $product_cat_name = $product_cat->name ; ?>                            
+                                        <option value="<?php echo $product_cat_slug; ?>" > <?php echo $product_cat_name; ?> </option>
+                                            <?php
+                                }                                                    
+                            ?>
+                         </select>
+                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
+                    </div>
+                </div>            
+
+                <div class="col-md-6 mb-3">
+                <label for="">Issue Details</label>
+                    <div class="_select">
+                        <input type="text" value="<?php echo get_post_meta($pid, 'issues', true ); ?>"  id="issues" required>
+                    </div>
+                </div>
+
+              
+                <div class="col-md-6 mb-3">
+                <label for="">Shipping Details</label>
+                    <div class="_select">
+                        <input type="text" value="<?php echo get_post_meta($pid, 'shipping', true ); ?>" id="shipping" required>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end savebtn">
+                    <input type="submit" class="btn_primary"  value="Update Ticket"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+
+<section class="hideme zindex-modal overlay">
+        <div class="popup">
+            <div class="popup_wrapper">
+                <div
+                    class="order_confirm d-flex position-relative justify-content-center flex-column align-items-center p-4">
+                    <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" class="logo" alt="logo">
+
+                    <div
+                        class="step_wrapper d-flex justify-content-center flex-column align-items-center text-center">
+                        <div class="content mt-5">
+                            <div class="right"><img src="<?php bloginfo('template_directory'); ?>/reources/images/img 3.png" alt=""></div>
+                            <h1 class="finished">Finished!</h1>
+                            <h2 class="mb-5 mt-5">Your order has beed submitted!</h2>
+                        </div>
+                    </div>
+                    
+                </div>
+                <img src="<?php bloginfo('template_directory'); ?>/reources//images/red cross.png" alt="" class="_cross">
+            </div>
+        </div>
+    </section>
+
+
+    <?php get_footer();?>
+
+   
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script type="text/javascript">   
+     jQuery(document).ready(function($) {	
+        $('._cross').click(function(){
+           
+           $(".hideme").css("display", "none");
+       });
+                 
+        $("#update_ticket").submit(function(e) {                     
+            e.preventDefault();     
+                         
+            var title = jQuery('#title').val();	   
+            var pid = jQuery('#pid').val();	             
+            var date = jQuery('#date').val();	       
+            var address = jQuery('#address').val();	             
+            var ticket_type = jQuery('#ticket_type').val();	 
+            var ticket_priority = jQuery('#ticket_priority').val();	 
+            var ticket_status = jQuery('#ticket_status').val();	          
+            var shipping = jQuery('#shipping').val();           
+            var issues = jQuery('#issues').val(); 
+            var uid = jQuery('#uid').val();  
+
+            alert(pid);   
+           
+            $.ajax(
+                {
+                    type:"POST",
+                    url:"<?php echo admin_url('admin-ajax.php'); ?>",
+                    data: {
+                        action: "update_ticket",
+                        pid : pid,
+                        title : title,
+                        date : date, 
+                        address : address,
+                        ticket_type : ticket_type,
+                        ticket_priority : ticket_priority,
+                        ticket_status : ticket_status ,
+                        issues : issues,
+                        shipping : shipping,
+                        uid : uid
+                    },   
+                    success: function(data){                      
+                     
+                        if(data.code==0) {
+                                    alert(data.message);
+                        }  
+                        else {
+                            alert(data.message);
+                         //  $(".overlay").css("display", "flex");
+                      
+                        }      
+            }
+            
+             });
+         }); 
+            
+        
+     });
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+

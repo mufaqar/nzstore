@@ -50,6 +50,59 @@ function add_ticket()
 }
 
 
+add_action('wp_ajax_update_ticket', 'update_ticket', 0);
+add_action('wp_ajax_nopriv_update_ticket', 'update_ticket');
+
+function update_ticket()
+{
+
+
+	global $wpdb;
+	$pid = $_POST['pid'];
+	$title = $_POST['title'];
+	$date = $_POST['date'];
+	$address = $_POST['address'];
+	$ticket_type = $_POST['ticket_type'];
+	$ticket_priority = $_POST['ticket_priority'];
+	$ticket_status = $_POST['ticket_status'];
+	$issues = $_POST['issues'];
+	$shipping = $_POST['shipping'];
+	$user_type = $_POST['user_type'];
+	$uid = $_POST['uid'];
+	$post = array(
+		'ID' => $pid,
+		'post_title'    => $title,
+		'post_status'   => 'publish',
+		'post_content'   => $issues,
+		'post_type'     => 'tickets',
+		'meta_input'   => array(
+			'title' => $title,
+			'address' => $address,
+			'shipping' => $shipping,
+			'issues' => $issues,
+			'date' => $date,
+			'user_type' => $user_type,
+			'order_uid' => $uid,
+		),
+		'tax_input'    => array(
+			'ticket_type' => array($ticket_type),
+			'ticket_priority' => array($ticket_priority),
+			'ticket_status' => array($ticket_status)
+		),
+
+	);
+	$user_id = wp_update_post($post);
+	if (!is_wp_error($user_id)) {
+		//sendmail($username,$password);
+		echo wp_send_json(array('code' => 200, 'message' => __('Ticket Updated Sucessfully')));
+	} else {
+		echo wp_send_json(array('code' => 0, 'message' => __('Error Occured please fill up form carefully.')));
+	}
+
+	die;
+}
+
+
 add_action('wp_ajax_weeklyfood', 'weeklyfood', 0);
 add_action('wp_ajax_nopriv_weeklyfood', 'weeklyfood');
 

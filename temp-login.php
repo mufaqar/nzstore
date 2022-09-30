@@ -10,8 +10,8 @@ $UIL =  $logged_user->user_login;
 $uid =  $logged_user->ID;
 $url = home_url('profile');
 if ( is_user_logged_in() ) {
-    wp_redirect($url);
-    exit();
+   // wp_redirect($url);
+  //  exit();
 
 } else {
 
@@ -35,29 +35,12 @@ if ( is_user_logged_in() ) {
                     <div class="image_card">
                         <img src="<?php bloginfo('template_directory'); ?>/reources/images/Procut.png" alt="">
                         <div class="overlay"></div>
-                    </div>
-                    <div class="image_card">
-                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/Procut.png" alt="">
-                        <div class="overlay"></div>
-                    </div>
-                    <div class="image_card">
-                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/Procut.png" alt="">
-                        <div class="overlay"></div>
-                    </div>
-                </div>
-                <div class="custom_nav_btn">                    
-                    <div class="previous_caro">
-                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/left arrow.png" alt="Left Arrow">
-                    </div>
-                    <div class="next_caro">
-                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/right arrow.png" alt="Right arrow">
-                    </div>
-                </div>
+                    </div>                    
+                </div>               
             </div>
             <div class="col-sm-12 right col-md-6 p-3">
-                <h3>Welcome Back to <br>Double Down Dish</h3>
-                <p>This is our dedication in serving customers, so that we can find out which customers are really
-                    interested in</p>
+                <h3>Welcome NZ Mobiles</h3>
+                <p>Please Login</p>
                 <form class="login_form" id="loginform">
                     <div class="form-group">
                         <label for="username">Email</label>
@@ -101,7 +84,7 @@ if ( is_user_logged_in() ) {
             },
             success: function(response){
                // alert(response.message);
-               window.location.href = "<?php echo home_url('profile'); ?>";
+               //window.location.href = "<?php echo home_url('profile'); ?>";
             },
             error: function(response) {
                 alert(response.message);

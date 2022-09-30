@@ -2,7 +2,7 @@
     <div class="custom_container catering_wrapper mt-5 mb-5">
                  <div class="calender_wrapper d-flex justify-content-between align-items-center mt-5">
                         <div class="catering_heading d-flex align-items-center">
-                            <h2>Lunch  Orders</h2>
+                            <h2>Tickets</h2>
                           
                         </div>
                        
@@ -12,13 +12,14 @@
                                 <table class="_table">
                                     <thead>
                                     <tr>
-                                        <th scope="col">Order ID</th>
+                                        <th scope="col"> ID</th>
+                                      
+                                        <th scope="col">Title</th>
                                         <th scope="col">Date</th>
-                                        <th scope="col">Order Type</th>
-                                        <th scope="col">Week Id</th>
-                                        <th scope="col">Total Price</th>
-                                        <th scope="col">User Type</th>
+                                        <th scope="col">Shipping Details</th>
+                                        <th scope="col">Issues</th>                                      
                                         <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -27,22 +28,11 @@
                                             global $current_user;
                                             wp_get_current_user();
                                             query_posts(array(
-                                                    'post_type' => 'orders',
+                                                    'post_type' => 'tickets',
                                                     'posts_per_page' => -1,
                                                     'order' => 'desc',                                                 
                                                     'meta_query' => array(   
-                                                        
-                                                        'relation' => 'AND',
-                                                            array(
-                                                                'key'   => 'order_type',
-                                                                'value' => 'Meeting',
-                                                                'compare' => '!='
-                                                            ),
-                                                            array(
-                                                                'key'     => 'user_type',
-                                                                'value'   => 'Personal',
-                                                                'compare' => '=',
-                                                            ),
+                                                       
                                                             array(
                                                                 'key'     => 'order_uid',
                                                                 'value'   => $current_user->ID,
@@ -52,23 +42,21 @@
                                                     
                                                 ));              
                                         
-                                                if (have_posts()) :  while (have_posts()) : the_post(); ?>
+                                                if (have_posts()) :  while (have_posts()) : the_post(); $pid =  get_the_ID();?>
                                                                 <tr>
+                                                                <td scope="row"><?php echo get_the_ID()?></td>
                                                                         <td scope="row"><?php the_title()?></td>
-                                                                        <td><?php  the_time('M j, Y') ?></td>
-                                                                        <td><?php echo get_post_meta( get_the_ID(), 'order_type', true ); ?>
-
-                                                                        <?php  if((get_post_meta(get_the_ID(), "order_day", true))) { ?>
-                                                                            ( <?php echo get_post_meta( get_the_ID(), 'order_day', true ); ?> )
-                                                                            <?php } ?>
+                                                                      
+                                                                        <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?>                                                                   
                                                                     
                                                                     
                                                                     
                                                                     </td>
-                                                                        <td><?php echo get_post_meta( get_the_ID(), 'order_week', true ); ?></td>
-                                                                        <td>NOK <?php echo get_post_meta( get_the_ID(), 'order_total', true ); ?></td>
-                                                                        <td><?php echo get_post_meta( get_the_ID(), 'user_type', true ); ?></td>
-                                                                        <td><?php echo get_post_meta( get_the_ID(), 'order_status', true ); ?> <i class="fa-solid fa-down-to-line"></i></td>
+                                                                        <td><?php echo get_post_meta( get_the_ID(), 'shipping', true ); ?></td>
+                                                                        <td><?php the_content(); ?></td>
+                                                                       
+                                                                        <td><?php //echo get_post_meta( get_the_ID(), 'address', true ); ?>Pending</td>
+                                                                        <td> <a href="<?php echo home_url('edit-tickets?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
                                                                         </tr>
                                             <?php endwhile; wp_reset_query(); else : ?>
                                                     <h2><?php _e('Nothing Found','lbt_translate'); ?></h2>
