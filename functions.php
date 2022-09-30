@@ -116,7 +116,7 @@ add_filter('wp_nav_menu_objects', 'add_first_and_last');
 //Metabox
 //include_once('metaboxes.php');
 include_once('inc/extra_function.php');
-include_once('admin/admin_ajax.php');
+
 
 function callback($buffer) {
     return $buffer;

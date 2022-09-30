@@ -5,9 +5,6 @@
     get_header('admin');
 
 
-    ?>
-        <?php /* Template Name: Dashboard */
-get_header();
 ?>
 <?php include('navigation.php'); ?>
 
