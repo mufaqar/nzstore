@@ -84,7 +84,7 @@ if ( is_user_logged_in() ) {
             },
             success: function(response){
                // alert(response.message);
-               //window.location.href = "<?php echo home_url('profile'); ?>";
+               window.location.href = "<?php echo home_url('dashboard'); ?>";
             },
             error: function(response) {
                 alert(response.message);
