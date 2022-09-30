@@ -1,52 +1,47 @@
 <?php
 
 
-add_action('wp_ajax_addcatering', 'addcatering', 0);
-add_action('wp_ajax_nopriv_addcatering', 'addcatering');
+add_action('wp_ajax_add_ticket', 'add_ticket', 0);
+add_action('wp_ajax_nopriv_add_ticket', 'add_ticket');
 
-function addcatering()
+function add_ticket()
 {
 	global $wpdb;
-	$people = stripcslashes($_POST['people']);
+	$title = $_POST['title'];
 	$date = $_POST['date'];
-	$time = $_POST['time'];
 	$address = $_POST['address'];
-	$person = $_POST['person'];
-	$food_type = $_POST['food_type'];
-	$food_cat = $_POST['food_cat'];
-	$pro_cat = $_POST['pro_cat'];
-	$pro_sub_cat = $_POST['pro_sub_cat'];
-	$allergens = $_POST['allergens'];
+	$ticket_type = $_POST['ticket_type'];
+	$ticket_priority = $_POST['ticket_priority'];
+	$ticket_status = $_POST['ticket_status'];
+	$issues = $_POST['issues'];
+	$shipping = $_POST['shipping'];
 	$user_type = $_POST['user_type'];
 	$uid = $_POST['uid'];
-
 	$post = array(
-		'post_title'    => $date,
+		'post_title'    => $title,
 		'post_status'   => 'publish',
-		'post_content'   => $food_type . $food_cat . $pro_cat . $pro_sub_cat . $allergens,
-		'post_type'     => 'catering',
+		'post_content'   => $issues,
+		'post_type'     => 'tickets',
 		'meta_input'   => array(
-			'people' => $people,
-			'time' => $time,
+			'title' => $title,
 			'address' => $address,
-			'person' => $person,
+			'shipping' => $shipping,
+			'issues' => $issues,
 			'date' => $date,
 			'user_type' => $user_type,
 			'order_uid' => $uid,
 		),
 		'tax_input'    => array(
-			'food_type' => array($food_type),
-			'food_categories' => array($food_cat),
-			'product_category' => array($pro_cat),
-			'product_sub_category' => array($pro_sub_cat),
-			'allergens' => array($allergens)
+			'ticket_type' => array($ticket_type),
+			'ticket_priority' => array($ticket_priority),
+			'ticket_status' => array($ticket_status)
 		),
 
 	);
 	$user_id = wp_insert_post($post);
 	if (!is_wp_error($user_id)) {
 		//sendmail($username,$password);
-		echo wp_send_json(array('code' => 200, 'message' => __('Order Sucessfully Create')));
+		echo wp_send_json(array('code' => 200, 'message' => __('Ticket Created Sucessfully')));
 	} else {
 		echo wp_send_json(array('code' => 0, 'message' => __('Error Occured please fill up form carefully.')));
 	}
