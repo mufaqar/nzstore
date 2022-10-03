@@ -7,6 +7,7 @@
                              <th>Issue</th>                             
                             <th>Price</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,6 +29,17 @@
                                                 <td><?php echo get_post_meta( get_the_ID(), 'shipping', true ); ?></td>
                                                 <td><?php the_content(); ?></td>                                                
                                                 <td><?php echo get_post_meta( get_the_ID(), 'price', true ); ?></td>
+                                                <td>
+                                                <?php   
+                                                        $term_list = get_the_terms($post->ID, 'ticket_type');
+                                                        $types ='';
+                                                        foreach($term_list as $term_single) {
+                                                            $types .= ucfirst($term_single->slug).', ';
+                                                        }
+                                                        $typesz = rtrim($types, ', ');
+                                                        echo $typesz;                                                    
+                                                     ?>
+                                                </td>
                                                 <td> <a href="<?php echo home_url('edit-ticket?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
                                                 </tr>
                             <?php endwhile;
