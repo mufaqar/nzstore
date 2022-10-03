@@ -66,7 +66,7 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
                                                         echo $typesz;                                                    
                                                      ?>
                                                 </td>
-                                                <td> <a href="<?php echo home_url('edit-ticket?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
+                                                <td> <a href="<?php echo home_url('admin-edit-ticket?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
                                                 </tr>
                             <?php endwhile;
                             wp_reset_query();
