@@ -6,18 +6,18 @@ get_header();
 <!-- tabs -->
 
 <div class="admin_parrent">
-            <div class="toggle_btn">
-                <div class="row ">
-                    <div class="catering_wrapper mt-5 mb-2  p-0 w-100">
-                        <div class="catering_menu buttons">
-                        <a id="1" class="showSingle _active" target="1" data="">All</a>
-                        <a id="2" class="showSingle" target="2" data="177">Qoutation</a>
-                        <a id="3" class="showSingle" target="3" data="Presales">Presales</a>
-                        <a id="4" class="showSingle" target="4" data="Completed">Completed</a>
-                        </div>
-                    </div>
+<div class="toggle_btn">
+        <div class="row ">
+            <div class="catering_wrapper mt-5 mb-2 col-md-8 p-0">
+                <div class="catering_menu buttons">
+                    <a id="1" class="showSingle _active" target="1" data="">All Orders</a>
+                    <a id="2" class="showSingle" target="2" data="Qoutation">Qoutation</a>
+                    <a id="3" class="showSingle" target="2" data="Presales">Presales</a>
+                    <a id="4" class="showSingle" target="2" data="Presales">Presales</a>
                 </div>
             </div>
+        </div>
+    </div>
             <section id="div1" class="targetDiv activediv tablediv">
                 <table id="all" class="table table-striped orders_table" style="width:100%">
                 <?php get_template_part('partials/order', 'tickets'); ?>
@@ -49,21 +49,7 @@ get_header();
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-<script>
-    // order menu toggle 
 
-    jQuery(function() {
-        jQuery('#div2').hide();
-        jQuery('#div3').hide();
-        jQuery('.showSingle').click(function() {
-            $(".showSingle").removeClass("_active");
-            $(this).addClass("_active");
-            jQuery('.targetDiv').hide();
-            jQuery('#div' + $(this).attr('target')).show();
-
-        });
-    });
-</script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
