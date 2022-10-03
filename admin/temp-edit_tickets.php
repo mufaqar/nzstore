@@ -49,7 +49,7 @@ $pid = $_REQUEST['id'];
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="">ticket_status </label>
+                    <label for="">Status </label>
                     <div class="_select">
                         <select id="ticket_status">                            
                             <?php   
@@ -66,7 +66,7 @@ $pid = $_REQUEST['id'];
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for=""> ticket_type</label>
+                    <label for=""> Type</label>
                     <div class="_select">
                         <select id="ticket_type">
                         <?php   
@@ -83,7 +83,7 @@ $pid = $_REQUEST['id'];
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for=""> ticket_priority</label>
+                    <label for=""> Priority</label>
                     <div class="_select">
                         <select id="ticket_priority">
                     <?php   
@@ -102,29 +102,26 @@ $pid = $_REQUEST['id'];
 
                 <div class="col-md-6 mb-3">
                 <label for="">Issue Details</label>
-                    <div class="_select">
-                        <input type="text" value="<?php echo get_post_meta($pid, 'issues', true ); ?>"  id="issues" required>
+                    <div class="_select">                      
+                        <textarea id="issues"><?php echo get_post_meta($pid, 'issues', true ); ?></textarea>
                     </div>
-                </div>
-
-              
+                </div>              
                 <div class="col-md-6 mb-3">
                 <label for="">Shipping Details</label>
-                    <div class="_select">
-                        <input type="text" value="<?php echo get_post_meta($pid, 'shipping', true ); ?>" id="shipping" required>
+                    <div class="_select">                     
+                        <textarea id="shipping"><?php echo get_post_meta($pid, 'shipping', true ); ?></textarea>
                     </div>
                 </div>  
                 <div class="col-md-6 mb-3">
                 <label for="">Qoutation Price</label>
                     <div class="_select">
-                        <input type="text" value="<?php echo get_post_meta($pid, 'price', true ); ?>" id="price" >
+                        <input type="text" value="<?php echo get_post_meta($pid, 'price', true ); ?>" >                        
                     </div>
-                </div>            
-
+                </div>  
                 <div class="col-md-6 mb-3">
                 <label for="">Invoice Details</label>
                     <div class="_select">
-                        <input type="text" value="<?php echo get_post_meta($pid, 'invoice', true ); ?>" id="invoice" >
+                        <textarea id="invoice"><?php echo get_post_meta($pid, 'invoice', true ); ?></textarea>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end savebtn">
@@ -161,11 +158,7 @@ $pid = $_REQUEST['id'];
             </div>
         </div>
     </section>
-
-
-    <?php get_footer();?>
-
-   
+    <?php get_footer();?> 
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script type="text/javascript">   

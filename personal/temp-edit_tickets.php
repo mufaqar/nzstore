@@ -94,20 +94,34 @@ $pid = $_REQUEST['id'];
                     </div>
                 </div>            
 
+                
+
                 <div class="col-md-6 mb-3">
                 <label for="">Issue Details</label>
-                    <div class="_select">
-                        <input type="text" value="<?php echo get_post_meta($pid, 'issues', true ); ?>"  id="issues" required>
+                    <div class="_select">                      
+                        <textarea id="issues"><?php echo get_post_meta($pid, 'issues', true ); ?></textarea>
                     </div>
-                </div>
-
-              
+                </div>              
                 <div class="col-md-6 mb-3">
                 <label for="">Shipping Details</label>
-                    <div class="_select">
-                        <input type="text" value="<?php echo get_post_meta($pid, 'shipping', true ); ?>" id="shipping" required>
+                    <div class="_select">                     
+                        <textarea id="shipping"><?php echo get_post_meta($pid, 'shipping', true ); ?></textarea>
                     </div>
-                </div>
+                </div>  
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <div class="d-flex justify-content-end savebtn">
                     <input type="submit" class="btn_primary"  value="Update Ticket"/>
                 </div>

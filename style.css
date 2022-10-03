@@ -1370,6 +1370,18 @@ section.landing_contents .links a {
   border-radius: 4px;
 }
 
+.catering_form > ._form ._select textarea {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  font-size: 18px;
+  background: #eaeceb;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+}
+
 .catering_form > ._form select:focus,
 .catering_form > ._form ._select input:focus {
   border: 1px solid var(--green);
