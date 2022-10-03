@@ -1,3 +1,9 @@
+<?php
+global $current_user; wp_get_current_user();  $uid = $current_user->ID;
+
+?>
+
+
 <thead>
                         <tr>
                             <th>Sr #</th>
@@ -19,6 +25,13 @@
                             'post_type' => 'tickets',
                             'posts_per_page' => -1,
                             'order' => 'desc',
+                            'meta_query' => array(
+                                array(
+                                    'key' => 'order_uid',
+                                    'value' => $uid,
+                                    'compare' => '='
+                                ),
+                            )
                         ));
 
                         if (have_posts()) :  while (have_posts()) : the_post(); $pid = get_the_ID(); $i++; ?>

@@ -18,7 +18,6 @@ get_header();
                     </div>
                 </div>
             </div>
-
             <section id="div1" class="targetDiv activediv tablediv">
                 <table id="all" class="table table-striped orders_table" style="width:100%">
                 <?php get_template_part('partials/order', 'tickets'); ?>
