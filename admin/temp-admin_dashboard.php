@@ -32,7 +32,8 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
                             <th>Title</th>
                              <th>Issue</th>                             
                             <th>Price</th>
-                            <th>Status</th>
+                            <th>Type</th>
+                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -64,6 +65,16 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
                                                         }
                                                         $typesz = rtrim($types, ', ');
                                                         echo $typesz;                                                    
+                                                     ?>
+                                                </td>
+                                                <td><?php   
+                                                        $term_ticket_status = get_the_terms($post->ID, 'ticket_status');
+                                                        $term_ticket_status ='';
+                                                        foreach($term_ticket_status as $term_status) {
+                                                            $all_status .= ucfirst($term_status->slug).', ';
+                                                        }
+                                                        $term_status = rtrim($all_status, ', ');
+                                                        echo $term_status;                                                    
                                                      ?>
                                                 </td>
                                                 <td> <a href="<?php echo home_url('admin-edit-ticket?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
