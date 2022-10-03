@@ -206,11 +206,11 @@ $pid = $_REQUEST['id'];
                     success: function(data){                      
                      
                         if(data.code==0) {
-                                    alert(data.message);
+                                  //  alert(data.message);
                         }  
                         else {
-                            alert(data.message);
-                         //  $(".overlay").css("display", "flex");
+                           // alert(data.message);
+                        $(".overlay").css("display", "flex");
                       
                         }      
             }
