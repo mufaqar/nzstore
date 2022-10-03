@@ -18,8 +18,6 @@
                             'post_type' => 'tickets',
                             'posts_per_page' => -1,
                             'order' => 'desc',
-
-
                         ));
 
                         if (have_posts()) :  while (have_posts()) : the_post(); $pid = get_the_ID(); $i++; ?>
