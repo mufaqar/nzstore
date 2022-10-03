@@ -2,9 +2,9 @@
                         <tr>
                             <th>Sr #</th>
                             <th>Order ID</th>
-                            <th>Order Type</th>
-                            <th>User Type</th>
-                             <th>Order Date</th>                             
+                            <th>Date</th>
+                            <th>Title</th>
+                             <th>Issue</th>                             
                             <th>Price</th>
                             <th>Status</th>
                         </tr>
@@ -24,18 +24,12 @@
 
                         if (have_posts()) :  while (have_posts()) : the_post(); $pid = get_the_ID(); $i++; ?>
                                  <tr>
-                                        <td scope="row"><?php $i;?></td>
-                                                <td scope="row"><?php the_title()?></td>
-                                                
-                                                <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?>                                                                   
-                                            
-                                            
-                                            
-                                            </td>
+                                        <td scope="row"><?php echo $i;?></td>
+                                                <td scope="row"><?php echo $pid?></td>                                                
+                                                <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?> </td>
                                                 <td><?php echo get_post_meta( get_the_ID(), 'shipping', true ); ?></td>
-                                                <td><?php the_content(); ?></td>
-                                                
-                                                <td><?php //echo get_post_meta( get_the_ID(), 'address', true ); ?>Pending</td>
+                                                <td><?php the_content(); ?></td>                                                
+                                                <td><?php echo get_post_meta( get_the_ID(), 'price', true ); ?></td>
                                                 <td> <a href="<?php echo home_url('edit-ticket?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
                                                 </tr>
                             <?php endwhile;
