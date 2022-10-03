@@ -152,7 +152,7 @@ $pid = $_REQUEST['id'];
                         <div class="content mt-5">
                             <div class="right"><img src="<?php bloginfo('template_directory'); ?>/reources/images/img 3.png" alt=""></div>
                             <h1 class="finished">Finished!</h1>
-                            <h2 class="mb-5 mt-5">Your order has beed submitted!</h2>
+                            <h2 class="mb-5 mt-5">Your order has beed updated!</h2>
                         </div>
                     </div>
                     
@@ -188,9 +188,7 @@ $pid = $_REQUEST['id'];
             var shipping = jQuery('#shipping').val();           
             var issues = jQuery('#issues').val(); 
             var invoice = jQuery('#invoice').val(); 
-            var price = jQuery('#price').val(); 
-
-            
+            var price = jQuery('#price').val();             
             var uid = jQuery('#uid').val();  
 
             
@@ -214,17 +212,15 @@ $pid = $_REQUEST['id'];
                         shipping : shipping,
                         invoice : invoice,
                         price : price,
-                        
-                        
                         uid : uid
                     },   
                     success: function(data){                      
                      
                         if(data.code==0) {
-                                    alert(data.message);
+                                   $(".overlay").css("display", "flex");
                         }  
                         else {
-                            alert(data.message);
+                           // alert(data.message);
                          //  $(".overlay").css("display", "flex");
                       
                         }      
