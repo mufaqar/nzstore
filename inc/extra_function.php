@@ -29,97 +29,24 @@ add_role('agent', 'Agent', array(
 ));
 
 
-add_filter( 'manage_orders_posts_columns', 'set_custom_edit_orders_columns' );    
-add_action( 'manage_orders_posts_custom_column' , 'custom_orders_column', 10, 2 );
-function set_custom_edit_orders_columns($columns) {    
-    unset( $columns['author'] );   
-    $columns['order_type'] = 'Order Type';
-    $columns['user_type'] = 'User Type';
-    $columns['order_uid'] = 'Order By';
-    $columns['order_total'] = 'Order Price';
-    $columns['order_status'] = 'Payment Status';  
-    return $columns;    
-}
-
-function custom_orders_column( $column, $post_id ) {   
-    global $post;
-    switch ( $column ) {
-        case 'order_status' :
-            if(get_field( "order_status", $post_id )) {
-                echo get_field( "order_status", $post_id );
-            } else {
-                echo 0;
-            }
-        break;
-
-        case 'order_type' :
-            if(get_field( "order_type", $post_id )) {
-                echo get_field( "order_type", $post_id ); 
-                if((get_post_meta($post_id, "order_day", true))) {  echo " (" .get_post_meta($post_id, "order_day", true) .  ") ";}
-                if((get_post_meta($post_id, "order_week", true))) {  echo " (" .get_post_meta($post_id, "order_week", true) .  ") ";}
-
-
-
-            } else {
-                echo 0;
-            }
-        break;  
-        case 'user_type' :
-          if(get_field( "user_type", $post_id )) {            
-             echo   get_field( "user_type", $post_id );
-             
-          } else {
-              echo 0;
-          }
-      break; 
-      break;  
-        case 'order_total' :
-          if(get_field( "order_total", $post_id )) {
-              echo " NOK " .get_field( "order_total", $post_id );
-          } else {
-              echo 0;
-          }
-      break; 
-      break;  
-        case 'order_uid' :
-          if(get_field( "order_uid", $post_id )) {           
-              $uid =  get_field( "order_uid", $post_id );
-              $the_user = get_user_by( 'id', $uid ); // 54 is a user ID
-              echo $the_user->user_email;
-          } else {
-              echo 0;
-          }
-      break;    
-    }   
-}
-
-function my_column_register_sortable( $columns ) {
-     $columns['order_status'] = 'order_status';
-    $columns['order_type'] = 'order_type';
-    return $columns;
-}
-
-add_filter("manage_edit-orders_sortable_columns", "my_column_register_sortable" );
 
 
 
 
 
-
-
-add_filter( 'manage_catering_posts_columns', 'set_custom_edit_catering_columns' );    
-add_action( 'manage_catering_posts_custom_column' , 'custom_catering_column', 10, 2 );
-function set_custom_edit_catering_columns($columns) {    
+add_filter( 'manage_tickets_posts_columns', 'set_custom_edit_tickets_columns' );    
+add_action( 'manage_tickets_posts_custom_column' , 'custom_tickets_column', 10, 2 );
+function set_custom_edit_tickets_columns($columns) {    
     unset( $columns['author'] );   
  
     $columns['user_type'] = 'User Type';
     $columns['order_uid'] = 'Order By';
-    $columns['order_people'] = 'People';
+    $columns['order_price'] = 'Price';
 
     return $columns;    
 }
 
-function custom_catering_column( $column, $post_id ) {   
+function custom_tickets_column( $column, $post_id ) {   
     global $post;
     switch ( $column ) {
         case 'order_status' :
@@ -145,9 +72,9 @@ function custom_catering_column( $column, $post_id ) {
           }
       break; 
       break;  
-        case 'order_people' :
-          if(get_field( "people", $post_id )) {
-              echo get_field( "people", $post_id );
+        case 'order_price' :
+          if(get_field( "price", $post_id )) {
+              echo get_field( "price", $post_id );
           } else {
               echo 0;
           }
@@ -163,52 +90,15 @@ function custom_catering_column( $column, $post_id ) {
     }   
 }
 
-function catering_column_register_sortable( $columns ) {
+function tickets_column_register_sortable( $columns ) {
      $columns['order_status'] = 'order_status';
     $columns['order_type'] = 'order_type';
     return $columns;
 }
 
-add_filter("manage_edit-catering_sortable_columns", "catering_column_register_sortable" );
+add_filter("manage_edit-tickets_sortable_columns", "tickets_column_register_sortable" );
 
 
-
-/// Food Order WP admin 
-
-
-add_filter( 'manage_menu_items_posts_columns', 'set_custom_edit_menu_items_columns' );    
-add_action( 'manage_menu_items_posts_custom_column' , 'custom_menu_items_column', 10, 2 );
-function set_custom_edit_menu_items_columns($columns) {    
-    unset( $columns['author'] );   
- 
-    $columns['order_date'] = 'Lunch Date';
-
-
-    return $columns;    
-}
-
-function custom_menu_items_column( $column, $post_id ) {   
-    global $post;
-    switch ( $column ) {
-        case 'order_date' :
-            if(get_field( "date", $post_id )) {
-                echo get_field( "date", $post_id );
-            } else {
-                echo 0;
-            }
-        break;
-
-       
-       
-    }   
-}
-
-function menu_items_column_register_sortable( $columns ) {
-     $columns['order_date'] = 'order_date';
-    return $columns;
-}
-
-add_filter("manage_edit-menu_items_sortable_columns", "menu_items_column_register_sortable" );
 
 
 
