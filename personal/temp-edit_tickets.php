@@ -48,10 +48,17 @@ $pid = $_REQUEST['id'];
                         <select id="ticket_status">                            
                             <?php   
                             $types_tax = get_terms( array('taxonomy' => 'ticket_status','hide_empty' => false ) ); 
+                            $ticket_status  = get_the_terms( $pid, 'ticket_status');                        
+                            foreach($ticket_status as $status)
+                             {
+                                $status_active =  $status->slug;
+                             }                        
+
+
                             foreach( $types_tax as $type )  {
                                         $type_slug = $type->term_id ;
                                         $type_name = $type->name ; ?>                            
-                                        <option value="<?php echo $type_slug; ?>" > <?php echo $type_name; ?> </option>
+                                        <option value="<?php echo $type_slug; ?>"  <?php if($status_active == $type->slug) { echo "selected";} ?> > <?php echo $type_name; ?> </option>
                                             <?php
                                 }                                                    
                             ?>
@@ -60,15 +67,21 @@ $pid = $_REQUEST['id'];
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for=""> Type</label>
+                    <label for="">Type</label>
                     <div class="_select">
                         <select id="ticket_type">
                         <?php   
                             $food_categories = get_terms( array('taxonomy' => 'ticket_type','hide_empty' => false ) ); 
+                            $ticket_types  = get_the_terms( $pid, 'ticket_type' );
+                             foreach($ticket_types as $type)
+                             {
+                                $ticket_type_active =  $type->slug;
+                             }
+                                       
                             foreach( $food_categories as $food_cat )  {
                                         $food_cat_slug = $food_cat->term_id ;
                                         $food_cat_name = $food_cat->name ; ?>                            
-                                        <option value="<?php echo $food_cat_slug; ?>" > <?php echo $food_cat_name; ?> </option>
+                                        <option value="<?php echo $food_cat_slug; ?>" <?php if($ticket_type_active == $food_cat->slug) { echo "selected";} ?>> <?php echo $food_cat_name; ?> </option>
                                             <?php
                                 }                                                    
                             ?>
@@ -82,10 +95,15 @@ $pid = $_REQUEST['id'];
                         <select id="ticket_priority">
                     <?php   
                             $product_tax = get_terms( array('taxonomy' => 'ticket_priority','hide_empty' => false ) ); 
+                            $ticket_priority  = get_the_terms( $pid, 'ticket_priority' );                        
+                            foreach($ticket_priority as $priority)
+                             {
+                                $priority_active =  $priority->slug;
+                             }   
                             foreach( $product_tax as $product_cat )  {
                                         $product_cat_slug = $product_cat->term_id ;
                                         $product_cat_name = $product_cat->name ; ?>                            
-                                        <option value="<?php echo $product_cat_slug; ?>" > <?php echo $product_cat_name; ?> </option>
+                                        <option value="<?php echo $product_cat_slug; ?>"<?php if($priority_active == $product_cat->slug) { echo "selected";} ?> > <?php echo $product_cat_name; ?> </option>
                                             <?php
                                 }                                                    
                             ?>
