@@ -1,10 +1,5 @@
 <?php /* Template Name: Admin-Users  */
-
-
-
 get_header('admin');
-
-
 ?>
 <?php include('navigation.php'); ?>
 <div class="admin_parrent">
@@ -13,8 +8,8 @@ get_header('admin');
             <div class="catering_wrapper mt-5 mb-2 col-md-8 p-0">
                 <div class="catering_menu buttons">
                     <a id="1" class="showSingle _active" target="1" data="">All Users</a>
-                    <a id="2" class="showSingle" target="2" data="personal">Agents</a>
-                    <a id="2" class="showSingle" target="2" data="Company">Personal</a>
+                    <a id="2" class="showSingle" target="2" data="agent">Agents</a>
+                    <a id="2" class="showSingle" target="2" data="personal">Personal</a>
                 </div>
             </div>
         </div>
@@ -42,7 +37,7 @@ get_header('admin');
                         'order'   => 'ASC'
                     )
                 );
-                $users = get_users($members);               
+                $users = get_users($members);             
 
                 foreach ($users as $user) {
                      $user_roles = $user->roles;
@@ -56,10 +51,6 @@ get_header('admin');
                         <?php echo $user->display_name ;   ?></td>
                         <td><?php echo ucfirst($user_roles[0]); if($comapnay_name != '') { echo " [". $comapnay_name ." ]" ;} ?></td>
                         <td><?php echo get_user_meta($user->ID, 'profile_delivery_phone', true);
-                        
-                        
-                        
-                        
                         
                         ?></td>
                         <td><?php echo $user->user_email ?></td>

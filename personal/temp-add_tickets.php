@@ -173,7 +173,7 @@ get_header();
                         ticket_status : ticket_status ,
                         issues : issues,
                         shipping : shipping,
-                        user_type : "Administrator",
+                        user_type : "Agent",
                         uid : uid
                     },   
                     success: function(data){                      

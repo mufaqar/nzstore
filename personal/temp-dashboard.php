@@ -11,9 +11,9 @@ get_header();
                     <div class="catering_wrapper mt-5 mb-2  p-0 w-100">
                         <div class="catering_menu buttons">
                         <a id="1" class="showSingle _active" target="1" data="">All</a>
-                        <a id="2" class="showSingle" target="2" data="Complete">Qoutation</a>
-                        <a id="3" class="showSingle" target="3" data="Pending">Presales</a>
-                        <a id="4" class="showSingle" target="4" data="Cancel">Completed</a>
+                        <a id="2" class="showSingle" target="2" data="177">Qoutation</a>
+                        <a id="3" class="showSingle" target="3" data="Presales">Presales</a>
+                        <a id="4" class="showSingle" target="4" data="Completed">Completed</a>
                         </div>
                     </div>
                 </div>
@@ -65,14 +65,14 @@ get_header();
     });
 </script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function () {     
 
             var table = $('#all').DataTable();
-            $('.catering_menu').on( 'click', 'a', function () {
+            $('.catering_menu').on( 'click', 'a', function () {  
                 $(".catering_menu a").removeClass("_active");
                 $(this).addClass("_active");               
                
@@ -80,6 +80,7 @@ get_header();
                 .columns( 6 )
                 .search( $(this).attr('data') )
                 .draw();
+               
             });
 
         })
@@ -90,24 +91,12 @@ get_header();
                 $(this).addClass("_active"); 
                
             table
-                .columns( 2 )
+                .columns( 1 )
                 .search(  $(this).attr('data') )
                 .draw();
             });
         })
-        $(document).ready(function () {
-           
-            var table = $('#payments').DataTable();
-            $('.catering_menu').on( 'click', 'a', function () {
-                $(".catering_menu a").removeClass("_active");
-                $(this).addClass("_active");  
-               
-            table
-                .columns( 5 )
-                .search(  $(this).attr('data') )
-                .draw();
-            });
-        })
+       
         $(document).ready(function () {
             $('#cancle').DataTable();
         })

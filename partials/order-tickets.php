@@ -36,14 +36,13 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
 
                         if (have_posts()) :  while (have_posts()) : the_post(); $pid = get_the_ID(); $i++; ?>
                                  <tr>
-                                        <td scope="row"><?php echo $i;?></td>
-                                                <td scope="row"><?php echo $pid?></td>                                                
+                                                <td><?php echo $i;?></td>
+                                                <td><?php echo $pid?></td>                                                
                                                 <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?> </td>
-                                                <td><?php echo get_post_meta( get_the_ID(), 'shipping', true ); ?></td>
+                                                <td><?php the_title(); ?></td>
                                                 <td><?php the_content(); ?></td>                                                
                                                 <td><?php echo get_post_meta( get_the_ID(), 'price', true ); ?></td>
-                                                <td>
-                                                <?php   
+                                                <td><?php   
                                                         $term_list = get_the_terms($post->ID, 'ticket_type');
                                                         $types ='';
                                                         foreach($term_list as $term_single) {
