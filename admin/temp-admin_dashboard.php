@@ -69,12 +69,11 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
                                                 </td>
                                                 <td><?php   
                                                         $term_ticket_status = get_the_terms($post->ID, 'ticket_status');
-                                                        $term_ticket_status ='';
+                                                     
                                                         foreach($term_ticket_status as $term_status) {
-                                                            $all_status .= ucfirst($term_status->slug).', ';
+                                                            echo $term_status->name;
                                                         }
-                                                        $term_status = rtrim($all_status, ', ');
-                                                        echo $term_status;                                                    
+                                                                                                      
                                                      ?>
                                                 </td>
                                                 <td> <a href="<?php echo home_url('admin-edit-ticket?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
