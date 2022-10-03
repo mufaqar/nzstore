@@ -43,7 +43,7 @@ $pid = $_REQUEST['id'];
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="">ticket_status </label>
+                    <label for="">Status </label>
                     <div class="_select">
                         <select id="ticket_status">                            
                             <?php   
@@ -60,7 +60,7 @@ $pid = $_REQUEST['id'];
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for=""> ticket_type</label>
+                    <label for=""> Type</label>
                     <div class="_select">
                         <select id="ticket_type">
                         <?php   
@@ -77,7 +77,7 @@ $pid = $_REQUEST['id'];
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for=""> ticket_priority</label>
+                    <label for=""> Priority</label>
                     <div class="_select">
                         <select id="ticket_priority">
                     <?php   
@@ -108,20 +108,6 @@ $pid = $_REQUEST['id'];
                         <textarea id="shipping"><?php echo get_post_meta($pid, 'shipping', true ); ?></textarea>
                     </div>
                 </div>  
-               
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <div class="d-flex justify-content-end savebtn">
                     <input type="submit" class="btn_primary"  value="Update Ticket"/>
                 </div>
@@ -147,7 +133,7 @@ $pid = $_REQUEST['id'];
                         <div class="content mt-5">
                             <div class="right"><img src="<?php bloginfo('template_directory'); ?>/reources/images/img 3.png" alt=""></div>
                             <h1 class="finished">Finished!</h1>
-                            <h2 class="mb-5 mt-5">Your order has beed submitted!</h2>
+                            <h2 class="mb-5 mt-5">Your order has beed updated!</h2>
                         </div>
                     </div>
                     
@@ -182,9 +168,7 @@ $pid = $_REQUEST['id'];
             var ticket_status = jQuery('#ticket_status').val();	          
             var shipping = jQuery('#shipping').val();           
             var issues = jQuery('#issues').val(); 
-            var uid = jQuery('#uid').val();  
-
-            alert(pid);   
+            var uid = jQuery('#uid').val();      
            
             $.ajax(
                 {

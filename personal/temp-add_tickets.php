@@ -27,14 +27,9 @@ get_header();
                         <input type="date" value="<?php echo date("Y-m-d"); ?>" placeholder="02-05-22" id="date" required>
                     </div>
                 </div>
-                <div class="col-md-6 mt-3 mt-md-0 mb-3">
-                    <label for="">Address</label>
-                    <div class="_select">
-                        <input type="text" value="" placeholder="Add your address" id="address" required>
-                    </div>
-                </div>
+                
                 <div class="col-md-6 mb-3">
-                    <label for="">ticket_status </label>
+                    <label for="">Status </label>
                     <div class="_select">
                         <select id="ticket_status">                            
                             <?php   
@@ -50,8 +45,9 @@ get_header();
                         <img src="./reources/images/down-arrow.png" alt="">
                     </div>
                 </div>
+               
                 <div class="col-md-6 mb-3">
-                    <label for=""> ticket_type</label>
+                    <label for=""> Type</label>
                     <div class="_select">
                         <select id="ticket_type">
                         <?php   
@@ -68,7 +64,7 @@ get_header();
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for=""> ticket_priority</label>
+                    <label for="">Priority</label>
                     <div class="_select">
                         <select id="ticket_priority">
                     <?php   
@@ -85,22 +81,28 @@ get_header();
                     </div>
                 </div>            
 
+                <div class="col-md-6 mt-3 mt-md-0 mb-3">
+                    <label for="">Address</label>
+                    <div class="_select">                    
+                        <textarea id="address"><?php echo get_post_meta($pid, 'address', true ); ?></textarea>
+                    </div>
+                </div>
                 <div class="col-md-6 mb-3">
                 <label for="">Issue Details</label>
-                    <div class="_select">
-                        <input type="text" value="" placeholder="List of Issues" id="issues" required>
+                    <div class="_select">                       
+                        <textarea id="issues"><?php echo get_post_meta($pid, 'issues', true ); ?></textarea>
                     </div>
                 </div>
 
               
                 <div class="col-md-6 mb-3">
                 <label for="">Shipping Details</label>
-                    <div class="_select">
-                        <input type="text" value="" placeholder="List of shipping Details" id="shipping" required>
+                    <div class="_select">                        
+                        <textarea id="shipping"><?php echo get_post_meta($pid, 'shipping', true ); ?></textarea>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end savebtn">
-                    <input type="submit" class="btn_primary"  value="Save"/>
+                    <input type="submit" class="btn_primary"  value="Add Ticket"/>
                 </div>
             </div>
         </form>
