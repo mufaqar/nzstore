@@ -33,7 +33,7 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
                              <th>Issue</th>                             
                             <th>Price</th>
                             <th>Type</th>
-                             <th>Status</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
