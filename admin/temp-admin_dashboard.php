@@ -5,7 +5,7 @@ get_header('admin');
 <div class="admin_parrent">
     <div class="toggle_btn">
         <div class="row ">
-            <div class="catering_wrapper mt-5 mb-2 col-md-8 p-0">
+            <div class="catering_wrapper mt-5 mb-2 col-md-10 p-0">
                 <div class="catering_menu buttons">
                     <a id="1" class="showSingle _active" target="1" data="">All Orders</a>
                     <a id="2" class="showSingle" target="2" data="Quotation">Quotation</a>
