@@ -7,12 +7,11 @@ get_header();
 
 <div class="custom_container catering_form mt-5 mb-5">
     <div class="_info mt-5 mb-5">
-        <h2>Ticket Form</h2>
+        <h2>Create Ticket </h2>
         <p>Enter Your Ticket Details here</p>
     </div>
-    <hr>
     <div class="_form mt-5 p-4 pt-5 pb-5">
-    <form class="addcatering" id="addcatering" action="#" > 
+    <form class="add_ticket" id="add_ticket" action="#" > 
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="">Title</label>
@@ -149,7 +148,7 @@ get_header();
            $(".hideme").css("display", "none");
        });
                  
-        $("#addcatering").submit(function(e) {                     
+        $("#add_ticket").submit(function(e) {                     
             e.preventDefault();                     
             var title = jQuery('#title').val();	             
             var date = jQuery('#date').val();	       
@@ -159,8 +158,7 @@ get_header();
             var ticket_status = jQuery('#ticket_status').val();	          
             var shipping = jQuery('#shipping').val();           
             var issues = jQuery('#issues').val(); 
-            var uid = jQuery('#uid').val();  
-           
+            var uid = jQuery('#uid').val();             
             $.ajax(
                 {
                     type:"POST",
