@@ -24,7 +24,7 @@
 
                         if (have_posts()) :  while (have_posts()) : the_post(); $pid = get_the_ID(); $i++; ?>
                                  <tr>
-                                        <td scope="row"><?php echo get_the_ID()?></td>
+                                        <td scope="row"><?php $i;?></td>
                                                 <td scope="row"><?php the_title()?></td>
                                                 
                                                 <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?>                                                                   
