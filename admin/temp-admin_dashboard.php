@@ -1,95 +1,90 @@
-    <?php /* Template Name: Admin-Dashboard  */
-
-
-
-    get_header('admin');
-
-
+<?php /* Template Name: Admin-Dashboard  */
+get_header('admin');
 ?>
 <?php include('navigation.php'); ?>
-
-<!-- tabs -->
-
-<div class="tab_wrapper">
-    <?php //page_title() ?>
-</div>
-
-<div class="custom_container c2 ">
-    <div class="row ">
-        <div class="catering_wrapper mt-5 mb-5 col-md-8 w-100">
-            <div class="catering_menu buttons">
-                <a id="1" class="showSingle _active" target="1">All Tickets</a>
-                
+<div class="admin_parrent">
+    <div class="toggle_btn">
+        <div class="row ">
+            <div class="catering_wrapper mt-5 mb-2 col-md-8 p-0">
+                <div class="catering_menu buttons">
+                <a id="1" class="showSingle _active" target="1" data="">All Orders</a>
+                    <a id="2" class="showSingle" target="2" data="Qoutation">Qoutation</a>
+                    <a id="3" class="showSingle" target="2" data="Presales">Presales</a>
+                    <a id="4" class="showSingle" target="2" data="Presales">Presales</a>
+                </div>
             </div>
         </div>
     </div>
+    <section id="div1" class="targetDiv activediv tablediv">
+        <table id="allusers" class="table table-striped orders_table" style="width:100%">
+
+        <?php
+global $current_user; wp_get_current_user();  $uid = $current_user->ID;
+
+?>
+
+
+<thead>
+                        <tr>
+                            <th>Sr #</th>
+                            <th>Order ID</th>
+                            <th>Date</th>
+                            <th>Title</th>
+                             <th>Issue</th>                             
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    <?php 
+                        $i = 0;
+
+                        query_posts(array(
+                            'post_type' => 'tickets',
+                            'posts_per_page' => -1,
+                            'order' => 'desc',
+                            
+                        ));
+
+                        if (have_posts()) :  while (have_posts()) : the_post(); $pid = get_the_ID(); $i++; ?>
+                                 <tr>
+                                                <td><?php echo $i;?></td>
+                                                <td><?php echo $pid?></td>                                                
+                                                <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?> </td>
+                                                <td><?php the_title(); ?></td>
+                                                <td><?php the_content(); ?></td>                                                
+                                                <td><?php echo get_post_meta( get_the_ID(), 'price', true ); ?></td>
+                                                <td><?php   
+                                                        $term_list = get_the_terms($post->ID, 'ticket_type');
+                                                        $types ='';
+                                                        foreach($term_list as $term_single) {
+                                                            $types .= ucfirst($term_single->slug).', ';
+                                                        }
+                                                        $typesz = rtrim($types, ', ');
+                                                        echo $typesz;                                                    
+                                                     ?>
+                                                </td>
+                                                <td> <a href="<?php echo home_url('edit-ticket?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
+                                                </tr>
+                            <?php endwhile;
+                            wp_reset_query();
+                        else : ?>
+                            <h2><?php _e('Nothing Found', 'lbt_translate'); ?></h2>
+                        <?php endif; ?>
+
+                    </tbody>
+
+           
+        </table>
+
+    </section>
+    
 </div>
 
-<section id="div1" class="targetDiv activediv">
-<div class="custom_container c2 ">
-        <?php get_template_part('partials/order', 'tickets_admin'); ?>
-
-        </div>
-</section>
-
-
-<section id="div2" class="targetDiv">
-        <div class="custom_container c2 ">
-        <?php //get_template_part('partials/order', 'catering'); ?>
-        </div>
-</section>
-
-
-<section id="div3" class="targetDiv">
-    <div class="custom_container c2 ">
-        <?php //get_template_part('partials/order', 'meetings'); ?>
-    </div>
-</section>
-
-
-</div>
-</div>
-</div>
-
-</main>
-
-<?php get_footer(); ?>
 
 
 
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- jQuery library -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/reources/js/script.js"></script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/reources/js/calender.js"></script>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-<script>
-    // order menu toggle 
-
-    jQuery(function() {
-        jQuery('#div2').hide();
-        jQuery('#div3').hide();
-        jQuery('.showSingle').click(function() {
-            $(".showSingle").removeClass("_active");
-            $(this).addClass("_active");
-            jQuery('.targetDiv').hide();
-            jQuery('#div' + $(this).attr('target')).show();
-
-        });
-    });
-</script>
-
-
-   
 <?php get_footer('admin') ?>
