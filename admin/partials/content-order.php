@@ -2,8 +2,7 @@
                         <tr>
                             <th>Sr #</th>
                             <th>Ticket</th>
-                            <th>Invoice Id</th>
-                         
+                            <th>Invoice Id</th>                         
                             <th>Agent</th>                         
                             <th>Order Date</th>                             
                             <th>Price</th>
@@ -24,10 +23,7 @@
                                 $i++;
                                 $ticket_id = get_post_meta(get_the_ID(), 'order_id', true); 
                                 $ticket_agent = get_post_meta($ticket_id, 'order_uid', true); 
-
-                                $agent_info = get_user_by( 'id', $ticket_agent ); 
-
-                               
+                                $agent_info = get_user_by( 'id', $ticket_agent );                                
                                 ?>
                                 <tr>
                                     <td><?php echo $i ?></td>

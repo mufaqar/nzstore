@@ -178,6 +178,7 @@ function admin_update_ticket()
 				// Updated order if exist	
 				$updated_post_id = get_the_ID();
 				update_post_meta($updated_post_id, 'order_price', $price);
+				update_post_meta($updated_post_id, 'order_status','Pending');			
 				echo wp_send_json(array('code' => 200, 'message' => __('Order Sucessfully Updated')));
 				die;
 		endwhile; wp_reset_query(); else : 	
@@ -189,7 +190,8 @@ function admin_update_ticket()
 				'meta_input'   => array(
 					'date' => $date,
 					'order_id' => $user_id,
-					'order_price' => $price
+					'order_price' => $price,
+					'order_status' => 'Pending',
 				)
 			);	
 			$inovice_id = wp_insert_post($order_arg);
