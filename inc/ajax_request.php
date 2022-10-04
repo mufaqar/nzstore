@@ -125,6 +125,7 @@ function admin_update_ticket()
 	$ticket_type = $_POST['ticket_type'];
 	$ticket_priority = $_POST['ticket_priority'];
 	$ticket_status = $_POST['ticket_status'];
+	$ticket_cat = $_POST['ticket_cat'];
 	$issues = $_POST['issues'];
 	$shipping = $_POST['shipping'];
 	$user_type = $_POST['user_type'];
@@ -150,7 +151,8 @@ function admin_update_ticket()
 		'tax_input'    => array(
 			'ticket_type' => array($ticket_type),
 			'ticket_priority' => array($ticket_priority),
-			'ticket_status' => array($ticket_status)
+			'ticket_status' => array($ticket_status),
+			'ticket_cat' => array($ticket_cat)
 		),
 
 	);
