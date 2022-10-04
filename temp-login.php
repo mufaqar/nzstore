@@ -39,8 +39,10 @@ if ( is_user_logged_in() ) {
                 </div>               
             </div>
             <div class="col-sm-12 right col-md-6 p-3">
-                <h3>Welcome NZ Mobiles</h3>
-                <p>Please Login</p>
+                 <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:350px" > <br/>
+                <h3>Welcome to Budget Computer & Kiwi Mobiles</h3>
+                <p>1191 Eruera street Rotrua, 3010 </p>
+                <p>DID : 073477044 </p>
                 <form class="login_form" id="loginform">
                     <div class="form-group">
                         <label for="username">Email</label>
