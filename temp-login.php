@@ -39,7 +39,7 @@ if ( is_user_logged_in() ) {
                 </div>               
             </div>
             <div class="col-sm-12 right col-md-6 p-3">
-                 <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:350px" > <br/>
+                 <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:350px" > <br/><br/>
                 <h3>Welcome to Budget Computer & Kiwi Mobiles</h3>
                 <p>1191 Eruera street Rotrua, 3010 </p>
                 <p>DID : 073477044 </p>
