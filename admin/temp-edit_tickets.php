@@ -159,12 +159,7 @@ $pid = $_REQUEST['id'];
                         <input type="text" id="price" value="<?php echo get_post_meta($pid, 'price', true ); ?>" >                        
                     </div>
                 </div>  
-                <div class="col-md-6 mb-3">
-                <label for="">Invoice Details</label>
-                    <div class="_select">
-                        <textarea id="invoice"><?php echo get_post_meta($pid, 'invoice', true ); ?></textarea>
-                    </div>
-                </div>
+               
                 <div class="d-flex justify-content-end savebtn">
                     <input type="submit" class="btn_primary"  value="Update Ticket"/>
                 </div>
