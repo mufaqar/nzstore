@@ -198,9 +198,8 @@ get_header();
                         address : address,
                         ticket_type : ticket_type,
                         ticket_priority : ticket_priority,
-                        ticket_status : ticket_status ,
-                        ticket_cat : ticket_cat ,
-                        
+                        ticket_status : ticket_status,
+                        ticket_cat : ticket_cat,                        
                         issues : issues,
                         shipping : shipping,
                         user_type : "Agent",

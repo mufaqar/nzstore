@@ -159,9 +159,49 @@ function admin_update_ticket()
 	$user_id = wp_update_post($post);
 	if (!is_wp_error($user_id)) {
 		//sendmail($username,$password);
-		echo wp_send_json(array('code' => 200, 'message' => __('Ticket Updated Sucessfully')));
-	} else {
-		echo wp_send_json(array('code' => 0, 'message' => __('Error Occured please fill up form carefully.')));
+
+		
+			$query_meta = array(
+				'posts_per_page' => -1,
+				'post_type' => 'orders',
+				'meta_query' => array(
+					array(
+						'key'     => 'order_id',
+						'value' => $user_id,
+						'compare' => '=='
+					)
+				)
+			);		
+
+		   $postinweek = new WP_Query($query_meta);
+		if ( $postinweek->have_posts() ): while ( $postinweek->have_posts() ): $postinweek->the_post();	
+				// Updated order if exist	
+				$updated_post_id = get_the_ID();
+				update_post_meta($updated_post_id, 'order_price', $price);
+				echo wp_send_json(array('code' => 200, 'message' => __('Order Sucessfully Updated')));
+				die;
+		endwhile; wp_reset_query(); else : 	
+			// Insert post as its not exisit 
+			$order_arg = array(	
+				'post_title'    => "OHYSX-" . rand(10, 100),
+				'post_status'   => 'publish',
+				'post_type'     => 'orders',
+				'meta_input'   => array(
+					'date' => $date,
+					'order_id' => $user_id,
+					'order_price' => $price
+				)
+			);	
+			$inovice_id = wp_insert_post($order_arg);
+			echo wp_send_json(array('code' => 0, 'message' => __('Order Sucessfully Updated.')));
+			die;
+
+		endif; 
+
+
+
+		
+
 	}
 
 	die;

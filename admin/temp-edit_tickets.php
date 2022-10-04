@@ -156,7 +156,7 @@ $pid = $_REQUEST['id'];
                 <div class="col-md-6 mb-3">
                 <label for="">Qoutation Price</label>
                     <div class="_select">
-                        <input type="text" value="<?php echo get_post_meta($pid, 'price', true ); ?>" >                        
+                        <input type="text" id="price" value="<?php echo get_post_meta($pid, 'price', true ); ?>" >                        
                     </div>
                 </div>  
                 <div class="col-md-6 mb-3">
