@@ -22,7 +22,29 @@ $pid = $_REQUEST['id'];
     <div class="_form mt-5 p-4 pt-5 pb-5">
     <form class="update_ticket" id="update_ticket" action="#" > 
             <div class="row">
-                <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
+                    <label for="">Select</label>
+                    <div class="_select">
+                        <select id="ticket_cat">                            
+                            <?php   
+                            $cat_tax = get_terms( array('taxonomy' => 'ticket_cat','hide_empty' => false ) ); 
+                            $cat_status  = get_the_terms( $pid, 'ticket_cat');                        
+                            foreach($cat_status as $cat_selected)
+                             {
+                                $cat_active =  $cat_selected->slug;
+                             }   
+                            foreach( $cat_tax as $cat )  {
+                                        $cat_slug = $cat->term_id ;
+                                        $cat_name = $cat->name ; ?>                            
+                                        <option value="<?php echo $cat_slug; ?>" <?php if($cat_active == $cat->slug) { echo "selected";} ?>  > <?php echo $cat_name; ?> </option>
+                                            <?php
+                                }                                                    
+                            ?>
+                        </select>
+                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
                     <label for="">Title</label>
                     <div class="_select">
                         <input type="text" value="<?php echo get_the_title($pid)?>" placeholder="<?php echo get_the_title($pid)?>" id="title" required>
@@ -30,7 +52,7 @@ $pid = $_REQUEST['id'];
                         <input type="hidden" value="<?php echo $pid ?>"  id="pid" >
                     </div>
                 </div>
-                <div class="col-md-6 mt-3 mt-md-0 mb-3">
+                <div class="col-md-4 mt-3 mt-md-0 mb-3">
                     <label for="">Date</label>
                     <div class="_select">
                         <input type="date" value="<?php echo get_post_meta($pid, 'date', true ); ?>"  id="date" required>
@@ -183,7 +205,10 @@ $pid = $_REQUEST['id'];
             var address = jQuery('#address').val();	             
             var ticket_type = jQuery('#ticket_type').val();	 
             var ticket_priority = jQuery('#ticket_priority').val();	 
-            var ticket_status = jQuery('#ticket_status').val();	          
+            var ticket_status = jQuery('#ticket_status').val();	 
+            var ticket_cat = jQuery('#ticket_cat').val();	 
+            
+            
             var shipping = jQuery('#shipping').val();           
             var issues = jQuery('#issues').val(); 
             var uid = jQuery('#uid').val();      
@@ -201,6 +226,7 @@ $pid = $_REQUEST['id'];
                         ticket_type : ticket_type,
                         ticket_priority : ticket_priority,
                         ticket_status : ticket_status ,
+                        ticket_cat : ticket_cat ,
                         issues : issues,
                         shipping : shipping,
                         uid : uid

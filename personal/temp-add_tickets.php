@@ -13,19 +13,37 @@ get_header();
     <div class="_form mt-5 p-4 pt-5 pb-5">
     <form class="add_ticket" id="add_ticket" action="#" > 
             <div class="row">
-                <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
+                    <label for="">Select</label>
+                    <div class="_select">
+                        <select id="ticket_cat">                            
+                            <?php   
+                            $cat_tax = get_terms( array('taxonomy' => 'ticket_cat','hide_empty' => false ) ); 
+                            foreach( $cat_tax as $cat )  {
+                                        $cat_slug = $cat->term_id ;
+                                        $cat_name = $cat->name ; ?>                            
+                                        <option value="<?php echo $cat_slug; ?>" > <?php echo $cat_name; ?> </option>
+                                            <?php
+                                }                                                    
+                            ?>
+                        </select>
+                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
                     <label for="">Title</label>
                     <div class="_select">
                         <input type="text" value="" placeholder="Please enter title" id="title" required>
                         <input type="hidden" value="<?php echo $uid ?>"  id="uid" >
                     </div>
                 </div>
-                <div class="col-md-6 mt-3 mt-md-0 mb-3">
+                <div class="col-md-4 mt-3 mt-md-0 mb-3">
                     <label for="">Date</label>
                     <div class="_select">
                         <input type="date" value="<?php echo date("Y-m-d"); ?>" placeholder="02-05-22" id="date" required>
                     </div>
                 </div>
+
                 
                 <div class="col-md-6 mb-3">
                     <label for="">Status </label>
@@ -41,7 +59,7 @@ get_header();
                                 }                                                    
                             ?>
                         </select>
-                        <img src="./reources/images/down-arrow.png" alt="">
+                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
                     </div>
                 </div>
                
@@ -100,6 +118,15 @@ get_header();
                         <textarea id="shipping"><?php echo get_post_meta($pid, 'shipping', true ); ?></textarea>
                     </div>
                 </div>
+                <div class="col-md-12 mb-3">                       
+                    <div class="upload_file">
+                            <div class="upload_icon"><i class="fa-solid fa-camera"></i></div>
+                            <input type="file" name="file" id="file"  class="dropify" > 
+                    </div>
+                </div>
+
+
+
                 <div class="d-flex justify-content-end savebtn">
                     <input type="submit" class="btn_primary"  value="Add Ticket"/>
                 </div>
@@ -155,7 +182,8 @@ get_header();
             var address = jQuery('#address').val();	             
             var ticket_type = jQuery('#ticket_type').val();	 
             var ticket_priority = jQuery('#ticket_priority').val();	 
-            var ticket_status = jQuery('#ticket_status').val();	          
+            var ticket_status = jQuery('#ticket_status').val();	  
+            var ticket_cat = jQuery('#ticket_cat').val();	        
             var shipping = jQuery('#shipping').val();           
             var issues = jQuery('#issues').val(); 
             var uid = jQuery('#uid').val();             
@@ -171,6 +199,8 @@ get_header();
                         ticket_type : ticket_type,
                         ticket_priority : ticket_priority,
                         ticket_status : ticket_status ,
+                        ticket_cat : ticket_cat ,
+                        
                         issues : issues,
                         shipping : shipping,
                         user_type : "Agent",
