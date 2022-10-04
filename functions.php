@@ -141,4 +141,4 @@ add_action( 'wp_enqueue_scripts', 'tme_load_font_awesome' );
 
 
 /* Disable WordPress Admin Bar for all users */
-add_filter( 'show_admin_bar', '__return_false' );
+//add_filter( 'show_admin_bar', '__return_false' );
