@@ -1,8 +1,8 @@
                 <thead>
                         <tr>
                             <th>Sr #</th>
-                            <th>Order ID</th>
-                            <th>Ticket ID</th>
+                            <th>Ticket</th>
+                            <th>Invoice Id</th>
                          
                             <th>Agent</th>                         
                             <th>Order Date</th>                             
@@ -21,13 +21,20 @@
                         ));
 
                         if (have_posts()) :  while (have_posts()) : the_post();
-                                $i++; ?>
+                                $i++;
+                                $ticket_id = get_post_meta(get_the_ID(), 'order_id', true); 
+                                $ticket_agent = get_post_meta($ticket_id, 'order_uid', true); 
+
+                                $agent_info = get_user_by( 'id', $ticket_agent ); 
+
+                               
+                                ?>
                                 <tr>
                                     <td><?php echo $i ?></td>
+                                    <td><?php echo get_the_title($ticket_id);?></td>
                                     <td><?php the_title() ?></td>
-                                    <td><?php the_title() ?></td>
-                                    <td><?php the_date('Y-m-d');?></td> 
-                                    <td><?php the_date('Y-m-d');?></td>                          
+                                    <td><?php echo $ticket_agent?></td> 
+                                    <td><?php  echo $agent_info->display_name?></td>                          
                                     <td>$ <?php echo get_post_meta(get_the_ID(), 'order_price', true); ?></td>
                                     <td><span class="status <?php echo get_post_meta(get_the_ID(), 'order_status', true); ?>"><?php echo get_post_meta(get_the_ID(), 'order_status', true); ?> </span> </td>
                                 </tr>

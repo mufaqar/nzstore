@@ -137,3 +137,8 @@ add_action( 'wp_enqueue_scripts', 'tme_load_font_awesome' );
 /* for javascript (only when using child theme) */
 //wp_enqueue_script('url-script', home_url() );
 //wp_localize_script('url-script', 'webpath', array('theme_path' => home_url()));
+
+
+
+/* Disable WordPress Admin Bar for all users */
+//add_filter( 'show_admin_bar', '__return_false' );
