@@ -26,8 +26,7 @@
                 .draw();
             });
         })
-        $(document).ready(function () {
-           
+        $(document).ready(function () {           
             var table = $('#payments').DataTable();
             $('.catering_menu').on( 'click', 'a', function () {
                 $(".catering_menu a").removeClass("_active");
