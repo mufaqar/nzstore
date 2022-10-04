@@ -142,17 +142,32 @@ $pid = $_REQUEST['id'];
             
 
                 <div class="col-md-6 mb-3">
-                <label for="">Issue Details</label>
+                <label for="">Issue Details(Agent Remarks)</label>
                     <div class="_select">                      
-                        <textarea id="issues"><?php echo get_post_meta($pid, 'issues', true ); ?></textarea>
+                        <textarea id="issues" disabled><?php echo get_post_meta($pid, 'issues', true ); ?></textarea>
                     </div>
                 </div>              
                 <div class="col-md-6 mb-3">
-                <label for="">Shipping Details</label>
+                <label for="">Shipping Details( Agent )</label>
                     <div class="_select">                     
-                        <textarea id="shipping"><?php echo get_post_meta($pid, 'shipping', true ); ?></textarea>
+                        <textarea id="shipping" disabled><?php echo get_post_meta($pid, 'shipping', true ); ?></textarea>
                     </div>
                 </div>  
+                
+
+                <div class="col-md-6 mb-3">
+                <label for="">Engineer Remarks </label>
+                    <div class="_select">                     
+                        <textarea id="eng_remarks"><?php echo get_post_meta($pid, 'eng_remarks', true ); ?></textarea>
+                    </div>
+                </div> 
+
+                <div class="col-md-6 mb-3">
+                <label for="">Remarks (Internal) </label>
+                    <div class="_select">                     
+                        <textarea id="internal_remarks"><?php echo get_post_meta($pid, 'internal_remarks', true ); ?></textarea>
+                    </div>
+                </div> 
                 <div class="col-md-6 mb-3">
                 <label for="">Qoutation Price</label>
                     <div class="_select">
@@ -219,7 +234,13 @@ $pid = $_REQUEST['id'];
             var issues = jQuery('#issues').val(); 
             var invoice = jQuery('#invoice').val(); 
             var price = jQuery('#price').val();             
-            var uid = jQuery('#uid').val();           
+            var uid = jQuery('#uid').val();   
+            
+            var eng_remarks = jQuery('#eng_remarks').val();   
+            var internal_remarks = jQuery('#internal_remarks').val();   
+            
+            
+            
 
          
            
@@ -236,10 +257,10 @@ $pid = $_REQUEST['id'];
                         ticket_type : ticket_type,
                         ticket_priority : ticket_priority,
                         ticket_status : ticket_status ,
-                        ticket_cat : ticket_cat ,
-                        issues : issues,
-                        shipping : shipping,
+                        ticket_cat : ticket_cat,                      
                         invoice : invoice,
+                        eng_remarks : eng_remarks,
+                        internal_remarks : internal_remarks,
                         price : price,
                         uid : uid
                     },   

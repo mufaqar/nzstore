@@ -137,15 +137,21 @@ $pid = $_REQUEST['id'];
                 
 
                 <div class="col-md-6 mb-3">
-                <label for="">Issue Details</label>
+                <label for="">Issue Details(Agent Remarks)</label>
                     <div class="_select">                      
                         <textarea id="issues"><?php echo get_post_meta($pid, 'issues', true ); ?></textarea>
                     </div>
                 </div>              
                 <div class="col-md-6 mb-3">
-                <label for="">Shipping Details</label>
+                <label for="">Shipping Details( Agent )</label>
                     <div class="_select">                     
                         <textarea id="shipping"><?php echo get_post_meta($pid, 'shipping', true ); ?></textarea>
+                    </div>
+                </div> 
+                <div class="col-md-6 mb-3">
+                <label for=""> Engineer Remarks</label>
+                    <div class="_select">                     
+                        <textarea id="eng_remarks" disabled><?php echo get_post_meta($pid, 'eng_remarks', true ); ?></textarea>
                     </div>
                 </div>  
                 <div class="d-flex justify-content-end savebtn">

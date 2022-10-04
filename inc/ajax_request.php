@@ -126,8 +126,8 @@ function admin_update_ticket()
 	$ticket_priority = $_POST['ticket_priority'];
 	$ticket_status = $_POST['ticket_status'];
 	$ticket_cat = $_POST['ticket_cat'];
-	$issues = $_POST['issues'];
-	$shipping = $_POST['shipping'];
+	$eng_remarks = $_POST['eng_remarks'];
+	$internal_remarks = $_POST['internal_remarks'];
 	$user_type = $_POST['user_type'];
 	$pid = $_POST['pid'];
 	$invoice = $_POST['invoice'];
@@ -141,8 +141,8 @@ function admin_update_ticket()
 		'meta_input'   => array(
 			'title' => $title,
 			'address' => $address,
-			'shipping' => $shipping,
-			'issues' => $issues,
+			'eng_remarks' => $eng_remarks,
+			'internal_remarks' => $internal_remarks,
 			'invoice' => $invoice,	
 			'price' => $price,			
 			'date' => $date,
