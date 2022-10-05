@@ -45,6 +45,46 @@
 
 
                                     }
+
+                                    global $user_login, $current_user; 
+                                    get_currentuserinfo();
+                                    $user_info = get_userdata($current_user->ID);
+
+                                   $role = $user_info->roles;
+
+                                    echo $role[0];
+                                    
+                                    
+                                    
+                                    if (in_array('administrator', $user_info->roles)) {
+                                        $url = home_url('admin-dashboard');
+                                        }
+                                    else if (in_array('agent ', $user_info->roles)) {
+                                        $url = home_url('agent-dashboard'); 
+                                    
+                                        } 
+                                        else if (in_array('technician', $user_info->roles)) {
+                                            $url = home_url('tech-dashboard'); 
+                                        
+                                            } 
+                                    else {
+                                        $url = home_url('dashboard');
+                                    
+                                    
+                                    }
+
+                                    echo $url;
+                                   //  wp_redirect($url);
+                                  //    exit();
+
+
+
+
+
+
+
+
+
                                     ?></h6>
                                </p>                            
 

@@ -11,30 +11,40 @@ $uid =  $logged_user->ID;
 $url = home_url('dashboard');
 if ( is_user_logged_in() ) {
 
-    global $user_login, $current_user; 
-get_currentuserinfo();
-$user_info = get_userdata($current_user->ID);
+   
+$user_info = get_userdata($uid);
+$role = $user_info->roles;
+
+
 
 
 
 if (in_array('administrator', $user_info->roles)) {
     $url = home_url('admin-dashboard');
+    wp_redirect($url);
+    exit();
     }
 else if (in_array('agent ', $user_info->roles)) {
     $url = home_url('agent-dashboard'); 
+    wp_redirect($url);
+    exit();
 
     } 
     else if (in_array('technician', $user_info->roles)) {
         $url = home_url('tech-dashboard'); 
+        wp_redirect($url);
+    exit();
     
         } 
 else {
     $url = home_url('dashboard');
+    wp_redirect($url);
+    exit();
 
 
 }
- wp_redirect($url);
-  exit();
+
+
 
 } else {
 
