@@ -1,7 +1,4 @@
-<?php
-global $current_user; wp_get_current_user();  $uid = $current_user->ID;
-
-?>
+<?php global $current_user; wp_get_current_user();  $uid = $current_user->ID; ?>
 
 
 <thead>
