@@ -31,6 +31,20 @@ add_role('agent', 'Agent', array(
 
 
 
+/* Roles & Capabilities */
+add_role('technician ', 'Technician', array(
+    'read' => true, // True allows that capability, False specifically removes it.
+    'edit_posts' => true,
+    'delete_posts' => true,
+    'edit_published_posts' => true,
+    'publish_posts' => true,
+    'edit_files' => true,
+    'upload_files' => true //last in array needs no comma!
+));
+
+
+
+
 
 
 
