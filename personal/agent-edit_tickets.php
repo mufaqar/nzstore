@@ -154,7 +154,7 @@ $pid = $_REQUEST['id'];
                   <?php $price  = get_post_meta($pid, 'price', true );  
                   
                   if($price != '') { ?> <div class="col-md-6 mb-3">
-                    <label for=""> Estimated Price</label>
+                    <label for=""> Estimated Price (Technician)</label>
                         <div class="_select">                     
                            
                             <input value="<?php echo get_post_meta($pid, 'price', true ); ?>"  disabled>
