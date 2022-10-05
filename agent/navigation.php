@@ -5,13 +5,12 @@
                 <div class="sidebar p-0 align-items-start pt-5">
                     <div class="d-flex justify-content-center">
                        <a href="<?php bloginfo('url'); ?>"> <img src="<?php bloginfo('template_directory'); ?>/reources//images/logo.png" class="logo" alt=""></a>
-                    </div>
-                    
+                    </div>                    
                     <div class="mt-5">                        
                         <?php 	
 								  wp_nav_menu ( array(
                                     'container'       => false,	
-									'theme_location'  => 'profile',	
+									'theme_location'  => 'agent',	
 									'menu_class'      => 'myProfileNav activeNav'
 								) );
 								?>                
@@ -39,28 +38,19 @@
                                     <?php if ( is_user_logged_in() ) { 
                                     echo 'Hey, ' .  $current_user->display_name . "<br/>" ; } 
                                     else {
-
                                         wp_redirect( home_url('login'));                                     
                                         exit;
 
-
                                     }
-
                                     global $user_login, $current_user; 
                                     get_currentuserinfo();
                                     $user_info = get_userdata($current_user->ID);
-
-                                   $role = $user_info->roles;
-                                   echo $role[0];
-
-                                   
+                                    $role = $user_info->roles;
+                                    echo $role[0];                                   
                                     if (!in_array('agent', $user_info->roles)) {   
-                                        //wp_redirect( home_url('login')); 
-                                                                        
+                                        //wp_redirect( home_url('login'));                                                                         
                                         die("Not Allowed");                              
                                     }
-
-
                                     ?></h6>
                                </p>                            
 

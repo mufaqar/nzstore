@@ -9,9 +9,8 @@
                         <?php 	
 								  wp_nav_menu ( array(
                                     'container'       => false,	
-									'theme_location'  => 'admin',	
-                                    'menu_class'      => 'myProfileNav activeNav'
-									
+									'theme_location'  => 'super',	
+                                    'menu_class'      => 'myProfileNav activeNav'									
 								) );
 								?>       
                             
@@ -46,12 +45,10 @@
                                     $user_info = get_userdata($current_user->ID);
                                    
                                    $role = $user_info->roles;
-                                   echo $role[0];
-                                   
+                                   echo $role[0];                                 
                                    
                                     if (!in_array('administrator', $user_info->roles)) {   
-                                        //wp_redirect( home_url('login')); 
-                                                                        
+                                        //wp_redirect( home_url('login'));                                                                         
                                         die("Not Allowed");                              
                                     }
                                     ?></h6>  
