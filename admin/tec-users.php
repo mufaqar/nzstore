@@ -1,4 +1,4 @@
-<?php /* Template Name: Admin-Users  */
+<?php /* Template Name: Tech-Users  */
 get_header('admin');
 ?>
 <?php include('navigation.php'); ?>

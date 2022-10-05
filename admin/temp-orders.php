@@ -1,4 +1,4 @@
-    <?php /* Template Name: Admin-Order  */
+    <?php /* Template Name: Tech-Order  */
 
 
 

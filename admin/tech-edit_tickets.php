@@ -1,4 +1,4 @@
-<?php /* Template Name: Admin-Edit Tickets  */
+<?php /* Template Name: Tech-EditTickets  */
 
 
 

@@ -7,7 +7,7 @@
                             <th>Ticket ID</th>
                             <th>Date</th>
                             <th>Model</th>  
-                            <th>Agent</th>                                                   
+                                                                     
                             <th>Price</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -37,8 +37,6 @@
                                                 <td><?php echo $pid?></td>                                                
                                                 <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?> </td>
                                                 <td><?php the_title(); ?></td>
-                                                                                        
-                                                <td><?php echo get_post_meta( get_the_ID(), 'price', true ); ?></td>
                                                 <td><?php echo get_post_meta( get_the_ID(), 'price', true ); ?></td>
                                                 <td><?php   
                                                         $term_list = get_the_terms($post->ID, 'ticket_type');
