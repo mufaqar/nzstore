@@ -51,9 +51,10 @@
                                     $user_info = get_userdata($current_user->ID);
 
                                    $role = $user_info->roles;
+                                   echo $role;
 
                                    
-                                    if (!in_array('agent ', $user_info->roles)) {   
+                                    if (!in_array('agent', $user_info->roles)) {   
                                         //wp_redirect( home_url('login')); 
                                         echo "Page Not Alloud";                                    
                                         exit;                              
