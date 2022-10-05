@@ -24,7 +24,7 @@ if (in_array('administrator', $user_info->roles)) {
     wp_redirect($url);
     exit();
     }
-elseif (in_array('agent ', $user_info->roles)) {
+elseif (in_array('agent', $user_info->roles)) {
     $url = home_url('agent-dashboard'); 
     wp_redirect($url);
     exit();
@@ -130,8 +130,8 @@ else {
                 password : password
             },
             success: function(response){
-               alert(response.message);
-               window.location.href = "<?php echo home_url('/dashboard'); ?>";
+              // alert(response.message);
+               window.location.href = "<?php echo home_url('/login'); ?>";
             },
             error: function(response) {
                 alert(response.message);
