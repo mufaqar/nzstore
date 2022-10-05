@@ -67,7 +67,7 @@ $pid = $_REQUEST['id'];
                 <div class="col-md-6 mt-3 mt-md-0 mb-3">
                     <label for="">Address</label>
                     <div class="_select">
-                        <input type="text" value="<?php echo get_post_meta($pid, 'address', true ); ?>" id="address" required>
+                        <input type="text" value="<?php echo get_post_meta($pid, 'address', true ); ?>" id="address" disabled>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">

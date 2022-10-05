@@ -156,8 +156,8 @@ function admin_update_ticket()
 		),
 
 	);
-	$user_id = wp_update_post($post);
-	if (!is_wp_error($user_id)) {
+	$ticket_id = wp_update_post($post);
+	if (!is_wp_error($ticket_id)) {
 		//sendmail($username,$password);
 
 		
@@ -167,7 +167,7 @@ function admin_update_ticket()
 				'meta_query' => array(
 					array(
 						'key'     => 'order_id',
-						'value' => $user_id,
+						'value' => $ticket_id,
 						'compare' => '=='
 					)
 				)
@@ -175,11 +175,13 @@ function admin_update_ticket()
 
 		   $postinweek = new WP_Query($query_meta);
 		if ( $postinweek->have_posts() ): while ( $postinweek->have_posts() ): $postinweek->the_post();	
-				// Updated order if exist	
+				// Updated order if exist
+				if( has_term('Completed', 'ticket_type' , $ticket_id) ){	
 				$updated_post_id = get_the_ID();
 				update_post_meta($updated_post_id, 'order_price', $price);
 				update_post_meta($updated_post_id, 'order_status','Pending');			
 				echo wp_send_json(array('code' => 200, 'message' => __('Order Sucessfully Updated')));
+				}
 				die;
 		endwhile; wp_reset_query(); else : 	
 			// Insert post as its not exisit 
@@ -189,12 +191,19 @@ function admin_update_ticket()
 				'post_type'     => 'orders',
 				'meta_input'   => array(
 					'date' => $date,
-					'order_id' => $user_id,
+					'order_id' => $ticket_id,
 					'order_price' => $price,
 					'order_status' => 'Pending',
 				)
-			);	
-			$inovice_id = wp_insert_post($order_arg);
+			);
+
+
+			if( has_term('Completed', 'ticket_type' , $ticket_id) ){
+				$inovice_id = wp_insert_post($order_arg);				
+			}
+			
+			
+			
 			echo wp_send_json(array('code' => 0, 'message' => __('Order Sucessfully Updated.')));
 			die;
 
