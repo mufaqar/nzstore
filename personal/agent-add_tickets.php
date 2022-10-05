@@ -6,11 +6,10 @@ get_header();
  <?php global $current_user; wp_get_current_user();  $uid = $current_user->ID;?>
 
 <div class="custom_container catering_form mt-5 mb-5">
-    <div class="_info mt-5 mb-5">
+    <div class="_info mt-5 mb-3">
         <h2>Create Ticket </h2>
-        <p>Enter Your Ticket Details here</p>
     </div>
-    <div class="_form mt-3 p-4 pt-5 pb-5">
+    <div class="_form p-4 pt-5 pb-5">
     <form class="add_ticket" id="add_ticket" action="#" > 
             <div class="row">
             <div class="col-md-4 mb-3">
