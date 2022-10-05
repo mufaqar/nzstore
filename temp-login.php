@@ -24,13 +24,13 @@ if (in_array('administrator', $user_info->roles)) {
     wp_redirect($url);
     exit();
     }
-else if (in_array('agent ', $user_info->roles)) {
+elseif (in_array('agent ', $user_info->roles)) {
     $url = home_url('agent-dashboard'); 
     wp_redirect($url);
     exit();
 
     } 
-    else if (in_array('technician', $user_info->roles)) {
+    elseif (in_array('technician', $user_info->roles)) {
         $url = home_url('tech-dashboard'); 
         wp_redirect($url);
     exit();
