@@ -52,30 +52,14 @@
 
                                    $role = $user_info->roles;
 
-                                    echo $role[0];
-                                    
-                                    
-                                    
-                                    if (in_array('administrator', $user_info->roles)) {
-                                        $url = home_url('admin-dashboard');
-                                        }
-                                    else if (in_array('agent ', $user_info->roles)) {
-                                        $url = home_url('agent-dashboard'); 
-                                    
-                                        } 
-                                        else if (in_array('technician', $user_info->roles)) {
-                                            $url = home_url('tech-dashboard'); 
-                                        
-                                            } 
-                                    else {
-                                        $url = home_url('dashboard');
-                                    
-                                    
+                                   
+                                    if (!in_array('agent ', $user_info->roles)) {   
+                                        //wp_redirect( home_url('login')); 
+                                        echo "Page Not Alloud";                                    
+                                        exit;                              
                                     }
 
-                                    echo $url;
-                                   //  wp_redirect($url);
-                                  //    exit();
+                                   
 
 
 
