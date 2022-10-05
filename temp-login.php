@@ -10,8 +10,31 @@ $UIL =  $logged_user->user_login;
 $uid =  $logged_user->ID;
 $url = home_url('dashboard');
 if ( is_user_logged_in() ) {
-   wp_redirect($url);
-   exit();
+
+    global $user_login, $current_user; 
+get_currentuserinfo();
+$user_info = get_userdata($current_user->ID);
+
+
+
+if (in_array('administrator', $user_info->roles)) {
+    $url = home_url('admin-dashboard');
+    }
+else if (in_array('agent ', $user_info->roles)) {
+    $url = home_url('agent-dashboard'); 
+
+    } 
+    else if (in_array('technician', $user_info->roles)) {
+        $url = home_url('tech-dashboard'); 
+    
+        } 
+else {
+    $url = home_url('dashboard');
+
+
+}
+ wp_redirect($url);
+  exit();
 
 } else {
 
@@ -19,6 +42,9 @@ if ( is_user_logged_in() ) {
 
 
 }
+
+
+
 
 
 
@@ -69,7 +95,16 @@ if ( is_user_logged_in() ) {
 
   
 
-<?php get_footer('landing'); ?>
+
+    <?php wp_footer(); ?>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+            <script src="<?php bloginfo('template_directory'); ?>/reources//js/slick-slider-script.js" type="text/javascript"></script>
+
+
+        </body>
+    </html>
 <script type="text/javascript">   
    jQuery(document).ready(function($) {    
         $("#loginform").submit(function(e) {          
@@ -85,8 +120,8 @@ if ( is_user_logged_in() ) {
                 password : password
             },
             success: function(response){
-               // alert(response.message);
-               window.location.href = "<?php echo home_url('dashboard'); ?>";
+               alert(response.message);
+               window.location.href = "<?php echo home_url('/dashboard'); ?>";
             },
             error: function(response) {
                 alert(response.message);

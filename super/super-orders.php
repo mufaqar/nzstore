@@ -1,8 +1,4 @@
-    <?php /* Template Name: Super-Order  */
-
-
-
-    get_header('admin');
+    <?php /* Template Name: Super-Order  */    get_header('admin');
 
 
     ?>
