@@ -156,7 +156,7 @@ $pid = $_REQUEST['id'];
                 
 
                 <div class="col-md-6 mb-3">
-                <label for="">Engineer Remarks </label>
+                <label for="">Technician Remarks </label>
                     <div class="_select">                     
                         <textarea id="eng_remarks"><?php echo get_post_meta($pid, 'eng_remarks', true ); ?></textarea>
                     </div>
