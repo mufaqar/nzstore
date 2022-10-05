@@ -37,7 +37,7 @@
                         <div class="user">
                                 <h6><?php global $current_user; wp_get_current_user();  $uid = $current_user->ID;?>
                                     <?php if ( is_user_logged_in() ) { 
-                                    echo 'Hey, ' .  $current_user->display_name ; } 
+                                    echo 'Hey, ' .  $current_user->display_name . "<br/>" ; } 
                                     else {
 
                                         wp_redirect( home_url('login'));                                     
@@ -51,23 +51,14 @@
                                     $user_info = get_userdata($current_user->ID);
 
                                    $role = $user_info->roles;
-                                   echo $role;
+                                   echo $role[0];
 
                                    
                                     if (!in_array('agent', $user_info->roles)) {   
                                         //wp_redirect( home_url('login')); 
-                                        echo "Page Not Alloud";                                    
-                                        exit;                              
+                                                                        
+                                        die("Not Allowed");                              
                                     }
-
-                                   
-
-
-
-
-
-
-
 
 
                                     ?></h6>
