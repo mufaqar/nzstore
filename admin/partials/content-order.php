@@ -23,14 +23,15 @@
                                 $i++;
                                 $ticket_id = get_post_meta(get_the_ID(), 'order_id', true); 
                                 $ticket_agent = get_post_meta($ticket_id, 'order_uid', true); 
-                                $agent_info = get_user_by( 'id', $ticket_agent );                                
+                                $user_id = get_post_meta( $ticket_id, 'order_uid', true );
+                                $user_info = get_userdata($user_id);                                                         
                                 ?>
                                 <tr>
                                     <td><?php echo $i ?></td>
                                     <td><?php echo get_the_title($ticket_id);?></td>
-                                    <td><?php the_title() ?></td>
-                                    <td><?php echo $ticket_agent?></td> 
-                                    <td><?php  echo $agent_info->display_name?></td>                          
+                                    <td><?php the_title() ?></td> 
+                                    <td><?php  echo  $user_info->user_login ?></td>                                  
+                                    <td><?php  echo  get_the_modified_date(); ?></td>                          
                                     <td>$ <?php echo get_post_meta(get_the_ID(), 'order_price', true); ?></td>
                                     <td><span class="status <?php echo get_post_meta(get_the_ID(), 'order_status', true); ?>"><?php echo get_post_meta(get_the_ID(), 'order_status', true); ?> </span> </td>
                                 </tr>

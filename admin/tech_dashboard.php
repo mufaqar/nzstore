@@ -30,7 +30,7 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
                             <th>Order ID</th>
                             <th>Date</th>
                             <th>Title</th>
-                             <th>Issue</th>                             
+                             <th>Agent</th>                             
                             <th>Price</th>
                             <th>Type</th>
                             <th>Status</th>
@@ -41,22 +41,28 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
 
                     <?php 
                         $i = 0;
-
                         query_posts(array(
                             'post_type' => 'tickets',
                             'posts_per_page' => -1,
-                            'order' => 'desc',
-                            
+                            'order' => 'desc',                            
                         ));
 
-                        if (have_posts()) :  while (have_posts()) : the_post(); $pid = get_the_ID(); $i++; ?>
+                        if (have_posts()) :  while (have_posts()) : the_post(); $pid = get_the_ID(); $i++;
+                        $user_id = get_post_meta( get_the_ID(), 'order_uid', true );
+
+                        $user_info = get_userdata($user_id);
+                      
+                                            
+                        
+                        ?>
                                  <tr>
                                                 <td><?php echo $i;?></td>
                                                 <td><?php echo $pid?></td>                                                
                                                 <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?> </td>
                                                 <td><?php the_title(); ?></td>
-                                                <td><?php the_content(); ?></td>                                                
+                                                <td><?php echo $user_info->user_login ?></td>                                              
                                                 <td><?php echo get_post_meta( get_the_ID(), 'price', true ); ?></td>
+                                               
                                                 <td><?php   
                                                         $term_list = get_the_terms($post->ID, 'ticket_type');
                                                         $types ='';

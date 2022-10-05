@@ -80,8 +80,7 @@ $pid = $_REQUEST['id'];
                             foreach($ticket_status as $status)
                              {
                                 $status_active =  $status->slug;
-                             }                        
-
+                             }   
 
                             foreach( $types_tax as $type )  {
                                         $type_slug = $type->term_id ;
