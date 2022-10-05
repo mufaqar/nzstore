@@ -7,10 +7,7 @@ $pid = $_REQUEST['id'];
 
 ?> 
  <?php include('navigation.php'); ?>
- <?php global $current_user; wp_get_current_user();  $uid = $current_user->ID;
- 
-
- 
+ <?php global $current_user; wp_get_current_user();  $uid = $current_user->ID; 
  ?>
 
 <div class="custom_container catering_form mt-5 mb-5">
@@ -18,8 +15,7 @@ $pid = $_REQUEST['id'];
         <h2>Ticket Form</h2>
         <p>Enter Your Ticket Details here</p>
     </div>
-    <hr>
-    <div class="_form mt-5 p-4 pt-5 pb-5">
+    <div class="_form mt-3 p-4 pt-5 pb-5">
     <form class="update_ticket" id="update_ticket" action="#" > 
             <div class="row">
                 <div class="col-md-4 mb-3">

@@ -10,7 +10,7 @@ get_header();
         <h2>Create Ticket </h2>
         <p>Enter Your Ticket Details here</p>
     </div>
-    <div class="_form mt-5 p-4 pt-5 pb-5">
+    <div class="_form mt-3 p-4 pt-5 pb-5">
     <form class="add_ticket" id="add_ticket" action="#" > 
             <div class="row">
             <div class="col-md-4 mb-3">
