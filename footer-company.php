@@ -2,12 +2,6 @@
 
 
 
+    </body>
 
-
-
-
-
-
-    </ body>
-
-    </ html>
+    </html>
