@@ -1,4 +1,4 @@
-<?php /* Template Name: Edit Ticket  */ 
+<?php /* Template Name: Agent-EditTicket  */ 
 get_header();
 
 $pid = $_REQUEST['id'];

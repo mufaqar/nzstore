@@ -1,4 +1,4 @@
-<?php /* Template Name: Dashboard */
+<?php /* Template Name: Agent-Dashboard */
 get_header();
 ?>
 <?php include('navigation.php'); ?>
