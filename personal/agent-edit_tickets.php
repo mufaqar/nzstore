@@ -150,6 +150,19 @@ $pid = $_REQUEST['id'];
                         <textarea id="eng_remarks" disabled><?php echo get_post_meta($pid, 'eng_remarks', true ); ?></textarea>
                     </div>
                 </div>  
+
+                  <?php $price  = get_post_meta($pid, 'price', true );  
+                  
+                  if($price != '') { ?> <div class="col-md-6 mb-3">
+                    <label for=""> Estimated Price</label>
+                        <div class="_select">                     
+                           
+                            <input value="<?php echo get_post_meta($pid, 'price', true ); ?>"  disabled>
+                        </div>
+                    </div>  <?php }
+                  ?>
+
+                 
                 <div class="d-flex justify-content-end savebtn">
                     <input type="submit" class="btn_primary"  value="Update Ticket"/>
                 </div>
