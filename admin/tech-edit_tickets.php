@@ -19,13 +19,12 @@ $pid = $_REQUEST['id'];
  
  ?>
 
-<div class="custom_container catering_form mt-5 mb-5">
+<div class="custom_container catering_form mt-5 mb-3">
     <div class="_info mt-5 mb-5">
         <h2>Ticket Form</h2>
-        <p>Enter Your Ticket Details here</p>
     </div>
-    <hr>
-    <div class="_form mt-5 p-4 pt-5 pb-5">
+
+    <div class="_form  p-4 pt-5 pb-5">
     <form class="update_ticket" id="update_ticket" action="#" > 
             <div class="row">
                 <div class="col-md-4 mb-3">
