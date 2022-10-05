@@ -38,35 +38,20 @@ if ( is_user_logged_in() ) {
 
 
 
-        <div class="row align-items-center">
+    <div class="row align-items-center">
             <div class="col-sm-12 col-md-6 left">
                 <div class="login_image_wrapper">
                     <div class="image_card">
-                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/Procut.png" alt="">
+                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/mobile.jpg" alt="" style="width:100%; border-radius:20px">
                         <div class="overlay"></div>
-                    </div>
-                    <div class="image_card">
-                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/Procut.png" alt="">
-                        <div class="overlay"></div>
-                    </div>
-                    <div class="image_card">
-                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/Procut.png" alt="">
-                        <div class="overlay"></div>
-                    </div>
-                </div>
-                <div class="custom_nav_btn">
-                    
-                    <div class="previous_caro">
-                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/left arrow.png" alt="Left Arrow">
-                    </div>
-                    <div class="next_caro">
-                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/right arrow.png" alt="Right arrow">
-                    </div>
-                </div>
+                    </div>                    
+                </div>               
             </div>
             <div class="col-sm-12 right col-md-6 p-3">
-                <h3>Welcome Back to <br>Double Down Dish</h3>
-                <p>Reset Password</p>
+                 <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:350px" > <br/><br/>
+                <h3>Welcome to Budget Computer & Kiwi Mobiles</h3>
+                <p>1191 Eruera street Rotrua, 3010 </p>
+                <p>DID : 073477044 </p>
                 <form class="resetpassword" id="resetpassword">
                     <div class="form-group">
                         <label for="username">Email</label>
