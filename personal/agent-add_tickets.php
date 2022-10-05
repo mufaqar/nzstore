@@ -31,7 +31,7 @@ get_header();
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <label for="">Title</label>
+                    <label for="">Model No</label>
                     <div class="_select">
                         <input type="text" value="" placeholder="Please enter title" id="title" required>
                         <input type="hidden" value="<?php echo $uid ?>"  id="uid" >

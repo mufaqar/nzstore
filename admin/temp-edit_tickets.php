@@ -51,7 +51,7 @@ $pid = $_REQUEST['id'];
                         </div>
                     </div>
                 <div class="col-md-4 mb-3">
-                    <label for="">Title</label>
+                    <label for="">Model No</label>
                     <div class="_select">
                         <input type="text" value="<?php echo get_the_title($pid)?>" placeholder="<?php echo get_the_title($pid)?>" id="title" required>
                         <input type="hidden" value="<?php echo $uid ?>"  id="uid" >
