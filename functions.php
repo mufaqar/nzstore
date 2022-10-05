@@ -69,7 +69,7 @@ function pagination($pages = '', $range = 4)
 
 if (function_exists('register_nav_menus')) {
 register_nav_menus( array(	
-		'profile' => __( 'Ageent Menu'),       
+		'agent' => __( 'Agent Menu'),       
         'tech' => __( 'Technician Menu'),
         'super' => __( 'Super  Menu')
 	) );

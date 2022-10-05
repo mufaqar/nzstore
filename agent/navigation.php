@@ -13,10 +13,7 @@
 									'theme_location'  => 'agent',	
 									'menu_class'      => 'myProfileNav activeNav'
 								) );
-								?>                
-                            
-                      
-
+								?>   
                     </div>
                     <div class="logout">                       	
                     <a href="<?php echo wp_logout_url( home_url() ); ?>"> <img src="<?php bloginfo('template_directory'); ?>/reources//images/logout.png" alt=""><span>Log Out</span></a>
