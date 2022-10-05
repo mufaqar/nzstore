@@ -10,7 +10,7 @@ get_header();
         <h2>Create Ticket </h2>
     </div>
     <div class="_form p-4 pt-5 pb-5">
-    <form class="add_ticket" id="add_ticket" action="#" > 
+    <form class="add_ticket" id="add_ticket" action="#" enctype="multipart/form-data">
             <div class="row">
             <div class="col-md-4 mb-3">
                     <label for="">Select</label>
@@ -185,25 +185,32 @@ get_header();
             var ticket_cat = jQuery('#ticket_cat').val();	        
             var shipping = jQuery('#shipping').val();           
             var issues = jQuery('#issues').val(); 
-            var uid = jQuery('#uid').val();             
+            var uid = jQuery('#uid').val();    
+            var file_data = jQuery('#file').prop('files')[0]; 
+            file_data = jQuery('#file').prop('files')[0];
+            form_data = new FormData();
+            form_data.append('file', file_data);
+            form_data.append('action', 'add_ticket');
+            form_data.append('title', title);
+            form_data.append('date', date);	
+            form_data.append('address', address); 
+            form_data.append('ticket_type', ticket_type); 
+            form_data.append('ticket_priority', ticket_priority); 
+            form_data.append('ticket_status', ticket_status);  
+            form_data.append('ticket_cat', ticket_cat);  
+            form_data.append('issues', issues);  
+            form_data.append('shipping', shipping);  
+            form_data.append('user_type', "Agent");  
+            form_data.append('uid', uid);   
+            
+            
             $.ajax(
                 {
-                    type:"POST",
                     url:"<?php echo admin_url('admin-ajax.php'); ?>",
-                    data: {
-                        action: "add_ticket",
-                        title : title,
-                        date : date, 
-                        address : address,
-                        ticket_type : ticket_type,
-                        ticket_priority : ticket_priority,
-                        ticket_status : ticket_status,
-                        ticket_cat : ticket_cat,                        
-                        issues : issues,
-                        shipping : shipping,
-                        user_type : "Agent",
-                        uid : uid
-                    },   
+                    type: 'POST',
+                    contentType: false,
+                    processData: false,
+                    data: form_data,   
                     success: function(data){                      
                      
                         if(data.code==0) {
