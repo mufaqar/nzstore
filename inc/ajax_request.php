@@ -158,9 +158,7 @@ function admin_update_ticket()
 	);
 	$ticket_id = wp_update_post($post);
 	if (!is_wp_error($ticket_id)) {
-		//sendmail($username,$password);
-
-		
+		//sendmail($username,$password);		
 			$query_meta = array(
 				'posts_per_page' => -1,
 				'post_type' => 'orders',
@@ -196,13 +194,10 @@ function admin_update_ticket()
 					'order_status' => 'Pending',
 				)
 			);
-
-
 			if( has_term('Completed', 'ticket_type' , $ticket_id) ){
-				$inovice_id = wp_insert_post($order_arg);				
+				$inovice_id = wp_insert_post($order_arg);	
+				echo wp_send_json(array('code' => 0, 'message' => __('Invoice Created ')));			
 			}
-			
-			
 			
 			echo wp_send_json(array('code' => 0, 'message' => __('Order Sucessfully Updated.')));
 			die;
