@@ -123,6 +123,12 @@ get_header();
                             <input type="file" name="file" id="file"  class="dropify" > 
                     </div>
                 </div>
+                <div class="col-md-6 mb-3">
+                <label for="">Terms and Conditions</label>
+                    <div class="_select">                       
+                    <input type="checkbox" id="terms" name="terms" value="Accept" required>
+                    </div>
+                </div>
 
 
 
