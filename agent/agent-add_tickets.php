@@ -124,9 +124,11 @@ get_header();
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                <label for="">Terms and Conditions</label>
+                
                     <div class="_select">                       
-                    <input type="checkbox" id="terms" name="terms" value="Accept" required>
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                    <label for="vehicle1">Accept Terms and Conditions</label>
+                    <a id="terms_btn" class="btn_primary">View Terms and Condtions</a>
                     </div>
                 </div>
 
@@ -168,6 +170,38 @@ get_header();
     </section>
 
 
+
+    <section class="hideme overlay term_popup">
+        <div class="popup">
+        <form class="update_agreement" id="update_agreement" action="#" > 
+                <div class="popup_wrapper">
+                    <h3 class="ad_productss">Terms and Conditions </h3>               
+                    <div class="termlist">
+                    <ul>
+                        <li> Diagnosed fees will apply for all repairs even if the gadget is not repairable or the customer cancels the job. </li>
+                        <li> A part order on the customer's behalf and a deposit of 50% is taken. The warranty is non-refundable as we order the part on the customer's behalf. </li>
+                        <li> All the parts fined come with a three-month warranty unless specified. We will fix the fault & check with which gadget is booked. No other-􀃒functionality is limited unless a thorough assessment is requested & assessment fee is paid. Also, provide the password or login id. </li>
+                        <li> All repairs come with three months warranty unless specified. LCDs are fragile. Any external pressure in the pocket or any other place or harsh use will break without damaging the top glass, as the entire glass is more complicated/robust than underneath the LCD. In such a case, the warranty will be voided. </li>
+                        <li> Any physical damage, which includes liquid damage, drops, and any pressure on the LCD which breaks the display, will not be covered in the warranty. Any gadget returned under contract, and if it is found to be physical damage, diagnostic will apply. In any dispute, the customer must get a third-party opinion on their own cost from a reputable repair shop and provide a copy of the report. </li>
+                        <li> Warranty is provided only on the part we have replaced, not any other part of the gadget </li>
+                        <li> No responsibility for any data loss while working on any gadget. Back up all your data before it is booked for repair. </li>
+                        <li> The customer is responsible for picking up their gadget within two months after it is fixed and paying the repairing fee in full. No gadget will be delivered if not aided In full or sold my device is not picked up within two months, it will be disposed of or sold to recover the cost. I authorise the budget computer to dispose of or sell my gadget to recover the price if not picked up and paid within two months. </li>
+                        <li> Warranty repair cannot be checked straight away. We need reasonable time to check and fix it. </li>
+                        <li> Software/ operating system installation if a virus is infected or corrupted by customer negligence or misuse or any third-party software is not working, no responsibility is taken. </li>
+                        <li>I read, agreed and acknowledged the above rubrics.</li>
+                    </ul>
+                        
+                    </div>
+                                      
+                   
+                    
+                    <img src="<?php bloginfo('template_directory'); ?>/reources/images/red cross.png" alt="" class="_cross">
+                </div>
+            </form>
+        </div>
+    </section>
+
+
     <?php get_footer();?>
 
      <!-- Font Awsome -->
@@ -175,6 +209,12 @@ get_header();
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script type="text/javascript">   
      jQuery(document).ready(function($) {	
+
+        $('#terms_btn').click(function(){            
+                $(".term_popup").css("display", "block");
+            });
+
+
         $('._cross').click(function(){
            
            $(".hideme").css("display", "none");

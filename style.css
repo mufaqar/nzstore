@@ -3500,6 +3500,13 @@ body.page-template-temp-landing {
   display: none;
 }
 
+.termlist ul {
+  text-align: left;
+}
+.termlist ul li {
+  list-style: decimal;
+}
+
 /* **************************************
 ***********   >1400px  ****************
 ************************************** */
