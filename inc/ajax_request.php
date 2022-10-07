@@ -276,12 +276,13 @@ function add_agent() {
 	$email = $_POST['email'];		
 	$name = $_POST['name'];  
 	$password = $_POST['password'];	
+	$user_type = $_POST['user_type'];	
 	$user_data = array(
 	  'user_login' => $username,
 	  'user_email' => $email,
 	  'user_pass' => $password,	
 	  'display_name' => $name,
-	  'role' => 'agent'
+	  'role' => $user_type
 	  );
 	  $user_id = wp_insert_user($user_data);
 		if (!is_wp_error($user_id)) {		    

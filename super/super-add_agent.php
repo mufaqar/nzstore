@@ -1,4 +1,4 @@
-<?php /* Template Name: Tech-AddAgent  */ 
+<?php /* Template Name: Super-AddUser  */ 
 get_header();
 
 ?> 
@@ -7,17 +7,16 @@ get_header();
 
 <div class="custom_container catering_form mt-5 mb-5">
     <div class="_info mt-5 mb-3">
-        <h2>Create Agent </h2>
+        <h2>Create User  </h2>
     </div>
     <div class="_form p-4 pt-5 pb-5">
     <form class="add_ticket" id="add_ticket" action="#" enctype="multipart/form-data">
             <div class="row">
             
                 <div class="col-md-6 mb-3">
-                    <label for="">Agent Name</label>
+                    <label for="">User Name</label>
                     <div class="_select">
                         <input type="text" value="" placeholder="Please enter name" id="name" required>
-                        <input type="hidden" value="agent"  id="user_type">
                     </div>
                 </div>
                 <div class="col-md-6 mt-3 mt-md-0 mb-3">
@@ -27,12 +26,26 @@ get_header();
                     </div>
                 </div>
 
+
+
                 <div class="col-md-6 mt-3 mt-md-0 mb-3">
                     <label for="">Password</label>
                     <div class="_select">
                         <input type="password" value="" placeholder="Enter agent email Password" id="password" required>
                     </div>
                 </div>
+
+                <div class="col-md-6 mb-3">
+                        <label for="">User Type</label>
+                        <div class="_select">
+                            <select id="user_type">    
+                            <option value="agent"> Agent </option>
+                            <option value="technician"> Technician </option>                        
+                                
+                            </select>
+                            <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
+                        </div>
+                    </div>
 
                 <div class="d-flex justify-content-end savebtn">
                     <input type="submit" class="btn_primary"  value="Add Agent"/>
