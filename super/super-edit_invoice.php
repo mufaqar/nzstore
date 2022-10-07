@@ -120,17 +120,14 @@ $pid = $_REQUEST['id'];?>
        });
                  
         $("#update_ticket").submit(function(e) {                     
-            e.preventDefault();   
-            alert("asdasdf"); 
-                         
-    
+            e.preventDefault();  
             var pid = jQuery('#pid').val();	
-            var ticket_status = jQuery('#ticket_status').val();	 
-            var ticket_cat = jQuery('#ticket_cat').val();	
+            var order_status = jQuery('#order_status').val();	     
             var price = jQuery('#order_price').val();            
             var order_price_paid = jQuery('#order_price_paid').val();           
             var admin_remarks = jQuery('#admin_remarks').val(); 
-            var invoice = jQuery('#invoice').val(); 
+          
+      
             $.ajax(
                 {
                     type:"POST",
@@ -138,20 +135,21 @@ $pid = $_REQUEST['id'];?>
                     data: {
                         action: "admin_update_invoice",
                         pid : pid,
-                        ticket_status : ticket_status,
+                        order_status : order_status,
                         order_price_paid : order_price_paid, 
                         admin_remarks : admin_remarks,                       
-                        price : price,
-                        uid : uid
+                        price : price
+                    
                     },   
                     success: function(data){                      
                      
                         if(data.code==0) {
-                                   $(".overlay").css("display", "flex");
+                           $(".overlay").css("display", "flex");
                         }  
                         else {
                           
-                        $(".overlay").css("display", "flex");
+                          
+                       $(".overlay").css("display", "flex");
                       
                         }      
             }

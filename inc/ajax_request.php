@@ -317,13 +317,17 @@ function admin_update_invoice()
 
 	global $wpdb;
 	$pid = $_POST['pid'];	
-	$ticket_status = $_POST['ticket_status'];
+	$order_status = $_POST['order_status'];
 	$order_price_paid = $_POST['order_price_paid'];
 	$admin_remarks = $_POST['admin_remarks'];
 	$price = $_POST['price'];
 
 
+
+
 	update_post_meta($pid, 'order_price_paid', $order_price_paid);
+	update_post_meta($pid, 'admin_remarks', $admin_remarks);
+	
 
 
 	echo wp_send_json(array('code' => 0, 'message' => __('Invoice Sucessfully Updated.')));
