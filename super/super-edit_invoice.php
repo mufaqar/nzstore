@@ -10,56 +10,30 @@ $pid = $_REQUEST['id'];?>
     <div class="_form  p-4 pt-5 pb-5">
     <form class="update_ticket" id="update_ticket" action="#" > 
             <div class="row">
-                <div class="col-md-4 mb-3">
-                        <label for="">Select</label>
-                        <div class="_select">
-                            <select id="ticket_cat">                            
-                                <?php   
-                                $cat_tax = get_terms( array('taxonomy' => 'ticket_cat','hide_empty' => false ) ); 
-                                $cat_status  = get_the_terms( $pid, 'ticket_cat');                        
-                                foreach($cat_status as $cat_selected)
-                                {
-                                    $cat_active =  $cat_selected->slug;
-                                }   
-                                foreach( $cat_tax as $cat )  {
-                                            $cat_slug = $cat->term_id ;
-                                            $cat_name = $cat->name ; ?>                            
-                                            <option value="<?php echo $cat_slug; ?>" <?php if($cat_active == $cat->slug) { echo "selected";} ?>  > <?php echo $cat_name; ?> </option>
-                                                <?php
-                                    }                                                    
-                                ?>
-                            </select>
-                            <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
-                        </div>
-                    </div>
-                <div class="col-md-4 mb-3">
-                    <label for="">Model No</label>
+                
+                <div class="col-md-6 mb-3">
+                    <label for="">Inovice Id</label>
                     <div class="_select">
-                        <input type="text" value="<?php echo get_the_title($pid)?>" placeholder="<?php echo get_the_title($pid)?>" id="title" required>
+                        <input type="text" value="<?php echo get_the_title($pid)?>" placeholder="<?php echo get_the_title($pid)?>" id="title" disabled>
                         <input type="hidden" value="<?php echo $uid ?>"  id="uid" >
                         <input type="hidden" value="<?php echo $pid ?>"  id="pid" >
                     </div>
                 </div>
-                <div class="col-md-4 mt-3 mt-md-0 mb-3">
-                    <label for="">Date</label>
-                    <div class="_select">
-                        <input type="date" value="<?php echo get_post_meta($pid, 'date', true ); ?>"  id="date" required>
-                    </div>
-                </div>
+                
                 <div class="col-md-6 mt-3 mt-md-0 mb-3">
-                    <label for="">Address</label>
+                    <label for="">Agent</label>
                     <div class="_select">
-                        <input type="text" value="<?php echo get_post_meta($pid, 'address', true ); ?>" id="address" disabled>
+                        <input type="text" value="<?php echo get_post_meta($pid, 'order_id', true ); ?>" id="address" disabled>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Status </label>
                     <div class="_select">
-                        <select id="ticket_status">                            
+                        <select id="order_status">                            
                             <?php   
-                            $types_tax = get_terms( array('taxonomy' => 'ticket_status','hide_empty' => false ) ); 
-                            $ticket_status  = get_the_terms( $pid, 'ticket_status');                        
-                            foreach($ticket_status as $status)
+                            $types_tax = get_terms( array('taxonomy' => 'order_status','hide_empty' => false ) ); 
+                            $order_status  = get_the_terms( $pid, 'order_status');                        
+                            foreach($order_status as $status)
                              {
                                 $status_active =  $status->slug;
                              }   
@@ -75,89 +49,34 @@ $pid = $_REQUEST['id'];?>
                         <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
                     </div>
                 </div>
-                <div class="col-md-6 mb-3">
-                    <label for="">Type</label>
-                    <div class="_select">
-                        <select id="ticket_type">
-                        <?php   
-                            $food_categories = get_terms( array('taxonomy' => 'ticket_type','hide_empty' => false ) ); 
-                            $ticket_types  = get_the_terms( $pid, 'ticket_type' );
-                             foreach($ticket_types as $type)
-                             {
-                                $ticket_type_active =  $type->slug;
-                             }
-                                       
-                            foreach( $food_categories as $food_cat )  {
-                                        $food_cat_slug = $food_cat->term_id ;
-                                        $food_cat_name = $food_cat->name ; ?>                            
-                                        <option value="<?php echo $food_cat_slug; ?>" <?php if($ticket_type_active == $food_cat->slug) { echo "selected";} ?>> <?php echo $food_cat_name; ?> </option>
-                                            <?php
-                                }                                                    
-                            ?>
-                        </select>
-                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for=""> Priority</label>
-                    <div class="_select">
-                        <select id="ticket_priority">
-                    <?php   
-                            $product_tax = get_terms( array('taxonomy' => 'ticket_priority','hide_empty' => false ) ); 
-                            $ticket_priority  = get_the_terms( $pid, 'ticket_priority' );                        
-                            foreach($ticket_priority as $priority)
-                             {
-                                $priority_active =  $priority->slug;
-                             }   
-                            foreach( $product_tax as $product_cat )  {
-                                        $product_cat_slug = $product_cat->term_id ;
-                                        $product_cat_name = $product_cat->name ; ?>                            
-                                        <option value="<?php echo $product_cat_slug; ?>"<?php if($priority_active == $product_cat->slug) { echo "selected";} ?> > <?php echo $product_cat_name; ?> </option>
-                                            <?php
-                                }                                                    
-                            ?>
-                         </select>
-                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
-                    </div>
-                </div>            
-            
 
                 <div class="col-md-6 mb-3">
-                <label for="">Issue Details(Agent Remarks)</label>
-                    <div class="_select">                      
-                        <textarea id="issues" disabled><?php echo get_post_meta($pid, 'issues', true ); ?></textarea>
+                <label for="">Invocie Price</label>
+                    <div class="_select">
+                        <input type="text" id="order_price" value="<?php echo get_post_meta($pid, 'order_price', true ); ?>" >                        
                     </div>
-                </div>              
+                </div>  
+
                 <div class="col-md-6 mb-3">
-                <label for="">Shipping Details( Agent )</label>
-                    <div class="_select">                     
-                        <textarea id="shipping" disabled><?php echo get_post_meta($pid, 'shipping', true ); ?></textarea>
+                <label for="">Amout Paid</label>
+                    <div class="_select">
+                        <input type="text" id="order_price_paid" value="<?php echo get_post_meta($pid, 'order_price_paid', true ); ?>" >                        
                     </div>
                 </div>  
                 
+           
 
                 <div class="col-md-6 mb-3">
-                <label for="">Technician Remarks </label>
-                    <div class="_select">                     
-                        <textarea id="eng_remarks"><?php echo get_post_meta($pid, 'eng_remarks', true ); ?></textarea>
+                <label for="">Admin Remarks</label>
+                    <div class="_select">                      
+                        <textarea id="admin_remarks" ><?php echo get_post_meta($pid, 'admin_remarks', true ); ?></textarea>
                     </div>
-                </div> 
-
-                <div class="col-md-6 mb-3">
-                <label for="">Remarks (Internal) </label>
-                    <div class="_select">                     
-                        <textarea id="internal_remarks"><?php echo get_post_meta($pid, 'internal_remarks', true ); ?></textarea>
-                    </div>
-                </div> 
-                <div class="col-md-6 mb-3">
-                <label for="">Qoutation Price</label>
-                    <div class="_select">
-                        <input type="text" id="price" value="<?php echo get_post_meta($pid, 'price', true ); ?>" >                        
-                    </div>
-                </div>  
+                </div>              
+               
+                
                
                 <div class="d-flex justify-content-end savebtn">
-                    <input type="submit" class="btn_primary"  value="Update Ticket"/>
+                    <input type="submit" class="btn_primary"  value="Update Invoice"/>
                 </div>
             </div>
         </form>
@@ -201,47 +120,27 @@ $pid = $_REQUEST['id'];?>
        });
                  
         $("#update_ticket").submit(function(e) {                     
-            e.preventDefault();     
+            e.preventDefault();   
+            alert("asdasdf"); 
                          
-            var title = jQuery('#title').val();	   
-            var pid = jQuery('#pid').val();	             
-            var date = jQuery('#date').val();	       
-            var address = jQuery('#address').val();	             
-            var ticket_type = jQuery('#ticket_type').val();	 
-            var ticket_priority = jQuery('#ticket_priority').val();	 
+    
+            var pid = jQuery('#pid').val();	
             var ticket_status = jQuery('#ticket_status').val();	 
-            var ticket_cat = jQuery('#ticket_cat').val();	         
-            var shipping = jQuery('#shipping').val();           
-            var issues = jQuery('#issues').val(); 
+            var ticket_cat = jQuery('#ticket_cat').val();	
+            var price = jQuery('#order_price').val();            
+            var order_price_paid = jQuery('#order_price_paid').val();           
+            var admin_remarks = jQuery('#admin_remarks').val(); 
             var invoice = jQuery('#invoice').val(); 
-            var price = jQuery('#price').val();             
-            var uid = jQuery('#uid').val();   
-            
-            var eng_remarks = jQuery('#eng_remarks').val();   
-            var internal_remarks = jQuery('#internal_remarks').val();   
-            
-            
-            
-
-         
-           
             $.ajax(
                 {
                     type:"POST",
                     url:"<?php echo admin_url('admin-ajax.php'); ?>",
                     data: {
-                        action: "admin_update_ticket",
+                        action: "admin_update_invoice",
                         pid : pid,
-                        title : title,
-                        date : date, 
-                        address : address,
-                        ticket_type : ticket_type,
-                        ticket_priority : ticket_priority,
-                        ticket_status : ticket_status ,
-                        ticket_cat : ticket_cat,                      
-                        invoice : invoice,
-                        eng_remarks : eng_remarks,
-                        internal_remarks : internal_remarks,
+                        ticket_status : ticket_status,
+                        order_price_paid : order_price_paid, 
+                        admin_remarks : admin_remarks,                       
                         price : price,
                         uid : uid
                     },   
