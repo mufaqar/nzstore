@@ -126,13 +126,11 @@ get_header();
                 <div class="col-md-6 mb-3">
                 
                     <div class="_select">                       
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                    <label for="vehicle1">Accept Terms and Conditions</label>
-                    <a id="terms_btn" class="btn_primary">View Terms and Condtions</a>
+                    <input type="checkbox" id="terms_conditions" name="terms_conditions" value="Accept" required>
+                    <label for="terms_conditions">Accept Terms and Conditions</label> <br/>
+                    <a id="terms_btn" class="btn_primary">Read Terms and Condtions</a>
                     </div>
                 </div>
-
-
 
                 <div class="d-flex justify-content-end savebtn">
                     <input type="submit" class="btn_primary"  value="Add Ticket"/>
@@ -147,7 +145,7 @@ get_header();
 </main>
 
 
-<section class="hideme zindex-modal overlay">
+<section class="hideme zindex-modal overlay sucess_message">
         <div class="popup">
             <div class="popup_wrapper">
                 <div
@@ -263,7 +261,7 @@ get_header();
                                     alert(data.message);
                         }  
                         else {
-                           $(".overlay").css("display", "flex");
+                           $(".sucess_message").css("display", "flex");
                       
                         }      
             }
