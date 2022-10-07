@@ -16,12 +16,12 @@
        
         $(document).ready(function () {
             var table = $('#allusers').DataTable();
-            $('.catering_menu').on( 'click', 'a', function () {                        
+            $('.catering_menu').on( 'click', 'a', function () {                                   
                 $(".catering_menu a").removeClass("_active");
                 $(this).addClass("_active"); 
                
             table
-                .columns(6)
+                .columns(2)
                 .search(  $(this).attr('data') )
                 .draw();
             });
@@ -33,7 +33,7 @@
                 $(this).addClass("_active");  
                
             table
-                .columns( 5 )
+                .columns( 3 )
                 .search(  $(this).attr('data') )
                 .draw();
             });

@@ -8,8 +8,9 @@ get_header('admin');
             <div class="catering_wrapper mt-5 mb-2 col-md-8 p-0">
                 <div class="catering_menu buttons">
                     <a id="1" class="showSingle _active" target="1" data="">All Users</a>
-                    <a id="2" class="showSingle" target="2" data="agent">Agents</a>
-                    <a id="2" class="showSingle" target="2" data="personal">Personal</a>
+                    <a id="2" class="showSingle" target="2" data="Administrator">Administrator</a>
+                    <a id="3" class="showSingle" target="3" data="agent">Agents</a>
+                    <a id="4" class="showSingle" target="4" data="Technician">Technician</a>
                 </div>
             </div>
         </div>
