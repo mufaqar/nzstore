@@ -24,6 +24,7 @@ get_header('admin');
                     <th>Type</th>
                     <th>Phone Number</th>
                     <th>Email Address</th>
+                
                    
                 </tr>
             </thead>

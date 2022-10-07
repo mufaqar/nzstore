@@ -7,6 +7,7 @@
                             <th>Order Date</th>                             
                             <th>Price</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -19,7 +20,7 @@
                             'order' => 'desc'
                         ));
 
-                        if (have_posts()) :  while (have_posts()) : the_post();
+                        if (have_posts()) :  while (have_posts()) : the_post();$pid = get_the_ID();
                                 $i++;
                                 $ticket_id = get_post_meta(get_the_ID(), 'order_id', true); 
                                 $ticket_agent = get_post_meta($ticket_id, 'order_uid', true); 
@@ -34,6 +35,7 @@
                                     <td><?php  echo  get_the_modified_date(); ?></td>                          
                                     <td>$ <?php echo get_post_meta(get_the_ID(), 'order_price', true); ?></td>
                                     <td><span class="status <?php echo get_post_meta(get_the_ID(), 'order_status', true); ?>"><?php echo get_post_meta(get_the_ID(), 'order_status', true); ?> </span> </td>
+                                    <td> <a href="<?php echo home_url('admin-dashboard/edit-invoice?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
                                 </tr>
                             <?php endwhile;
                             wp_reset_query();
