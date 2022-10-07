@@ -314,22 +314,16 @@ add_action('wp_ajax_nopriv_admin_update_invoice', 'admin_update_invoice');
 function admin_update_invoice()
 {
 
-
 	global $wpdb;
 	$pid = $_POST['pid'];	
 	$order_status = $_POST['order_status'];
 	$order_price_paid = $_POST['order_price_paid'];
 	$admin_remarks = $_POST['admin_remarks'];
 	$price = $_POST['price'];
-
-
-
-
 	update_post_meta($pid, 'order_price_paid', $order_price_paid);
 	update_post_meta($pid, 'admin_remarks', $admin_remarks);
-	
-
-
+	wp_set_object_terms( $pid, $terms, $taxonomy, $append ); 
+	wp_set_post_terms( $pid, array( $order_status ), 'order_status' ); 
 	echo wp_send_json(array('code' => 0, 'message' => __('Invoice Sucessfully Updated.')));
 	die;
 
