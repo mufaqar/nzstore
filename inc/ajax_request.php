@@ -261,3 +261,44 @@ function admin_update_ticket()
 	die;
 }
 
+
+add_action('wp_ajax_add_agent', 'add_agent', 0);
+add_action('wp_ajax_nopriv_add_agent', 'add_agent');
+
+function add_agent() {	
+
+
+	global $wpdb;
+
+
+	  
+	$username = $_POST['email'];
+	$email = $_POST['email'];		
+	$name = $_POST['name'];  
+	$password = $_POST['password'];	
+	$user_data = array(
+	  'user_login' => $username,
+	  'user_email' => $email,
+	  'user_pass' => $password,	
+	  'display_name' => $name,
+	  'role' => 'agent'
+	  );
+	  $user_id = wp_insert_user($user_data);
+		if (!is_wp_error($user_id)) {		    
+		  sendmail($username,$password);
+		  echo wp_send_json( array('code' => 200 , 'message'=>__('We have Created an account for you.')));
+
+		} else {
+		  if (isset($user_id->errors['empty_user_login'])) {
+			
+			echo wp_send_json( array('code' => 0 , 'message'=>__('User Name and Email are mandatory')));
+			} elseif (isset($user_id->errors['existing_user_login'])) {
+		   // echo 'User name already exixts.';
+			echo wp_send_json( array('code' => 0 , 'message'=>__('This email address is already registered.')));
+			} else {	         
+			echo wp_send_json( array('code' => 0 , 'message'=>__('Error Occured please fill up the sign up form carefully.')));
+			}
+		}
+  die;   
+	  
+}
