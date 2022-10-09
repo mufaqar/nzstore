@@ -7,7 +7,7 @@ $pid = $_REQUEST['id'];?>
     <div class="_info mt-5 mb-5">
         <h2>Ipdate Ticket </h2>
     </div>
-    <div class="_form  pt-5 pb-5">
+    <div class="_form  p-4 pt-5 pb-5">
     <form class="update_ticket" id="update_ticket" action="#" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-4 mb-3">

@@ -58,8 +58,7 @@ get_header();
                                  <tr>
                                                 <td><?php echo $i;?></td>
                                                 <td><?php echo $pid?></td>                                                
-                                                <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?> </td>
-                                                <td><?php the_title(); ?></td>
+                                                <td><?php the_title();  get_noftication($pid);?>  </td>    
                                                 <td><?php echo get_post_meta( get_the_ID(), 'price', true ); ?></td>
                                                 <td><?php   
                                                         $term_list = get_the_terms($post->ID, 'ticket_type');

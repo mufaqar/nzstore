@@ -58,7 +58,7 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
                                                 <td><?php echo $i;?></td>
                                                 <td><?php echo $pid?></td>                                                
                                                 <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?> </td>
-                                                <td><?php the_title(); ?></td>
+                                                <td><?php the_title();  get_noftication($pid);?>  </td>    
                                                 <td><?php echo $user_info->user_login ?></td>                                              
                                                 <td><?php echo get_post_meta( get_the_ID(), 'price', true ); ?></td>
                                                

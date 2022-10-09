@@ -3504,6 +3504,14 @@ body.page-template-temp-landing {
   list-style: decimal;
 }
 
+.noti_bag {
+  background: gold;
+  color: #fff;
+  font-size: 10px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
 /* **************************************
 ***********   >1400px  ****************
 ************************************** */

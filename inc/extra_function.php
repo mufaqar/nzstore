@@ -291,3 +291,14 @@ function my_get_current_user_roles() {
         return array_search($a, $weekdays) - array_search($b, $weekdays);
     } 
   
+
+
+    function get_noftication($pid) {
+
+          if((get_post_meta($pid, "notification", true))) { ?>
+                <span class="noti_bag"><?php echo get_post_meta( $pid, 'notification', true ); ?></span>
+            <?php } 
+
+
+
+    }

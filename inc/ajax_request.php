@@ -12,6 +12,9 @@ function sendmail($agent_email,$message, $postid) {
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 	mail( $to, $subject, $body, $headers );
+	$get_notifcation = get_post_meta( $postid, 'notification', true); 
+	$count = $get_notifcation;
+	update_post_meta( $postid, 'notification', $count+1); 
 	}
 
 
