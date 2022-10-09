@@ -254,17 +254,10 @@ $pid = $_REQUEST['id'];
                         shipping : shipping,
                         uid : uid
                     },   
-                    success: function(data){                      
-                     
-                        if(data.code==0) {
-                                  //  alert(data.message);
-                        }  
-                        else {
-                           // alert(data.message);
+                    success: function(data){  
                         $(".overlay").css("display", "flex");
-                      
-                        }      
-            }
+                           
+                     }
             
              });
          }); 
