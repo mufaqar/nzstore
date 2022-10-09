@@ -6,6 +6,7 @@
                             <th>Agent</th>                         
                             <th>Order Date</th>                             
                             <th>Price</th>
+                            <th>Amout Paid</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -40,6 +41,7 @@
                                     <td><?php  echo  $user_info->user_login ?></td>                                  
                                     <td><?php  echo  get_the_modified_date(); ?></td>                          
                                     <td>$ <?php echo get_post_meta(get_the_ID(), 'order_price', true); ?></td>
+                                    <td>$ <?php echo get_post_meta(get_the_ID(), 'order_price_paid', true); ?></td>
                                     <td><span class="status <?php  echo $cat_active ?>"><?php echo $cat_name ?> </span> </td>
                                     <td> <a href="<?php echo home_url('admin-dashboard/edit-invoice?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
                                 </tr>
