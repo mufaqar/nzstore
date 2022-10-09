@@ -126,8 +126,6 @@ $pid = $_REQUEST['id'];?>
             var price = jQuery('#order_price').val();            
             var order_price_paid = jQuery('#order_price_paid').val();           
             var admin_remarks = jQuery('#admin_remarks').val(); 
-          
-      
             $.ajax(
                 {
                     type:"POST",

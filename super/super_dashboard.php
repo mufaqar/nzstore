@@ -26,7 +26,7 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
 <thead>
                         <tr>
                             <th>Sr #</th>
-                            <th>Order ID</th>
+                            <th>Ticket ID</th>
                             <th>Date</th>
                             <th>Title</th>
                              <th>Agent</th>                             

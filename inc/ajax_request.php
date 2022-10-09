@@ -239,10 +239,7 @@ function tech_update_ticket()
 					'date' => $date,
 					'order_id' => $ticket_id,
 					'order_price' => $price
-				),
-				'tax_input'    => array(
-					'order_status' => array(19)
-				),
+				)
 			);
 			if( has_term('Completed', 'ticket_type' , $ticket_id) ){
 				$inovice_id = wp_insert_post($order_arg);	
