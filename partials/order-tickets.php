@@ -6,10 +6,10 @@
                             <th>Sr #</th>
                             <th>Ticket ID</th>
                             <th>Date</th>
-                            <th>Model</th>  
-                                                                     
+                            <th>Model</th>                                                                       
                             <th>Price</th>
                             <th>Status</th>
+                            <th>Action</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -48,6 +48,7 @@
                                                         echo $typesz;                                                    
                                                      ?>
                                                 </td>
+                                                <td> <a href="<?php the_permalink()?>">View Ticket </a>  <i class="fa-solid fa-down-to-line"></i></td>
                                                 <td> <a href="<?php echo home_url('edit-ticket?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
                                                 </tr>
                             <?php endwhile;

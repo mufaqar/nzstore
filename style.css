@@ -3161,10 +3161,7 @@ input[type='submit'] {
 .table > :not(caption) > * > * {
   text-align: center;
 }
-.invoice_table {
-  height: 400px;
-  overflow-y: scroll;
-}
+
 .popup > div > div {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
