@@ -27,6 +27,14 @@
   padding: 8px 2rem;
   color: rgba(241, 49, 49, 1);
 }
+
+.orders_table td span.status.partials {
+  background: rgba(241, 49, 49, 0.1);
+  border-radius: 31.8209px;
+  padding: 8px 2rem;
+  color: rgb(197, 7, 7);
+}
+
 .table-striped > tbody > tr:nth-of-type(odd) > * {
   --bs-table-accent-bg: white;
 }
