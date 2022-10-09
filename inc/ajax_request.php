@@ -192,7 +192,7 @@ function tech_update_ticket()
 	$pid = $_POST['pid'];
 	$invoice = $_POST['invoice'];
 	$price = $_POST['price'];
-
+	$tech_uid = $_POST['uid'];	
 	$file_name = $_FILES["file"]["name"];
 	$file_url        = $_FILES["file"]["tmp_name"]; 
 
@@ -209,8 +209,7 @@ function tech_update_ticket()
 			'internal_remarks' => $internal_remarks,
 			'invoice' => $invoice,	
 			'price' => $price,			
-			'date' => $date,
-			'user_type' => $user_type		
+			'date' => $date	
 		),
 		'tax_input'    => array(
 			'ticket_type' => array($ticket_type),
@@ -221,6 +220,14 @@ function tech_update_ticket()
 
 	);
 	wp_update_post($post);
+
+		$update_post = wp_update_post($post);
+		$user = get_user_by( 'id', $tech_uid );
+		$agent_email = $user->user_email;
+		sendmail($agent_email,"Technician [ $agent_email ] Updated Ticket  $pid ", $pid);
+
+
+
 
 	$ticket_id = $pid;
 
