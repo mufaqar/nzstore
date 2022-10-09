@@ -26,15 +26,25 @@
                 .draw();
             });
         })
-        $(document).ready(function () {           
-            var table = $('#payments').DataTable();
-            $('.catering_menu').on( 'click', 'a', function () {
-               
+        $(document).ready(function () {
+            var table = $('#allorders').DataTable();
+            $('.catering_menu').on( 'click', 'a', function () {                                   
                 $(".catering_menu a").removeClass("_active");
-                $(this).addClass("_active");  
+                $(this).addClass("_active"); 
                
             table
-                .columns(7)
+                .columns(6)
+                .search(  $(this).attr('data') )
+                .draw();
+            });
+        })
+        $(document).ready(function () {           
+            var table = $('#alltickets').DataTable();
+            $('.all-tickets').on( 'click', 'a', function () {                         
+                $(".catering_menu a").removeClass("_active");
+                $(this).addClass("_active");                 
+            table
+                .columns(6)
                 .search(  $(this).attr('data') )
                 .draw();
             });

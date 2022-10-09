@@ -5,7 +5,7 @@
     <div class="toggle_btn">
         <div class="row ">
             <div class="catering_wrapper mt-5 mb-2 col-md-10 p-0">
-                <div class="catering_menu buttons">
+                <div class="catering_menu all-tickets buttons">
                     <a id="1" class="showSingle _active" target="1" data="">All Tickets</a>
                     <a id="2" class="showSingle" target="2" data="Quotation">Quotation</a>
                     <a id="3" class="showSingle" target="2" data="Approval">Approval</a>
@@ -15,7 +15,7 @@
         </div>
     </div>
     <section id="div1" class="targetDiv activediv tablediv">
-        <table id="allusers" class="table table-striped orders_table" style="width:100%">
+        <table id="alltickets" class="table table-striped orders_table" style="width:100%">
 
         <?php
 global $current_user; wp_get_current_user();  $uid = $current_user->ID;
