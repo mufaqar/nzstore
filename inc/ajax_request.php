@@ -1,10 +1,10 @@
 <?php
 
 
-function sendmail($agent_email,$title) {
-	$to = 'mufaqar@gmail.com';
-	$subject = 'Budget Computer | New Ticket Created';
-	$body  = "<p><strong> A new ticket  .$title. creat by </strong> $agent_email  </p>";
+function sendmail($agent_email,$message, $postid) {
+	$to = 'budgetcomputer2013@gmail.com';
+	$subject = 'Budget Computer | '. $message;
+	$body  = "<p><strong> $message  creat by </strong> $agent_email  </p>";
 	$headers = array('Content-Type: text/html; charset=UTF-8');	
 	$headers  = "From: " . $admin . "\r\n";
 	$headers .= "Reply-To: " . $agent_email . "\r\n";		
@@ -58,11 +58,10 @@ function add_ticket()
 		),
 
 	);
-	$inserted_post_id = wp_insert_post($post);
-
-	$agent_email = 'mufaqar2@gmail.com';
-
-		sendmail($agent_email,$title);
+		$inserted_post_id = wp_insert_post($post);
+		$user = get_user_by( 'id', $uid );
+		$agent_email = $user->user_email;
+		sendmail($agent_email,"New Ticket Created", $inserted_post_id);
 
 
 	    $image_url        = $file_url; // Define the image URL here
@@ -163,8 +162,16 @@ function update_ticket()
 
 	);
 	$user_id = wp_update_post($post);
+
+		$user = get_user_by( 'id', $uid );
+		$agent_email = $user->user_email;
+		sendmail($agent_email,"Ticket Updated by .$agent_email. ", $inserted_post_id);
+
+
+
+
 	if (!is_wp_error($user_id)) {
-		//sendmail($username,$password);
+		sendmail($username,$password);
 		echo wp_send_json(array('code' => 200, 'message' => __('Ticket Updated Sucessfully')));
 	} else {
 		echo wp_send_json(array('code' => 0, 'message' => __('Error Occured please fill up form carefully.')));
