@@ -1,7 +1,5 @@
 <?php /* Template Name: Agent-AddTicket  */ 
-get_header();
-
-?> 
+get_header();?> 
  <?php include('navigation.php'); ?>
  <?php global $current_user; wp_get_current_user();  $uid = $current_user->ID;?>
 
