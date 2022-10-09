@@ -366,7 +366,7 @@ function super_update_ticket()
 		),
 
 	);
-	wp_update_post($post);
+		wp_update_post($post);
 
 		$update_post = wp_update_post($post);
 		$user = get_user_by( 'id', $tech_uid );
