@@ -316,6 +316,154 @@ function tech_update_ticket()
 }
 
 
+
+add_action('wp_ajax_super_update_ticket', 'super_update_ticket', 0);
+add_action('wp_ajax_nopriv_super_update_ticket', 'super_update_ticket');
+
+function super_update_ticket()
+{
+
+
+	global $wpdb;
+	$pid = $_POST['pid'];	
+	$title = $_POST['title'];
+	$date = $_POST['date'];
+	$address = $_POST['address'];
+	$ticket_type = $_POST['ticket_type'];
+	$ticket_priority = $_POST['ticket_priority'];
+	$ticket_status = $_POST['ticket_status'];
+	$ticket_cat = $_POST['ticket_cat'];
+	$eng_remarks = $_POST['eng_remarks'];
+	$internal_remarks = $_POST['internal_remarks'];
+	$user_type = $_POST['user_type'];
+	$pid = $_POST['pid'];
+	$invoice = $_POST['invoice'];
+	$price = $_POST['price'];
+	$tech_uid = $_POST['uid'];	
+	$file_name = $_FILES["file"]["name"];
+	$file_url        = $_FILES["file"]["tmp_name"]; 
+
+	$post = array(
+		'ID' => $pid,
+		'post_title'    => $title,
+		'post_status'   => 'publish',
+		'post_content'   => $issues,
+		'post_type'     => 'tickets',
+		'meta_input'   => array(
+			'title' => $title,
+			'address' => $address,
+			'eng_remarks' => $eng_remarks,
+			'internal_remarks' => $internal_remarks,
+			'invoice' => $invoice,	
+			'price' => $price,			
+			'date' => $date	
+		),
+		'tax_input'    => array(
+			'ticket_type' => array($ticket_type),
+			'ticket_priority' => array($ticket_priority),
+			'ticket_status' => array($ticket_status),
+			'ticket_cat' => array($ticket_cat)
+		),
+
+	);
+	wp_update_post($post);
+
+		$update_post = wp_update_post($post);
+		$user = get_user_by( 'id', $tech_uid );
+		$agent_email = $user->user_email;
+		sendmail($agent_email,"Administrator [ $agent_email ] Updated Ticket  $pid ", $pid);
+
+
+
+
+	$ticket_id = $pid;
+
+		$image_url        = $file_url;
+		$image_name       = $file_name;
+		$upload_dir       = wp_upload_dir(); 
+		$image_data       = file_get_contents($image_url); 
+		$unique_file_name = wp_unique_filename( $upload_dir['path'], $image_name ); 
+		$filename         = basename( $unique_file_name ); 
+		if( wp_mkdir_p( $upload_dir['path'] ) ) {
+			$file = $upload_dir['path'] . '/' . $filename;
+		} else {
+			$file = $upload_dir['basedir'] . '/' . $filename;
+		}
+		file_put_contents( $file, $image_data );
+		$wp_filetype = wp_check_filetype( $filename, null );
+		$attachment = array(
+			'post_mime_type' => $wp_filetype['type'],
+			'post_title'     => sanitize_file_name( $filename ),
+			'post_content'   => '',
+			'post_status'    => 'inherit'
+		);
+
+
+		$attach_id = wp_insert_attachment( $attachment, $file, $ticket_id );
+		require_once(ABSPATH . 'wp-admin/includes/image.php');
+		$attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+		wp_update_attachment_metadata( $attach_id, $attach_data );
+		//sendmail($username,$password);		
+			$query_meta = array(
+				'posts_per_page' => -1,
+				'post_type' => 'orders',
+				'meta_query' => array(
+					array(
+						'key'     => 'order_id',
+						'value' =>   $ticket_id,
+						'compare' => '=='
+					)
+				)
+			);		
+
+		   $postinweek = new WP_Query($query_meta);
+		if ( $postinweek->have_posts() ): while ( $postinweek->have_posts() ): $postinweek->the_post();	
+			
+				// Updated order if exist
+				if( has_term('complete', 'ticket_type' , $ticket_id) ){	
+				$updated_post_id = get_the_ID();
+				update_post_meta($updated_post_id, 'order_price', $price);
+				update_post_meta($updated_post_id, 'order_status','Pending');			
+				echo wp_send_json(array('code' => 200, 'message' => __('Ticket Update with Invoice')));
+				}
+				die;
+		endwhile; wp_reset_query(); else : 	
+			// Insert post as its not exisit 
+			
+			$order_uid =   get_post_meta( $ticket_id, 'order_uid', true );
+			$order_arg = array(	
+				'post_title'    => "OHYSX-" . $ticket_id,
+				'post_status'   => 'publish',
+				'post_type'     => 'orders',
+				'meta_input'   => array(
+					'date' => $date,
+					'order_id' => $ticket_id,
+					'order_price' => $price,
+					'invoice_uid' => $order_uid
+				)
+			);
+			if( has_term('complete', 'ticket_type' , $ticket_id) ){
+				$inovice_id = wp_insert_post($order_arg);	
+				echo wp_send_json(array('code' => 0, 'message' => __('Tecket updated and Invoice created.')));	
+				echo "Yes Term Inovice";
+			}
+			
+		
+			die;
+
+		endif; 
+
+
+
+		
+
+	
+
+	die;
+}
+
+
+
 add_action('wp_ajax_add_agent', 'add_agent', 0);
 add_action('wp_ajax_nopriv_add_agent', 'add_agent');
 

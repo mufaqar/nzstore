@@ -230,7 +230,7 @@ $pid = $_REQUEST['id'];?>
                     type:"POST",
                     url:"<?php echo admin_url('admin-ajax.php'); ?>",
                     data: {
-                        action: "tech_update_ticket",
+                        action: "super_update_ticket",
                         pid : pid,
                         title : title,
                         date : date, 
