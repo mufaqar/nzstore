@@ -5,7 +5,7 @@ $pid = $_REQUEST['id'];?>
  <?php global $current_user; wp_get_current_user();  $uid = $current_user->ID;  ?>
 <div class="custom_container catering_form mt-2 mb-3">
     <div class="_info mt-5 mb-5">
-        <h2>Ipdate Ticket </h2>
+        <h2>Update Ticket </h2>
     </div>
     <div class="_form  p-4 pt-5 pb-5">
     <form class="update_ticket" id="update_ticket" action="#" enctype="multipart/form-data">
