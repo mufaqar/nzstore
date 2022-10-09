@@ -158,10 +158,10 @@ function update_ticket()
 
 
 
-add_action('wp_ajax_admin_update_ticket', 'admin_update_ticket', 0);
-add_action('wp_ajax_nopriv_admin_update_ticket', 'admin_update_ticket');
+add_action('wp_ajax_tech_update_ticket', 'tech_update_ticket', 0);
+add_action('wp_ajax_nopriv_tech_update_ticket', 'tech_update_ticket');
 
-function admin_update_ticket()
+function tech_update_ticket()
 {
 
 
@@ -240,7 +240,10 @@ function admin_update_ticket()
 					'order_id' => $ticket_id,
 					'order_price' => $price,
 					'order_status' => 'Pending',
-				)
+				),
+				'tax_input'    => array(
+					'order_status' => array('19')
+				),
 			);
 			if( has_term('Completed', 'ticket_type' , $ticket_id) ){
 				$inovice_id = wp_insert_post($order_arg);	
