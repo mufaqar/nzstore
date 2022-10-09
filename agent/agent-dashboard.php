@@ -33,7 +33,7 @@ get_header();
                             <th>Price</th>
                             <th>Status</th>
                             <th>Action</th>
-                            <th>Action</th>
+                            <!-- <th>Action</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -71,7 +71,7 @@ get_header();
                                                         echo $typesz;                                                    
                                                      ?>
                                                 </td>
-                                                <td> <a href="<?php the_permalink()?>">View Ticket </a>  <i class="fa-solid fa-down-to-line"></i></td>
+                                                <!-- <td> <a href="<?php the_permalink()?>">View Ticket </a>  <i class="fa-solid fa-down-to-line"></i></td> -->
                                                 <td> <a href="<?php echo home_url('/agent-dashboard/edit-ticket?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
                                                 </tr>
                             <?php endwhile;
