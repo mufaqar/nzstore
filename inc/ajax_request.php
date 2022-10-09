@@ -2,11 +2,12 @@
 
 
 function sendmail($agent_email,$message, $postid) {
-	$to = 'budgetcomputer2013@gmail.com';
+	//$to = 'budgetcomputer2013@gmail.com';
+	$to = 'mufaqar@gmail.com';
 	$subject = 'Budget Computer | '. $message;
 	$body  = "<p><strong> $message  creat by </strong> $agent_email  </p>";
 	$headers = array('Content-Type: text/html; charset=UTF-8');	
-	$headers  = "From: " . $admin . "\r\n";
+	$headers  = "From: " . $to . "\r\n";
 	$headers .= "Reply-To: " . $agent_email . "\r\n";		
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
@@ -161,7 +162,7 @@ function update_ticket()
 		),
 
 	);
-	$user_id = wp_update_post($post);
+		$user_id = wp_update_post($post);
 
 		$user = get_user_by( 'id', $uid );
 		$agent_email = $user->user_email;
