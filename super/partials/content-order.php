@@ -26,9 +26,7 @@
                                 $ticket_agent = get_post_meta($ticket_id, 'order_uid', true); 
                                 $user_id = get_post_meta( $ticket_id, 'order_uid', true );
                                 $user_info = get_userdata($user_id);  
-                                $cat_status  = get_the_terms( $pid, 'order_status');                                 
-                           
-                                
+                                $cat_status  = get_the_terms( $pid, 'order_status');
                                 foreach($cat_status as $cat_selected)
                                 {
                                   $cat_active =  $cat_selected->slug;

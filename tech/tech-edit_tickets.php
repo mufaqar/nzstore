@@ -215,16 +215,9 @@ $pid = $_REQUEST['id'];?>
             var issues = jQuery('#issues').val(); 
             var invoice = jQuery('#invoice').val(); 
             var price = jQuery('#price').val();             
-            var uid = jQuery('#uid').val();   
-            
+            var uid = jQuery('#uid').val(); 
             var eng_remarks = jQuery('#eng_remarks').val();   
-            var internal_remarks = jQuery('#internal_remarks').val();   
-            
-            
-            
-
-         
-           
+            var internal_remarks = jQuery('#internal_remarks').val();
             $.ajax(
                 {
                     type:"POST",

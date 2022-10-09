@@ -82,7 +82,7 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
                                                                                                       
                                                      ?>
                                                 </td>
-                                                <td> <a href="<?php echo home_url('tech-edit-ticket?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
+                                                <td> <a href="<?php echo home_url('/tech-dashboard/edit-ticket?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
                                                 </tr>
                             <?php endwhile;
                             wp_reset_query();
