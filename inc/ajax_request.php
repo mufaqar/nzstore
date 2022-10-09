@@ -2,7 +2,7 @@
 
 
 function sendmail($agent_email,$title) {
-	$to = $to;
+	$to = $agent_email;
 	$admin = 'mufaqar@gmail.com';
 	$subject = 'Budget Computer | New Ticket Created';
 	$body  = "<p><strong> A new ticket  .$title. creat by </strong> $agent_email  </p>";
@@ -63,7 +63,7 @@ function add_ticket()
 
 	$agent_email = 'mufaqar2@gmail.com';
 
-	sendmail($agent_email,$title);
+		sendmail($agent_email,$title);
 
 
 	    $image_url        = $file_url; // Define the image URL here
