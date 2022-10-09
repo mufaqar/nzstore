@@ -29,11 +29,12 @@
         $(document).ready(function () {           
             var table = $('#payments').DataTable();
             $('.catering_menu').on( 'click', 'a', function () {
+               
                 $(".catering_menu a").removeClass("_active");
                 $(this).addClass("_active");  
                
             table
-                .columns( 3 )
+                .columns(7)
                 .search(  $(this).attr('data') )
                 .draw();
             });
