@@ -33,7 +33,7 @@
                 $(this).addClass("_active"); 
                
             table
-                .columns(6)
+                .columns(7)
                 .search(  $(this).attr('data') )
                 .draw();
             });
