@@ -1,8 +1,5 @@
     <?php /* Template Name: Agent-Order  */
-
-
-
-    get_header('admin');
+        get_header('admin');
 
 
     ?>
@@ -22,7 +19,7 @@
             </div>
             <section id="div1" class="targetDiv activediv tablediv">
             <table id="allusers" class="table table-striped orders_table" style="width:100%">
-            <?php global $current_user; wp_get_current_user();  $uid = $current_user->ID; ?>
+            <?php global $current_user; wp_get_current_user();  $uid = $current_user->ID;  ?>
 
 
 <thead>
