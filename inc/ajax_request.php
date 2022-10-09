@@ -257,15 +257,6 @@ function tech_update_ticket()
 
 	$ticket_id = $pid;
 
-
-
-
-
-
-
-
-
-
 		$image_url        = $file_url;
 		$image_name       = $file_name;
 		$upload_dir       = wp_upload_dir(); 
@@ -317,11 +308,10 @@ function tech_update_ticket()
 				die;
 		endwhile; wp_reset_query(); else : 	
 			// Insert post as its not exisit 
-
 			
 			$order_uid =   get_post_meta( $ticket_id, 'order_uid', true );
 			$order_arg = array(	
-				'post_title'    => "OHYSX-" . rand(10, 100),
+				'post_title'    => "OHYSX-" . $ticket_id,
 				'post_status'   => 'publish',
 				'post_type'     => 'orders',
 				'meta_input'   => array(
