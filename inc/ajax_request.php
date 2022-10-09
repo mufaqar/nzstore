@@ -4,8 +4,8 @@
 function sendmail($agent_email,$message, $postid) {
 	//$to = 'budgetcomputer2013@gmail.com';
 	$to = 'mufaqar@gmail.com';
-	$subject = 'Budget Computer | '. $message;
-	$body  = "<p><strong> $message  creat by </strong> $agent_email  </p>";
+	$subject = "Budget Computer |  $message ";
+	$body  = "<p><strong> $message  </strong> Ticket No :  $postid  </p>";
 	$headers = array('Content-Type: text/html; charset=UTF-8');	
 	$headers  = "From: " . $to . "\r\n";
 	$headers .= "Reply-To: " . $agent_email . "\r\n";		
