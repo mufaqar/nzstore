@@ -1,20 +1,15 @@
 <?php /* Template Name: Agent-EditTicket  */ 
 get_header();
-
 $pid = $_REQUEST['id'];
-
-
-
 ?> 
  <?php include('navigation.php'); ?>
- <?php global $current_user; wp_get_current_user();  $uid = $current_user->ID; 
- ?>
+ <?php global $current_user; wp_get_current_user();  $uid = $current_user->ID;  ?>
 
-<div class="custom_container catering_form mt-5 mb-3">
+<div class="custom_container catering_form mt-5">
     <div class="_info mt-5 mb-5">
         <h2>Edit Ticket</h2>
     </div>
-    <div class="_form mt-2 p-4 pt-5 pb-5">
+    <div class="_form  p-4 pt-5 pb-5">
     <form class="update_ticket" id="update_ticket" action="#" > 
             <div class="row">
                 <div class="col-md-4 mb-3">
@@ -150,20 +145,34 @@ $pid = $_REQUEST['id'];
                     </div>
                 </div>  
 
-                  <?php $price  = get_post_meta($pid, 'price', true );  
-                  
-                  if($price != '') { ?> <div class="col-md-6 mb-3">
-                    <label for=""> Estimated Price (Technician)</label>
-                        <div class="_select">                     
-                           
-                            <input value="<?php echo get_post_meta($pid, 'price', true ); ?>"  disabled>
-                        </div>
-                    </div>  <?php }
-                  ?>
+                <?php $price  = get_post_meta($pid, 'price', true );  
+                
+                if($price != '') { ?> <div class="col-md-6 mb-3">
+                <label for=""> Estimated Price (Technician)</label>
+                    <div class="_select">                     
+                        
+                        <input value="<?php echo get_post_meta($pid, 'price', true ); ?>"  disabled>
+                    </div>
+                </div>  <?php }  ?>
+
+                
 
                  
                 <div class="d-flex justify-content-end savebtn">
                     <input type="submit" class="btn_primary"  value="Update Ticket"/>
+                </div>
+
+                <div class="col-md-12 mb-3">                        
+                                <?php                            
+                                        $attimages = get_attached_media('image', $pid);
+                                        foreach ($attimages as $image) {
+                                            $img_url = wp_get_attachment_url($image->ID);                                
+                                            echo "<img src='$img_url' width='250px' />";
+                                        }                       
+
+
+                                ?>                          
+
                 </div>
             </div>
         </form>

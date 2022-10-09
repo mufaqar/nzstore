@@ -155,9 +155,30 @@ $pid = $_REQUEST['id'];?>
                         <input type="text" id="price" value="<?php echo get_post_meta($pid, 'price', true ); ?>" >                        
                     </div>
                 </div>  
+
+                <div class="col-md-12 mb-3">                       
+                    <div class="upload_file">
+                            <div class="upload_icon"><i class="fa-solid fa-camera"></i></div>
+                            <input type="file" name="file" id="file"  class="dropify" > 
+                    </div>
+                </div>
                
                 <div class="d-flex justify-content-end savebtn">
                     <input type="submit" class="btn_primary"  value="Update Ticket"/>
+                </div>
+
+
+                <div class="col-md-12 mb-3">                        
+                                <?php                            
+                                        $attimages = get_attached_media('image', $pid);
+                                        foreach ($attimages as $image) {
+                                            $img_url = wp_get_attachment_url($image->ID);                                
+                                            echo "<img src='$img_url' width='250px' />";
+                                        }                       
+
+
+                                ?>                          
+
                 </div>
             </div>
         </form>
