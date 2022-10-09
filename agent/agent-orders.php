@@ -42,7 +42,7 @@
                             'order' => 'desc',
                             'meta_query' => array(
                                 array(
-                                    'key' => 'order_uid',
+                                    'key' => 'invoice_uid',
                                     'value' => $uid,
                                     'compare' => '=='
                                 ),
