@@ -188,7 +188,7 @@ $pid = $_REQUEST['id'];?>
 </main>
 
 
-<section class="hideme zindex-modal overlay">
+<section class="hideme zindex-modal overlay sucess_message">
         <div class="popup">
             <div class="popup_wrapper">
                 <div
@@ -265,9 +265,10 @@ $pid = $_REQUEST['id'];?>
                     data: form_data,   
                     success: function(data){ 
                         if(data.code==0) {
-                            $(".sucess_message").css("display", "flex");
+                          // alert(data.message);
                         }  
                         else {
+                          //  alert(data.message);
                            $(".sucess_message").css("display", "flex");
                       
                         }      

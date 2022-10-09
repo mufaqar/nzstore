@@ -253,40 +253,44 @@ function tech_update_ticket()
 		),
 
 	);
-	$inserted_post_id = wp_update_post($post);
+	wp_update_post($post);
 
-	$image_url        = $file_url;
-	$image_name       = $file_name;
-	$upload_dir       = wp_upload_dir(); 
-	$image_data       = file_get_contents($image_url); 
-	$unique_file_name = wp_unique_filename( $upload_dir['path'], $image_name ); 
-	$filename         = basename( $unique_file_name ); 
-	if( wp_mkdir_p( $upload_dir['path'] ) ) {
-		$file = $upload_dir['path'] . '/' . $filename;
-	} else {
-		$file = $upload_dir['basedir'] . '/' . $filename;
-	}
-	file_put_contents( $file, $image_data );
-	$wp_filetype = wp_check_filetype( $filename, null );
-	$attachment = array(
-		'post_mime_type' => $wp_filetype['type'],
-		'post_title'     => sanitize_file_name( $filename ),
-		'post_content'   => '',
-		'post_status'    => 'inherit'
-	);
+	$ticket_id = $pid;
 
 
 
 
-	if (!is_wp_error($ticket_id)) {
 
-		// updated Media to Post
-		$attach_id = wp_insert_attachment( $attachment, $file, $inserted_post_id );
+
+
+
+
+
+		$image_url        = $file_url;
+		$image_name       = $file_name;
+		$upload_dir       = wp_upload_dir(); 
+		$image_data       = file_get_contents($image_url); 
+		$unique_file_name = wp_unique_filename( $upload_dir['path'], $image_name ); 
+		$filename         = basename( $unique_file_name ); 
+		if( wp_mkdir_p( $upload_dir['path'] ) ) {
+			$file = $upload_dir['path'] . '/' . $filename;
+		} else {
+			$file = $upload_dir['basedir'] . '/' . $filename;
+		}
+		file_put_contents( $file, $image_data );
+		$wp_filetype = wp_check_filetype( $filename, null );
+		$attachment = array(
+			'post_mime_type' => $wp_filetype['type'],
+			'post_title'     => sanitize_file_name( $filename ),
+			'post_content'   => '',
+			'post_status'    => 'inherit'
+		);
+
+
+		$attach_id = wp_insert_attachment( $attachment, $file, $ticket_id );
 		require_once(ABSPATH . 'wp-admin/includes/image.php');
 		$attach_data = wp_generate_attachment_metadata( $attach_id, $file );
-		wp_update_attachment_metadata( $attach_id, $attach_data );	
-
-
+		wp_update_attachment_metadata( $attach_id, $attach_data );
 		//sendmail($username,$password);		
 			$query_meta = array(
 				'posts_per_page' => -1,
@@ -294,7 +298,7 @@ function tech_update_ticket()
 				'meta_query' => array(
 					array(
 						'key'     => 'order_id',
-						'value' => $ticket_id,
+						'value' =>   $ticket_id,
 						'compare' => '=='
 					)
 				)
@@ -302,16 +306,20 @@ function tech_update_ticket()
 
 		   $postinweek = new WP_Query($query_meta);
 		if ( $postinweek->have_posts() ): while ( $postinweek->have_posts() ): $postinweek->the_post();	
+			
 				// Updated order if exist
-				if( has_term('Completed', 'ticket_type' , $ticket_id) ){	
+				if( has_term('complete', 'ticket_type' , $ticket_id) ){	
 				$updated_post_id = get_the_ID();
 				update_post_meta($updated_post_id, 'order_price', $price);
 				update_post_meta($updated_post_id, 'order_status','Pending');			
-				echo wp_send_json(array('code' => 200, 'message' => __('Order Sucessfully Updated')));
+				echo wp_send_json(array('code' => 200, 'message' => __('Ticket Update with Invoice')));
 				}
 				die;
 		endwhile; wp_reset_query(); else : 	
 			// Insert post as its not exisit 
+
+			
+			$order_uid =   get_post_meta( $ticket_id, 'order_uid', true );
 			$order_arg = array(	
 				'post_title'    => "OHYSX-" . rand(10, 100),
 				'post_status'   => 'publish',
@@ -319,15 +327,17 @@ function tech_update_ticket()
 				'meta_input'   => array(
 					'date' => $date,
 					'order_id' => $ticket_id,
-					'order_price' => $price
+					'order_price' => $price,
+					'invoice_uid' => $order_uid
 				)
 			);
-			if( has_term('Completed', 'ticket_type' , $ticket_id) ){
+			if( has_term('complete', 'ticket_type' , $ticket_id) ){
 				$inovice_id = wp_insert_post($order_arg);	
-				echo wp_send_json(array('code' => 0, 'message' => __('Invoice Created ')));			
+				echo wp_send_json(array('code' => 0, 'message' => __('Tecket updated and Invoice created.')));	
+				echo "Yes Term Inovice";
 			}
 			
-			echo wp_send_json(array('code' => 0, 'message' => __('Order Sucessfully Updated.')));
+		
 			die;
 
 		endif; 
@@ -336,7 +346,7 @@ function tech_update_ticket()
 
 		
 
-	}
+	
 
 	die;
 }

@@ -20,9 +20,7 @@
             <section id="div1" class="targetDiv activediv tablediv">
             <table id="allusers" class="table table-striped orders_table" style="width:100%">
             <?php global $current_user; wp_get_current_user();  $uid = $current_user->ID;  ?>
-
-
-<thead>
+                <thead>
                         <tr>
                             <th>Sr #</th>
                             <th>Ticket ID</th>
@@ -35,12 +33,11 @@
                         </tr>
                     </thead>
                     <tbody>
-
                     <?php 
                         $i = 0;
 
                         query_posts(array(
-                            'post_type' => 'tickets',
+                            'post_type' => 'orders',
                             'posts_per_page' => -1,
                             'order' => 'desc',
                             'meta_query' => array(
@@ -51,7 +48,6 @@
                                 ),
                             )
                         ));
-
                         if (have_posts()) :  while (have_posts()) : the_post(); $pid = get_the_ID(); $i++; ?>
                                  <tr>
                                                 <td><?php echo $i;?></td>
@@ -69,7 +65,7 @@
                                                         echo $typesz;                                                    
                                                      ?>
                                                 </td>
-                                                <td> <a href="<?php the_permalink()?>">View Ticket </a>  <i class="fa-solid fa-down-to-line"></i></td>
+                                               
                                                 <td> <a href="<?php echo home_url('edit-ticket?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
                                                 </tr>
                             <?php endwhile;
