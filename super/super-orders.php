@@ -11,6 +11,7 @@
                         <a id="1" class="showSingle _active" target="1" data="">All</a>
                         <a id="2" class="showSingle" target="2" data="Complete">Complete</a>
                         <a id="3" class="showSingle" target="3" data="Pending">Pending</a>
+                        <a id="5" class="showSingle" target="5" data="Partials">Partials</a>
                         <a id="4" class="showSingle" target="4" data="Cancel">Cancel</a>
                         </div>
                     </div>
