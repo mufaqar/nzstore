@@ -62,7 +62,7 @@ function add_ticket()
 		$inserted_post_id = wp_insert_post($post);
 		$user = get_user_by( 'id', $uid );
 		$agent_email = $user->user_email;
-		sendmail($agent_email,"New Ticket Created", $inserted_post_id);
+		sendmail($agent_email,"New Ticket Created by $agent_email ", $inserted_post_id);
 
 
 	    $image_url        = $file_url; // Define the image URL here
@@ -163,13 +163,9 @@ function update_ticket()
 
 	);
 		$user_id = wp_update_post($post);
-
 		$user = get_user_by( 'id', $uid );
 		$agent_email = $user->user_email;
-		sendmail($agent_email,"Ticket Updated by .$agent_email. ", $inserted_post_id);
-
-
-
+		sendmail($agent_email,"Ticket Updated by $agent_email ", $pid);
 
 	if (!is_wp_error($user_id)) {
 		sendmail($username,$password);
