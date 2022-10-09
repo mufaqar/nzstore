@@ -5,7 +5,7 @@ function sendmail($agent_email,$message, $postid) {
 	//$to = 'budgetcomputer2013@gmail.com';
 	$to = 'mufaqar@gmail.com';
 	$subject = "Budget Computer |  $message ";
-	$body  = "<p><strong> $message  </strong> Ticket  :  ".get_permalink($postid)."  </p>";
+	$body  = "<p><strong> $message  </strong> <br/> Ticket   :  ".get_permalink($postid)."  </p>";
 	$headers = array('Content-Type: text/html; charset=UTF-8');	
 	$headers  = "From: " . $to . "\r\n";
 	$headers .= "Reply-To: " . $agent_email . "\r\n";		
