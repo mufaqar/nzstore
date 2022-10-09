@@ -138,16 +138,25 @@
                                 </div>                        
                             </div>
 
-
-
                             <div class="row">
                                 <div class="col-md-4">
-                                    <h6 class="mt-2">issues:</h6>                                                                  
+                                    <h6 class="mt-2">Issues:</h6>                                                                  
                                 </div>
                                 <div class="col-md-8">                               
                                   <?php echo get_post_meta( $post->ID, 'issues', true ); ?>                               
                                 </div>                        
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h6 class="mt-2">Technician Remarks:</h6>                                                                  
+                                </div>
+                                <div class="col-md-8">                               
+                                  <?php echo get_post_meta( $post->ID, 'eng_remarks', true ); ?>                               
+                                </div>                        
+                            </div>
+
+                            
 
 
 
