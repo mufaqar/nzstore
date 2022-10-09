@@ -108,6 +108,72 @@ add_filter("manage_edit-tickets_sortable_columns", "tickets_column_register_sort
 
 
 
+add_filter( 'manage_orders_posts_columns', 'set_custom_edit_orders_columns' );    
+add_action( 'manage_orders_posts_custom_column' , 'custom_orders_column', 10, 2 );
+function set_custom_edit_orders_columns($columns) {    
+    unset( $columns['author'] );   
+ 
+    $columns['invoice_uid'] = 'Agent ID';
+    $columns['order_id'] = 'Ticket ID';
+    $columns['order_price'] = 'Price';
+
+    return $columns;    
+}
+
+function custom_orders_column( $column, $post_id ) {   
+    global $post;
+    switch ( $column ) {
+        case 'invoice_uid' :
+            if(get_field( "invoice_uid", $post_id )) {
+                echo get_field( "invoice_uid", $post_id );
+            } else {
+                echo 0;
+            }
+        break;
+
+        case 'order_id' :
+            if(get_field( "order_id", $post_id )) {
+                echo get_field( "order_id", $post_id );
+            } else {
+                echo 0;
+            }
+        break;  
+        
+      break;  
+        case 'order_price' :
+          if(get_field( "order_price", $post_id )) {
+              echo get_field( "order_price", $post_id );
+          } else {
+              echo 0;
+          }
+      break; 
+      break;  
+        case 'order_uid' :
+          if(get_field( "order_uid", $post_id )) {
+              echo get_field( "order_uid", $post_id );
+          } else {
+              echo 0;
+          }
+      break;    
+    }   
+}
+
+function orders_column_register_sortable( $columns ) {
+     $columns['order_status'] = 'order_status';
+    $columns['order_type'] = 'order_type';
+    return $columns;
+}
+
+add_filter("manage_edit-orders_sortable_columns", "orders_column_register_sortable" );
+
+
+
+
+
+
+
+
+
 
 
 
