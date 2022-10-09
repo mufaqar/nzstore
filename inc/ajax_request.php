@@ -2,8 +2,7 @@
 
 
 function sendmail($agent_email,$title) {
-	$to = $agent_email;
-	$admin = 'mufaqar@gmail.com';
+	$to = 'mufaqar@gmail.com';
 	$subject = 'Budget Computer | New Ticket Created';
 	$body  = "<p><strong> A new ticket  .$title. creat by </strong> $agent_email  </p>";
 	$headers = array('Content-Type: text/html; charset=UTF-8');	
