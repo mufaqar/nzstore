@@ -8,7 +8,7 @@ $pid = $_REQUEST['id'];?>
         <h2>Ticket Form</h2>
     </div>
     <div class="_form  p-4 pt-5 pb-5">
-    <form class="update_ticket" id="update_ticket" action="#" > 
+    <form class="update_ticket" id="update_ticket" action="#" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-4 mb-3">
                         <label for="">Select</label>
@@ -166,8 +166,6 @@ $pid = $_REQUEST['id'];?>
                 <div class="d-flex justify-content-end savebtn">
                     <input type="submit" class="btn_primary"  value="Update Ticket"/>
                 </div>
-
-
                 <div class="col-md-12 mb-3">                        
                                 <?php                            
                                         $attimages = get_attached_media('image', $pid);
@@ -238,38 +236,42 @@ $pid = $_REQUEST['id'];?>
             var price = jQuery('#price').val();             
             var uid = jQuery('#uid').val(); 
             var eng_remarks = jQuery('#eng_remarks').val();   
-            var internal_remarks = jQuery('#internal_remarks').val();
+            var internal_remarks = jQuery('#internal_remarks').val();  
+
+            var file_data = jQuery('#file').prop('files')[0]; 
+            file_data = jQuery('#file').prop('files')[0];
+            form_data = new FormData();
+            form_data.append('file', file_data);
+            form_data.append('action', 'tech_update_ticket');
+            form_data.append('title', title);
+            form_data.append('date', date);	
+            form_data.append('address', address); 
+            form_data.append('ticket_type', ticket_type); 
+            form_data.append('ticket_priority', ticket_priority); 
+            form_data.append('ticket_status', ticket_status);  
+            form_data.append('ticket_cat', ticket_cat);  
+            form_data.append('invoice', invoice);  
+            form_data.append('eng_remarks', eng_remarks);  
+            form_data.append('internal_remarks', internal_remarks); 
+            form_data.append('price', price);  
+            form_data.append('pid', pid);  
+            form_data.append('uid', uid); 
             $.ajax(
                 {
-                    type:"POST",
                     url:"<?php echo admin_url('admin-ajax.php'); ?>",
-                    data: {
-                        action: "tech_update_ticket",
-                        pid : pid,
-                        title : title,
-                        date : date, 
-                        address : address,
-                        ticket_type : ticket_type,
-                        ticket_priority : ticket_priority,
-                        ticket_status : ticket_status ,
-                        ticket_cat : ticket_cat,                      
-                        invoice : invoice,
-                        eng_remarks : eng_remarks,
-                        internal_remarks : internal_remarks,
-                        price : price,
-                        uid : uid
-                    },   
-                    success: function(data){                      
-                     
+                    type: 'POST',
+                    contentType: false,
+                    processData: false,
+                    data: form_data,   
+                    success: function(data){ 
                         if(data.code==0) {
-                                   $(".overlay").css("display", "flex");
+                           alert(data.message);
                         }  
                         else {
-                          
-                        $(".overlay").css("display", "flex");
+                           $(".sucess_message").css("display", "flex");
                       
                         }      
-            }
+                    }
             
              });
          }); 

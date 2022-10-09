@@ -1,6 +1,51 @@
 <?php
 
 
+function insert_media() {
+
+	$image_url        = $file_url; // Define the image URL here
+	$image_name       = $file_name;
+	$upload_dir       = wp_upload_dir(); // Set upload folder
+	$image_data       = file_get_contents($image_url); // Get image data
+	$unique_file_name = wp_unique_filename( $upload_dir['path'], $image_name ); // Generate unique name
+	$filename         = basename( $unique_file_name ); // Create image file name
+	
+	// Check folder permission and define file location
+	if( wp_mkdir_p( $upload_dir['path'] ) ) {
+		$file = $upload_dir['path'] . '/' . $filename;
+	} else {
+		$file = $upload_dir['basedir'] . '/' . $filename;
+	}
+	// Create the image  file on the server
+	file_put_contents( $file, $image_data );
+		// Check image file type
+	$wp_filetype = wp_check_filetype( $filename, null );
+	
+	// Set attachment data
+	$attachment = array(
+		'post_mime_type' => $wp_filetype['type'],
+		'post_title'     => sanitize_file_name( $filename ),
+		'post_content'   => '',
+		'post_status'    => 'inherit'
+	);
+}
+
+function updated_media_post() {
+
+     // Create the attachment
+	$attach_id = wp_insert_attachment( $attachment, $file, $inserted_post_id );
+	require_once(ABSPATH . 'wp-admin/includes/image.php');
+	$attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+    wp_update_attachment_metadata( $attach_id, $attach_data );
+
+
+
+}
+
+
+
+
+
 add_action('wp_ajax_add_ticket', 'add_ticket', 0);
 add_action('wp_ajax_nopriv_add_ticket', 'add_ticket');
 
@@ -180,6 +225,10 @@ function tech_update_ticket()
 	$pid = $_POST['pid'];
 	$invoice = $_POST['invoice'];
 	$price = $_POST['price'];
+
+	$file_name = $_FILES["file"]["name"];
+	$file_url        = $_FILES["file"]["tmp_name"]; 
+
 	$post = array(
 		'ID' => $pid,
 		'post_title'    => $title,
@@ -204,8 +253,40 @@ function tech_update_ticket()
 		),
 
 	);
-	$ticket_id = wp_update_post($post);
+	$inserted_post_id = wp_update_post($post);
+
+	$image_url        = $file_url;
+	$image_name       = $file_name;
+	$upload_dir       = wp_upload_dir(); 
+	$image_data       = file_get_contents($image_url); 
+	$unique_file_name = wp_unique_filename( $upload_dir['path'], $image_name ); 
+	$filename         = basename( $unique_file_name ); 
+	if( wp_mkdir_p( $upload_dir['path'] ) ) {
+		$file = $upload_dir['path'] . '/' . $filename;
+	} else {
+		$file = $upload_dir['basedir'] . '/' . $filename;
+	}
+	file_put_contents( $file, $image_data );
+	$wp_filetype = wp_check_filetype( $filename, null );
+	$attachment = array(
+		'post_mime_type' => $wp_filetype['type'],
+		'post_title'     => sanitize_file_name( $filename ),
+		'post_content'   => '',
+		'post_status'    => 'inherit'
+	);
+
+
+
+
 	if (!is_wp_error($ticket_id)) {
+
+		// updated Media to Post
+		$attach_id = wp_insert_attachment( $attachment, $file, $inserted_post_id );
+		require_once(ABSPATH . 'wp-admin/includes/image.php');
+		$attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+		wp_update_attachment_metadata( $attach_id, $attach_data );	
+
+
 		//sendmail($username,$password);		
 			$query_meta = array(
 				'posts_per_page' => -1,
