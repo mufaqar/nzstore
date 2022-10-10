@@ -1,7 +1,7 @@
 <?php
 
 
-function sendmail($agent_email,$message,$postid,$tech_email) {
+function sendmail($agent_email,$message,$postid) {
 	$admin = 'budgetcomputer2013@gmail.com,mufaqar@gmail.com';
 	$to = 'info@kiwimobiles.co.nz';
 	$subject = "Budget Computer |  $message ";
@@ -9,7 +9,7 @@ function sendmail($agent_email,$message,$postid,$tech_email) {
 	$headers = array('Content-Type: text/html; charset=UTF-8');	
 	$headers  = "From: " . $to . "\r\n";
 	$headers .= "Reply-To: " . $agent_email . "\r\n";
-	$headers .= "Cc: $agent_email , $tech_email" . "\r\n";	
+	$headers .= "Cc: $agent_email" . "\r\n";	
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 	mail( $admin, $subject, $body, $headers );
@@ -232,10 +232,9 @@ function tech_update_ticket()
 		$ticket_uid = get_post_meta( $pid, 'order_uid', true);
 		$user_agent =  get_user_by( 'id', $ticket_uid);
 		$agent_email = $user_agent->user_email;
-
-
-
-		sendmail($agent_email,"Technician [ $tech_email ] Updated Ticket  $pid ", $pid, $tech_email);
+		$agent_email = $agent_email .",".$tech_email;
+		sendmail($agent_email,"Technician [ $tech_email ] Updated Ticket  $pid ", $pid);
+		echo $agent_email;
 
 
 
