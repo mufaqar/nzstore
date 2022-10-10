@@ -158,10 +158,11 @@ function update_ticket()
 		$update_post = wp_update_post($post);
 		$user = get_user_by( 'id', $uid );
 		$agent_email = $user->user_email;
+		sendmail($agent_email,"Ticket Updated by $agent_email ", $pid);
 		
 
 	if (!is_wp_error($update_post)) {
-		sendmail($agent_email,"Ticket Updated by $agent_email ", $pid);
+	
 	
 		echo wp_send_json(array('code' => 200, 'message' => __('Ticket Updated Sucessfully')));
 		die();
