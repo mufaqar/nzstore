@@ -28,10 +28,11 @@ get_header();
                         <tr>
                             <th>Sr #</th>
                             <th>Ticket</th>
-                            <th>Date</th>
-                            <th>Model</th>                                                                       
+                            <th>Model</th> 
+                            <th>Date</th>                                                                                                
                             <th>Price</th>
                             <th>Status</th>
+                            <th>View</th>
                             <th>Action</th>                        
                         </tr>
                     </thead>
@@ -55,9 +56,9 @@ get_header();
                         if (have_posts()) :  while (have_posts()) : the_post(); $pid = get_the_ID(); $i++; ?>
                                  <tr>
                                                 <td><?php echo $i;?></td>
-                                                <td><?php echo $pid?></td>    
-                                                <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?></td>                                              
+                                                <td><?php echo $pid?></td>               
                                                 <td><?php the_title();  get_noftication($pid);?>  </td>    
+                                                <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?></td>   
                                                 <td><?php echo get_post_meta( get_the_ID(), 'price', true ); ?></td>
                                                 <td><?php   
                                                         $term_list = get_the_terms($post->ID, 'ticket_type');
@@ -69,7 +70,7 @@ get_header();
                                                         echo $typesz;                                                    
                                                      ?>
                                                 </td>
-                                                <!-- <td> <a href="<?php the_permalink()?>">View Ticket </a>  <i class="fa-solid fa-down-to-line"></i></td> -->
+                                                <td> <a href="<?php the_permalink()?>">View </a>  <i class="fa-solid fa-eye"></i></td>
                                                 <td> <a href="<?php echo home_url('/agent-dashboard/edit-ticket?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
                                                 </tr>
                             <?php endwhile;
