@@ -1,7 +1,7 @@
 <?php
 
 
-function sendmail($agent_email,$message, $postid , $tech_email ) {
+function sendmail($agent_email,$message,$postid,$tech_email) {
 	$admin = 'budgetcomputer2013@gmail.com,mufaqar@gmail.com';
 	$to = 'info@kiwimobiles.co.nz';
 	$subject = "Budget Computer |  $message ";
@@ -9,8 +9,7 @@ function sendmail($agent_email,$message, $postid , $tech_email ) {
 	$headers = array('Content-Type: text/html; charset=UTF-8');	
 	$headers  = "From: " . $to . "\r\n";
 	$headers .= "Reply-To: " . $agent_email . "\r\n";
-	$headers .= "Cc: $agent_email" . "\r\n";
-	$headers .= "Cc: $tech_email" . "\r\n";		
+	$headers .= "Cc: $agent_email , $tech_email" . "\r\n";	
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 	mail( $admin, $subject, $body, $headers );
