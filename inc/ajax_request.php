@@ -232,10 +232,9 @@ function tech_update_ticket()
 		$ticket_uid = get_post_meta( $pid, 'order_uid', true);
 		$user_agent =  get_user_by( 'id', $ticket_uid);
 		$agent_email = $user_agent->user_email;
-		$agent_email = $agent_email .",".$tech_email;
+		//$agent_email = $agent_email .",".$tech_email;
 		sendmail($agent_email,"Technician [ $tech_email ] Updated Ticket  $pid ", $pid);
-		echo $agent_email;
-
+	
 
 
 
