@@ -40,7 +40,7 @@
         })
         $(document).ready(function () {           
             var table = $('#alltickets').DataTable();
-            $('.all-tickets').on( 'click', 'a', function () {                         
+            $('.catering_menu').on( 'click', 'a', function () {                      
                 $(".catering_menu a").removeClass("_active");
                 $(this).addClass("_active");                 
             table
@@ -51,7 +51,7 @@
         })
         $(document).ready(function () {           
             var table = $('#agent_orders').DataTable();
-            $('.all-tickets').on( 'click', 'a', function () {                         
+            $('.catering_menu').on( 'click', 'a', function () {                        
                 $(".catering_menu a").removeClass("_active");
                 $(this).addClass("_active");                 
             table
@@ -64,7 +64,7 @@
 
         $(document).ready(function () {           
             var table = $('#tech_tickets').DataTable();
-            $('.all-tickets').on( 'click', 'a', function () {                         
+            $('.catering_menu').on( 'click', 'a', function () {                        
                 $(".catering_menu a").removeClass("_active");
                 $(this).addClass("_active");                 
             table
