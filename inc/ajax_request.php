@@ -2,8 +2,8 @@
 
 
 function sendmail($agent_email,$message, $postid) {
-	$to = 'budgetcomputer2013@gmail.com,mufaqar@gmail.com';
-	//$to = 'mufaqar@gmail.com';
+	$admin = 'budgetcomputer2013@gmail.com,mufaqar@gmail.com';
+	$to = 'budgetcomputer2013@gmail.com';
 	$subject = "Budget Computer |  $message ";
 	$body  = "<p><strong> $message  </strong> <br/> Ticket   :  ".get_permalink($postid)."  </p>";
 	$headers = array('Content-Type: text/html; charset=UTF-8');	
@@ -11,7 +11,7 @@ function sendmail($agent_email,$message, $postid) {
 	$headers .= "Reply-To: " . $agent_email . "\r\n";		
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-	mail( $to, $subject, $body, $headers );
+	mail( $admin, $subject, $body, $headers );
 	//$get_notifcation = get_post_meta( $postid, 'notification', true); 
 	//$count = $get_notifcation;
 	//update_post_meta( $postid, 'notification', $count+1); 
