@@ -230,13 +230,8 @@ function tech_update_ticket()
 		$update_post = wp_update_post($post);
 		$user_tech = get_user_by( 'id', $tech_uid );
 		$tech_email = $user_tech->user_email;
-
-
-		$ticket_uid = get_post_meta( $pid, 'order_uid', true );
-
-		 $user_agent =  get_user_by( 'id', $ticket_uid );
-
-
+		$ticket_uid = get_post_meta( $pid, 'order_uid', true);
+		$user_agent =  get_user_by( 'id', $ticket_uid);
 		$agent_email = $user_agent->user_email;
 
 
