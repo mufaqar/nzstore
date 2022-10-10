@@ -32,7 +32,7 @@ get_header();
                             <th>Model</th>                                                                       
                             <th>Price</th>
                             <th>Status</th>
-                            <th>Action123</th>                        
+                            <th>Action</th>                        
                         </tr>
                     </thead>
                     <tbody>
