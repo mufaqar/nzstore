@@ -53,7 +53,6 @@ get_header();
                                 ),
                             )
                         ));
-
                         if (have_posts()) :  while (have_posts()) : the_post(); $pid = get_the_ID(); $i++; ?>
                                  <tr>
                                                 <td><?php echo $i;?></td>
