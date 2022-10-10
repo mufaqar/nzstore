@@ -16,7 +16,7 @@ get_header('admin');
         </div>
     </div>
     <section id="div1" class="targetDiv activediv tablediv">
-        <table id="allusers" class="table table-striped orders_table" style="width:100%">
+        <table id="tech_tickets" class="table table-striped orders_table" style="width:100%">
 
         <?php
 global $current_user; wp_get_current_user();  $uid = $current_user->ID;

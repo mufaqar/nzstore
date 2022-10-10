@@ -62,6 +62,19 @@
         })
 
 
+        $(document).ready(function () {           
+            var table = $('#tech_tickets').DataTable();
+            $('.all-tickets').on( 'click', 'a', function () {                         
+                $(".catering_menu a").removeClass("_active");
+                $(this).addClass("_active");                 
+            table
+                .columns(6)
+                .search(  $(this).attr('data') )
+                .draw();
+            });
+        })
+
+
 
         
         $(document).ready(function () {
