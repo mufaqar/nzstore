@@ -57,7 +57,8 @@ get_header();
                         if (have_posts()) :  while (have_posts()) : the_post(); $pid = get_the_ID(); $i++; ?>
                                  <tr>
                                                 <td><?php echo $i;?></td>
-                                                <td><?php echo $pid?></td>                                                
+                                                <td><?php echo $pid?></td>    
+                                                <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?></td>                                              
                                                 <td><?php the_title();  get_noftication($pid);?>  </td>    
                                                 <td><?php echo get_post_meta( get_the_ID(), 'price', true ); ?></td>
                                                 <td><?php   
