@@ -1,21 +1,17 @@
-<?php 
+ <?php 
  
- global $user_login, $current_user; 
- get_currentuserinfo();
- $user_info = get_userdata($current_user->ID);
-
-$role = $user_info->roles;
-echo $role[0];
-
-
- if (!in_array('technician', $user_info->roles)) {   
-     //wp_redirect( home_url('login')); 
-                                     
-     die("Not Allowed");                              
- }
-?>
+    global $user_login, $current_user; 
+    get_currentuserinfo();
+    $user_info = get_userdata($current_user->ID);
+    $role = $user_info->roles;
+    echo $role[0];
+    if (!in_array('technician', $user_info->roles)) {   
+        //wp_redirect( home_url('login'));                                      
+        die("Not Allowed");                              
+    }
+   ?>
             
-            <main class="launch_calandar">
+    <main class="launch_calandar">
         <div class="row d-flex">
             <div class="" style="width: 230px;">           
                 <div class="sidebar p-0 align-items-start pt-5">
@@ -30,10 +26,7 @@ echo $role[0];
                                     'menu_class'      => 'myProfileNav activeNav'
 									
 								) );
-								?>       
-                            
-                        
-
+								?>  
                     </div>
                     <div class="logout">                       	
                     <a href="<?php echo wp_logout_url( home_url() ); ?>"> <img src="<?php bloginfo('template_directory'); ?>/reources/images/logout.png" alt=""><span>Log Out</span></a>
