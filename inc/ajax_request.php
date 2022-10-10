@@ -1,46 +1,23 @@
 <?php
 
 
-function sendmail() {
-	//$admin = 'budgetcomputer2013@gmail.com,mufaqar@gmail.com';
-	// $admin = 'mufaqar@gmail.com';
-	// $to = 'info@kiwimobiles.co.nz';
-	// $subject = "Budget Computer |  $message ";
-	// $body  = "<p><strong> $message  </strong> <br/> Ticket   :  ".get_permalink($postid)."  </p>";
-	// $headers = array('Content-Type: text/html; charset=UTF-8');	
-	// $headers  = "From: " . $to . "\r\n";
-	// $headers .= "Reply-To: " . $agent_email . "\r\n";
-	// $headers .= "CC: ".$agent_email."\r\n";
-	// $headers .= "MIME-Version: 1.0\r\n";
-	// $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-	// mail( $admin, $subject, $body, $headers );
-
-
-
-	// the message
-$msg = "First line of text\nSecond line of text";
-
-// use wordwrap() if lines are longer than 70 characters
-$msg = wordwrap($msg,70);
-
-// send email
-mail("mufaqar@gmail.com","My subject",$msg);
-
-
-
-
-
-
-
-
-
-	echo "Email sent sucessfully";
-	//$get_notifcation = get_post_meta( $postid, 'notification', true); 
-	//$count = $get_notifcation;
-	//update_post_meta( $postid, 'notification', $count+1); 
-	//echo "Email sent to : $to and $agent_email";
-
-	
+function sendmail($agent_email,$message,$postid) {
+	$admin = 'budgetcomputer2013@gmail.com,mufaqar@gmail.com';
+	//$admin = 'mufaqar@gmail.com';
+	$to = 'info@kiwimobiles.co.nz';
+	$subject = "Budget Computer |  $message ";
+	$body  = "<p><strong> $message  </strong> <br/> Ticket   :  ".get_permalink($postid)."  </p>";
+	$headers = array('Content-Type: text/html; charset=UTF-8');	
+	$headers  = "From: " . $to . "\r\n";
+	$headers .= "Reply-To: " . $agent_email . "\r\n";
+	$headers .= "CC: ".$agent_email."\r\n";
+	$headers .= "MIME-Version: 1.0\r\n";
+	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+	mail( $admin, $subject, $body, $headers );
+	$get_notifcation = get_post_meta( $postid, 'notification', true); 
+	$count = $get_notifcation;
+	update_post_meta( $postid, 'notification', $count+1); 
+	echo "Email sent to : $to and $agent_email";	
 	}
 
 
@@ -256,8 +233,8 @@ function tech_update_ticket()
 		$ticket_uid = get_post_meta( $pid, 'order_uid', true);
 		$user_agent =  get_user_by( 'id', $ticket_uid);
 		$agent_email = $user_agent->user_email;
-		//$agent_email = $agent_email .",".$tech_email;
-		sendmail();
+		$agent_email = $agent_email .",".$tech_email;
+		sendmail($agent_email,"Technician [ $tech_email ] Updated Ticket  $pid ", $pid);
 	
 
 
