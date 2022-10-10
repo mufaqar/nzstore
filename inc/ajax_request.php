@@ -9,7 +9,7 @@ function sendmail($agent_email,$message,$postid) {
 	$headers = array('Content-Type: text/html; charset=UTF-8');	
 	$headers  = "From: " . $to . "\r\n";
 	$headers .= "Reply-To: " . $agent_email . "\r\n";
-//	$headers .= "Cc: $agent_email" . "\r\n";	
+	$header .= "CC: ".$agent_email."\r\n";
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 	mail( $admin, $subject, $body, $headers );
