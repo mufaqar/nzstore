@@ -2,14 +2,15 @@
 
 
 function sendmail($agent_email,$message,$postid) {
-	$admin = 'budgetcomputer2013@gmail.com,mufaqar@gmail.com';
+	//$admin = 'budgetcomputer2013@gmail.com,mufaqar@gmail.com';
+	$admin = 'mufaqar@gmail.com';
 	$to = 'info@kiwimobiles.co.nz';
 	$subject = "Budget Computer |  $message ";
 	$body  = "<p><strong> $message  </strong> <br/> Ticket   :  ".get_permalink($postid)."  </p>";
 	$headers = array('Content-Type: text/html; charset=UTF-8');	
 	$headers  = "From: " . $to . "\r\n";
 	$headers .= "Reply-To: " . $agent_email . "\r\n";
-	$header .= "CC: ".$agent_email."\r\n";
+	$headers .= "CC: ".$agent_email."\r\n";
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 	mail( $admin, $subject, $body, $headers );
