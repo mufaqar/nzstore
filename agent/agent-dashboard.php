@@ -27,7 +27,7 @@ get_header();
 <thead>
                         <tr>
                             <th>Sr #</th>
-                            <th>Ticket ID</th>
+                            <th>Ticket</th>
                             <th>Date</th>
                             <th>Model</th>                                                                       
                             <th>Price</th>
