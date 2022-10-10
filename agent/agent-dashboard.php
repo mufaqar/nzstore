@@ -37,10 +37,8 @@ get_header();
                         </tr>
                     </thead>
                     <tbody>
-
                     <?php 
                         $i = 0;
-
                         query_posts(array(
                             'post_type' => 'tickets',
                             'posts_per_page' => -1,

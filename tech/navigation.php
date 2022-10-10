@@ -26,7 +26,7 @@ echo $role[0];
                         <?php 	
 								  wp_nav_menu ( array(
                                     'container'       => false,	
-									'theme_location'  => 'admin',	
+									'theme_location'  => 'tech',	
                                     'menu_class'      => 'myProfileNav activeNav'
 									
 								) );
