@@ -17,7 +17,7 @@ function sendmail($agent_email,$message,$postid) {
 	$get_notifcation = get_post_meta( $postid, 'notification', true); 
 	$count = $get_notifcation;
 	update_post_meta( $postid, 'notification', $count+1); 
-	echo "Email sent to : $to and $agent_email";	
+	echo "Email sent to : $admin and $agent_email";	
 	}
 
 
