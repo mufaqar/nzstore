@@ -1,7 +1,7 @@
 <?php
 
 
-function sendmail($agent_email,$message,$postid) {
+function sendmail() {
 	//$admin = 'budgetcomputer2013@gmail.com,mufaqar@gmail.com';
 	// $admin = 'mufaqar@gmail.com';
 	// $to = 'info@kiwimobiles.co.nz';
@@ -24,7 +24,7 @@ $msg = "First line of text\nSecond line of text";
 $msg = wordwrap($msg,70);
 
 // send email
-wp_mail("mufaqar@gmail.com","My subject",$msg);
+mail("mufaqar@gmail.com","My subject",$msg);
 
 
 
@@ -257,7 +257,7 @@ function tech_update_ticket()
 		$user_agent =  get_user_by( 'id', $ticket_uid);
 		$agent_email = $user_agent->user_email;
 		//$agent_email = $agent_email .",".$tech_email;
-		sendmail($agent_email,"Technician [ $tech_email ] Updated Ticket  $pid ",$pid);
+		sendmail();
 	
 
 
