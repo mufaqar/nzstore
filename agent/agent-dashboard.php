@@ -32,8 +32,7 @@ get_header();
                             <th>Model</th>                                                                       
                             <th>Price</th>
                             <th>Status</th>
-                            <th>Action</th>
-                            <!-- <th>Action</th> -->
+                            <th>Action</th>                        
                         </tr>
                     </thead>
                     <tbody>
