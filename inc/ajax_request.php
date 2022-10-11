@@ -636,21 +636,16 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 										<td scope="row"><strong>Ticket Id </strong></td>
 										<td scope="row"><?php echo get_the_title($ticket_id); ?></td>
 										
-									</tr>
-											
+									</tr>									
+									
 									<tr>
-										<td scope="row"><strong>Date</strong></td>
-										<td scope="row"><?php echo get_post_meta( $ticket_id, 'date', true ); ?></td>
+										<td scope="row"><strong>Agent Remarks: </strong></td>
+										<td scope="row"><?php echo get_post_meta( $ticket_id, 'issues', true ); ?></td>
 										
 									</tr>
 									<tr>
 										<td scope="row"><strong>Technician Remarks </strong></td>
 										<td scope="row"><?php echo get_post_meta( $ticket_id, 'eng_remarks', true ); ?></td>
-										
-									</tr>
-									<tr>
-										<td scope="row"><strong>Agent Remarks: </strong></td>
-										<td scope="row"><?php echo get_post_meta( $ticket_id, 'issues', true ); ?></td>
 										
 									</tr>
 									<tr>
