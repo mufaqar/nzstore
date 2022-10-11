@@ -29,6 +29,7 @@
                             <th>Price</th>
                             <th>Status</th>
                             <th>Invoice</th>
+                            <th>PDF</th>
                         
                     
                         </tr>
@@ -66,6 +67,7 @@
                                                 <td><?php echo get_post_meta( get_the_ID(), 'order_price', true ); ?></td>
                                                 <td> <?php echo $cat_active ?> </td>
                                                 <td><button data-id="<?php echo get_the_ID() ?>" class="show_invoice_detail btn_primary">Detail</button></td>
+                                                <td><button data-id="<?php echo get_the_ID() ?>" class="download_invoice btn_primary">PDF</button></td>
                                                 </tr>
                             <?php endwhile;
                             wp_reset_query();
@@ -89,22 +91,7 @@
             <div class="popup_wrapper">                          
                     <div class="w-100 ajax_invoice"> </div>  
                     <img src="<?php bloginfo('template_directory'); ?>/reources/images/red cross.png" alt="" class="_cross ">
-
-
-                    <div class="invoice_table">
-                        <h3>Hello, this is a H3 tag</h3>
-                        <p>A paragraph</p>
-                    </div>
-                            <div id="editor"></div>
-                            <button id="cmd">generate PDF</button>
-
-							
-					</div>
-            </div>    
-            
-            
-                
-
+            </div>   
                   
     </section>   
   
@@ -169,6 +156,36 @@
 
             });
         });
+
+        $('.download_invoice').click(function() {
+         
+
+            var orderid = $(this).attr('data-id')
+            var uid = jQuery('#uid').val();        
+            $.ajax({
+                type: "POST",
+                url: "<?php echo admin_url('admin-ajax.php'); ?>",
+                data: {
+                    action: "print_invoice",
+                    orderid: orderid
+                },
+                success: function(data) {
+
+                    if (data.code == 0) {
+                        alert("asdf");
+
+                       // alert(data.message);
+                    } else {
+                        //$(".ajax_invoice").html(data);   
+
+                    }
+                }
+
+            });
+        });
+
+
+
 
         });
 

@@ -713,3 +713,24 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 
 
 
+	
+add_action('wp_ajax_print_invoice', 'print_invoice', 0);
+add_action('wp_ajax_nopriv_print_invoice', 'print_invoice');
+
+	function print_invoice()
+	{
+
+
+							$pdf = new FPDF();
+							$pdf->AddPage();
+							$pdf->Cell(40,10,'Hello World!');
+							$pdf->Output();	 							
+							echo "PDF Created";
+							
+							die;
+	}
+
+
+
+
+
