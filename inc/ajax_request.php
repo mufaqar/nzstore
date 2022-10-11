@@ -635,22 +635,22 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 										
 									</tr>
 									<tr>
-										<td scope="row"><strong>eng_remarks: </strong></td>
+										<td scope="row"><strong>Technician Remarks: </strong></td>
 										<td scope="row"><?php echo get_post_meta( $ticket_id, 'date', true ); ?></td>
 										
 									</tr>
 									<tr>
-										<td scope="row"><strong>issues: </strong></td>
+										<td scope="row"><strong>Agent Remarks: </strong></td>
 										<td scope="row"><?php echo get_post_meta( $ticket_id, 'issues', true ); ?></td>
 										
 									</tr>
 									<tr>
-										<td scope="row"><strong>address: </strong></td>
+										<td scope="row"><strong>Address </strong></td>
 										<td scope="row"><?php echo get_post_meta( $ticket_id, 'address', true ); ?></td>
 										
 									</tr>
 									<tr>
-										<td scope="row"><strong>shipping: </strong></td>
+										<td scope="row"><strong>Shipping Details </strong></td>
 										<td scope="row"><?php echo get_post_meta( $ticket_id, 'shipping', true ); ?></td>
 										
 									</tr>
