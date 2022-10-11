@@ -570,7 +570,7 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 						 
 						   $order_price =  get_post_meta( $orderid, 'order_price', true );
 						   $order_price_gst =  $order_price * 15 / 100; 						   
-						   $order_total  =   $order_price+$order_price_gst;		
+						   $order_total  =   $order_price-$order_price_gst;		
 						   $ticket_id =  get_post_meta( $orderid, 'order_id', true );	   
 
 						  
@@ -584,7 +584,8 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 						   <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" style="max-width:150px">							
 							<p>1191 Eruera Street, Rotorua 3010, Bay of Plenty, New Zealand</p>
 							<p>Mobile 02102838349, Phone 0064-7-3477044 <br> Email: info@smartphonesrepair.co.nz  </p>
-							<h6>Bank Detail: 123456789123456</h6>
+							<h6>Bank ASB: 123456789123456</h6>
+							<h6>GST #: 123456789123456</h6>
 								<table class="invoice_slip_table">
 									<thead>
 									<tr>
@@ -609,7 +610,7 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 									</tr>
 									<tr>
 										<td scope="row"><strong>Price: </strong></td>
-										<td scope="row"><strong>$ </strong><?php echo $order_price?></td>
+										<td scope="row"><strong>$ </strong><?php echo $order_total?></td>
 									</tr>
 									<tr>
 										<td scope="row"><strong>GST</strong></td>
@@ -617,7 +618,7 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 									</tr>
 									<tr>
 										<td scope="row"><strong>Total </strong></td>
-										<td scope="row"><strong>$ </strong> <?php echo $order_total?> </td>
+										<td scope="row"><strong>$ </strong> <?php echo $order_price?> </td>
 									</tr>
 									
 									</tbody>
