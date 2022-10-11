@@ -721,11 +721,15 @@ add_action('wp_ajax_nopriv_print_invoice', 'print_invoice');
 	{
 
 
-							$pdf = new FPDF();
-							$pdf->AddPage();
-							$pdf->Cell(40,10,'Hello World!');
-							$pdf->Output();	 							
-							echo "PDF Created";
+		// ob_start();
+		// require_once __DIR__ . '/vendor/autoload.php';
+
+		// $mpdf = new \Mpdf\Mpdf();
+		// $mpdf->WriteHTML('<h1>Hello world!</h1>');
+		// $mpdf->Output();
+
+		// echo "Hi";
+		
 							
 							die;
 	}
