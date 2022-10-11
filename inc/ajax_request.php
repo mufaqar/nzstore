@@ -603,11 +603,11 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 										<td scope="row"><strong>$ </strong><?php echo $order_price?></td>
 									</tr>
 									<tr>
-										<td scope="row"><strong>GST </strong> ( 15% = <?php echo $order_price_gst?>)</td>
-										<td scope="row"><strong>$ </strong> <?php echo $order_total?> </td>
+										<td scope="row"><strong>GST </strong></td>
+										<td scope="row">( 15% = <?php echo $order_price_gst?>) </td>
 									</tr>
 									<tr>
-										<td scope="row"><strong>GST </strong> ( 15% = <?php echo $order_price_gst?>)</td>
+										<td scope="row"><strong>Total </strong></td>
 										<td scope="row"><strong>$ </strong> <?php echo $order_total?> </td>
 									</tr>
 									
