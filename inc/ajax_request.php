@@ -694,17 +694,12 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 										</td>
 										
 									</tr> -->
-
-											
-											
-									
-
-											
-
 										
 									<tbody>
 								</table>
-							</div>
+
+								  
+   
 							
                       
                      

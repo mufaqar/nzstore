@@ -89,19 +89,37 @@
             <div class="popup_wrapper">                          
                     <div class="w-100 ajax_invoice"> </div>  
                     <img src="<?php bloginfo('template_directory'); ?>/reources/images/red cross.png" alt="" class="_cross ">
-            </div>       	
+
+
+                    <div class="invoice_table">
+                        <h3>Hello, this is a H3 tag</h3>
+                        <p>A paragraph</p>
+                    </div>
+                            <div id="editor"></div>
+                            <button id="cmd">generate PDF</button>
+
+							
+					</div>
+            </div>    
+            
+            
                 
 
                   
-    </section>    
+    </section>   
+  
 
 
 
    
 <?php get_footer('admin') ?>
 
-
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+
+
+
+
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/reources/js/weekPicker.min.js"></script>
 <script>
     convertToWeekPicker($("#weekPicker2"));    
@@ -150,21 +168,7 @@
                 }
 
             });
-
-
-
-
-
-
-
-
         });
-            
-         
-                    	
-          
-          
-
 
         });
 
