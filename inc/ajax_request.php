@@ -571,7 +571,7 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 						   $order_price =  get_post_meta( $orderid, 'order_price', true );
 						   $order_price_gst =  $order_price * 15 / 100; 						   
 						   $order_total  =   $order_price+$order_price_gst;		
-						   $order_id =  get_post_meta( $orderid, 'order_id', true );	   
+						   $ticket_id =  get_post_meta( $orderid, 'order_id', true );	   
 
 						  
 
@@ -607,38 +607,56 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 										<td scope="row"><strong>$ </strong> <?php echo $order_total?> </td>
 									</tr>
 									<tr>
-										<td scope="row"><strong>Order Week: </strong><?php echo $order_week; ?></td>
-									
+										<td scope="row"><strong>GST </strong> ( 15% = <?php echo $order_price_gst?>)</td>
+										<td scope="row"><strong>$ </strong> <?php echo $order_total?> </td>
 									</tr>
+									
 									</tbody>
 								</table>
 							
 								<h5 class="mt-4">Ticket Summary</h5>
 								<table class="invoice_slip_table">
 									<thead>
-									<th scope="col">Description</th>
-									<th scope="col">Number</th>
-									<th scope="col">Price</th>
+									<th scope="col">Name</th>
+									<th scope="col">Details</th>
+								
 									</thead>
 									<tbody>
-										<?php   $food_items =  get_post_meta( get_the_ID(), 'food_order', true );						
-												foreach($food_items as $index => $food) {  ?>
-														<tr>
-																<td scope="row"><strong><?php echo $index ?></td>
-																<td>
-																<?php   foreach($food as $key => $ky_item) { 	?>
-																		<p>  <?php echo  get_the_title($key) . " [". $ky_item . "] " ; ?> </p>
-																
-																	<?php 	}  ?>
-																	</td>
-																	<td>
-																<?php   foreach($food as $key => $ky_item) { 	?>
-																		<p> NOK <?php echo get_post_meta( $key, 'menu_item_price', true ); ?> </p>
-																
-																	<?php 	}  ?>
-																	</td>
-																
-														</tr>
+
+									<tr>
+										<td scope="row"><strong>Ticket Id: </strong></td>
+										<td scope="row"><?php echo get_the_title($ticket_id); ?></td>
+										
+									</tr>
+											
+									<tr>
+										<td scope="row"><strong>date: </strong></td>
+										<td scope="row"><?php echo get_post_meta( $ticket_id, 'date', true ); ?></td>
+										
+									</tr>
+									<tr>
+										<td scope="row"><strong>eng_remarks: </strong></td>
+										<td scope="row"><?php echo get_post_meta( $ticket_id, 'date', true ); ?></td>
+										
+									</tr>
+									<tr>
+										<td scope="row"><strong>issues: </strong></td>
+										<td scope="row"><?php echo get_post_meta( $ticket_id, 'issues', true ); ?></td>
+										
+									</tr>
+									<tr>
+										<td scope="row"><strong>address: </strong></td>
+										<td scope="row"><?php echo get_post_meta( $ticket_id, 'address', true ); ?></td>
+										
+									</tr>
+									<tr>
+										<td scope="row"><strong>shipping: </strong></td>
+										<td scope="row"><?php echo get_post_meta( $ticket_id, 'shipping', true ); ?></td>
+										
+									</tr>
+											
+											
+									
 
 											
 
