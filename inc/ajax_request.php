@@ -548,3 +548,114 @@ function admin_update_invoice()
 
 }
 
+
+
+add_action('wp_ajax_get_invoice_detail', 'get_invoice_detail', 0);
+add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
+
+	function get_invoice_detail()
+	{
+							global $wpdb;	
+							$orderid = $_POST['orderid'];				
+						
+						
+							$args = array('p' => $orderid, 'post_type' => 'orders');
+
+							
+							$uid =  get_post_meta( $orderid, 'invoice_uid', true );
+							$user_info = get_userdata( $uid);
+
+							
+
+						 
+						   $order_price =  get_post_meta( $orderid, 'order_price', true );
+						   $order_price_gst =  $order_price * 15 / 100; 						   
+						   $order_total  =   $order_price+$order_price_gst;		
+						   $order_id =  get_post_meta( $orderid, 'order_id', true );	   
+
+						  
+
+							
+							?>
+
+				
+						            
+						   <div class="invoice_table">
+								<table class="invoice_slip_table">
+									<thead>
+									<tr>
+										<th scope="col">Name</th>
+										<th scope="col">Details</th>
+									</tr>
+									</thead>							
+									<tbody>
+									<tr>
+										<td scope="row"><strong>Invoice Id: </strong></td>
+										<td scope="row"><?php echo get_the_title($orderid);?></td>
+										
+									</tr>
+									<tr>
+										<td scope="row"><strong>Email: </strong></td>
+										<td scope="row"><?php echo $user_info->user_login ?></td>
+									</tr>
+									<tr>
+										<td scope="row"><strong>Price: </strong></td>
+										<td scope="row"><strong>$ </strong><?php echo $order_price?></td>
+									</tr>
+									<tr>
+										<td scope="row"><strong>GST </strong> ( 15% = <?php echo $order_price_gst?>)</td>
+										<td scope="row"><strong>$ </strong> <?php echo $order_total?> </td>
+									</tr>
+									<tr>
+										<td scope="row"><strong>Order Week: </strong><?php echo $order_week; ?></td>
+									
+									</tr>
+									</tbody>
+								</table>
+							
+								<h5 class="mt-4">Ticket Summary</h5>
+								<table class="invoice_slip_table">
+									<thead>
+									<th scope="col">Description</th>
+									<th scope="col">Number</th>
+									<th scope="col">Price</th>
+									</thead>
+									<tbody>
+										<?php   $food_items =  get_post_meta( get_the_ID(), 'food_order', true );						
+												foreach($food_items as $index => $food) {  ?>
+														<tr>
+																<td scope="row"><strong><?php echo $index ?></td>
+																<td>
+																<?php   foreach($food as $key => $ky_item) { 	?>
+																		<p>  <?php echo  get_the_title($key) . " [". $ky_item . "] " ; ?> </p>
+																
+																	<?php 	}  ?>
+																	</td>
+																	<td>
+																<?php   foreach($food as $key => $ky_item) { 	?>
+																		<p> NOK <?php echo get_post_meta( $key, 'menu_item_price', true ); ?> </p>
+																
+																	<?php 	}  ?>
+																	</td>
+																
+														</tr>
+
+											
+
+										
+									<tbody>
+								</table>
+							</div>
+							
+                      
+                     
+
+				 
+						   
+	
+
+					<?php	die;
+	}
+
+
+

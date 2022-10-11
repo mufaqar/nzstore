@@ -28,6 +28,7 @@
                             <th>Model</th>                                                                       
                             <th>Price</th>
                             <th>Status</th>
+                            <th>Invoice</th>
                         
                     
                         </tr>
@@ -64,6 +65,7 @@
                                                 <td><?php the_title(); ?></td>
                                                 <td><?php echo get_post_meta( get_the_ID(), 'order_price', true ); ?></td>
                                                 <td> <?php echo $cat_active ?> </td>
+                                                <td><button data-id="<?php echo get_the_ID() ?>" class="show_invoice_detail btn_primary">Detail</button></td>
                                                 </tr>
                             <?php endwhile;
                             wp_reset_query();
@@ -81,5 +83,93 @@
 
 
 
+
+    <section class="hideme  overlay invoice_detail_popup">                                                
+         <div class="popup">
+            <div class="popup_wrapper">
+                <h3 class="ad_productss">Invoice Details</h3>                 
+                    <div class="w-100 ajax_invoice"> </div>  
+                    <img src="<?php bloginfo('template_directory'); ?>/reources/images/red cross.png" alt="" class="_cross ">
+            </div>       	
+                
+
+                  
+    </section>    
+
+
+
    
 <?php get_footer('admin') ?>
+
+
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/reources/js/weekPicker.min.js"></script>
+<script>
+    convertToWeekPicker($("#weekPicker2"));    
+   
+</script>
+ <script type="text/javascript">   
+     jQuery(document).ready(function($) 
+        {   
+            
+           
+
+            
+            $('#invoice').click(function(){
+                $(".invoice_detail_popup").css("display", "block");
+            });
+
+            $('._cross').click(function(){
+           
+                $(".hideme").css("display", "none");
+            });
+
+            
+        $('.show_invoice_detail').click(function() {
+            $(".invoice").hide();
+            $(".invoice_detail_popup").css("display", "block");
+
+            var orderid = $(this).attr('data-id')
+            var uid = jQuery('#uid').val();        
+            $.ajax({
+                type: "POST",
+                url: "<?php echo admin_url('admin-ajax.php'); ?>",
+                data: {
+                    action: "get_invoice_detail",
+                    orderid: orderid,
+                    uid: uid
+                },
+                success: function(data) {
+
+                    if (data.code == 0) {
+
+                       // alert(data.message);
+                    } else {
+                        $(".ajax_invoice").html(data);   
+
+                    }
+                }
+
+            });
+
+
+
+
+
+
+
+
+        });
+            
+         
+                    	
+          
+          
+
+
+        });
+
+     
+        
+    
+	</script>
