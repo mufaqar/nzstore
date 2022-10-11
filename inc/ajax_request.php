@@ -581,12 +581,11 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 				
 						            
 						   <div class="invoice_table">
-
-						   <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" style="max-width:200px">
-							<h3>  Budget Computers & KiwiMobile </h3>
+						   <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" style="max-width:150px">							
 							<p>1191 Eruera Street, Rotorua 3010, Bay of Plenty, New Zealand</p>
 							<p>Mobile 02102838349, Phone 0064-7-3477044 <br> Email: info@smartphonesrepair.co.nz <br>
 							Website: www.smartphonesrepair.co.nz </p>
+							
 
 
 
@@ -600,18 +599,24 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 									</tr>
 									</thead>							
 									<tbody>
+
+									<tr>
+										<td scope="row"><strong>Bank Detail: </strong></td>
+										<td scope="row">123456789123456</td>
+										
+									</tr>
 									<tr>
 										<td scope="row"><strong>Invoice Id: </strong></td>
 										<td scope="row"><?php echo get_the_title($orderid);?></td>
 										
 									</tr>
 									<tr>
-										<td scope="row"><strong>Date </strong></td>
+										<td scope="row"><strong>Created Date</strong></td>
 										<td scope="row"><?php echo  get_post_meta( $orderid, 'date', true ); ;?></td>
 										
 									</tr>
 									<tr>
-										<td scope="row"><strong>Email: </strong></td>
+										<td scope="row"><strong>Created By: </strong></td>
 										<td scope="row"><?php echo $user_info->user_login ?></td>
 									</tr>
 									<tr>
@@ -619,7 +624,7 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 										<td scope="row"><strong>$ </strong><?php echo $order_price?></td>
 									</tr>
 									<tr>
-										<td scope="row"><strong>GST </strong></td>
+										<td scope="row"><strong>GST</strong></td>
 										<td scope="row">( 15% = <?php echo $order_price_gst?>) </td>
 									</tr>
 									<tr>
