@@ -656,32 +656,35 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 									</tr>
 
 									<tr>
-										<td scope="row"><strong>Terms and Conditions </strong></td>
-										<td scope="row">
-										1: Diagnosed fees will apply for all repairs even if the gadget is not repairable or job cancelled by customer.
-
-2: Part order on customer behalf and deposit is 50% is taken the deposit is nonrefundable as we order part on customer behalf.
-
-3: All the parts fitted come with 3 month warranty unless specified. We will fix the fault & check with which gadget is booked. No other functionality checked unless a thorough assessment is requested & assessment fee is paid and also provide the password or login id.
-
-4: All repair come with 3 month warranty unless specified. LCD are fragile any external pressure while in pocket or any other place or harsh use will break without damaging the top glass as top glass is harder/ stronger then underneath LCD in such case warranty will be voided.
-
-5: Any physical damage which includes liquid damage, dropped, and any pressure on the LCD which break the display will not be covered in warranty. Any gadget returned under warranty and it is find out to be physical damage diagnostic will apply. In any dispute customer is required to get third party opinion on their own cost from a reputable repair shop and provide a copy of the report.
-
-6: Warranty is provided only on the part we have replaced not any other part of gadget.
-
-7: No responsibility taken of any data loss while working on any gadget. Backup all your data before it is booked for a repair.
-
-8: Customer ‘s responsibility to pick their gadget within 2 months’ time after it fixed and pay repairing fee in full. No gadget will be delivered if not aid In full or sell my gadget is not picked within 2 month time it will be disposed off or sold to recover the cost. I authorize budget computer to dispose off or sell my gadget to recover cost if not picked and paid within 2 month time.
-
-9: Warranty repair cannot be checked straight away. We need reasonable time to check and fix.
-
-10: Software/ operating system installation if virus infected or corrupted by customer negligence or misuse or any third party software not working no responsibility taken.
-
-11: Customer advised to take their SD card/sim cards out from phone before they give for as budget computer takes no responsibility for any loss SD sim card/SD card etc.
-
-If you damage or lose or do not return the loan equipment you will be charged for its repair or replacement. For more details of your terms & conditions please visit our website at www.smartphonesrepair.co.nz
-
+								
+										<td colspan="2" scope="row">
+										<strong>Terms and Conditions </strong>
+										
+										<ul>
+											<li>1: Diagnosed fees will apply for all repairs even if the gadget is not repairable or job cancelled by customer.</li>
+											<li></li>
+											<li>2: Part order on customer behalf and deposit is 50% is taken the deposit is nonrefundable as we order part on customer behalf.</li>
+											<li></li>
+											<li>3: All the parts fitted come with 3 month warranty unless specified. We will fix the fault & check with which gadget is booked. No other functionality checked unless a thorough assessment is requested & assessment fee is paid and also provide the password or login id.</li>
+											<li></li>
+											<li>4: All repair come with 3 month warranty unless specified. LCD are fragile any external pressure while in pocket or any other place or harsh use will break without damaging the top glass as top glass is harder/ stronger then underneath LCD in such case warranty will be voided.</li>
+											<li></li>
+											<li>5: Any physical damage which includes liquid damage, dropped, and any pressure on the LCD which break the display will not be covered in warranty. Any gadget returned under warranty and it is find out to be physical damage diagnostic will apply. In any dispute customer is required to get third party opinion on their own cost from a reputable repair shop and provide a copy of the report.</li>
+											<li></li>
+											<li>6: Warranty is provided only on the part we have replaced not any other part of gadget.</li>
+											<li></li>
+											<li>7: No responsibility taken of any data loss while working on any gadget. Backup all your data before it is booked for a repair.</li>
+											<li></li>
+											<li>8: Customer ‘s responsibility to pick their gadget within 2 months’ time after it fixed and pay repairing fee in full. No gadget will be delivered if not aid In full or sell my gadget is not picked within 2 month time it will be disposed off or sold to recover the cost. I authorize budget computer to dispose off or sell my gadget to recover cost if not picked and paid within 2 month time.</li>
+											<li></li>
+											<li>9: Warranty repair cannot be checked straight away. We need reasonable time to check and fix.</li>
+											<li></li>
+											<li>10: Software/ operating system installation if virus infected or corrupted by customer negligence or misuse or any third party software not working no responsibility taken.</li>
+											<li></li>
+											<li>11: Customer advised to take their SD card/sim cards out from phone before they give for as budget computer takes no responsibility for any loss SD sim card/SD card etc.</li>
+											<li></li>
+											<li>If you damage or lose or do not return the loan equipment you will be charged for its repair or replacement. For more details of your terms & conditions please visit our website at www.smartphonesrepair.co.nz</li>
+										</ul>
 
 										</td>
 										
