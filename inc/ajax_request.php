@@ -583,16 +583,8 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 						   <div class="invoice_table">
 						   <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" style="max-width:150px">							
 							<p>1191 Eruera Street, Rotorua 3010, Bay of Plenty, New Zealand</p>
-							<p>Mobile 02102838349, Phone 0064-7-3477044 <br> Email: info@smartphonesrepair.co.nz <br>
-							Website: www.smartphonesrepair.co.nz </p>
-
-							<h3>Bank Detail : 123456789123456</h3>
-							
-
-
-
-
-
+							<p>Mobile 02102838349, Phone 0064-7-3477044 <br> Email: info@smartphonesrepair.co.nz  </p>
+							<h6>Bank Detail: 123456789123456</h6>
 								<table class="invoice_slip_table">
 									<thead>
 									<tr>
