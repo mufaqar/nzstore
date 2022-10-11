@@ -585,6 +585,8 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 							<p>1191 Eruera Street, Rotorua 3010, Bay of Plenty, New Zealand</p>
 							<p>Mobile 02102838349, Phone 0064-7-3477044 <br> Email: info@smartphonesrepair.co.nz <br>
 							Website: www.smartphonesrepair.co.nz </p>
+
+							<h3>Bank Detail : 123456789123456</h3>
 							
 
 
@@ -599,12 +601,6 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 									</tr>
 									</thead>							
 									<tbody>
-
-									<tr>
-										<td scope="row"><strong>Bank Detail: </strong></td>
-										<td scope="row">123456789123456</td>
-										
-									</tr>
 									<tr>
 										<td scope="row"><strong>Invoice Id: </strong></td>
 										<td scope="row"><?php echo get_the_title($orderid);?></td>
