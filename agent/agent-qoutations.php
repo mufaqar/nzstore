@@ -11,9 +11,7 @@ get_header();
                 <table id="all" class="table table-striped orders_table" style="width:100%">
 
                 <?php global $current_user; wp_get_current_user();  $uid = $current_user->ID; ?>
-
-
-<thead>
+                <thead>
                         <tr>
                             <th>Sr #</th>
                             <th>Ticket</th>
