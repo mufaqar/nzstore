@@ -31,6 +31,7 @@ get_header();
                             'post_type' => 'tickets',
                             'posts_per_page' => -1,
                             'order' => 'desc',
+                            'ticket_type' => 'quotation-sent',
                             'meta_query' => array(
                                 array(
                                     'key' => 'order_uid',
