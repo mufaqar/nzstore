@@ -18,16 +18,13 @@
                 </div>
             </div>
             <section id="div1" class="targetDiv activediv tablediv">
-            <table id="allorders" class="table table-striped orders_table" style="width:100%">
+            <table id="invoice_orders" class="table table-striped orders_table" style="width:100%">
             <thead>
                         <tr>
                             <th>Sr #</th>
                             <th>Invoice Id</th>   
-                          
-                            
                             <th>Ticket</th>
                             <th>Model</th>
-                                                 
                             <th>Agent</th>                         
                             <th>Order Date</th>                             
                             <th>Price</th>

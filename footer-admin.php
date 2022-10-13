@@ -78,6 +78,19 @@
             });
         })
 
+        $(document).ready(function () {           
+            var table = $('#invoice_orders').DataTable();
+            $('.catering_menu').on( 'click', 'a', function () {    
+                          
+                $(".catering_menu a").removeClass("_active");
+                $(this).addClass("_active");                 
+            table
+                .columns(8)
+                .search(  $(this).attr('data') )
+                .draw();
+            });
+        })
+
 
 
         
