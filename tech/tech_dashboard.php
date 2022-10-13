@@ -27,7 +27,7 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
 <thead>
                         <tr>
                             <th>Sr #</th>
-                            <th>Order ID</th>
+                            <th>Ticket</th>
                             <th>Date</th>
                             <th>Title</th>
                              <th>Agent</th>                             
@@ -57,6 +57,7 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
                         ?>
                                  <tr>
                                                 <td><?php echo $i;?></td>
+                                                <td><?php echo $pid?></td>     
                                                 <td><?php the_title();  get_noftication($pid);?>  </td>                                        
                                                 <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?> </td>
                                                 <td><?php the_title(); ?> </td>
