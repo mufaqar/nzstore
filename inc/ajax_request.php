@@ -556,7 +556,7 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 	function get_invoice_detail()
 	{
 							global $wpdb;	
-							$orderid = $_POST['orderid'];				
+							$orderid = $_POST['orderid'];		
 						
 						
 							$args = array('p' => $orderid, 'post_type' => 'orders');
