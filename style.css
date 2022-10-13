@@ -3512,6 +3512,14 @@ body.page-template-temp-landing {
   border-radius: 10px;
 }
 
+.img_box {
+  border-radius: 15px;
+  border: 1px dashed #000;
+  margin: 15px;
+  max-height: 200px;
+  min-height: 200px;
+}
+
 /* **************************************
 ***********   >1400px  ****************
 ************************************** */

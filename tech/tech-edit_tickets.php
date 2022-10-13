@@ -166,16 +166,23 @@ $pid = $_REQUEST['id'];?>
                 <div class="d-flex justify-content-end savebtn">
                     <input type="submit" class="btn_primary"  value="Update Ticket"/>
                 </div>
-                <div class="col-md-12 mb-3">                        
+                <div class="col-md-12 mb-3">  
+                                         
                                 <?php                            
                                         $attimages = get_attached_media('image', $pid);
                                         foreach ($attimages as $image) {
+                                            echo "<div class='image_box'>";
                                             $img_url = wp_get_attachment_url($image->ID);                                
-                                            echo "<img src='$img_url' width='250px' />";
-                                        }                       
+                                            echo "<a href='$img_url' target='_blank' >";                             
+                                            echo "<img src='$img_url' width='250px' />";                                      
+                                            echo "</a>" ; 
+                                            echo "</div>" ; 
+                                        }                   
+                                                           
 
 
                                 ?> 
+                            
 
                                                   
 

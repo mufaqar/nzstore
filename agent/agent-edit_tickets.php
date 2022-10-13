@@ -162,16 +162,22 @@ $pid = $_REQUEST['id'];
                     <input type="submit" class="btn_primary"  value="Update Ticket"/>
                 </div>
 
-                <div class="col-md-12 mb-3">                        
+                <div class="col-md-12 mb-3">   
+                                      
                                 <?php                            
                                         $attimages = get_attached_media('image', $pid);
                                         foreach ($attimages as $image) {
+                                          
                                             $img_url = wp_get_attachment_url($image->ID);                                
-                                            echo "<img src='$img_url' width='250px' />";
+                                            echo "<a href='$img_url' target='_blank' >";                             
+                                            echo "<img src='$img_url' width='250px' class='img_box' />";                                      
+                                            echo "</a>" ; 
+                                          
                                         }                       
 
 
-                                ?>                          
+                                ?>   
+                                </div>                       
 
                 </div>
             </div>
