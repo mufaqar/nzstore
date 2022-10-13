@@ -77,7 +77,6 @@
                 .draw();
             });
         })
-
         $(document).ready(function () {           
             var table = $('#invoice_orders').DataTable();
             $('.catering_menu').on( 'click', 'a', function () {    
@@ -89,11 +88,7 @@
                 .search(  $(this).attr('data') )
                 .draw();
             });
-        })
-
-
-
-        
+        })        
         $(document).ready(function () {
             $('#cancle').DataTable();
         });
