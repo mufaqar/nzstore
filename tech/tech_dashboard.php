@@ -27,9 +27,9 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
 <thead>
                         <tr>
                             <th>Sr #</th>
-                            <th>Ticket</th>
-                            <th>Model</th> 
-                            <th>Date</th>  
+                            <th>Ticket ID</th>
+                            <th>Date</th>
+                            <th>Title</th>
                              <th>Agent</th>                             
                             <th>Price</th>
                             <th>Type</th>
@@ -57,13 +57,11 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
                         ?>
                                  <tr>
                                                 <td><?php echo $i;?></td>
-                                                <td><?php echo $pid?></td>     
-                                                <td><?php the_title();  get_noftication($pid);?>  </td>                                        
+                                                <td><?php echo $pid?></td>                                                
                                                 <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?> </td>
-                                                <td><?php the_title(); ?> </td>
+                                                <td><?php the_title();  get_noftication($pid);?>  </td>    
                                                 <td><?php echo $user_info->user_login ?></td>                                              
-                                                <td><?php echo get_post_meta( get_the_ID(), 'price', true ); ?></td>
-                                               
+                                                <td><?php echo get_post_meta( get_the_ID(), 'price', true ); ?></td>                                               
                                                 <td><?php   
                                                         $term_list = get_the_terms($post->ID, 'ticket_type');
                                                         $types ='';
