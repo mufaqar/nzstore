@@ -171,12 +171,10 @@ $pid = $_REQUEST['id'];?>
                                 <?php                            
                                         $attimages = get_attached_media('image', $pid);
                                         foreach ($attimages as $image) {
-                                            echo "<div class='image_box'>";
                                             $img_url = wp_get_attachment_url($image->ID);                                
                                             echo "<a href='$img_url' target='_blank' >";                             
-                                            echo "<img src='$img_url' width='250px' />";                                      
+                                            echo "<img src='$img_url' width='250px' class='img_box' />";                                      
                                             echo "</a>" ; 
-                                            echo "</div>" ; 
                                         }                   
                                                            
 
