@@ -3535,7 +3535,7 @@ body.page-template-temp-landing {
   }
 }
 @media print {
-  img {
-    max-width: 500px;
+  body {
+    background: red;
   }
 }

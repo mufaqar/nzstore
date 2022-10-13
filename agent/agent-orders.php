@@ -96,7 +96,7 @@
                     <img src="<?php bloginfo('template_directory'); ?>/reources/images/red cross.png" alt="" class="_cross ">                  
             </div>  
     </section>  
-    <section class="hideme">  
+    <section class="hideme123">  
             <div class="popup_wrapper" id="pdf">
                     <div class="w-100 ajax_invoice_pdf"> </div>  
                                 
@@ -105,6 +105,15 @@
    
 <?php get_footer('admin') ?>
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/canvg/1.4.0/canvg.min.js"></script>
+
+
+
  <script type="text/javascript">   
      jQuery(document).ready(function($) 
         {   
@@ -161,29 +170,13 @@
 
                      $(".ajax_invoice_pdf").html(data); 
 
-
-  
-                    $('#pdf').printThis({
-                        header: "<h1>Budget Computer & <strong>Kiwi</strong>  Mobiles</h1>",       
-                        importCSS: true,      
-                        importStyle: true,   
-                        loadCSS: "http://localhost/clients/demo/wp-content/themes/nzstore-ticket/style.css",  
-                
+                    var pdf = new jsPDF('p','pt','a4');
+                    htmlString = document.getElementById("pdf");
+                    pdf.addHTML(htmlString,function() {
+                        pdf.save('invoice.pdf');
                     });
-  
 
 
-    
-
-
-                    if (data.code == 0) {
-                        alert("asdf");
-
-                       // alert(data.message);
-                    } else {
-                        //$(".ajax_invoice").html(data);   
-
-                    }
                 }
 
             });
