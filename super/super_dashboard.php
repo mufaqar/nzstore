@@ -27,10 +27,8 @@
                             'posts_per_page' => -1,
                             'order' => 'desc',                            
                         ));
-
                         if (have_posts()) :  while (have_posts()) : the_post(); $pid = get_the_ID(); $i++;
                         $user_id = get_post_meta( get_the_ID(), 'order_uid', true );
-
                         $user_info = get_userdata($user_id);
                       
                                             

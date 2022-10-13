@@ -5,9 +5,9 @@ get_header('admin');
 global $current_user; wp_get_current_user();  $uid = $current_user->ID;
 ?>
 <div class="admin_parrent">
-   <?php toggleTabss(); ?>>
+   <?php toggleTabss(); ?>
     </div>
-            <section id="div1" class="targetDiv activediv tablediv">
+        <section id="div1" class="targetDiv activediv tablediv">
                 <table id="all" class="table table-striped orders_table" style="width:100%">
 
               <thead>
