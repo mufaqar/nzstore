@@ -717,6 +717,52 @@ add_action('wp_ajax_nopriv_print_invoice', 'print_invoice');
 	{
 
 
+		?>
+
+			<div id='pdf'>
+			<div class="popup_wrapper">
+					<h3 class="ad_productss">Invoice</h3>
+
+					<div class="invoice_table">
+					<table class="_table">
+						<thead>
+						<tr>
+							<th scope="col">Invoice Date</th>
+							<th scope="col">Total</th>
+							<th scope="col">Total</th>
+							<th scope="col">Status</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td scope="row">Sunday, May 29, 2022</td>
+							<td>80</td>
+							<td>459.2</td>
+							<td>Complete <i class="fa-solid fa-down-to-line"></i></td>
+						</tr>
+						<tr>
+							<td scope="row">Sunday, June 5, 2022</td>
+							<td>80</td>
+							<td>459.2</td>
+							<td>Pending <i class="fa-solid fa-down-to-line"></i></td>
+						</tr>
+						<tr>
+							<td scope="row">Sunday, June 6, 2022</td>
+							<td>80</td>
+							<td>459.2</td>
+							<td>Pending <i class="fa-solid fa-down-to-line"></i></td>
+						</tr>
+						</tbody>
+					</table>
+					</div>     
+				</div>
+			</div>
+
+			
+
+
+		<?php
+
 		// ob_start();
 		// require_once __DIR__ . '/vendor/autoload.php';
 
@@ -727,7 +773,7 @@ add_action('wp_ajax_nopriv_print_invoice', 'print_invoice');
 		// echo "Hi";
 		
 							
-							die;
+		die;
 	}
 
 

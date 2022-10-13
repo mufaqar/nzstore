@@ -3534,3 +3534,8 @@ body.page-template-temp-landing {
     margin: 0px auto;
   }
 }
+@media print {
+  img {
+    max-width: 500px;
+  }
+}

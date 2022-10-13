@@ -30,6 +30,7 @@
                             <th>Amout Paid</th>
                             <th>Status</th>
                             <th>Invoice</th>
+                            <th>Print</th>
                  
                         
                     
@@ -69,7 +70,7 @@
                                                 <td>$ <?php echo get_post_meta(get_the_ID(), 'order_price_paid', true); ?></td>
                                                 <td> <?php echo $cat_active ?> </td>
                                                 <td><button data-id="<?php echo get_the_ID() ?>" class="show_invoice_detail btn_primary">Detail</button></td>
-                                                <!-- <td><button data-id="<?php echo get_the_ID() ?>" class="download_invoice btn_primary">PDF</button></td> -->
+                                                <td><button data-id="<?php echo get_the_ID() ?>" class="download_invoice btn_primary">PDF</button></td> 
                                                 </tr>
                             <?php endwhile;
                             wp_reset_query();
@@ -90,37 +91,23 @@
 
     <section class="hideme  overlay invoice_detail_popup">                                                
          <div class="popup">
-            <div class="popup_wrapper">                          
+            <div class="popup_wrapper">
                     <div class="w-100 ajax_invoice"> </div>  
-                    <img src="<?php bloginfo('template_directory'); ?>/reources/images/red cross.png" alt="" class="_cross ">
-            </div>   
-                  
-    </section>   
-  
-
-
-
+                    <img src="<?php bloginfo('template_directory'); ?>/reources/images/red cross.png" alt="" class="_cross ">                  
+            </div>  
+    </section>  
+    <section class="hideme">  
+            <div class="popup_wrapper" id="pdf">
+                    <div class="w-100 ajax_invoice_pdf"> </div>  
+                                
+            </div>  
+    </section>  
    
 <?php get_footer('admin') ?>
-
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-
-
-
-
-
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/reources/js/weekPicker.min.js"></script>
-<script>
-    convertToWeekPicker($("#weekPicker2"));    
-   
-</script>
  <script type="text/javascript">   
      jQuery(document).ready(function($) 
         {   
-            
-           
-
-            
             $('#invoice').click(function(){
                 $(".invoice_detail_popup").css("display", "block");
             });
@@ -159,19 +146,35 @@
             });
         });
 
-        $('.download_invoice').click(function() {
-         
-
+        $('.download_invoice').click(function() {  
             var orderid = $(this).attr('data-id')
-            var uid = jQuery('#uid').val();        
+            var uid = jQuery('#uid').val();      
             $.ajax({
                 type: "POST",
                 url: "<?php echo admin_url('admin-ajax.php'); ?>",
                 data: {
-                    action: "print_invoice",
-                    orderid: orderid
+                    action: "get_invoice_detail",
+                    orderid: orderid,
+                    uid: uid
                 },
                 success: function(data) {
+
+                     $(".ajax_invoice_pdf").html(data); 
+
+
+  
+                    $('#pdf').printThis({
+                        header: "<h1>Budget Computer & <strong>Kiwi</strong>  Mobiles</h1>",       
+                        importCSS: true,      
+                        importStyle: true,   
+                        loadCSS: "http://localhost/clients/demo/wp-content/themes/nzstore-ticket/style.css",  
+                
+                    });
+  
+
+
+    
+
 
                     if (data.code == 0) {
                         alert("asdf");
@@ -195,3 +198,21 @@
         
     
 	</script>
+
+
+
+<script type="text/javascript" src="https://jasonday.github.io/printThis/printThis.js"></script>
+ <script>
+    $('#print_this').on("click", function () {
+      $('#pdf').printThis({
+        header: "<h1>Budget Computer & <strong>Kiwi</strong>  Mobiles</h1>",       
+        importCSS: true,      
+        importStyle: true,   
+        loadCSS: "http://localhost/clients/demo/wp-content/themes/nzstore-ticket/style.css",  
+  
+      });
+    });
+
+
+    
+  </script>

@@ -7,8 +7,8 @@ get_header();
 ?>
 
 
-
-<div id='pdf'>
+<body>
+<div id='print_id'>
 <div class="popup_wrapper">
         <h3 class="ad_productss">Invoice</h3>
 
@@ -43,40 +43,36 @@ get_header();
               </tr>
             </tbody>
           </table>
-        </div>     
+        </div>
+
+        <img src="../reources//images/red cross.png" alt="" class="_cross">
       </div>
 </div>
+<a id="basic" href="#nada" class="button button-primary">Print container</a>
 
-
-<button id='print-btn'>Start print process</button>
-
-
-
-
+<a id="advanced" href="#nada" class="button button-primary">Print kittens</a>
+</body>
 
 <?php
 
 get_footer();?>
 
-
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/canvg/1.4.0/canvg.min.js"></script>
+<script type="text/javascript" src="https://jasonday.github.io/printThis/printThis.js"></script>
 
 
 
+ <script>
+    $('#basic').on("click", function () {
+      $('#print_id').printThis({
+        header: "<h1>Budget Computer & <strong>Kiwi</strong>  Mobiles</h1>",       
+        importCSS: true,      
+        importStyle: true,   
+        loadCSS: "http://localhost/clients/demo/wp-content/themes/nzstore-ticket/style.css",  
+  
+      });
+    });
 
 
-  <script type="text/javascript">
- $('#print-btn').click(()=>{
-var pdf = new jsPDF('p','pt','a4');
-htmlString = document.getElementById("main");
-pdf.addHTML(document.body,function() {
-    pdf.save('web.pdf');
-});
-})
+    
   </script>
 
