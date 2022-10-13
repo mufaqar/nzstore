@@ -8,6 +8,7 @@
                 <div class="catering_menu all-tickets buttons">
                     <a id="1" class="showSingle _active" target="1" data="">All Tickets</a>
                     <a id="2" class="showSingle" target="2" data="Quotation">Quotation</a>
+                    <a id="5" class="showSingle" target="5" data="Quotation-sent">Quotation Sent</a>
                     <a id="3" class="showSingle" target="2" data="Approval">Approval</a>
                     <a id="4" class="showSingle" target="2" data="Completed">Completed</a>
                 </div>
