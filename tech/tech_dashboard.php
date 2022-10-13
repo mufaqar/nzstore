@@ -34,10 +34,7 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
 
                         if (have_posts()) :  while (have_posts()) : the_post(); $pid = get_the_ID(); $i++;
                         $user_id = get_post_meta( get_the_ID(), 'order_uid', true );
-
                         $user_info = get_userdata($user_id);
-                      
-                                            
                         
                         ?>
                                  <tr>

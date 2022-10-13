@@ -584,8 +584,8 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 						   <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" style="max-width:150px">							
 							<p>1191 Eruera Street, Rotorua 3010, Bay of Plenty, New Zealand</p>
 							<p>Mobile 02102838349, Phone 0064-7-3477044 <br> Email: info@smartphonesrepair.co.nz  </p>
-							<h6>Bank ASB: 123456789123456</h6>
-							<h6>GST #: 123456789123456</h6>
+							<h6>Bank ASB #: 12-3155-0266675-00</h6>
+							<h6>GST #: 115-122-770</h6>
 								<table class="invoice_slip_table">
 									<thead>
 									<tr>

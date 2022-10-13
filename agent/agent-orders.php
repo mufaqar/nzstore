@@ -27,6 +27,7 @@
                             <th>Date</th>
                             <th>Model</th>                                                                       
                             <th>Price</th>
+                            <th>Amout Paid</th>
                             <th>Status</th>
                             <th>Invoice</th>
                  
@@ -64,7 +65,8 @@
                                                 <td><?php echo $pid?></td>                                                
                                                 <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?> </td>
                                                 <td><?php the_title(); ?></td>
-                                                <td><?php echo get_post_meta( get_the_ID(), 'order_price', true ); ?></td>
+                                                <td>$ <?php echo get_post_meta( get_the_ID(), 'order_price', true ); ?></td>
+                                                <td>$ <?php echo get_post_meta(get_the_ID(), 'order_price_paid', true); ?></td>
                                                 <td> <?php echo $cat_active ?> </td>
                                                 <td><button data-id="<?php echo get_the_ID() ?>" class="show_invoice_detail btn_primary">Detail</button></td>
                                                 <!-- <td><button data-id="<?php echo get_the_ID() ?>" class="download_invoice btn_primary">PDF</button></td> -->
