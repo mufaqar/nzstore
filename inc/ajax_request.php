@@ -560,11 +560,9 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 						
 						
 							$args = array('p' => $orderid, 'post_type' => 'orders');
-
 							
 							$uid =  get_post_meta( $orderid, 'invoice_uid', true );
 							$user_info = get_userdata( $uid);
-
 							
 
 						 
