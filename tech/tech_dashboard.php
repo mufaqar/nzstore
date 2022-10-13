@@ -28,8 +28,8 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
                         <tr>
                             <th>Sr #</th>
                             <th>Ticket</th>
-                            <th>Date</th>
-                            <th>Title</th>
+                            <th>Model</th> 
+                            <th>Date</th>  
                              <th>Agent</th>                             
                             <th>Price</th>
                             <th>Type</th>
