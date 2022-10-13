@@ -1,31 +1,13 @@
 <?php /* Template Name: Super-Dashboard  */  get_header('admin');
-?>
-<?php include('navigation.php'); ?>
+ include('navigation.php');
+ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
+ ?>
 <div class="admin_parrent">
-    <div class="toggle_btn">
-        <div class="row ">
-            <div class="catering_wrapper mt-5 mb-2 col-md-10 p-0">
-                <div class="catering_menu all-tickets buttons">
-                    <a id="1" class="showSingle _active" target="1" data="">All Tickets</a>
-                    <a id="2" class="showSingle" target="2" data="Quotation">Quotation</a>
-                    <a id="5" class="showSingle" target="5" data="Quotation-sent">Quotation Sent</a>
-                    <a id="3" class="showSingle" target="2" data="Approval">Approval</a>
-                    <a id="4" class="showSingle" target="2" data="Completed">Completed</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php toggleTabss(); ?>
     <section id="div1" class="targetDiv activediv tablediv">
         <table id="alltickets" class="table table-striped orders_table" style="width:100%">
-
-        <?php
-global $current_user; wp_get_current_user();  $uid = $current_user->ID;
-
-?>
-
-
-<thead>
-                        <tr>
+            <thead>
+                    <tr>
                             <th>Sr #</th>
                             <th>Ticket ID</th>
                             <th>Date</th>
@@ -36,9 +18,8 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
-                    </thead>
-                    <tbody>
-
+            </thead>
+            <tbody>
                     <?php 
                         $i = 0;
                         query_posts(array(

@@ -1,31 +1,16 @@
 <?php /* Template Name: Agent-Dashboard */
 get_header();
+include('navigation.php');
+get_header('admin');
+global $current_user; wp_get_current_user();  $uid = $current_user->ID;
 ?>
-<?php include('navigation.php'); ?>
-
-<!-- tabs -->
-
 <div class="admin_parrent">
-<div class="toggle_btn">
-        <div class="row ">
-            <div class="catering_wrapper mt-5 mb-2 col-md-10 p-0">
-                <div class="catering_menu buttons">
-                    <a id="1" class="showSingle _active" target="1" data="">All Orders</a>
-                    <a id="2" class="showSingle" target="2" data="Quotation">Quotation</a>
-                    <a id="5" class="showSingle" target="5" data="Quotation-sent">Quotation Sent</a>
-                    <a id="3" class="showSingle" target="2" data="Approval">Approval</a>
-                    <a id="4" class="showSingle" target="2" data="Completed">Completed</a>
-                </div>
-            </div>
-        </div>
+   <?php toggleTabss(); ?>>
     </div>
             <section id="div1" class="targetDiv activediv tablediv">
                 <table id="all" class="table table-striped orders_table" style="width:100%">
 
-                <?php global $current_user; wp_get_current_user();  $uid = $current_user->ID; ?>
-
-
-<thead>
+              <thead>
                         <tr>
                             <th>Sr #</th>
                             <th>Ticket</th>
