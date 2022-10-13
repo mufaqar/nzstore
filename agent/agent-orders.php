@@ -96,10 +96,9 @@
                     <img src="<?php bloginfo('template_directory'); ?>/reources/images/red cross.png" alt="" class="_cross ">                  
             </div>  
     </section>  
-    <section class="hideme123">  
-            <div class="popup_wrapper" id="pdf">
-                    <div class="w-100 ajax_invoice_pdf"> </div>  
-                                
+    <section class="show_pdf"> 
+            <div class="popup_wrapper" id="pdf" style="background-color:#FFF; margin:10px">
+                    <div class="w-100 ajax_invoice_pdf"> </div>                                  
             </div>  
     </section>  
    
@@ -142,10 +141,7 @@
                     uid: uid
                 },
                 success: function(data) {
-
                     if (data.code == 0) {
-
-                       // alert(data.message);
                     } else {
                         $(".ajax_invoice").html(data);   
 
@@ -168,12 +164,14 @@
                 },
                 success: function(data) {
 
-                     $(".ajax_invoice_pdf").html(data); 
-
-                    var pdf = new jsPDF('p','pt','a4');
-                    htmlString = document.getElementById("pdf");
-                    pdf.addHTML(htmlString,function() {
+                        $(".ajax_invoice_pdf").html(data); 
+                        var pdf = new jsPDF('p','pt','a4');
+                        htmlString = document.getElementById("pdf");                   
+                        pdf.addHTML(htmlString, function() {
+                        pdf.setFillColor(55, 204,204,0);
                         pdf.save('invoice.pdf');
+                        $(".show_pdf").hide();
+                        
                     });
 
 
@@ -193,19 +191,3 @@
 	</script>
 
 
-
-<script type="text/javascript" src="https://jasonday.github.io/printThis/printThis.js"></script>
- <script>
-    $('#print_this').on("click", function () {
-      $('#pdf').printThis({
-        header: "<h1>Budget Computer & <strong>Kiwi</strong>  Mobiles</h1>",       
-        importCSS: true,      
-        importStyle: true,   
-        loadCSS: "http://localhost/clients/demo/wp-content/themes/nzstore-ticket/style.css",  
-  
-      });
-    });
-
-
-    
-  </script>

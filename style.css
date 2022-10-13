@@ -3534,8 +3534,8 @@ body.page-template-temp-landing {
     margin: 0px auto;
   }
 }
-@media print {
-  body {
-    background: red;
-  }
+
+.show_pdf {
+  position: relative;
+  z-index: -22;
 }
