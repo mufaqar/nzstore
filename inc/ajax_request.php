@@ -658,11 +658,10 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 										
 									</tr>
 
-									<!-- <tr>
+									<tr>
 								
 										<td colspan="2" scope="row">
-										<strong>Terms and Conditions </strong>
-										
+										<strong>Terms and Conditions </strong>										
 										<ul>
 											<li>1: Diagnosed fees will apply for all repairs even if the gadget is not repairable or job cancelled by customer.</li>
 											<li></li>
@@ -688,10 +687,9 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 											<li></li>
 											<li>If you damage or lose or do not return the loan equipment you will be charged for its repair or replacement. For more details of your terms & conditions please visit our website at www.smartphonesrepair.co.nz</li>
 										</ul>
-
 										</td>
 										
-									</tr> -->
+									</tr>
 										
 									<tbody>
 								</table>
