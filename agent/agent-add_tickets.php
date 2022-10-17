@@ -257,7 +257,7 @@ get_header();?>
                     beforeSend: function(){                    
                         $("#loader").show();
                     },
-                     complete: function () {
+                    complete: function () {
                         $("#spinner-div").hide(); 
                     },   
                     success: function(data){ 

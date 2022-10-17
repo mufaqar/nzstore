@@ -3520,6 +3520,11 @@ body.page-template-temp-landing {
   min-height: 200px;
 }
 
+.spinner-border {
+  width: 6rem;
+  height: 6rem;
+}
+
 #spinner-div {
   position: fixed;
   display: none;

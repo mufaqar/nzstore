@@ -213,10 +213,6 @@ $pid = $_REQUEST['id'];
     </section>
 
 
-    <div id="spinner-div" class="pt-5">
-        <div class="spinner-border text-primary" role="status">
-        </div>
-    </div>
 
 
     <?php get_footer();?>
