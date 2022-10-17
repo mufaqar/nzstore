@@ -4,7 +4,7 @@ get_header();
 
 reddirectProfile();
 
-$date  = date('Y-m-d', strtotime(' +1 day'));
+
 
 
 
