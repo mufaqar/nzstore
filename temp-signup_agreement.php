@@ -1,4 +1,4 @@
-<?php /* Template Name: Signup-Agreement  */ 
+<?php /* Template Name: Agent Signup  */ 
 
 get_header();
 
