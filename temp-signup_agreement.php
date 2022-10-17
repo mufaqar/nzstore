@@ -81,7 +81,7 @@
             var business_phone = jQuery('#business_phone').val();	 
             var postal_code = jQuery('#postal_code').val();	     
             form_data = new FormData();
-            form_data.append('action', 'agent_signup');
+            form_data.append('action', 'agent_create_signup');
             form_data.append('agent_name', agent_name);
             form_data.append('agent_email', agent_email);	
             form_data.append('business_address', business_address); 
