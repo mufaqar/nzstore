@@ -65,45 +65,51 @@
             </div>
 
     </main>
-
-
     <?php get_footer();?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">   
-     jQuery(document).ready(function($) {				
-        $("#add_agent").submit(function(e) {               
-            e.preventDefault();           
+    
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script type="text/javascript">   
+     jQuery(document).ready(function($) {	
+        $("#add_agent").submit(function(e) {                     
+            e.preventDefault();   
+          //  $("#spinner-div").show();                     
             var agent_name = jQuery('#agent_name').val();  
             var agent_email = jQuery('#agent_email').val();        
             var business_address = jQuery('#business_address').val();	
             var business_name = jQuery('#business_name').val();	
             var business_phone = jQuery('#business_phone').val();	 
-            var postal_code = jQuery('#postal_code').val();	
+            var postal_code = jQuery('#postal_code').val();	     
+            form_data = new FormData();
+            form_data.append('action', 'agent_signup');
+            form_data.append('agent_name', agent_name);
+            form_data.append('agent_email', agent_email);	
+            form_data.append('business_address', business_address); 
+            form_data.append('business_name', business_name); 
+            form_data.append('business_phone', business_phone); 
+            form_data.append('postal_code', postal_code);  
             
-            alert(agent_email);
             $.ajax(
                 {
-                    type:"POST",
                     url:"<?php echo admin_url('admin-ajax.php'); ?>",
-                    data: {
-                        action: "agent_signup",
-                        agent_email : agent_email,
-                        agent_name : agent_name,
-                        business_address : business_address,
-                        business_name : business_name, 
-                        business_phone : business_phone,  
-                        postal_code : postal_code
+                    type: 'POST',
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    beforeSend: function(){                    
+                        $("#loader").show();
+                    },
+                    complete: function () {
+                        $("#spinner-div").hide(); 
                     },   
-                    success: function(data){                      
+                    success: function(data){ 
                         if(data.code==0) {
-                                    alert(data.message);
+                           alert(data.message);
                         }  
                         else {
-                            alert(data.message);
-                          //  $(".add_agent").css("display", "none");
-                          //  $("#last_step").css("display", "block");
+                           $(".sucess_message").css("display", "flex");                      
                         }      
-            }
+                    }
             
              });
          }); 
@@ -111,6 +117,7 @@
         
      });
 	</script>
+
 
 
 
