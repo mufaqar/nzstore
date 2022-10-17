@@ -78,7 +78,9 @@
             var business_address = jQuery('#business_address').val();	
             var business_name = jQuery('#business_name').val();	
             var business_phone = jQuery('#business_phone').val();	 
-            var postal_code = jQuery('#postal_code').val();	  
+            var postal_code = jQuery('#postal_code').val();	
+            
+            alert(agent_email);
             $.ajax(
                 {
                     type:"POST",
@@ -97,8 +99,9 @@
                                     alert(data.message);
                         }  
                         else {
-                            $(".add_agent").css("display", "none");
-                            $("#last_step").css("display", "block");
+                            alert(data.message);
+                          //  $(".add_agent").css("display", "none");
+                          //  $("#last_step").css("display", "block");
                         }      
             }
             
