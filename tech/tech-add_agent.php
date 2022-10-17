@@ -83,7 +83,8 @@ get_header();
        });
                  
         $("#add_ticket").submit(function(e) {                     
-            e.preventDefault();                     
+            e.preventDefault();   
+            $("#spinner-div").show();                     
             var name = jQuery('#name').val();	             
             var email = jQuery('#email').val();	       
             var password = jQuery('#password').val();
@@ -100,7 +101,13 @@ get_header();
                     type: 'POST',
                     contentType: false,
                     processData: false,
-                    data: form_data,   
+                    data: form_data, 
+                    beforeSend: function(){                    
+                        $("#loader").show();
+                    },
+                     complete: function () {
+                        $("#spinner-div").hide(); 
+                    },  
                     success: function(data){                      
                      
                         if(data.code==0) {

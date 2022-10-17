@@ -213,6 +213,12 @@ $pid = $_REQUEST['id'];
     </section>
 
 
+    <div id="spinner-div" class="pt-5">
+        <div class="spinner-border text-primary" role="status">
+        </div>
+    </div>
+
+
     <?php get_footer();?>
 
    
@@ -226,8 +232,8 @@ $pid = $_REQUEST['id'];
        });
                  
         $("#update_ticket").submit(function(e) {                     
-            e.preventDefault();     
-                         
+            e.preventDefault();  
+            $("#spinner-div").show();   
             var title = jQuery('#title').val();	   
             var pid = jQuery('#pid').val();	             
             var date = jQuery('#date').val();	       
@@ -235,9 +241,7 @@ $pid = $_REQUEST['id'];
             var ticket_type = jQuery('#ticket_type').val();	 
             var ticket_priority = jQuery('#ticket_priority').val();	 
             var ticket_status = jQuery('#ticket_status').val();	 
-            var ticket_cat = jQuery('#ticket_cat').val();	 
-            
-            
+            var ticket_cat = jQuery('#ticket_cat').val();	
             var shipping = jQuery('#shipping').val();           
             var issues = jQuery('#issues').val(); 
             var uid = jQuery('#uid').val();      
@@ -260,9 +264,14 @@ $pid = $_REQUEST['id'];
                         shipping : shipping,
                         uid : uid
                     },   
+                    beforeSend: function(){                    
+                        $("#loader").show();
+                    },
+                     complete: function () {
+                        $("#spinner-div").hide(); 
+                    },
                     success: function(data){  
-                        $(".overlay").css("display", "flex");
-                           
+                        $(".overlay").css("display", "flex");                           
                      }
             
              });

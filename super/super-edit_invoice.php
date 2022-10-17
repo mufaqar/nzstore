@@ -121,6 +121,7 @@ $pid = $_REQUEST['id'];?>
                  
         $("#update_ticket").submit(function(e) {                     
             e.preventDefault();  
+            $("#spinner-div").show();   
             var pid = jQuery('#pid').val();	
             var order_status = jQuery('#order_status').val();	     
             var price = jQuery('#order_price').val();            
@@ -139,6 +140,12 @@ $pid = $_REQUEST['id'];?>
                         price : price
                     
                     },   
+                    beforeSend: function(){                    
+                        $("#loader").show();
+                    },
+                     complete: function () {
+                        $("#spinner-div").hide(); 
+                    },
                     success: function(data){                      
                      
                         if(data.code==0) {

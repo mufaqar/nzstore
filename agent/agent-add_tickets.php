@@ -217,7 +217,8 @@ get_header();?>
        });
                  
         $("#add_ticket").submit(function(e) {                     
-            e.preventDefault();                     
+            e.preventDefault();   
+            $("#spinner-div").show();                     
             var title = jQuery('#title').val();	             
             var date = jQuery('#date').val();	       
             var address = jQuery('#address').val();	             
@@ -252,7 +253,13 @@ get_header();?>
                     type: 'POST',
                     contentType: false,
                     processData: false,
-                    data: form_data,   
+                    data: form_data,
+                    beforeSend: function(){                    
+                        $("#loader").show();
+                    },
+                     complete: function () {
+                        $("#spinner-div").hide(); 
+                    },   
                     success: function(data){ 
                         if(data.code==0) {
 

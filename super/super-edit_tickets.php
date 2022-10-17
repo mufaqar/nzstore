@@ -201,7 +201,8 @@ $pid = $_REQUEST['id'];?>
        });
                  
         $("#update_ticket").submit(function(e) {                     
-            e.preventDefault();     
+            e.preventDefault();  
+            $("#spinner-div").show();      
                          
             var title = jQuery('#title').val();	   
             var pid = jQuery('#pid').val();	             
@@ -245,6 +246,12 @@ $pid = $_REQUEST['id'];?>
                         price : price,
                         uid : uid
                     },   
+                    beforeSend: function(){                    
+                        $("#loader").show();
+                    },
+                     complete: function () {
+                        $("#spinner-div").hide(); 
+                    },
                     success: function(data){                      
                      
                         if(data.code==0) {

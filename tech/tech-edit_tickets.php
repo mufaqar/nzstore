@@ -228,6 +228,7 @@ $pid = $_REQUEST['id'];?>
                  
         $("#update_ticket").submit(function(e) {                     
             e.preventDefault();     
+            $("#spinner-div").show();   
                          
             var title = jQuery('#title').val();	   
             var pid = jQuery('#pid').val();	             
@@ -269,7 +270,13 @@ $pid = $_REQUEST['id'];?>
                     type: 'POST',
                     contentType: false,
                     processData: false,
-                    data: form_data,   
+                    data: form_data,  
+                    beforeSend: function(){                    
+                        $("#loader").show();
+                    },
+                     complete: function () {
+                        $("#spinner-div").hide(); 
+                    }, 
                     success: function(data){ 
                         if(data.code==0) {
                           // alert(data.message);
