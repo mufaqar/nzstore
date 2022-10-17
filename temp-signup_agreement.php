@@ -73,7 +73,7 @@
      jQuery(document).ready(function($) {	
         $("#add_agent").submit(function(e) {                     
             e.preventDefault();   
-          //  $("#spinner-div").show();                     
+            $("#spinner-div").show();                     
             var agent_name = jQuery('#agent_name').val();  
             var agent_email = jQuery('#agent_email').val();        
             var business_address = jQuery('#business_address').val();	
