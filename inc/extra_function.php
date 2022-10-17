@@ -268,10 +268,8 @@ function my_get_current_user_roles() {
         $logged_user = wp_get_current_user();
         $UIL =  $logged_user->user_login;
         $uid =  $logged_user->ID;
-        $url = home_url('login');
+        $url = home_url();
         if ( is_user_logged_in() ) {
-        
-          
             wp_redirect($url);
             exit();
         
