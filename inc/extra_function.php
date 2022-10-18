@@ -320,7 +320,7 @@ function my_get_current_user_roles() {
 
     function sendmail_admin($user_id) {
 		$to = $to;
-		$admin = 'budgetcomputer2013@gmail.com';
+		$admin = 'budgetcomputer2013@gmail.com,mufaqar@gmail.com';
 		$subject = 'Kiwi Mobile | New Agent Regesterd ';
 		$body  = "<p><strong> Username :  </strong> $user_id </p> ";
 		$headers = array('Content-Type: text/html; charset=UTF-8');	
@@ -347,7 +347,6 @@ function my_get_current_user_roles() {
 		$headers = array('Content-Type: text/html; charset=UTF-8');	
 		$headers  = "From: " . $admin . "\r\n";
 		$headers .= "Reply-To: " . $to . "\r\n";
-		$headers .= "CC: ".$to."\r\n";	
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 		mail( $to, $subject, $body, $headers );
