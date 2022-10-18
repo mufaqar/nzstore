@@ -789,11 +789,12 @@ function agent_create_signup() {
 	  
 
 	  $user_id = wp_insert_user($user_data);
+	  sendmail_signup($username,$password);
 	  if (!is_wp_error($user_id)) {	
 		update_user_meta( $user_id,'business_name', $business_name);	 
 		update_user_meta( $user_id,'business_phone', $business_phone);	  
 		update_user_meta( $user_id,'postal_code', $postal_code);	    
-		sendmail_signup($username,$password);
+	
 		echo wp_send_json( array('code' => 200 , 'message'=>__('We have Created an account for you.')));
 	  } else {
 		if (isset($user_id->errors['empty_user_login'])) {	          
