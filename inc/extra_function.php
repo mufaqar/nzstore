@@ -318,11 +318,11 @@ function my_get_current_user_roles() {
 
 
 
-    function sendmail_admin($user_id) {
+    function sendmail_admin($user_email) {
 		$to = $to;
 		$admin = 'budgetcomputer2013@gmail.com,mufaqar@gmail.com';
 		$subject = 'Kiwi Mobile | New Agent Regesterd ';
-		$body  = "<p><strong> Username :  </strong> $user_id </p> ";
+		$body  = "<p><strong> Email Address :  </strong> $user_email </p> ";
 		$headers = array('Content-Type: text/html; charset=UTF-8');	
 		$headers  = "From: " . $admin . "\r\n";
 		$headers .= "Reply-To: " . $to . "\r\n";
@@ -364,8 +364,11 @@ function my_get_current_user_roles() {
                 if ( $code == filter_input( INPUT_GET, 'key' ) ) {
                     delete_user_meta( $user_id, 'has_to_be_activated' );
                     add_user_meta( $user_id, 'user_activated', "yes" );
-                    sendmail_thanks($user_id , '12454698');
-                    sendmail_admin($user_id);
+
+                    $user_info = get_userdata($user_id);
+                    $user_email =  $user_info->user_login;
+                    sendmail_thanks($user_email , '12454698');
+                    sendmail_admin($user_email);
                 }
             }
         }
