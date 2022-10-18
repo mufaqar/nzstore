@@ -8,6 +8,9 @@ $user_id = get_post_meta( $pid, 'invoice_uid', true );
 $user_info = get_userdata($user_id);  
 
 
+print_r($user_info);
+
+
 
 
 
