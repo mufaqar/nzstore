@@ -1,6 +1,6 @@
 <?php /* Template Name: AgentSignup  */ 
         get_header();
-        //reddirectProfile();
+        reddirectProfile();
                 ?> 
  <main class="business_agreement">
         <div class="agreement_wrapper d-flex position-relative justify-content-center flex-column align-items-center p-4">
