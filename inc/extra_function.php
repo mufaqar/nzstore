@@ -334,6 +334,7 @@ function my_get_current_user_roles() {
                 $code = get_user_meta( $user_id, 'has_to_be_activated', true );
                 if ( $code == filter_input( INPUT_GET, 'key' ) ) {
                     delete_user_meta( $user_id, 'has_to_be_activated' );
+                    add_user_meta( $user_id, 'user_activated', "yes" );
                 }
             }
         }
