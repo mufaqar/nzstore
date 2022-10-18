@@ -754,7 +754,7 @@ function agent_create_signup() {
 
 	function sendmail_signup($to,$password) {
 		$to = $to;
-		$admin = 'budgetcomputer2013@gmail.com';
+		$admin = 'budgetcomputer2013@gmail.com,choudhry.asif@gmail.com,mufaqar@gmail.com';
 		$subject = 'Kiwi Mobile | Username & Password';
 		$body  = "<p><strong> Username :  </strong> $to </p> <p> <strong> Password : </strong> $password  </p>";
 		$headers = array('Content-Type: text/html; charset=UTF-8');	
