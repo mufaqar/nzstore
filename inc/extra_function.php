@@ -16,8 +16,6 @@ function remove_admin_bar() {
   }
 }
 
-
-
 /* Roles & Capabilities */
 add_role('agent', 'Agent', array(
     'read' => true, // True allows that capability, False specifically removes it.
@@ -30,11 +28,6 @@ add_role('agent', 'Agent', array(
 ));
 
 add_role( 'technician', 'Technician', get_role( 'agent' )->capabilities );
-
-
-
-
-
 
 
 add_filter( 'manage_tickets_posts_columns', 'set_custom_edit_tickets_columns' );    
