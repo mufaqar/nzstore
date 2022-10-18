@@ -11,7 +11,7 @@
                     <a href="<?php echo home_url(); ?>"> <img src="<?php bloginfo('template_directory'); ?>/reources/images/left arrow.png" class="arrow position-absolute" alt="back arrow"> </a>
                     <h2 class="">Create Agent Profile</h2>   
                     <p>REGISTER FOR YOUR SMARTPHONES, LAPTOPS, IPAD, MACBOOKS & PERIPHERALS</p>
-                        <div class="pl-4 pt-3 pr-4">
+                        <div id="first_step" class="pl-4 pt-3 pr-4 ">
                             
                         <div class="form-group w-100  mb-2">
                                 <label for="compnay_name">Your Name</label>
@@ -55,10 +55,10 @@
                     <div  class="finish_step step_wrapper d-flex justify-content-center flex-column align-items-center text-center">            
                         <div class="content mt-5">
                             <div class="right"><img src="<?php bloginfo('template_directory'); ?>/reources/images/img 3.png" alt=""></div>
-                            <h1 class="finished">Finished!</h1>
-                            <h2 class="looking">Your Request Sent</h2>
-                            <p class="find_information">We have now sent you an Email for varification. Please check and activate your account</p>             
-                            <a href="<?php echo home_url(); ?>" class="btn_primary mb-5">Go to the front</a>
+                            <h1 class="finished">Your Request Sent!</h1>
+                          
+                            <p class="find_information m-5">We have now sent you an Email for varification. Please check and activate your account</p>             
+                            
                         </div>                    
                     </div>
                 </div>    
@@ -104,10 +104,11 @@
                     },   
                     success: function(data){ 
                         if(data.code==0) {
-                          // alert(data.message);
+                          alert(data.message);
                         }  
                         else {
-                           $("#last_step").css("display", "flex");                      
+                            $("#first_step").css("display", "none");  
+                            $("#last_step").css("display", "flex");                      
                         }      
                     }
             
