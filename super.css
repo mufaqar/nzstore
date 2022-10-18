@@ -21,7 +21,7 @@
   padding: 8px 1.7rem;
   color: rgba(255, 148, 26, 1);
 }
-.orders_table td span.status.Cancel {
+.orders_table td span.status.171 {
   background: rgba(241, 49, 49, 0.1);
   border-radius: 31.8209px;
   padding: 8px 2rem;
@@ -170,7 +170,7 @@ tbody tr:last-child {
 }
 .admin_parrent .toggle_btn {
   position: absolute;
-  top: -1.2rem;
+  top: -6.2rem;
   width: 70%;
 }
 ._user_profile {

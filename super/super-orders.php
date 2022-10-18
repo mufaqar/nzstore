@@ -18,7 +18,7 @@
                 </div>
             </div>
             <section id="div1" class="targetDiv activediv tablediv">
-            <table id="invoice_orders" class="table table-striped orders_table" style="width:100%">
+            <table id="invoice_orders" class="table table-striped orders_table export_table" style="width:100%">
             <thead>
                         <tr>
                             <th>Sr #</th>

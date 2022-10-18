@@ -34,10 +34,13 @@
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<?php if ( is_singular() ) wp_enqueue_script('comment-reply'); ?>
 	<?php wp_head(); ?>
+	<link rel="stylesheet" href=" https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href=" https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css"> 
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" />	
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/reources/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/reources/css/slick-crousel.css" />	
 	<link rel="icon" type="image/x-icon" href="<?php bloginfo('template_directory'); ?>/reources/images/logo.png">
+	
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/super.css" />	
 	
 </head>

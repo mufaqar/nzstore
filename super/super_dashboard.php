@@ -5,7 +5,7 @@
 <div class="admin_parrent">
     <?php toggleTabss(); ?>
     <section id="div1" class="targetDiv activediv tablediv">
-        <table id="alltickets" class="table table-striped orders_table" style="width:100%">
+        <table id="all_tickets" class="table table-striped orders_table export_table" style="width:100%">
             <thead>
                     <tr>
                             <th>Sr #</th>
@@ -73,6 +73,8 @@
 
            
         </table>
+
+
 
     </section>
     
