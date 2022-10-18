@@ -104,10 +104,10 @@
                     },   
                     success: function(data){ 
                         if(data.code==0) {
-                           alert(data.message);
+                          // alert(data.message);
                         }  
                         else {
-                           $(".sucess_message").css("display", "flex");                      
+                           $("#last_step").css("display", "flex");                      
                         }      
                     }
             
