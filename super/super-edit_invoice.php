@@ -6,16 +6,7 @@ $pid = $_REQUEST['id'];
 $ticket_id  = get_post_meta($pid, 'order_id', true ); 
 $user_id = get_post_meta( $pid, 'invoice_uid', true );
 $user_info = get_userdata($user_id);  
-
 $agent_email = $user_info->user_email;
-
-
-
-
-
-
-
-
 ?> 
  <?php include('navigation.php'); ?>
  <?php global $current_user; wp_get_current_user();  $uid = $current_user->ID;  ?>
