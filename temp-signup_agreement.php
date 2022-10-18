@@ -100,12 +100,8 @@ One of our sales team will contact you at your preferred time to discuss more an
                         <li> Warranty repair cannot be checked straight away. We need reasonable time to check and fix it. </li>
                         <li> Software/ operating system installation if a virus is infected or corrupted by customer negligence or misuse or any third-party software is not working, no responsibility is taken. </li>
                         <li>I read, agreed and acknowledged the above rubrics.</li>
-                    </ul>
-                        
+                    </ul>                        
                     </div>
-                                      
-                   
-                    
                     <img src="<?php bloginfo('template_directory'); ?>/reources/images/red cross.png" alt="" class="_cross">
                 </div>
             </form>
