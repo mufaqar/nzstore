@@ -9,8 +9,7 @@ $pid = $_REQUEST['id'];?>
     </div>
     <div class="_form  p-4 pt-5 pb-5">
     <form class="update_ticket" id="update_ticket" action="#" > 
-            <div class="row">
-                
+            <div class="row">                
                 <div class="col-md-6 mb-3">
                     <label for="">Inovice Id</label>
                     <div class="_select">
@@ -18,8 +17,7 @@ $pid = $_REQUEST['id'];?>
                         <input type="hidden" value="<?php echo $uid ?>"  id="uid" >
                         <input type="hidden" value="<?php echo $pid ?>"  id="pid" >
                     </div>
-                </div>
-                
+                </div>                
                 <div class="col-md-6 mt-3 mt-md-0 mb-3">
                     <label for="">Agent</label>
                     <div class="_select">
