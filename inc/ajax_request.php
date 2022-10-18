@@ -794,11 +794,22 @@ function agent_create_signup() {
 	  
 
 	  $user_id = wp_insert_user($user_data);
-	  sendmail_signup($username,$password);
+	 // sendmail_signup($username,$password);
 	  if (!is_wp_error($user_id)) {	
 		update_user_meta( $user_id,'business_name', $business_name);	 
 		update_user_meta( $user_id,'business_phone', $business_phone);	  
-		update_user_meta( $user_id,'postal_code', $postal_code);	    
+		update_user_meta( $user_id,'postal_code', $postal_code);	 
+
+		
+			$code = sha1( $user_id . time() );
+			$activation_link = add_query_arg( array( 'key' => $code, 'user' => $user_id ), get_permalink('/email-confirmation'));
+			add_user_meta( $user_id, 'has_to_be_activated', $code, true );
+			wp_mail( $data['user_email'], 'ACTIVATION SUBJECT', 'HERE IS YOUR ACTIVATION LINK: ' . $activation_link );
+	   
+		
+		
+
+
 	
 		echo wp_send_json( array('code' => 200 , 'message'=>__('We have Created an account for you.')));
 	  } else {
