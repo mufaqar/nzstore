@@ -7,8 +7,10 @@ $ticket_id  = get_post_meta($pid, 'order_id', true );
 $user_id = get_post_meta( $pid, 'invoice_uid', true );
 $user_info = get_userdata($user_id);  
 
+$agent_email = $user_info->user_email;
 
-print_r($user_info);
+
+
 
 
 
@@ -47,7 +49,7 @@ print_r($user_info);
                 <div class="col-md-6 mt-3 mt-md-0 mb-3">
                     <label for="">Agent</label>
                     <div class="_select">
-                        <input type="text" value="<?php echo  $user_info->user_email  ?>" disabled>
+                        <input type="text" value="<?php echo  $agent_email ?>" disabled>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
