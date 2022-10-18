@@ -804,7 +804,7 @@ function agent_create_signup() {
 			$code = sha1( $user_id . time() );
 			$activation_link = add_query_arg( array( 'key' => $code, 'user' => $user_id ), get_permalink('/email-confirmation'));
 			add_user_meta( $user_id, 'has_to_be_activated', $code, true );
-			wp_mail( $agent_email, 'ACTIVATION SUBJECT', 'HERE IS YOUR ACTIVATION LINK: ' . $activation_link );
+			mail( $agent_email, 'ACTIVATION SUBJECT', 'HERE IS YOUR ACTIVATION LINK: ' . $activation_link );
 	   
 		
 		
