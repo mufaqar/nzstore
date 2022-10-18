@@ -1,6 +1,16 @@
 <?php /* Template Name: Super-EditInvoice  */
 get_header('admin');
-$pid = $_REQUEST['id'];?> 
+$pid = $_REQUEST['id'];
+
+
+$ticket_id  = get_post_meta($pid, 'order_id', true ); 
+
+$user_id = get_post_meta( $ticket_id, 'order_uid', true );
+$user_info = get_userdata($user_id);  
+
+
+
+?> 
  <?php include('navigation.php'); ?>
  <?php global $current_user; wp_get_current_user();  $uid = $current_user->ID;  ?>
 <div class="custom_container catering_form mt-5 mb-3">
@@ -17,11 +27,23 @@ $pid = $_REQUEST['id'];?>
                         <input type="hidden" value="<?php echo $uid ?>"  id="uid" >
                         <input type="hidden" value="<?php echo $pid ?>"  id="pid" >
                     </div>
+                </div> 
+                <div class="col-md-6 mb-3">
+                    <label for="">Ticket Id</label>
+                    <div class="_select">
+                        <input type="text" value="<?php echo $ticket_id ?>" placeholder="<?php echo $ticket_id ?>"  disabled>
+                    </div>
+                </div> 
+                <div class="col-md-6 mb-3">
+                    <label for="">Model No</label>
+                    <div class="_select">
+                        <input type="text" value="<?php echo get_the_title($ticket_id); ?>" placeholder="<?php echo get_the_title($ticket_id); ?>" disabled>
+                    </div>
                 </div>                
                 <div class="col-md-6 mt-3 mt-md-0 mb-3">
                     <label for="">Agent</label>
                     <div class="_select">
-                        <input type="text" value="<?php echo get_post_meta($pid, 'order_id', true ); ?>" id="address" disabled>
+                        <input type="text" value="<?php echo  $user_info->user_login  ?>" disabled>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
