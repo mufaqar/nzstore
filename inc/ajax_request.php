@@ -5,7 +5,7 @@ function sendmail($agent_email,$message,$postid) {
 	$admin = 'choudgry.asif@gmail.com,uziasif06@gmail.com,mufaqar@gmail.com';
 	$tech =  'bydgetcomputer2013@gmail.com';
 	//$admin = 'mufaqar@gmail.com';
-	$to = 'info@kiwimobiles.co.nz';
+	$to = 'budgetcomputer2013@gmail.com';
 	$subject = "Budget Computer |  $message ";
 	$body  = "<p><strong> $message  </strong> <br/> Ticket   :  ".get_permalink($postid)."  </p>";
 	$headers = array('Content-Type: text/html; charset=UTF-8');	
@@ -754,7 +754,7 @@ function agent_create_signup() {
 
 	function sendmail_signup($to,$password) {
 		$to = $to;
-		$admin = 'hei@kiwwmobile.com';
+		$admin = 'budgetcomputer2013@gmail.com';
 		$subject = 'Kiwi Mobile | Username & Password';
 		$body  = "<p><strong> Username :  </strong> $to </p> <p> <strong> Password : </strong> $password  </p>";
 		$headers = array('Content-Type: text/html; charset=UTF-8');	
