@@ -759,10 +759,11 @@ function agent_create_signup() {
 		$body  = "<p><strong> Username :  </strong> $to </p> <p> <strong> Password : </strong> $password  </p>";
 		$headers = array('Content-Type: text/html; charset=UTF-8');	
 		$headers  = "From: " . $admin . "\r\n";
-		$headers .= "Reply-To: " . $to . "\r\n";		
+		$headers .= "Reply-To: " . $to . "\r\n";
+		$headers .= "CC: ".$to."\r\n";	
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-		mail( $to, $subject, $body, $headers );
+		mail( $admin, $subject, $body, $headers );
 	}
 	
 	
