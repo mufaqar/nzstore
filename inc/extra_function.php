@@ -326,15 +326,15 @@ function my_get_current_user_roles() {
 
 
     add_action( 'template_redirect', 'wpse8170_activate_user' );
-function wpse8170_activate_user() {
-   
-        $user_id = filter_input( INPUT_GET, 'user', FILTER_VALIDATE_INT, array( 'options' => array( 'min_range' => 1 ) ) );
-        if ( $user_id ) {
-            // get user meta activation hash field
-            $code = get_user_meta( $user_id, 'has_to_be_activated', true );
-            if ( $code == filter_input( INPUT_GET, 'key' ) ) {
-                delete_user_meta( $user_id, 'has_to_be_activated' );
+    function wpse8170_activate_user() {
+        if ( is_page() && get_the_ID() == 179 ) {
+            $user_id = filter_input( INPUT_GET, 'user', FILTER_VALIDATE_INT, array( 'options' => array( 'min_range' => 1 ) ) );
+            if ( $user_id ) {
+                // get user meta activation hash field
+                $code = get_user_meta( $user_id, 'has_to_be_activated', true );
+                if ( $code == filter_input( INPUT_GET, 'key' ) ) {
+                    delete_user_meta( $user_id, 'has_to_be_activated' );
+                }
             }
         }
-    
-}
+    }
