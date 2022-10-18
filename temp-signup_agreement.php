@@ -53,24 +53,8 @@
                     <div  class="finish_step step_wrapper d-flex justify-content-center flex-column align-items-center text-center">            
                         <div class="content mt-5">
                             <div class="right"><img src="<?php bloginfo('template_directory'); ?>/reources/images/img 3.png" alt=""></div>
-                            <h1 class="finished">Your Request Sent!</h1>
-                          
-                            <p class="find_information m-5">"Thanks for subscribing us and welcome to be the business partner for all of your
-Smartphones, laptops, iPad, and  MacBooks are repaired at competitive prices. After repair warranty
-Special discount for the business  having turn over more than $5000/month
-We at BUDGET COMPUTERS AND KIWI MOBILES, HAVING HIGHLY SKILLED TECHNICIANS, QUALIFIED FROM NEW ZEALAND POLYTECH IN IT. WE HAVE HI-TECH LAB WITH LATEST TOOLS TO DIAGNOSE THE FAULY AND REPAIR, WE ALSO SPECIALISED IN MOTHERBOARDS 
-DIAGNOSTIC AND PART REPLACEMENTS, i.e., IC, VGA card, data recovery, charging slot repair.
-
-One of our sales team will contact you at your preferred time to discuss more and answer your queries 
-		"									
-									
-									
-									
-									
-									
-									
-									
-</p>             
+                            <h1 class="finished">Your Request Sent!</h1>                          
+                            <p class="find_information m-5">Please check your email inbox and activate your account </p>             
                             
                         </div>                    
                     </div>
