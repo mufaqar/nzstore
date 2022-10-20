@@ -1,6 +1,5 @@
 <?php
 
-
 function sendmail($agent_email,$message,$postid) {
 	$admin = 'choudgry.asif@gmail.com,uziasif06@gmail.com,bydgetcomputer2013@gmail.com,mufaqar@gmail.com';
 	$to = 'budgetcomputer2013@gmail.com';
@@ -16,10 +15,6 @@ function sendmail($agent_email,$message,$postid) {
 	update_post_meta( $postid, 'notification', $count+1); 
 
 	}
-
-
-
-
 
 add_action('wp_ajax_add_ticket', 'add_ticket', 0);
 add_action('wp_ajax_nopriv_add_ticket', 'add_ticket');
