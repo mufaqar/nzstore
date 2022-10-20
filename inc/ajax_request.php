@@ -774,21 +774,14 @@ function agent_create_signup() {
 
 		$admin = "budgetcomputer2013@gmail.com";
 		$headers = array('Content-Type: text/html; charset=UTF-8');	
-		$headers  = "From: " . $admin . "\r\n";
+		$headers .= "From: " . $admin . "\r\n";
 		$headers .= "Reply-To: " . $admin . "\r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
 
-	  $user_data = array(
-				'user_login' => $username,
-				'user_email' => $agent_email,
-				'user_pass' => $password,	
-				'display_name' => $agent_name,
-				'role' => 'agent'
-				);
-
-
+	
+		$user_id = 40;
 
 		$code = sha1( $user_id . time() );
 		$activation_link = add_query_arg( array( 'key' => $code, 'user' => $user_id ), get_permalink(179));
@@ -796,6 +789,13 @@ function agent_create_signup() {
 		mail($agent_email, 'ACTIVATION ACCOUNT', 'HERE IS YOUR ACTIVATION LINK: ' . $activation_link );	
 		echo wp_send_json( array('code' => 200 , 'message'=>__('We have Created an account for you.')));
 	  
+		$user_data = array(
+			'user_login' => $username,
+			'user_email' => $agent_email,
+			'user_pass' => $password,	
+			'display_name' => $agent_name,
+			'role' => 'agent'
+			);
 
 	//   $user_id = wp_insert_user($user_data);
 	
