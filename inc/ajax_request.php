@@ -750,7 +750,7 @@ function agent_create_signup() {
 		$business_phone = $_POST['business_phone'];  
 		$postal_code = $_POST['postal_code'];  
 	
-		$headers = "From: reply@kiwimobiles.co.nz" . "\r\n" .
+		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" .
 		"CC: mufaqar@gmail.com";
 
 
