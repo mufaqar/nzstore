@@ -24,7 +24,7 @@ get_header('landing');
             </div>
             <div class="col-sm-12 right col-md-6 p-3">
                  <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:350px" > <br/><br/>
-                   <h3>Thank you for joining us . Please check email and use password that you send you in email</h3> 
+                   <h3>Thank you for joining us</h3> 
                    <p>Please check email and use password that you send you in email</p> 
                    <h3><a href="<?php echo home_url(); ?>">Login</a> </h3>                 
               
