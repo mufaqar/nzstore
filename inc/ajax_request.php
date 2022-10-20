@@ -741,27 +741,6 @@ add_action('wp_ajax_nopriv_agent_create_signup', 'agent_create_signup');
 function agent_create_signup() {	
 	
 	
-	
-
-	
-
-	function sendmail_confirmation($to,$password) {
-		$to = $to;
-		$admin = 'budgetcomputer2013@gmail.com,choudhry.asif@gmail.com,mufaqar@gmail.com';
-		$subject = 'Kiwi Mobile | Agent Registraion';
-		$body  = "<p><strong> Username :  </strong> $to </p> <p> <strong> Password : </strong> $password  </p>";
-		$body  .= "<p>Thanks for subscribing to us, and welcome to be the business partner for all of your IT solutions </p>";
-		$body  .= "<p>We @ BUDGET COMPUTERS AND KIWI MOBILES HAVING HIGHLY SKILLED TECHNICIANS, QUALIFIED FROM NEW ZEALAND POLYTECH IN IT. 
-		WE HAVE A HI-TECH LAB WITH THE LATEST TOOLS TO DIAGNOSE THE FAULT AND REPAIR THEM, WE ALSO SPECIALISED IN MOTHERBOARDS 				
-		DIAGNOSTIC AND PART REPLACEMENTS, i.e., IC, VG </p>";
-		$headers = array('Content-Type: text/html; charset=UTF-8');	
-		$headers  = "From: " . $admin . "\r\n";
-		$headers .= "Reply-To: " . $to . "\r\n";
-		$headers .= "CC: ".$to."\r\n";	
-		$headers .= "MIME-Version: 1.0\r\n";
-		$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-		mail( $to, $subject, $body, $headers );
-	}
 		global $wpdb;
 		$username = $_POST['agent_email'];
 		$agent_email = $_POST['agent_email'];
@@ -770,8 +749,6 @@ function agent_create_signup() {
 		$business_name = $_POST['business_name'];  
 		$business_phone = $_POST['business_phone'];  
 		$postal_code = $_POST['postal_code'];  
-		$password = generateRandomString();
-
 	
 		$headers = "From: reply@kiwimobiles.co.nz" . "\r\n" .
 		"CC: mufaqar@gmail.com";
