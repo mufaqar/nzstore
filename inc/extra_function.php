@@ -323,8 +323,7 @@ function my_get_current_user_roles() {
 
     
 	function sendmail_agent($to,$password) {
-		$to = $to;
-	
+		$to = $to;	
 		$subject = 'Kiwi Mobile | Agent Login Details';
 		$body  = "<p><strong> Username :  </strong> $to </p> <p> <strong> Password : </strong> $password  </p>";
 		$body  .= "<p>Thanks for subscribing to us, and welcome to be the business partner for all of your IT solutions </p>";
@@ -332,8 +331,7 @@ function my_get_current_user_roles() {
 		WE HAVE A HI-TECH LAB WITH THE LATEST TOOLS TO DIAGNOSE THE FAULT AND REPAIR THEM, WE ALSO SPECIALISED IN MOTHERBOARDS 				
 		DIAGNOSTIC AND PART REPLACEMENTS, i.e., IC, VG </p>";
         $body  .= "<p>Now you can login by using this link </p>";
-		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" .
-		"CC: mufaqar@gmail.com";
+		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" ;
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 		mail( $to, $subject, $body, $headers );
@@ -348,11 +346,11 @@ function my_get_current_user_roles() {
 
     function sendmail_admin($user_email) {
 
-		$admin = 'mufaqar@gmail.com';
-		$subject = 'Kiwi Mobile | New Agent Regesterd {admin notifiction}';
+		$admin = 'choudgry.asif@gmail.com';
+		$subject = 'Kiwi Mobile | New Agent Registerd  ';
 		$body  = "<p><strong> Email Address :  </strong> $user_email </p> ";
 		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" .
-		"CC: mufaqar@gmail.com";
+		"CC: uziasif06@gmail.com";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 		mail( $admin, $subject, $body, $headers );
@@ -387,7 +385,7 @@ function my_get_current_user_roles() {
                     wp_set_password( $password, $user_id );
                     sendmail_agent($user_email , $password);
                     sendmail_admin($user_email);
-                    die($user_email);
+                  
                 }
             }
         }
