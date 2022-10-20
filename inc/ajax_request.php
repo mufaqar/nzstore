@@ -2,24 +2,19 @@
 
 
 function sendmail($agent_email,$message,$postid) {
-	$admin = 'choudgry.asif@gmail.com,uziasif06@gmail.com,mufaqar@gmail.com';
-	$tech =  'bydgetcomputer2013@gmail.com';
-	//$admin = 'mufaqar@gmail.com';
+	$admin = 'choudgry.asif@gmail.com,uziasif06@gmail.com,bydgetcomputer2013@gmail.com,mufaqar@gmail.com';
 	$to = 'budgetcomputer2013@gmail.com';
 	$subject = "Budget Computer |  $message ";
-	$body  = "<p><strong> $message  </strong> <br/> Ticket   :  ".get_permalink($postid)."  </p>";
-	$headers = array('Content-Type: text/html; charset=UTF-8');	
-	$headers  = "From: " . $to . "\r\n";
-	$headers .= "Reply-To: " . $agent_email . "\r\n";
-	$headers .= "CC: ".$agent_email."\r\n";
-	$headers .= "CC: ".$tech."\r\n";
+	$body  = "<p><strong> $message  </strong> <br/> Ticket   :  ".get_permalink($postid)."  </p>";	
+	$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" .
+	"CC: $agent_email";
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 	mail( $admin, $subject, $body, $headers );
 	$get_notifcation = get_post_meta( $postid, 'notification', true); 
 	$count = $get_notifcation;
 	update_post_meta( $postid, 'notification', $count+1); 
-	//echo "Email sent to : $admin and $agent_email";	
+
 	}
 
 
