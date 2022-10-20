@@ -773,11 +773,7 @@ function agent_create_signup() {
 		$password = generateRandomString();
 
 		$admin = "budgetcomputer2013@gmail.com";
-		$headers = array('Content-Type: text/html; charset=UTF-8');	
-		$headers .= "From: " . $admin . "\r\n";
-		$headers .= "Reply-To: " . $admin . "\r\n";
-		$headers .= "MIME-Version: 1.0\r\n";
-		$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+		$headers = "From: info@exkiwimobile.co.nz" . "\r\n" .
 
 
 	
