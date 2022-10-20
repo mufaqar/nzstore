@@ -42,7 +42,7 @@
                             <div class="_select">                       
                     <input type="checkbox" id="terms_conditions" name="terms_conditions" value="Accept" required>
                     <label for="terms_conditions">Accept Terms and Conditions</label> <br/>
-                    <a id="terms_btn" class="btn_primary">Read Terms and Condtions</a>
+                    <a id="terms_btn" class="btn_primary">Read Terms and Conditions</a>
                     </div>
                             </div>
                             <button type="submit" class="btn_primary d-block next">Sign Up</button>                   
