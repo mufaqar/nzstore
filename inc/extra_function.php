@@ -334,6 +334,8 @@ function my_get_current_user_roles() {
         $body  .= "<p>Now you can login by using this link </p>";
 		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" .
 		"CC: mufaqar@gmail.com";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 		mail( $to, $subject, $body, $headers );
 
         
@@ -351,6 +353,8 @@ function my_get_current_user_roles() {
 		$body  = "<p><strong> Email Address :  </strong> $user_email </p> ";
 		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" .
 		"CC: mufaqar@gmail.com";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 		mail( $admin, $subject, $body, $headers );
 	}
 	
