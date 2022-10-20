@@ -6,9 +6,6 @@ include_once('class-wp-bootstrap-navwalker.php');
 include_once('ajax_request.php');
 
 
-//add_role( 'company', 'Company', array( 'read' => true, 'level_0' => true ) );
-//add_role( 'personal', 'Personal', array( 'read' => true, 'level_0' => true ) );
-
 add_action('after_setup_theme', 'remove_admin_bar');
 function remove_admin_bar() {
   if (!current_user_can('administrator') && !is_admin()) {
@@ -16,7 +13,6 @@ function remove_admin_bar() {
   }
 }
 
-/* Roles & Capabilities */
 add_role('agent', 'Agent', array(
     'read' => true, // True allows that capability, False specifically removes it.
     'edit_posts' => true,
