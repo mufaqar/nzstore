@@ -318,19 +318,7 @@ function my_get_current_user_roles() {
 
 
 
-    function sendmail_admin($user_email) {
-		$to = $to;
-		$admin = 'budgetcomputer2013@gmail.com,mufaqar@gmail.com';
-		$subject = 'Kiwi Mobile | New Agent Regesterd ';
-		$body  = "<p><strong> Email Address :  </strong> $user_email </p> ";
-		$headers = array('Content-Type: text/html; charset=UTF-8');	
-		$headers  = "From: " . $admin . "\r\n";
-		$headers .= "Reply-To: " . $to . "\r\n";
-		$headers .= "MIME-Version: 1.0\r\n";
-		$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-		mail( $admin, $subject, $body, $headers );
-	}
-	
+    
   
 
     
@@ -344,13 +332,28 @@ function my_get_current_user_roles() {
 		WE HAVE A HI-TECH LAB WITH THE LATEST TOOLS TO DIAGNOSE THE FAULT AND REPAIR THEM, WE ALSO SPECIALISED IN MOTHERBOARDS 				
 		DIAGNOSTIC AND PART REPLACEMENTS, i.e., IC, VG </p>";
         $body  .= "<p>Now you can login by using this link </p>";
-		$headers = array('Content-Type: text/html; charset=UTF-8');	
-		$headers  = "From: " . $admin . "\r\n";
+		$headers  = array('Content-Type: text/html; charset=UTF-8');	
+		$headers .= "From: " . $admin . "\r\n";
 		$headers .= "Reply-To: " . $to . "\r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 		mail( $to, $subject, $body, $headers );
 	}
+
+
+    function sendmail_admin($user_email) {
+
+		$admin = 'budgetcomputer2013@gmail.com,mufaqar@gmail.com';
+		$subject = 'Kiwi Mobile | New Agent Regesterd ';
+		$body  = "<p><strong> Email Address :  </strong> $user_email </p> ";
+		$headers = array('Content-Type: text/html; charset=UTF-8');	
+		$headers .= "From: " . $admin . "\r\n";
+		$headers .= "Reply-To: " . $admin . "\r\n";
+		$headers .= "MIME-Version: 1.0\r\n";
+		$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+		mail( $admin, $subject, $body, $headers );
+	}
+	
 	
 
 
@@ -367,7 +370,9 @@ function my_get_current_user_roles() {
 
                     $user_info = get_userdata($user_id);
                     $user_email =  $user_info->user_login;
-                    sendmail_thanks($user_email , '12454698');
+                    $password = 'HelloWorld';
+                    wp_set_password( $password, $user_id );
+                    sendmail_thanks($user_email , $password);
                     sendmail_admin($user_email);
                 }
             }
