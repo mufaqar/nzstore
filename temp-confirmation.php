@@ -33,9 +33,7 @@ get_header('landing');
 
     </section>
 
-    <!--x login section x -->
 
-  
 
 
     <?php wp_footer(); ?>
@@ -47,31 +45,3 @@ get_header('landing');
 
         </body>
     </html>
-<script type="text/javascript">   
-   jQuery(document).ready(function($) {    
-        $("#loginform").submit(function(e) {          
-            e.preventDefault();
-            var username = jQuery('#username').val();
-            var password = jQuery('#password').val();       
-            jQuery.ajax({
-            type:"POST",
-            url:"<?php echo admin_url('admin-ajax.php'); ?>",
-            data: {
-                action: "userlogin",
-                username : username,
-                password : password
-            },
-            success: function(response){
-              // alert(response.message);
-               window.location.href = "<?php echo home_url('/login'); ?>";
-            },
-            error: function(response) {
-                alert(response.message);
-            }
-            });
-        });
-	
-	});
-	</script>
-
-
