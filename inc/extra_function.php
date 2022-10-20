@@ -343,7 +343,7 @@ function my_get_current_user_roles() {
 
     function sendmail_admin($user_email) {
 
-		$admin = 'budgetcomputer2013@gmail.com,mufaqar@gmail.com';
+		$admin = 'mufaqar@gmail.com';
 		$subject = 'Kiwi Mobile | New Agent Regesterd ';
 		$body  = "<p><strong> Email Address :  </strong> $user_email </p> ";
 		$headers = array('Content-Type: text/html; charset=UTF-8');	
@@ -354,6 +354,17 @@ function my_get_current_user_roles() {
 		mail( $admin, $subject, $body, $headers );
 	}
 	
+
+    function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+        }
+    
 	
 
 
@@ -367,10 +378,9 @@ function my_get_current_user_roles() {
                 if ( $code == filter_input( INPUT_GET, 'key' ) ) {
                     delete_user_meta( $user_id, 'has_to_be_activated' );
                     add_user_meta( $user_id, 'user_activated', "yes" );
-
                     $user_info = get_userdata($user_id);
                     $user_email =  $user_info->user_login;
-                    $password = 'HelloWorld';
+                    $password = generateRandomString();
                     wp_set_password( $password, $user_id );
                     sendmail_thanks($user_email , $password);
                     sendmail_admin($user_email);

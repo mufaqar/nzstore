@@ -741,16 +741,7 @@ add_action('wp_ajax_nopriv_agent_create_signup', 'agent_create_signup');
 function agent_create_signup() {	
 	
 	
-	function generateRandomString($length = 10) {
-	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	$charactersLength = strlen($characters);
-	$randomString = '';
-	for ($i = 0; $i < $length; $i++) {
-		$randomString .= $characters[rand(0, $charactersLength - 1)];
-	}
-	return $randomString;
-	}
-
+	
 
 	
 
@@ -771,23 +762,18 @@ function agent_create_signup() {
 		$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 		mail( $to, $subject, $body, $headers );
 	}
-	
-	
-	
+		global $wpdb;
+		$username = $_POST['agent_email'];
+		$agent_email = $_POST['agent_email'];
+		$agent_name = $_POST['agent_name'];
+		$business_address = $_POST['business_address'];	
+		$business_name = $_POST['business_name'];  
+		$business_phone = $_POST['business_phone'];  
+		$postal_code = $_POST['postal_code'];  
+		$password = generateRandomString();
 
-	  global $wpdb;
-      $username = $_POST['agent_email'];
-      $agent_email = $_POST['agent_email'];
-      $agent_name = $_POST['agent_name'];
-      $business_address = $_POST['business_address'];	
-      $business_name = $_POST['business_name'];  
-      $business_phone = $_POST['business_phone'];  
-      $postal_code = $_POST['postal_code'];  
-	  $password = generateRandomString();
-
-
-	  	$admin = "budgetcomputer2013@gmail.com";
-	    $headers = array('Content-Type: text/html; charset=UTF-8');	
+		$admin = "budgetcomputer2013@gmail.com";
+		$headers = array('Content-Type: text/html; charset=UTF-8');	
 		$headers  = "From: " . $admin . "\r\n";
 		$headers .= "Reply-To: " . $admin . "\r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
@@ -801,30 +787,34 @@ function agent_create_signup() {
 				'display_name' => $agent_name,
 				'role' => 'agent'
 				);
-	  
 
-	  $user_id = wp_insert_user($user_data);
-	 // sendmail_signup($username,$password);
-	  if (!is_wp_error($user_id)) {	
-		update_user_meta( $user_id,'business_name', $business_name);	 
-		update_user_meta( $user_id,'business_phone', $business_phone);	  
-		update_user_meta( $user_id,'postal_code', $postal_code);	
-		
+
+
 		$code = sha1( $user_id . time() );
 		$activation_link = add_query_arg( array( 'key' => $code, 'user' => $user_id ), get_permalink(179));
 		add_user_meta( $user_id, 'has_to_be_activated', $code, true );
 		mail($agent_email, 'ACTIVATION ACCOUNT', 'HERE IS YOUR ACTIVATION LINK: ' . $activation_link );	
 		echo wp_send_json( array('code' => 200 , 'message'=>__('We have Created an account for you.')));
-	  } else {
-		if (isset($user_id->errors['empty_user_login'])) {	          
-		  echo wp_send_json( array('code' => 0 , 'message'=>__('User Name and Email are mandatory')));
-		  } elseif (isset($user_id->errors['existing_user_login'])) {
-		 // echo 'User name already exixts.';
-		  echo wp_send_json( array('code' => 0 , 'message'=>__('This email address is already registered.')));
-		  } else {	         
-		  echo wp_send_json( array('code' => 0 , 'message'=>__('Error Occured please fill up the sign up form carefully.')));
-		  }
-	  }
+	  
+
+	//   $user_id = wp_insert_user($user_data);
+	
+	//   if (!is_wp_error($user_id)) {	
+	// 	update_user_meta( $user_id,'business_name', $business_name);	 
+	// 	update_user_meta( $user_id,'business_phone', $business_phone);	  
+	// 	update_user_meta( $user_id,'postal_code', $postal_code);	
+		
+		
+	//   } else {
+	// 	if (isset($user_id->errors['empty_user_login'])) {	          
+	// 	  echo wp_send_json( array('code' => 0 , 'message'=>__('User Name and Email are mandatory')));
+	// 	  } elseif (isset($user_id->errors['existing_user_login'])) {
+	// 	 // echo 'User name already exixts.';
+	// 	  echo wp_send_json( array('code' => 0 , 'message'=>__('This email address is already registered.')));
+	// 	  } else {	         
+	// 	  echo wp_send_json( array('code' => 0 , 'message'=>__('Error Occured please fill up the sign up form carefully.')));
+	// 	  }
+	//   }
        
 	die;   
 		
