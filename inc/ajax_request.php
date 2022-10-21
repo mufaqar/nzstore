@@ -746,6 +746,8 @@ function agent_create_signup() {
 		$postal_code = $_POST['postal_code'];  
 		$subject = 'Kiwi Mobile | Agent Account Activation';	
 		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" ;
+		$headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
 		$body  = "<img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png'></img> ";
 		$body  .= "<p><strong> 'HERE IS YOUR ACTIVATION LINK: :  </strong> $activation_link </p> ";
