@@ -743,6 +743,18 @@ function agent_create_signup() {
 		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" .
 		"CC: mufaqar@gmail.com";
 
+		$user_id = 45;
+
+
+		$code = sha1( $user_id . time() );
+		$activation_link = add_query_arg( array( 'key' => $code, 'user' => $user_id ), get_permalink(179));
+		add_user_meta( $user_id, 'has_to_be_activated', $code, true );
+		mail($agent_email, 'Agent Account Activation', 'HERE IS YOUR ACTIVATION LINK: ' . $activation_link , $headers);	
+		echo wp_send_json( array('code' => 200 , 'message'=>__('We have Created an account for you.')));
+
+
+		die();
+
 
 	
 
