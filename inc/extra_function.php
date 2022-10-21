@@ -322,7 +322,6 @@ function my_get_current_user_roles() {
 		$to = $to;	
         $home_url =  home_url();
 		$subject = 'Kiwi Mobile | Agent Login Details';
-
         $body  = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
 		$body  .= "<p><strong> Username :  </strong> $to </p> <p> <strong> Password : </strong> $password  </p>";
 		$body  .= "<p>Dear User</p>
