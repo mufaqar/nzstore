@@ -731,7 +731,12 @@ add_action('wp_ajax_nopriv_agent_create_signup', 'agent_create_signup');
 function agent_create_signup() {	
 	
 	
+
+
 		global $wpdb;
+
+		$code = sha1( $user_id . time() );
+		$activation_link = add_query_arg( array( 'key' => $code, 'user' => $user_id ), get_permalink(179));
 		$username = $_POST['agent_email'];
 		$agent_email = $_POST['agent_email'];
 		$agent_name = $_POST['agent_name'];
@@ -739,17 +744,21 @@ function agent_create_signup() {
 		$business_name = $_POST['business_name'];  
 		$business_phone = $_POST['business_phone'];  
 		$postal_code = $_POST['postal_code'];  
+
+		$subject = 'Kiwi Mobile | Agent Account Activation';
 	
 		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" .
 		"CC: mufaqar@gmail.com";
 
+		$body  = "<p><strong> 'HERE IS YOUR ACTIVATION LINK: :  </strong> $activation_link </p> ";
+		$body  .= "<p><strong> Email Address :  </strong> $user_email </p> ";
+
 		$user_id = 45;
 
 
-		$code = sha1( $user_id . time() );
-		$activation_link = add_query_arg( array( 'key' => $code, 'user' => $user_id ), get_permalink(179));
+		
 		add_user_meta( $user_id, 'has_to_be_activated', $code, true );
-		mail($agent_email, 'Agent Account Activation', 'HERE IS YOUR ACTIVATION LINK: ' . $activation_link , $headers);	
+		mail($agent_email, $subject, $body , $headers);	
 		echo wp_send_json( array('code' => 200 , 'message'=>__('We have Created an account for you.')));
 
 
