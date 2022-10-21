@@ -748,9 +748,8 @@ function agent_create_signup() {
 		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" ;
 		$headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-
-		$body  = "<img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png'></img> ";
-		$body  .= "<p><strong> 'HERE IS YOUR ACTIVATION LINK: :  </strong> $activation_link </p> ";
+		$body  = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
+		$body  .= "<p><strong> HERE IS YOUR ACTIVATION LINK: </strong><a href='$activation_link' >Activate your Account</a> </p> ";
 		$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
 		$body  .= "<p><strong> Email:   </strong>repair@kiwimobiles.co.nz  </p> ";
 
