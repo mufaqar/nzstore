@@ -322,11 +322,24 @@ function my_get_current_user_roles() {
 		$to = $to;	
         $home_url =  home_url();
 		$subject = 'Kiwi Mobile | Agent Login Details';
-		$body  = "<p><strong> Username :  </strong> $to </p> <p> <strong> Password : </strong> $password  </p>";
-		$body  .= "<p>Thanks for subscribing to us, and welcome to be the business partner for all of your IT solutions </p>";
-		$body  .= "<p>We @ BUDGET COMPUTERS AND KIWI MOBILES HAVING HIGHLY SKILLED TECHNICIANS, QUALIFIED FROM NEW ZEALAND POLYTECH IN IT. 
-		WE HAVE A HI-TECH LAB WITH THE LATEST TOOLS TO DIAGNOSE THE FAULT AND REPAIR THEM, WE ALSO SPECIALISED IN MOTHERBOARDS 				
-		DIAGNOSTIC AND PART REPLACEMENTS, i.e., IC, VG </p>";
+
+        $body  = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
+		$body  .= "<p><strong> Username :  </strong> $to </p> <p> <strong> Password : </strong> $password  </p>";
+		$body  .= "<p>Dear User</p>
+                        <p>Thanks for subscribing to your online repair centre portal; now you can create your first query for any of your repair issues, the Galaxies series, iPhones, iPods, MacBooks, Laptops, X-BOX, and Gaming Machines.</p>
+                        
+                        <p>We often stock all parts of the products mentioned above to repair fast. Online portal updates of your queries are generated until we receive your product repair and send them back with online tracking details in your dedicated login portal with us. 
+                        </p>
+                        <p>DID: 09 9508717   </p>
+                        <p> DID: 07 3477044   Email: repair@kiwimobiles.co.nz </p>                       
+                                                                    
+                    <h3> WHO ARE WE, AND WHY ARE WE?</h3>
+                        
+                    <p> DID: 09 9508717  </p>
+                    <p> DID: 07 3477044 </p>
+                    <p>  Email: repair@kiwimobiles.co.nz</p>
+                        
+                    </p>www.icsservices.nz  www.smartphonesrepair.co.nz </p> ";
         $body  .= "<p> <a href='$home_url'>Now you can login </a> </p>";
 		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" ;
         $headers .= "MIME-Version: 1.0\r\n";
@@ -339,6 +352,16 @@ function my_get_current_user_roles() {
 		$admin = 'choudgry.asif@gmail.com';
 		$subject = 'Kiwi Mobile | New Agent Registerd  ';
 		$body  = "<p><strong> Email Address :  </strong> $user_email </p> ";
+
+        $body  = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
+		$body  .= "<p><strong> Email Address: </strong> $user_email </p> ";
+		$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
+		$body  .= "<p><strong> Email:   </strong>repair@kiwimobiles.co.nz  </p> ";
+
+
+
+
+
 		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" .
 		"CC: uziasif06@gmail.com";
         $headers .= "MIME-Version: 1.0\r\n";

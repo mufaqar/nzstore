@@ -754,19 +754,6 @@ function agent_create_signup() {
 		$body  .= "<p><strong> Email:   </strong>repair@kiwimobiles.co.nz  </p> ";
 
 		   
-
-		$user_id = 45;
-
-
-		
-		add_user_meta( $user_id, 'has_to_be_activated', $code, true );
-		mail($agent_email, $subject, $body , $headers);	
-		echo wp_send_json( array('code' => 200 , 'message'=>__('We have Created an account for you.')));
-
-
-		die();
-
-
 	
 
 	
@@ -783,13 +770,11 @@ function agent_create_signup() {
 	  if (!is_wp_error($user_id)) {	
 		update_user_meta( $user_id,'business_name', $business_name);	 
 		update_user_meta( $user_id,'business_phone', $business_phone);	  
-		update_user_meta( $user_id,'postal_code', $postal_code);	
-
-		$code = sha1( $user_id . time() );
-		$activation_link = add_query_arg( array( 'key' => $code, 'user' => $user_id ), get_permalink(179));
+		update_user_meta( $user_id,'postal_code', $postal_code);
 		add_user_meta( $user_id, 'has_to_be_activated', $code, true );
-		mail($agent_email, 'Agent Account Activation', 'HERE IS YOUR ACTIVATION LINK: ' . $activation_link , $headers);	
+		mail($agent_email, $subject, $body , $headers);	
 		echo wp_send_json( array('code' => 200 , 'message'=>__('We have Created an account for you.')));
+		
 	  
 		
 		
