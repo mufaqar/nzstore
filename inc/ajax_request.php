@@ -744,11 +744,8 @@ function agent_create_signup() {
 		$business_name = $_POST['business_name'];  
 		$business_phone = $_POST['business_phone'];  
 		$postal_code = $_POST['postal_code'];  
-
-		$subject = 'Kiwi Mobile | Agent Account Activation';
-	
-		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" .
-		"CC: mufaqar@gmail.com";
+		$subject = 'Kiwi Mobile | Agent Account Activation';	
+		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" ;
 
 		$body  = "<p><strong> 'HERE IS YOUR ACTIVATION LINK: :  </strong> $activation_link </p> ";
 		$body  .= "<p><strong> Email Address :  </strong> $user_email </p> ";
