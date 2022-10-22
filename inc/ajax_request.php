@@ -742,15 +742,26 @@ function agent_create_signup() {
 		$business_name = $_POST['business_name'];  
 		$business_phone = $_POST['business_phone'];  
 		$postal_code = $_POST['postal_code'];  
-		$subject = 'Kiwi Mobile | Agent Account Activation';	
-		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" ;
-		$headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-		$body  = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
-		$body  .= "<p><strong> Account Activation Link: </strong><a href='$activation_link' >Activate your Account</a> </p> ";
-		$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
-		$body  .= "<p><strong> Email:   </strong>repair@kiwimobiles.co.nz  </p> ";
 
+
+		function activation_mail($to,$activation_link) {
+
+			$subject = 'Kiwi Mobile | Agent Account Activation';	
+			$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" ;
+			$headers .= "MIME-Version: 1.0\r\n";
+			$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+			$body  = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
+			$body  .= "<p><strong> Account Activation Link: </strong><a href='$activation_link' >Activate your Account</a> </p> ";
+			$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
+			$body  .= "<p><strong> Email:   </strong>repair@kiwimobiles.co.nz  </p> ";
+
+			mail( $to, $subject, $body, $headers );
+
+
+
+		}
+
+		
 		   
 
 	
@@ -772,7 +783,7 @@ function agent_create_signup() {
 
 			update_user_meta( $user_id, 'has_to_be_activated', $code );
 
-			mail($agent_email, $subject, $body , $headers);	
+			activation_mail($agent_email, $activation_link);	
 
 			die();
 
@@ -787,17 +798,11 @@ function agent_create_signup() {
 		update_user_meta( $user_id,'business_name', $business_name);	 
 		update_user_meta( $user_id,'business_phone', $business_phone);	  
 		update_user_meta( $user_id,'postal_code', $postal_code);
-
-	
-
-		
-		
 		
 
 
 
 		echo wp_send_json( array('code' => 200 , 'message'=>__('We have Created an account for you.')));
-		
 	  
 		
 		
