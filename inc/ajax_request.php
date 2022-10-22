@@ -734,8 +734,7 @@ function agent_create_signup() {
 
 
 		global $wpdb;
-		$code = sha1( $user_id . time());
-		$activation_link = add_query_arg( array( 'key' => $code, 'user' => $user_id ), get_permalink(179));
+	
 		$username = $_POST['agent_email'];
 		$agent_email = $_POST['agent_email'];
 		$agent_name = $_POST['agent_name'];
@@ -765,7 +764,13 @@ function agent_create_signup() {
 
 
 			$user_id = 51;
-			add_user_meta( $user_id, 'has_to_be_activated', $code, true );
+
+			$code = sha1( $user_id . time());
+			$activation_link = add_query_arg( array( 'key' => $code, 'user' => $user_id ), get_permalink(179));
+
+
+
+			update_user_meta( $user_id, 'has_to_be_activated', $code );
 
 			mail($agent_email, $subject, $body , $headers);	
 
