@@ -754,7 +754,7 @@ function agent_create_signup() {
 
 		   
 	
-		$user_id = 45;
+		$user_id = 48;
 	
 		$user_data = array(
 			'user_login' => $username,
