@@ -392,6 +392,7 @@ function my_get_current_user_roles() {
                     wp_set_password( $password, $user_id );
                     sendmail_agent($user_email , $password);
                     sendmail_admin($user_email);
+                    echo $user_email;
                   
                 }
             }
