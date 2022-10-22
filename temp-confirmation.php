@@ -26,8 +26,13 @@ get_header('landing');
                  <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:350px" > <br/><br/>
                    <h3>Thank you for joining us</h3> 
                    <p>Please check your email and use password that we send you in email</p> 
-                   <h6><a href="<?php echo home_url(); ?>" class="btn_primary d-block next">Login for Creating Ticket</a> </h6>                 
+                                 
               
+            </div>
+
+            <div class="col-sm-4 right col-md-3 p-3">
+            <h6><a href="<?php echo home_url(); ?>" class="btn_primary d-block next">Login for Creating Ticket</a> </h6>   
+
             </div>
         </div>
 
