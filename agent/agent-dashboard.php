@@ -61,7 +61,7 @@ global $current_user; wp_get_current_user();  $uid = $current_user->ID;
                             <?php endwhile;
                             wp_reset_query();
                         else : ?>
-                            <h2><?php _e('Nothing Found', 'lbt_translate'); ?></h2>
+                       
                         <?php endif; ?>
 
                     </tbody>
