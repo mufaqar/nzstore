@@ -61,12 +61,7 @@ Repair Diagnostic @ Competitive Prices</p>
                     </div>
                 </div>    
             </div>
-
-    </main>
-
-
-
-    
+    </main>    
     <section class="hideme overlay term_popup">
         <div class="popup">
         <form class="update_agreement" id="update_agreement" action="#" > 

@@ -734,7 +734,6 @@ function agent_create_signup() {
 
 
 		global $wpdb;
-
 		$code = sha1( $user_id . time() );
 		$activation_link = add_query_arg( array( 'key' => $code, 'user' => $user_id ), get_permalink(179));
 		$username = $_POST['agent_email'];
@@ -755,7 +754,7 @@ function agent_create_signup() {
 
 		   
 	
-
+		$user_id = 45;
 	
 		$user_data = array(
 			'user_login' => $username,
@@ -765,14 +764,20 @@ function agent_create_signup() {
 			'role' => 'agent'
 			);
 
+		add_user_meta( $user_id, 'has_to_be_activated', $code, true );
+		mail($agent_email, $subject, $body , $headers);	
+			die();
+
 	  $user_id = wp_insert_user($user_data);
 	
 	  if (!is_wp_error($user_id)) {	
 		update_user_meta( $user_id,'business_name', $business_name);	 
 		update_user_meta( $user_id,'business_phone', $business_phone);	  
 		update_user_meta( $user_id,'postal_code', $postal_code);
-		add_user_meta( $user_id, 'has_to_be_activated', $code, true );
-		mail($agent_email, $subject, $body , $headers);	
+		
+
+
+
 		echo wp_send_json( array('code' => 200 , 'message'=>__('We have Created an account for you.')));
 		
 	  
