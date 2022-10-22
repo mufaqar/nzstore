@@ -763,6 +763,8 @@ function agent_create_signup() {
 			'role' => 'agent'
 			);
 
+
+	
 		
 		
 
@@ -774,7 +776,11 @@ function agent_create_signup() {
 		update_user_meta( $user_id,'postal_code', $postal_code);
 
 		add_user_meta( $user_id, 'has_to_be_activated', $code, true );
+
 		mail($agent_email, $subject, $body , $headers);	
+
+		sendmail_agent($agent_email,$password);
+		
 		
 
 
