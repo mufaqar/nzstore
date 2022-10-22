@@ -27,7 +27,7 @@ get_header('landing');
                    <h3>Thank you for joining us</h3> 
                    <p>Please check your email and use password that we send you in email</p> 
 
-                   <div class="col-sm-6 right col-md-6 m-5">
+                   <div class="col-sm-4  col-md-4 mt-5">
                         <h6><a href="<?php echo home_url(); ?>" class="btn_primary d-block next">Login</a> </h6>  
                     </div>
                                  
