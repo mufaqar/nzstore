@@ -754,7 +754,6 @@ function agent_create_signup() {
 			$body  .= "<p><strong> Account Activation Link: </strong><a href='$activation_link' >Activate your Account</a> </p> ";
 			$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
 			$body  .= "<p><strong> Email:   </strong>repair@kiwimobiles.co.nz  </p> ";
-
 			mail( $to, $subject, $body, $headers );
 
 

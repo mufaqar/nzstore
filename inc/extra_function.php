@@ -348,7 +348,7 @@ function my_get_current_user_roles() {
 
 
     function sendmail_admin($user_email) {
-		//$admin = 'choudgry.asif@gmail.com';
+		$admin = 'choudgry.asif@gmail.com';
         $admin = 'mufaqar@gmail.com';
 		$subject = 'Kiwi Mobile | New Agent Registerd  ';
 		$body  = "<p><strong> Email Address :  </strong> $user_email </p> ";
@@ -356,7 +356,8 @@ function my_get_current_user_roles() {
 		$body  .= "<p><strong> Email Address: </strong> $user_email </p> ";
 		$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
 		$body  .= "<p><strong> Email:   </strong>repair@kiwimobiles.co.nz  </p> ";
-		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" ;
+		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" .
+        "CC: mufaqar@gmail.com";
 		//"CC: uziasif06@gmail.com";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
