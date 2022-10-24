@@ -333,21 +333,7 @@ function my_get_current_user_roles() {
 	}
 
 
-    function sendmail_admin($user_email) {
-		$admin = 'mufaqar@gmail.com';
-		$subject = 'Kiwi Mobile | New Agent Registerd  ';
-		$body  = "<p><strong> Email Address :  </strong> $user_email </p> ";
-        $body  .= "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
-		$body  .= "<p><strong> Email Address: </strong> $user_email </p> ";
-		$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
-		$body  .= "<p><strong> Email:   </strong>repair@kiwimobiles.co.nz  </p> ";
-		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" ;
-        $headers .= 'Bcc: choudhry.asif@gmail.com,budgetcomputer2013@gmail.co,uziasif06@gmail.com';
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-		mail( $admin, $subject, $body, $headers );
-	}
-	
+  
 
     function generateRandomString($length = 10) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -376,8 +362,7 @@ function my_get_current_user_roles() {
                     $password = generateRandomString();
                     wp_set_password( $password, $user_id );
                     sendmail_agent($user_email , $password);
-                    sendmail_admin($user_email);
-                 
+                                  
                   
                 }
             }
