@@ -310,11 +310,7 @@ function my_get_current_user_roles() {
     </div>
 
         <?php
-    } 
-
-
-
-    
+    }     
   
 
     

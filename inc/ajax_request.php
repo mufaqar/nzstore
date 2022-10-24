@@ -745,7 +745,6 @@ function agent_create_signup() {
 
 
 		function activation_mail($to,$activation_link) {
-
 			$subject = 'Kiwi Mobile | Agent Account Activation';	
 			$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" ;
 			$headers .= "MIME-Version: 1.0\r\n";
@@ -755,13 +754,8 @@ function agent_create_signup() {
 			$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
 			$body  .= "<p><strong> Email:   </strong>repair@kiwimobiles.co.nz  </p> ";
 			mail( $to, $subject, $body, $headers );
-
-
-
 		}
-
-		
-		   
+	   
 
 	
 			$user_data = array(
@@ -787,6 +781,7 @@ function agent_create_signup() {
 		$activation_link = add_query_arg( array( 'key' => $code, 'user' => $user_id ), get_permalink(179));
 		add_user_meta( $user_id, 'has_to_be_activated', $code, true );
 		activation_mail($agent_email, $activation_link);	
+		echo $agent_email;
 		echo wp_send_json( array('code' => 200 , 'message'=>__('We have Created an account for you.')));
 	  	
 		
