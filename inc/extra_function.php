@@ -348,7 +348,7 @@ function my_get_current_user_roles() {
 
 
     function sendmail_admin($user_email) {
-		$admin = 'choudhry.asif@gmail.com,mufaqar@gmail.com';
+		$admin = 'choudhry.asif@gmail.com,mufaqar@gmail.com,budgetcomputer2013@gmail.com';
 		$subject = 'Kiwi Mobile | New Agent Registerd  ';
 		$body  = "<p><strong> Email Address :  </strong> $user_email </p> ";
         $body  .= "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
