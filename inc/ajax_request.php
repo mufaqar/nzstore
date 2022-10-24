@@ -730,7 +730,6 @@ add_action('wp_ajax_nopriv_agent_create_signup', 'agent_create_signup');
 
 function agent_create_signup() {	
 	
-	
 
 
 		global $wpdb;
