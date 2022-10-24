@@ -779,8 +779,7 @@ function agent_create_signup() {
 		$code = sha1( $user_id . time());
 		$activation_link = add_query_arg( array( 'key' => $code, 'user' => $user_id ), get_permalink(179));
 		add_user_meta( $user_id, 'has_to_be_activated', $code, true );
-		activation_mail($agent_email, $activation_link);	
-		
+		activation_mail($agent_email, $activation_link);			
 		echo wp_send_json( array('code' => 200 , 'message'=>__('We have Created an account for you.')));
 	  	
 		
