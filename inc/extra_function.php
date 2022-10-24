@@ -326,18 +326,8 @@ function my_get_current_user_roles() {
 		$body  .= "<p>Dear User</p><p><strong> Username :  </strong> $to </p> <p> <strong> Password : </strong> $password  </p>";
 		$body  .= "<h3> WHO ARE WE, AND WHY ARE WE?</h3>
                         <p>Thanks for subscribing to your online repair centre portal; now you can create your first query for any of your repair issues, the Galaxies series, iPhones, iPods, MacBooks, Laptops, X-BOX, and Gaming Machines.</p>
-                        
                         <p>We often stock all parts of the products mentioned above to repair fast. Online portal updates of your queries are generated until we receive your product repair and send them back with online tracking details in your dedicated login portal with us. 
-                        </p>
-                        <p>DID: 09 9508717   </p>
-                        <p> DID: 07 3477044   Email: repair@kiwimobiles.co.nz </p>                       
-                                                                    
-                    
-                        
-                    <p> DID: 09 9508717  </p>
-                    <p> DID: 07 3477044 </p>
-                    <p>  Email: repair@kiwimobiles.co.nz</p>
-                        
+                        </p><p>DID: 09 9508717</p> <p> DID: 07 3477044   Email: repair@kiwimobiles.co.nz </p>  <p>  Email: repair@kiwimobiles.co.nz</p>                        
                     </p>www.icsservices.nz  www.smartphonesrepair.co.nz </p> ";
         $body  .= "<p> <a href='$home_url'>Now you can login </a> </p>";
 		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" ;
