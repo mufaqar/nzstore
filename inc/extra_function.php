@@ -164,23 +164,6 @@ add_filter("manage_edit-orders_sortable_columns", "orders_column_register_sortab
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function  page_title() {
 
     ?> <div class='toggle mb-5'>
@@ -192,63 +175,8 @@ function  page_title() {
 
 
 
-function my_get_current_user_roles() {
- 
-    if( is_user_logged_in() ) {
-         $user = wp_get_current_user();   
-      $roles = ( array ) $user->roles;
-      return array_values($roles);
-   
-    } else {
-   
-      return array();
-   
-    }
-   
-  }
-
-    function profile_user_nav() {   
-   
-    $user_role_arr =  my_get_current_user_roles();
-    $c_user_role = $user_role_arr[0];
-        if($c_user_role == 'personal') { ?>
-            <a href="<?php echo get_site_url(); ?>/profile" class="singleprofile myprofile active" onclick="myProfile()">My <br> Profile</a>
-            <?php
 
 
-        }
-        else {
-
-        ?>
-        <a href="<?php echo get_site_url(); ?>/profile" class="myprofile active" onclick="myProfile()">My <br> Profile</a>
-        <a href="<?php echo get_site_url(); ?>/company-profile" class="companyProfile active" onclick="companyProfile()">Company<br> Profile</a>
-
-
-
-        <?php
-
-
-
-    }
-
-
-
-   
-
-   
-   
-  }
-
-
-
-  function getStartAndEndDate($week, $year) {
-    $dateTime = new DateTime();
-    $dateTime->setISODate($year, $week);
-    $result['start_date'] = $dateTime->format('Y-m-d');
-    $dateTime->modify('+4 days');
-    $result['end_date'] = $dateTime->format('Y-m-d');
-    return $result;
-    }
 
 
     function reddirectProfile() {
@@ -314,39 +242,6 @@ function my_get_current_user_roles() {
   
 
     
-	function sendmail_agent($to,$password) {
-		$to = $to;	
-        $home_url =  home_url();
-		$subject = 'Kiwi Mobile | Agent Login Details';
-        $body  = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
-		$body  .= "<p>Dear User</p><p><strong> Username :  </strong> $to </p> <p> <strong> Password : </strong> $password  </p>";
-		$body  .= "<h3> WHO ARE WE, AND WHY ARE WE?</h3>
-                        <p>Thanks for subscribing to your online repair centre portal; now you can create your first query for any of your repair issues, the Galaxies series, iPhones, iPods, MacBooks, Laptops, X-BOX, and Gaming Machines.</p>
-                        <p>We often stock all parts of the products mentioned above to repair fast. Online portal updates of your queries are generated until we receive your product repair and send them back with online tracking details in your dedicated login portal with us. 
-                        </p><p>DID: 09 9508717</p> <p> DID: 07 3477044   Email: repair@kiwimobiles.co.nz </p>  <p>  Email: repair@kiwimobiles.co.nz</p>                        
-                    </p>www.icsservices.nz  www.smartphonesrepair.co.nz </p> ";
-        $body  .= "<p> <a href='$home_url'>Now you can login </a> </p>";
-		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" ;
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-		mail( $to, $subject, $body, $headers );
-	}
-
-
-    function sendmail_admin($user_email) {
-		$admin = 'mufaqar@gmail.com';
-		$subject = 'Kiwi Mobile | New Agent Registerd  ';
-		$body  = "<p><strong> Email Address :  </strong> $user_email </p> ";
-        $body  .= "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
-		$body  .= "<p><strong> Email Address: </strong> $user_email </p> ";
-		$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
-		$body  .= "<p><strong> Email:   </strong>repair@kiwimobiles.co.nz  </p> ";
-		$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" ;
-        $headers .= 'Bcc: choudhry.asif@gmail.com,budgetcomputer2013@gmail.co,uziasif06@gmail.com';
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-		mail( $admin, $subject, $body, $headers );
-	}
 	
 
     function generateRandomString($length = 10) {

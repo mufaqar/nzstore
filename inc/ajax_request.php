@@ -743,30 +743,15 @@ function agent_create_signup() {
 		$postal_code = $_POST['postal_code'];  
 
 
-		function activation_mail($to,$activation_link) {
-			$subject = 'Kiwi Mobile | User Account Activation';	
-			$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" ;
-			$headers .= "MIME-Version: 1.0\r\n";
-			$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-			$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
-			$body  .= "<p><strong> Account Activation Link: </strong><a href='$activation_link' >Activate your Account</a> </p> ";
-			$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
-			$body  .= "<p><strong> Email:   </strong>repair@kiwimobiles.co.nz  </p> ";
-			mail( $to, $subject, $body, $headers );
-		}
-	   
 
 	
-			$user_data = array(
-				'user_login' => $username,
-				'user_email' => $agent_email,
-				'user_pass' => $password,	
-				'display_name' => $agent_name,
-				'role' => 'agent'
-			);
-
-
-		
+		$user_data = array(
+			'user_login' => $username,
+			'user_email' => $agent_email,
+			'user_pass' => $password,	
+			'display_name' => $agent_name,
+			'role' => 'agent'
+		);	
 		
 			
 
@@ -787,7 +772,6 @@ function agent_create_signup() {
 		if (isset($user_id->errors['empty_user_login'])) {	          
 		  echo wp_send_json( array('code' => 0 , 'message'=>__('User Name and Email are mandatory')));
 		  } elseif (isset($user_id->errors['existing_user_login'])) {
-		 // echo 'User name already exixts.';
 		  echo wp_send_json( array('code' => 0 , 'message'=>__('This email address is already registered.')));
 		  } else {	         
 		  echo wp_send_json( array('code' => 0 , 'message'=>__('Error Occured please fill up the sign up form carefully.')));
@@ -803,10 +787,9 @@ function agent_create_signup() {
 add_action('wp_ajax_resetpassword', 'resetpassword', 0);
 add_action('wp_ajax_nopriv_resetpassword', 'resetpassword');
 function resetpassword() {	
-	  $username = stripcslashes($_POST['username']);	
-	  $password = generateRandomString();		
+		
 	  global $wpdb;  
-    //We shall SQL escape all inputs  
+ 
       $username = $_POST['username'];
       $email = $_POST['username'];    
 	  $password = generateRandomString();	
@@ -821,7 +804,7 @@ function resetpassword() {
 		$user_id = $user->ID;
 	    $user_id = wp_update_user( array ( 'ID' => $user_id, 'user_pass' => $password ) );	
 	  	if (!is_wp_error($user_id)) {		    
-			send_mail_password($username,$password);
+			send_reset_password($username,$password);
 			echo wp_send_json( array('code' => 200 , 'message'=>__('Password Updated , Please check your email')));
 	  	} else {	    		         
 			  echo wp_send_json( array('code' => 0 , 'message'=>__('Error Occured please check your email address')));
