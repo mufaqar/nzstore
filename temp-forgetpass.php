@@ -74,7 +74,11 @@ if ( is_user_logged_in() ) {
 
   
 
-<?php get_footer('landing'); ?>
+    <?php wp_footer(); ?>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+       
+
 <script type="text/javascript">   
    jQuery(document).ready(function($) {    
         $("#resetpassword").submit(function(e) {          
