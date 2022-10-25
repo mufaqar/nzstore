@@ -72,6 +72,30 @@ if ( is_user_logged_in() ) {
 
     <!--x login section x -->
 
+    
+<section class="hideme zindex-modal overlay sucess_message">
+        <div class="popup">
+            <div class="popup_wrapper">
+                <div
+                    class="order_confirm d-flex position-relative justify-content-center flex-column align-items-center p-4">
+                    <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" class="logo" alt="logo">
+
+                    <div
+                        class="step_wrapper d-flex justify-content-center flex-column align-items-center text-center">
+                        <div class="content mt-5">
+                            <div class="right"><img src="<?php bloginfo('template_directory'); ?>/reources/images/img 3.png" alt=""></div>
+                            <h1 class="finished">Password Updated!</h1>
+                            <h2 class="mb-5 mt-5">Please check your Email </h2>
+                        </div>
+                    </div>
+                    
+                </div>
+                <img src="<?php bloginfo('template_directory'); ?>/reources//images/red cross.png" alt="" class="_cross">
+            </div>
+        </div>
+    </section>
+
+
   
 
     <?php wp_footer(); ?>
@@ -80,7 +104,13 @@ if ( is_user_logged_in() ) {
        
 
 <script type="text/javascript">   
-   jQuery(document).ready(function($) {    
+   jQuery(document).ready(function($) {   
+    
+    
+    $('._cross').click(function(){
+           
+           $(".hideme").css("display", "none");
+       });
         $("#resetpassword").submit(function(e) {          
             e.preventDefault();
             var username = jQuery('#username').val();              
@@ -93,7 +123,7 @@ if ( is_user_logged_in() ) {
             },
             success: function(response){
                
-               alert(response.message);
+                $(".sucess_message").css("display", "flex");
             },
             error: function(results) {
                 alert("Error");
