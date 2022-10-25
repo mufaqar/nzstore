@@ -37,7 +37,7 @@ function sendmail_agent($to,$password) {
 	$subject = 'Kiwi Mobile | User Login Details';
 	$body  = "<h1>Kiwi Mobile </h1> ";
 	$body  .= "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
-	$body  .= "<p><strong> Username: </strong> $user_email </p> ";
+	$body  .= "<p><strong> Username: </strong> $to </p> ";
 	$body  .= "<p><strong> Password:   </strong> $password </p> ";
 	$body  .= "<h3> WHO ARE WE, AND WHY ARE WE?</h3>
 	<p>Thanks for subscribing to your online repair centre portal; now you can create your first query for any of your repair issues, the Galaxies series, iPhones, iPods, MacBooks, Laptops, X-BOX, and Gaming Machines.</p>
