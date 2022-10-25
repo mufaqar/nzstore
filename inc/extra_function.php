@@ -269,8 +269,8 @@ function  page_title() {
                     $user_info = get_userdata($user_id);
                     $user_email =  $user_info->user_login;
                     $password = generateRandomString();
-                    wp_set_password( $password, $user_id );
-                    sendmail_agent($user_email , $password);
+                    wp_set_password($password,$user_id );
+                    sendmail_agent($user_email,$password);
                     sendmail_admin($user_email);
                  
                   
