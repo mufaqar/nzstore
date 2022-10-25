@@ -30,8 +30,6 @@ function send_reset_password($username,$password) {
 	mail( $to, $subject, $body, $headers );
 }
 
-
-
 function sendmail_agent($to,$password) {
 	$subject = 'Kiwi Mobile | User Login Details';
 	$body  = "<h1>Kiwi Mobile </h1> ";
