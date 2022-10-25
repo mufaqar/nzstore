@@ -113,6 +113,7 @@ if ( is_user_logged_in() ) {
        });
         $("#resetpassword").submit(function(e) {          
             e.preventDefault();
+            $("#spinner-div").show();    
             var username = jQuery('#username').val();              
             jQuery.ajax({
             type:"POST",
@@ -121,6 +122,12 @@ if ( is_user_logged_in() ) {
                 action: "resetpassword",
                 username : username              
             },
+            beforeSend: function(){                    
+                        $("#loader").show();
+                    },
+                    complete: function () {
+                        $("#spinner-div").hide(); 
+                    }, 
             success: function(response){
                
                 $(".sucess_message").css("display", "flex");
