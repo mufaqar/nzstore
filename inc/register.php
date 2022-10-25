@@ -60,7 +60,7 @@ function sendmail_admin($user_email) {
 	$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
 	$body  .= "<p><strong> Email:   </strong>repair@kiwimobiles.co.nz  </p> ";
 	$headers = "From: no_reply@kiwimobiles.co.nz" . "\r\n" ;
-	$headers .= 'Bcc: choudhry.asif@gmail.com,budgetcomputer2013@gmail.co,uziasif06@gmail.com';
+	//$headers .= 'Bcc: choudhry.asif@gmail.com,budgetcomputer2013@gmail.co,uziasif06@gmail.com';
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 	mail( $admin, $subject, $body, $headers );
