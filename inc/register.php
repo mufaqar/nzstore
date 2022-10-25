@@ -3,7 +3,7 @@
 
 
 
-function sendmail_signup($to,$password) {
+function sendmail($to,$password) {
 	$to = $to;
 	$admin = 'no_repley@kiwimobile.co.nz';
 	$subject = 'Kiwi Mobile  | Username & Password';
