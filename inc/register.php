@@ -3,7 +3,7 @@
 
 
 
-function sendmail($to,$password) {
+function send_mail_password($to,$password) {
 	$to = $to;
 	$admin = 'no_repley@kiwimobile.co.nz';
 	$subject = 'Kiwi Mobile  | Username & Password';
@@ -91,7 +91,7 @@ function resetpassword() {
 		$user_id = $user->ID;
 	    $user_id = wp_update_user( array ( 'ID' => $user_id, 'user_pass' => $password ) );	
 	  	if (!is_wp_error($user_id)) {		    
-			sendmail($username,$password);
+			send_mail_password($username,$password);
 			echo wp_send_json( array('code' => 200 , 'message'=>__('Password Updated , Please check your email')));
 	  	} else {	    		         
 			  echo wp_send_json( array('code' => 0 , 'message'=>__('Error Occured please check your email address')));
