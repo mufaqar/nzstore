@@ -95,7 +95,10 @@ if ( is_user_logged_in() ) {
         </div>
     </section>
 
-
+    <div id="spinner-div" class="pt-5">
+        <div class="spinner-border text-primary" role="status">
+        </div>
+    </div>
   
 
     <?php wp_footer(); ?>
@@ -104,7 +107,9 @@ if ( is_user_logged_in() ) {
        
 
 <script type="text/javascript">   
-   jQuery(document).ready(function($) {   
+   jQuery(document).ready(function($) {  
+    
+   
     
     
     $('._cross').click(function(){
