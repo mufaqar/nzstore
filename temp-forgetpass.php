@@ -62,6 +62,8 @@ if ( is_user_logged_in() ) {
                     <div class="d-flex justify-content-between align-items-center " style="margin-top: 3rem !important;">
                     
                         <button type="submit" class="green_btn">Reset Password</button>
+
+                        <a href="https://kiwimobiles.co.nz/jobform" class="green_btn">Login</a>
                     </div>
                     
                 </form>
