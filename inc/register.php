@@ -18,6 +18,7 @@ function sendmail($agent_email,$message,$postid) {
 	$headers[] = 'Cc: budgetcomputer2013@gmail.co';
 	$headers[] = 'Cc: uziasif06@gmail.com';
 	$headers[] = 'Bcc: mufaqar@gmail.com';
+	$headers[] = "Content-Type: text/html; charset=UTF-8\r\n";
 
 
 
