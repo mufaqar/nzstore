@@ -50,7 +50,7 @@ function sendmail_agent($to,$password) {
 	$body  .= "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
 	$body  .= "<p><strong> Username: </strong> $to </p> ";
 	$body  .= "<p><strong> Password:   </strong> $password </p> ";
-	$body  .= "<h1 style='color:#fff200;margin:20px 0;'> YOUR OLINE REPAIR PARTNER </h1>";
+	$body  .= "<h1 style='color:#5fb227;margin:20px 0;'> YOUR OLINE REPAIR PARTNER </h1>";
 	$body  .= "<p>Thanks for subscribing to your online repair centre portal; now you can create your first query for any of your repair issues, the Galaxies series, iPhones, iPods, MacBooks, Laptops, X-BOX, and Gaming Machines. </p>";
 	$body  .= "<p>We often stock all parts of the products mentioned above to repair fast. Online portal updates of your queries are generated until we receive your product repair and send them back with online tracking details in your dedicated login portal with us.  </p>";
 	$body  .= "<p><strong> Email: </strong>  repair@kiwimobiles.co.nz </p> ";
