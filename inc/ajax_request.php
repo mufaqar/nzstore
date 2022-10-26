@@ -1,20 +1,6 @@
 <?php
 
-function sendmail($agent_email,$message,$postid) {
-	$admin = 'choudgry.asif@gmail.com,uziasif06@gmail.com,bydgetcomputer2013@gmail.com,mufaqar@gmail.com';
-	$to = 'budgetcomputer2013@gmail.com';
-	$subject = "Budget Computer & Kiwi Mobiles |  $message ";
-	$body  = "<p><strong> $message  </strong> <br/> Ticket   :  ".get_permalink($postid)."  </p>";	
-	$headers = "From: budgetcomputer@kiwimobiles.co.nz" . "\r\n" .
-	"CC: $agent_email";
-	$headers .= "MIME-Version: 1.0\r\n";
-	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-	wp_mail( $admin, $subject, $body, $headers );
-	$get_notifcation = get_post_meta( $postid, 'notification', true); 
-	$count = $get_notifcation;
-	update_post_meta( $postid, 'notification', $count+1); 
 
-	}
 
 add_action('wp_ajax_add_ticket', 'add_ticket', 0);
 add_action('wp_ajax_nopriv_add_ticket', 'add_ticket');
@@ -155,7 +141,6 @@ function update_ticket()
 
 	if (!is_wp_error($update_post)) {
 	
-	
 		echo wp_send_json(array('code' => 200, 'message' => __('Ticket Updated Sucessfully')));
 		die();
 	} else {
@@ -226,14 +211,9 @@ function tech_update_ticket()
 		$ticket_uid = get_post_meta( $pid, 'order_uid', true);
 		$user_agent =  get_user_by( 'id', $ticket_uid);
 		$agent_email = $user_agent->user_email;
-
 		sendmail($agent_email,"Technician [ $tech_email ] Updated Ticket  $pid ", $pid);
-	
 
-
-
-	$ticket_id = $pid;
-
+		$ticket_id = $pid;
 		$image_url        = $file_url;
 		$image_name       = $file_name;
 		$upload_dir       = wp_upload_dir(); 
