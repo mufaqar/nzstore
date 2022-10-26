@@ -3,7 +3,7 @@
 
 function sendmail($agent_email,$message,$postid) {
 	
-	$subject = "Budget Computer & Kiwi Mobiles 01 |  $message ";
+	$subject = "Budget Computer & Kiwi Mobiles  |  $message ";
 	$headers = "From: budgetcomputer@kiwimobiles.co.nz" . "\r\n" ;
 	$headers .= 'Bcc: choudhry.asif@gmail.com,budgetcomputer2013@gmail.co,uziasif06@gmail.com,mufaqar@gmail.com';
 	$headers .= "MIME-Version: 1.0\r\n";
