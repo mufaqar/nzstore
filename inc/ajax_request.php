@@ -3,7 +3,7 @@
 function sendmail($agent_email,$message,$postid) {
 	$admin = 'choudgry.asif@gmail.com,uziasif06@gmail.com,bydgetcomputer2013@gmail.com,mufaqar@gmail.com';
 	$to = 'budgetcomputer2013@gmail.com';
-	$subject = "Budget Computer |  $message ";
+	$subject = "Budget Computer & Kiwi Mobiles |  $message ";
 	$body  = "<p><strong> $message  </strong> <br/> Ticket   :  ".get_permalink($postid)."  </p>";	
 	$headers = "From: budgetcomputer@kiwimobiles.co.nz" . "\r\n" .
 	"CC: $agent_email";
