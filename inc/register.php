@@ -15,7 +15,7 @@ function activation_mail($to,$activation_link) {
 	$body  .= "<p><strong> Account Activation Link: </strong><a href='$activation_link' >Activate your Account</a> </p> ";
 	$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
 	$body  .= "<p><strong> Email:   </strong>repair@kiwimobiles.co.nz  </p> ";
-	mail( $to, $subject, $body, $headers );
+	wp_mail( $to, $subject, $body, $headers );
 }
 
 
@@ -27,7 +27,7 @@ function send_reset_password($username,$password) {
 	$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
 	$body  .= "<p><strong> Username : </strong>$username </p> ";
 	$body  .= "<p><strong> Password : </strong>$password </p> ";
-	mail( $to, $subject, $body, $headers );
+	wp_mail( $to, $subject, $body, $headers );
 }
 
 function sendmail_agent($to,$password) {
@@ -45,7 +45,7 @@ function sendmail_agent($to,$password) {
 	$headers .= 'Bcc: choudhry.asif@gmail.com,budgetcomputer2013@gmail.co,uziasif06@gmail.com';
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-	mail( $to, $subject, $body, $headers );
+	wp_mail( $to, $subject, $body, $headers );
 }
 
 
@@ -59,7 +59,7 @@ function sendmail_admin($user_email) {
 	$headers .= 'Bcc: mufaqar@gmail.com,budgetcomputer2013@gmail.co,uziasif06@gmail.com';
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-	mail( $admin, $subject, $body, $headers );
+	wp_mail( $admin, $subject, $body, $headers );
 }
 
 
