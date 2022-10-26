@@ -55,9 +55,9 @@ function sendmail_agent($to,$password) {
 	$body  .= "<p>We often stock all parts of the products mentioned above to repair fast. Online portal updates of your queries are generated until we receive your product repair and send them back with online tracking details in your dedicated login portal with us.  </p>";
 	$body  .= "<p><strong> Email: </strong>  repair@kiwimobiles.co.nz </p> ";
 	$body  .= "<p><strong> DID: </strong>  073477044 -  099508717 </p> ";
-	$body  .= "<p> <a href='http://icsservices.nz'>www.icsservices.nz </a>   &nbsp;&nbsp;&nbsp;  <a href='http://smartphonesrepair.co.nz'> www.smartphonesrepair.co.nz</a> </p> ";
+	$body  .= "<p> <a href='http://icsservices.nz' target='_blank'>www.icsservices.nz </a>   &nbsp;&nbsp;&nbsp;  <a href='http://smartphonesrepair.co.nz' target='_blank'> www.smartphonesrepair.co.nz</a> </p> ";
 	$body  .= "<p>Follow Us</p>";
-	$body  .= "<p> <a href='https://facebook.com'>Facebook</a> &nbsp;&nbsp;&nbsp; <a href='http://youtube.com'>Youtube</a><p> ";
+	$body  .= "<p> <a href='https://www.facebook.com/smartphonesrepair.co.nz' target='_blank'>Facebook</a> &nbsp;&nbsp;&nbsp; <a href='https://www.youtube.com/channel/UC9DOgY5L5oAudmVE8V5D66g' target='_blank'>Youtube</a><p> ";
 	$headers[] = 'From: budgetcomputer@kiwimobiles.co.nz" . "\r\n';
 	$headers[] = "Content-Type: text/html; charset=UTF-8\r\n";
 	wp_mail( $to, $subject, $body, $headers );
