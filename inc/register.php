@@ -24,12 +24,8 @@ function sendmail($agent_email,$message,$postid) {
 
 function activation_mail($to,$activation_link) {
 	$subject = 'Budget Computer & Kiwi Mobiles | User Account Activation';	
-
 	$headers[] = 'From: budgetcomputer@kiwimobiles.co.nz" . "\r\n';
 	$headers[] = "Content-Type: text/html; charset=UTF-8\r\n";
-
-
-
 	$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
 	$body  .= "<p><strong> Account Activation Link: </strong><a href='$activation_link' >Activate your Account</a> </p> ";
 	$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
