@@ -5,9 +5,9 @@ function sendmail($agent_email,$message,$postid) {
 	
 	$subject = "Budget Computer & Kiwi Mobiles  |  $message ";
 	$headers = "From: budgetcomputer@kiwimobiles.co.nz" . "\r\n" ;
-	$headers .= 'Bcc: choudhry.asif@gmail.com';
-	$headers .= 'Bcc: budgetcomputer2013@gmail.co';
-	$headers .= 'Bcc: uziasif06@gmail.com';
+	// $headers .= 'Bcc: choudhry.asif@gmail.com';
+	// $headers .= 'Bcc: budgetcomputer2013@gmail.co';
+	// $headers .= 'Bcc: uziasif06@gmail.com';
 	$headers .= 'Bcc: mufaqar@gmail.com';
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
