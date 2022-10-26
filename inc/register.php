@@ -8,7 +8,7 @@
 
 function activation_mail($to,$activation_link) {
 	$subject = 'Budget Computer & Kiwi Mobiles | User Account Activation';	
-	$headers = "From: noreply@kiwimobile.co.nz" . "\r\n" ;
+	$headers = "From: budgetcomputer@kiwimobiles.co.nz" . "\r\n" ;
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 	$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
@@ -21,7 +21,7 @@ function activation_mail($to,$activation_link) {
 
 function send_reset_password($username,$password) {
 	$subject = 'Budget Computer & Kiwi Mobiles | User Account Activation';	
-	$headers = "From: noreply@kiwimobile.co.nz" . "\r\n" ;
+	$headers = "From: budgetcomputer@kiwimobiles.co.nz" . "\r\n" ;
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 	$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
@@ -41,7 +41,7 @@ function sendmail_agent($to,$password) {
 				<p>We often stock all parts of the products mentioned above to repair fast. Online portal updates of your queries are generated until we receive your product repair and send them back with online tracking details in your dedicated login portal with us. 
 				</p><p>DID: 09 9508717</p> <p> DID: 07 3477044   Email: repair@kiwimobiles.co.nz </p>  <p>  Email: repair@kiwimobiles.co.nz</p>                        
 				</p>www.icsservices.nz  www.smartphonesrepair.co.nz </p>";
-	$headers = "From: noreply@kiwimobile.co.nz" . "\r\n" ;
+	$headers = "From: budgetcomputer@kiwimobiles.co.nz" . "\r\n" ;
 	$headers .= 'Bcc: choudhry.asif@gmail.com,budgetcomputer2013@gmail.co,uziasif06@gmail.com';
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
@@ -55,7 +55,7 @@ function sendmail_admin($user_email) {
 	$body  = "<h1>Budget Computer & Kiwi Mobiles </h1> ";
 	$body  .= "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
 	$body  .= "<p><strong> Email Address: </strong> $user_email </p> ";
-	$headers = "From: noreply@kiwimobile.co.nz" . "\r\n" ;
+	$headers = "From: budgetcomputer@kiwimobiles.co.nz" . "\r\n" ;
 	$headers .= 'Bcc: mufaqar@gmail.com,budgetcomputer2013@gmail.co,uziasif06@gmail.com';
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
