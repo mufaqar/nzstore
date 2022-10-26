@@ -8,9 +8,30 @@ function sendmail($agent_email,$message,$postid) {
 	// $headers .= 'Bcc: choudhry.asif@gmail.com';
 	// $headers .= 'Bcc: budgetcomputer2013@gmail.co';
 	// $headers .= 'Bcc: uziasif06@gmail.com';
-	$headers .= 'Cc: mufaqar@gmail.com';
-	$headers .= "MIME-Version: 1.0\r\n";
-	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+	// $headers .= 'Cc: mufaqar@gmail.com';
+	// $headers .= "MIME-Version: 1.0\r\n";
+	// $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+
+	$headers[] = 'From: budgetcomputer@kiwimobiles.co.nz" . "\r\n';
+	$headers[] = 'Cc: choudhry.asif@gmail.com';
+	$headers[] = 'Cc: budgetcomputer2013@gmail.co';
+	$headers[] = 'Cc: uziasif06@gmail.com';
+	$headers[] = 'Bcc: mufaqar@gmail.com';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
 	$body  .= "<p><strong> $message  </strong> <br/> Ticket   :  ".get_permalink($postid)."  </p>";	
 	wp_mail( $agent_email, $subject, $body, $headers );
