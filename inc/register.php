@@ -5,13 +5,13 @@ function sendmail($agent_email,$message,$postid) {
 	
 	$subject = "Budget Computer & Kiwi Mobiles |  $message ";
 	$headers = "From: budgetcomputer@kiwimobiles.co.nz" . "\r\n" ;
-	$headers .= 'Bcc: choudhry.asif@gmail.com,budgetcomputer2013@gmail.co,uziasif06@gmail.com';
+	$headers .= 'Bcc: choudhry.asif@gmail.com,budgetcomputer2013@gmail.co,uziasif06@gmail.com,mufaqar@gmail.com';
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 	$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
 	$body  .= "<p><strong> $message  </strong> <br/> Ticket   :  ".get_permalink($postid)."  </p>";	
 	wp_mail( $agent_email, $subject, $body, $headers );
-	
+
 	$get_notifcation = get_post_meta( $postid, 'notification', true); 
 	$count = $get_notifcation;
 	update_post_meta( $postid, 'notification', $count+1); 
