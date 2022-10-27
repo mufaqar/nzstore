@@ -27,7 +27,7 @@
 		$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
 		$body  .= "<p><strong> Account Activation Link: </strong><a href='$activation_link' >Activate your Account</a> </p> ";
 		$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
-		$body  .= "<p><strong> Email:   </strong>repair@kiwimobiles.co.nz  </p> ";
+		$body  .= "<p><strong> Email:   </strong>budgetcomputer@kiwimobiles.co.nz</p> ";
 		wp_mail( $to, $subject, $body, $headers );
 	}
 
@@ -54,7 +54,7 @@
 		$body  .= "<h1 style='color:#5fb227;margin:20px 0;'> YOUR ONLINE REPAIR PARTNER </h1>";
 		$body  .= "<p>Thanks for subscribing to your online repair centre portal; now you can create your first query for any of your repair issues, the Galaxies series, iPhones, iPods, MacBooks, Laptops, X-BOX, and Gaming Machines. </p>";
 		$body  .= "<p>We often stock all parts of the products mentioned above to repair fast. Online portal updates of your queries are generated until we receive your product repair and send them back with online tracking details in your dedicated login portal with us.  </p>";
-		$body  .= "<p><strong> Email: </strong>  repair@kiwimobiles.co.nz </p> ";
+		$body  .= "<p><strong> Email: </strong>  budgetcomputer@kiwimobiles.co.nz </p> ";
 		$body  .= "<p><strong> DID: </strong>  073477044 -  099508717 </p> ";
 		$body  .= "<p> <a href='http://icsservices.nz' target='_blank'>www.icsservices.nz </a>   &nbsp;&nbsp;&nbsp;  <a href='http://smartphonesrepair.co.nz' target='_blank'> www.smartphonesrepair.co.nz</a> </p> ";
 		$body  .= "<p>Follow Us</p>";
