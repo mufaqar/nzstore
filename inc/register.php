@@ -17,7 +17,6 @@
 		}
 
 
-
 	// Agent Activation Email 
 
 	function activation_mail($to,$activation_link) {
