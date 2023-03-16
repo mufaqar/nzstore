@@ -8,9 +8,9 @@ get_header();?>
         <h2>Create Repair Request </h2>
     </div>
     <div class="_form p-4 pt-5 pb-5">
-    <form class="add_ticket" id="add_ticket" action="#" enctype="multipart/form-data">
+    <form class="add_repair" id="add_repair" action="#" enctype="multipart/form-data">
             <div class="row">
-            <div class="col-md-4 mb-3">
+            <div class="col-md-6 mb-3">
                     <label for="">Select</label>
                     <div class="_select">
                         <select id="ticket_cat">                            
@@ -27,27 +27,20 @@ get_header();?>
                         <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="">Model No</label>
                     <div class="_select">
                         <input type="text" value="" placeholder="Please enter title" id="title" required>
                         <input type="hidden" value="<?php echo $uid ?>"  id="uid" >
                     </div>
                 </div>
-                <div class="col-md-4 mt-3 mt-md-0 mb-3">
-                    <label for="">Date</label>
-                    <div class="_select">
-                        <input type="date" value="<?php echo date("Y-m-d"); ?>" placeholder="02-05-22" id="date" required>
-                    </div>
-                </div>
 
-                
                 <div class="col-md-6 mb-3">
-                    <label for="">Status </label>
+                    <label for="">Fault Type </label>
                     <div class="_select">
                         <select id="ticket_status">                            
                             <?php   
-                            $types_tax = get_terms( array('taxonomy' => 'ticket_status','hide_empty' => false ) ); 
+                            $types_tax = get_terms( array('taxonomy' => 'cat_fault_type','hide_empty' => false ) ); 
                             foreach( $types_tax as $type )  {
                                         $type_slug = $type->term_id ;
                                         $type_name = $type->name ; ?>                            
@@ -59,79 +52,32 @@ get_header();?>
                         <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
                     </div>
                 </div>
-               
                 <div class="col-md-6 mb-3">
-                    <label for=""> Type</label>
+                    <label for="">Parts availbiility</label>
                     <div class="_select">
-                        <select id="ticket_type">
-                        <?php   
-                            $food_categories = get_terms( array('taxonomy' => 'ticket_type','hide_empty' => false ) ); 
-                            foreach( $food_categories as $food_cat )  {
-                                        $food_cat_slug = $food_cat->term_id ;
-                                        $food_cat_name = $food_cat->name ; ?>                            
-                                        <option value="<?php echo $food_cat_slug; ?>" > <?php echo $food_cat_name; ?> </option>
-                                            <?php
-                                }                                                    
-                            ?>
-                        </select>
-                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="">Priority</label>
-                    <div class="_select">
-                        <select id="ticket_priority">
-                    <?php   
-                            $product_tax = get_terms( array('taxonomy' => 'ticket_priority','hide_empty' => false ) ); 
-                            foreach( $product_tax as $product_cat )  {
-                                        $product_cat_slug = $product_cat->term_id ;
-                                        $product_cat_name = $product_cat->name ; ?>                            
-                                        <option value="<?php echo $product_cat_slug; ?>" > <?php echo $product_cat_name; ?> </option>
-                                            <?php
-                                }                                                    
-                            ?>
-                         </select>
-                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
-                    </div>
-                </div>            
-
-                <div class="col-md-6 mt-3 mt-md-0 mb-3">
-                    <label for="">Address</label>
-                    <div class="_select">                    
-                        <textarea id="address"><?php echo get_post_meta($pid, 'address', true ); ?></textarea>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                <label for="">Issue Details</label>
-                    <div class="_select">                       
-                        <textarea id="issues"><?php echo get_post_meta($pid, 'issues', true ); ?></textarea>
+                        <input type="text" value="" placeholder="" id="parts_availablity" required>
                     </div>
                 </div>
 
-              
                 <div class="col-md-6 mb-3">
-                <label for="">Shipping Details</label>
-                    <div class="_select">                        
-                        <textarea id="shipping"><?php echo get_post_meta($pid, 'shipping', true ); ?></textarea>
+                    <label for="">Repair Cost </label>
+                    <div class="_select">
+                        <input type="text" value="" placeholder="Cost" id="repair_cost" required>
                     </div>
                 </div>
-                <div class="col-md-12 mb-3">                       
-                    <div class="upload_file">
-                            <div class="upload_icon"><i class="fa-solid fa-camera"></i></div>
-                            <input type="file" name="file" id="file"  class="dropify" > 
-                    </div>
-                </div>
+
                 <div class="col-md-6 mb-3">
-                
-                    <div class="_select">                       
-                    <input type="checkbox" id="terms_conditions" name="terms_conditions" value="Accept" required>
-                    <label for="terms_conditions">Accept Terms and Conditions</label> <br/>
-                    <a id="terms_btn" class="btn_primary">Read Terms and Condtions</a>
+                    <label for="">Diagnostic Fee </label>
+                    <div class="_select">
+                        <input type="text" value="" placeholder="Fee" id="diagnostic_fee" required>
                     </div>
                 </div>
+
+
+
 
                 <div class="d-flex justify-content-end savebtn">
-                    <input type="submit" class="btn_primary"  value="Add Ticket"/>
+                    <input type="submit" class="btn_primary"  value="Add Repair Request"/>
                 </div>
             </div>
         </form>
@@ -167,35 +113,7 @@ get_header();?>
 
 
 
-    <section class="hideme overlay term_popup">
-        <div class="popup">
-        <form class="update_agreement" id="update_agreement" action="#" > 
-                <div class="popup_wrapper">
-                    <h3 class="ad_productss">Terms and Conditions </h3>               
-                    <div class="termlist">
-                    <ul>
-                        <li> Diagnosed fees will apply for all repairs even if the gadget is not repairable or the customer cancels the job. </li>
-                        <li> A part order on the customer's behalf and a deposit of 50% is taken. The warranty is non-refundable as we order the part on the customer's behalf. </li>
-                        <li> All the parts fined come with a three-month warranty unless specified. We will fix the fault & check with which gadget is booked. No other-􀃒functionality is limited unless a thorough assessment is requested & assessment fee is paid. Also, provide the password or login id. </li>
-                        <li> All repairs come with three months warranty unless specified. LCDs are fragile. Any external pressure in the pocket or any other place or harsh use will break without damaging the top glass, as the entire glass is more complicated/robust than underneath the LCD. In such a case, the warranty will be voided. </li>
-                        <li> Any physical damage, which includes liquid damage, drops, and any pressure on the LCD which breaks the display, will not be covered in the warranty. Any gadget returned under contract, and if it is found to be physical damage, diagnostic will apply. In any dispute, the customer must get a third-party opinion on their own cost from a reputable repair shop and provide a copy of the report. </li>
-                        <li> Warranty is provided only on the part we have replaced, not any other part of the gadget </li>
-                        <li> No responsibility for any data loss while working on any gadget. Back up all your data before it is booked for repair. </li>
-                        <li> The customer is responsible for picking up their gadget within two months after it is fixed and paying the repairing fee in full. No gadget will be delivered if not aided In full or sold my device is not picked up within two months, it will be disposed of or sold to recover the cost. I authorise the budget computer to dispose of or sell my gadget to recover the price if not picked up and paid within two months. </li>
-                        <li> Warranty repair cannot be checked straight away. We need reasonable time to check and fix it. </li>
-                        <li> Software/ operating system installation if a virus is infected or corrupted by customer negligence or misuse or any third-party software is not working, no responsibility is taken. </li>
-                        <li>I read, agreed and acknowledged the above rubrics.</li>
-                    </ul>
-                        
-                    </div>
-                                      
-                   
-                    
-                    <img src="<?php bloginfo('template_directory'); ?>/reources/images/red cross.png" alt="" class="_cross">
-                </div>
-            </form>
-        </div>
-    </section>
+  
 
 
     <?php get_footer();?>
@@ -216,36 +134,27 @@ get_header();?>
            $(".hideme").css("display", "none");
        });
                  
-        $("#add_ticket").submit(function(e) {                     
+        $("#add_repair").submit(function(e) {                     
             e.preventDefault();   
             $("#spinner-div").show();                     
-            var title = jQuery('#title').val();	             
-            var date = jQuery('#date').val();	       
-            var address = jQuery('#address').val();	             
-            var ticket_type = jQuery('#ticket_type').val();	 
-            var ticket_priority = jQuery('#ticket_priority').val();	 
-            var ticket_status = jQuery('#ticket_status').val();	  
-            var ticket_cat = jQuery('#ticket_cat').val();	        
-            var shipping = jQuery('#shipping').val();           
-            var issues = jQuery('#issues').val(); 
-            var uid = jQuery('#uid').val();    
-            var file_data = jQuery('#file').prop('files')[0]; 
-            file_data = jQuery('#file').prop('files')[0];
-            form_data = new FormData();
-            form_data.append('file', file_data);
-            form_data.append('action', 'add_ticket');
-            form_data.append('title', title);
-            form_data.append('date', date);	
-            form_data.append('address', address); 
+                        
+            var ticket_cat = jQuery('#ticket_cat').val();
+            var title = jQuery('#title').val();	 	       
+            var parts_availablity = jQuery('#parts_availablity').val();	             
+            var ticket_status = jQuery('#ticket_status').val();	 
+            var repair_cost = jQuery('#repair_cost').val();	    
+            var diagnostic_fee = jQuery('#diagnostic_fee').val();	           
+            var uid = jQuery('#uid').val(); 
+            form_data = new FormData();      
+            form_data.append('action', 'add_repair');                
+            form_data.append('ticket_cat', ticket_cat); 
+            form_data.append('title', title);    
             form_data.append('ticket_type', ticket_type); 
-            form_data.append('ticket_priority', ticket_priority); 
-            form_data.append('ticket_status', ticket_status);  
-            form_data.append('ticket_cat', ticket_cat);  
-            form_data.append('issues', issues);  
-            form_data.append('shipping', shipping);  
-            form_data.append('user_type', "Agent");  
-            form_data.append('uid', uid);   
-            
+            form_data.append('parts_availablity', parts_availablity); 
+            form_data.append('ticket_status', ticket_status);     
+            form_data.append('repair_cost', repair_cost);  
+            form_data.append('diagnostic_fee', diagnostic_fee);        
+            form_data.append('uid', uid);              
             
             $.ajax(
                 {

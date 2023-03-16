@@ -796,6 +796,90 @@ function resetpassword() {
 
 
 
+/// Add Repair
+
+
+add_action('wp_ajax_add_repair', 'add_repair', 0);
+add_action('wp_ajax_nopriv_add_repair', 'add_repair');
+
+function add_repair()
+{
+	global $wpdb;
+	$title = $_POST['title'];
+	$ticket_cat = $_POST['ticket_cat'];
+	$parts_availablity = $_POST['parts_availablity'];
+	$ticket_status = $_POST['ticket_status'];
+	$repair_cost = $_POST['repair_cost'];
+	$diagnostic_fee = $_POST['diagnostic_fee'];
+	$uid = $_POST['uid'];
+	
+	$post = array(
+		'post_title'    => $title,
+		'post_status'   => 'publish',
+		'post_content'   => $issues,
+		'post_type'     => 'repair',
+		'meta_input'   => array(
+			'title' => $title,
+			'address' => $address,
+			'shipping' => $shipping,
+			'parts_availablity' => $parts_availablity,
+			'repair_cost' => $repair_cost,
+			'diagnostic_fee' => $diagnostic_fee,
+			'order_uid' => $uid,
+		),
+		'tax_input'    => array(
+			'ticket_type' => array($ticket_type),
+			'ticket_cat' => array($ticket_cat)
+		),
+
+	);
+		$inserted_post_id = wp_insert_post($post);
+		$user = get_user_by( 'id', $uid );
+		$agent_email = $user->user_email;
+		sendmail($agent_email,"New Ticket Created by $agent_email ", $inserted_post_id);
+
+	    $image_url        = $file_url; // Define the image URL here
+		$image_name       = $file_name;
+		$upload_dir       = wp_upload_dir(); // Set upload folder
+		$image_data       = file_get_contents($image_url); // Get image data
+		$unique_file_name = wp_unique_filename( $upload_dir['path'], $image_name ); // Generate unique name
+		$filename         = basename( $unique_file_name ); // Create image file name
+		if( wp_mkdir_p( $upload_dir['path'] ) ) {
+			$file = $upload_dir['path'] . '/' . $filename;
+		} else {
+			$file = $upload_dir['basedir'] . '/' . $filename;
+		}
+		file_put_contents( $file, $image_data );
+		$wp_filetype = wp_check_filetype( $filename, null );
+		$attachment = array(
+			'post_mime_type' => $wp_filetype['type'],
+			'post_title'     => sanitize_file_name( $filename ),
+			'post_content'   => '',
+			'post_status'    => 'inherit'
+		);
+
+
+
+	if (!is_wp_error($inserted_post_id)) {	
+
+		// Create the attachment
+		$attach_id = wp_insert_attachment( $attachment, $file, $inserted_post_id );
+		 require_once(ABSPATH . 'wp-admin/includes/image.php');
+		 $attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+		wp_update_attachment_metadata( $attach_id, $attach_data );
+		set_post_thumbnail( $inserted_post_id, $attach_id );
+		echo wp_send_json(array('code' => 200, 'message' => __('Ticket Created Sucessfully')));
+		die();
+	} else {
+		echo wp_send_json(array('code' => 0, 'message' => __('Error Occured please fill up form carefully.')));
+		die();
+	}
+
+	die;
+}
+
+
+
 
 
 
