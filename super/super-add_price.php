@@ -8,7 +8,7 @@ get_header();?>
         <h2>Add Repair Data</h2>
     </div>
     <div class="_form p-4 pt-5 pb-5">
-    <form class="add_repair" id="add_repair" action="#" enctype="multipart/form-data">
+    <form class="add_repair" id="add_repair" action="#" >
             <div class="row">
             <div class="col-md-6 mb-3">
                     <label for="">Select</label>
