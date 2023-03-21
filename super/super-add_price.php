@@ -5,7 +5,7 @@ get_header();?>
 
 <div class="custom_container catering_form mt-5 mb-5">
     <div class="_info mt-5 mb-3">
-        <h2>Create Repair Request </h2>
+        <h2>Add Repair Data</h2>
     </div>
     <div class="_form p-4 pt-5 pb-5">
     <form class="add_repair" id="add_repair" action="#" enctype="multipart/form-data">
