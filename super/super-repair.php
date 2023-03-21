@@ -56,9 +56,9 @@
                                     <td><?php echo $repair_cat_name;?></td>
                                     <td><?php echo $parts_availablity;?></td>
                                                                
-                                                 
+                                    <td>$ <?php echo get_post_meta(get_the_ID(), 'repair_cost', true); ?></td>           
                                     <td>$ <?php echo get_post_meta(get_the_ID(), 'diagnostic_fee', true); ?></td>
-                                    <td>$ <?php echo get_post_meta(get_the_ID(), 'repair_cost', true); ?></td>
+                                   
                                 
                                 </tr>
                             <?php endwhile;
