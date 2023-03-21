@@ -348,7 +348,7 @@ function cptui_register_my_taxes_ticket_fault_type() {
 		"show_in_nav_menus" => true,
 		"query_var" => true,
 		"rewrite" => [ 'slug' => 'ticket_fault_type', 'with_front' => true, ],
-		"show_admin_column" => false,
+		"show_admin_column" => true,
 		"show_in_rest" => true,
 		"show_tagcloud" => false,
 		"rest_base" => "ticket_fault_type",
@@ -372,8 +372,7 @@ function cptui_register_my_taxes_ticket_fault_type() {
 			"name" => __( "Type", "twentytwentytwo" ),
 			"singular_name" => __( "Type", "twentytwentytwo" ),
 		];
-	
-		
+			
 		$args = [
 			"label" => __( "Type", "twentytwentytwo" ),
 			"labels" => $labels,
@@ -385,14 +384,14 @@ function cptui_register_my_taxes_ticket_fault_type() {
 			"show_in_nav_menus" => true,
 			"query_var" => true,
 			"rewrite" => [ 'slug' => 'repair_cat', 'with_front' => true, ],
-			"show_admin_column" => false,
+			"show_admin_column" => true,
 			"show_in_rest" => true,
 			"show_tagcloud" => false,
 			"rest_base" => "repair_cat",
 			"rest_controller_class" => "WP_REST_Terms_Controller",
 			"rest_namespace" => "wp/v2",
-			"show_in_quick_edit" => false,
-			"sort" => false,
+			"show_in_quick_edit" => true,
+			"sort" => true,
 			"show_in_graphql" => false,
 		];
 		register_taxonomy( "repair_cat", [ "repair" ], $args );
