@@ -15,7 +15,7 @@ get_header();?>
                     <div class="_select">
                         <select id="ticket_cat">                            
                             <?php   
-                            $cat_tax = get_terms( array('taxonomy' => 'ticket_cat','hide_empty' => false ) ); 
+                            $cat_tax = get_terms( array('taxonomy' => 'repair_cat','hide_empty' => false ) ); 
                             foreach( $cat_tax as $cat )  {
                                         $cat_slug = $cat->term_id ;
                                         $cat_name = $cat->name ; ?>                            
