@@ -153,7 +153,7 @@ function cptui_register_my_taxes_ticket_priority() {
 		"sort" => false,
 		"show_in_graphql" => false,
 	];
-	register_taxonomy( "ticket_priority", [ "tickets" ], $args );
+	register_taxonomy( "ticket_priority", [ "tickets"  ], $args );
 }
 add_action( 'init', 'cptui_register_my_taxes_ticket_priority' );
 
@@ -191,7 +191,7 @@ function cptui_register_my_taxes_ticket_cat() {
 		"sort" => false,
 		"show_in_graphql" => false,
 	];
-	register_taxonomy( "ticket_cat", [ "tickets" ], $args );
+	register_taxonomy( "ticket_cat", [ "tickets"  ], $args );
 }
 add_action( 'init', 'cptui_register_my_taxes_ticket_cat' );
 
@@ -361,6 +361,43 @@ function cptui_register_my_taxes_ticket_fault_type() {
 	register_taxonomy( "cat_fault_type", [ "repair" ], $args );
 	}
 	add_action( 'init', 'cptui_register_my_taxes_ticket_fault_type' );
+
+	function cptui_register_my_taxes_repair_cat() {
+
+		/**
+		 * Taxonomy: Type.
+		 */
+	
+		$labels = [
+			"name" => __( "Type", "twentytwentytwo" ),
+			"singular_name" => __( "Type", "twentytwentytwo" ),
+		];
+	
+		
+		$args = [
+			"label" => __( "Type", "twentytwentytwo" ),
+			"labels" => $labels,
+			"public" => true,
+			"publicly_queryable" => true,
+			"hierarchical" => true,
+			"show_ui" => true,
+			"show_in_menu" => true,
+			"show_in_nav_menus" => true,
+			"query_var" => true,
+			"rewrite" => [ 'slug' => 'repair_cat', 'with_front' => true, ],
+			"show_admin_column" => false,
+			"show_in_rest" => true,
+			"show_tagcloud" => false,
+			"rest_base" => "repair_cat",
+			"rest_controller_class" => "WP_REST_Terms_Controller",
+			"rest_namespace" => "wp/v2",
+			"show_in_quick_edit" => false,
+			"sort" => false,
+			"show_in_graphql" => false,
+		];
+		register_taxonomy( "repair_cat", [ "repair" ], $args );
+	}
+	add_action( 'init', 'cptui_register_my_taxes_repair_cat' );
 	
 
 
