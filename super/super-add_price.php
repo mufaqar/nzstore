@@ -124,38 +124,34 @@ get_header();?>
  <script type="text/javascript">   
      jQuery(document).ready(function($) {	
 
-        $('#terms_btn').click(function(){            
-                $(".term_popup").css("display", "block");
-            });
-
+      
 
         $('._cross').click(function(){
            
            $(".hideme").css("display", "none");
        });
                  
-        $("#add_repair").submit(function(e) {                     
+        $("#add_repair").submit(function(e) {      
+                        
             e.preventDefault();   
-            $("#spinner-div").show();                     
+                           
                         
             var ticket_cat = jQuery('#ticket_cat').val();
-            var title = jQuery('#title').val();	 	       
+            var model = jQuery('#title').val();	 	       
             var parts_availablity = jQuery('#parts_availablity').val();	             
-            var ticket_status = jQuery('#ticket_status').val();	 
+            var fault_type = jQuery('#ticket_status').val();	 
             var repair_cost = jQuery('#repair_cost').val();	    
             var diagnostic_fee = jQuery('#diagnostic_fee').val();	           
             var uid = jQuery('#uid').val(); 
             form_data = new FormData();      
             form_data.append('action', 'add_repair');                
             form_data.append('ticket_cat', ticket_cat); 
-            form_data.append('title', title);    
-            form_data.append('ticket_type', ticket_type); 
-            form_data.append('parts_availablity', parts_availablity); 
-            form_data.append('ticket_status', ticket_status);     
+            form_data.append('model', model);                
+            form_data.append('fault_type', fault_type);  
+            form_data.append('parts_availablity', parts_availablity);    
             form_data.append('repair_cost', repair_cost);  
             form_data.append('diagnostic_fee', diagnostic_fee);        
-            form_data.append('uid', uid);              
-            
+            form_data.append('uid', uid);       
             $.ajax(
                 {
                     url:"<?php echo admin_url('admin-ajax.php'); ?>",
@@ -167,13 +163,10 @@ get_header();?>
                         $("#loader").show();
                     },
                     complete: function () {
-                        $("#spinner-div").hide(); 
-                    },   
+                        $("#spinner-div").hide();  },   
                     success: function(data){ 
                         if(data.code==0) {
-
-                           alert(data.message);
-                        }  
+                           alert(data.message);                        }  
                         else {
                            $(".sucess_message").css("display", "flex");
                       

@@ -805,38 +805,39 @@ add_action('wp_ajax_nopriv_add_repair', 'add_repair');
 function add_repair()
 {
 	global $wpdb;
-	$title = $_POST['title'];
-	$ticket_cat = $_POST['ticket_cat'];
+	
+	$repair_cat = $_POST['ticket_cat'];
+	$model = $_POST['model'];
+	$fault_type = $_POST['fault_type'];
 	$parts_availablity = $_POST['parts_availablity'];
 	$ticket_status = $_POST['ticket_status'];
 	$repair_cost = $_POST['repair_cost'];
 	$diagnostic_fee = $_POST['diagnostic_fee'];
-	$uid = $_POST['uid'];
-	
+	$uid = $_POST['uid'];	
 	$post = array(
-		'post_title'    => $title,
+		'post_title'    => $model,
 		'post_status'   => 'publish',
-		'post_content'   => $issues,
 		'post_type'     => 'repair',
 		'meta_input'   => array(
-			'title' => $title,
-			'address' => $address,
-			'shipping' => $shipping,
+			'title' => $model,	
+			'model' => $model,				
 			'parts_availablity' => $parts_availablity,
 			'repair_cost' => $repair_cost,
 			'diagnostic_fee' => $diagnostic_fee,
 			'order_uid' => $uid,
 		),
 		'tax_input'    => array(
-			'ticket_type' => array($ticket_type),
-			'ticket_cat' => array($ticket_cat)
+			'repair_cat' => array($repair_cat),
+			'cat_fault_type' => array($fault_type)
 		),
 
 	);
+
+
 	
 	$inserted_post_id = wp_insert_post($post);
 	echo wp_send_json( array('code' => 200 , 'message'=>__('A new record Entered successfully')));
-
+	echo "Inserted";
 	die;
 }
 
