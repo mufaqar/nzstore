@@ -28,14 +28,6 @@ get_header();?>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="">Model No</label>
-                    <div class="_select">
-                        <input type="text" value="" placeholder="Please enter title" id="title" required>
-                        <input type="hidden" value="<?php echo $uid ?>"  id="uid" >
-                    </div>
-                </div>
-
-                <div class="col-md-6 mb-3">
                     <label for="">Fault Type </label>
                     <div class="_select">
                         <select id="ticket_status">                            
@@ -52,6 +44,15 @@ get_header();?>
                         <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
                     </div>
                 </div>
+                <div class="col-md-6 mb-3">
+                    <label for="">Model No</label>
+                    <div class="_select">
+                        <input type="text" value="" placeholder="Please enter title" id="title" required>
+                        <input type="hidden" value="<?php echo $uid ?>"  id="uid" >
+                    </div>
+                </div>
+
+                
                 <div class="col-md-6 mb-3">
                     <label for="">Parts availbiility</label>
                     <div class="_select">
