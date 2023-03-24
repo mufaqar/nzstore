@@ -799,47 +799,49 @@ function resetpassword() {
 /// Add Repair
 
 
-add_action('wp_ajax_add_repair', 'add_repair', 0);
-add_action('wp_ajax_nopriv_add_repair', 'add_repair');
+add_action('wp_ajax_super_get_child_cat', 'super_get_child_cat', 0);
+add_action('wp_ajax_nopriv_super_get_child_cat', 'super_get_child_cat');
 
-function add_repair()
+function super_get_child_cat()
 {
-	global $wpdb;
-	
-	$repair_cat = $_POST['ticket_cat'];
-	$model = $_POST['model'];
-	$fault_type = $_POST['fault_type'];
-	$parts_availablity = $_POST['parts_availablity'];
-	$ticket_status = $_POST['ticket_status'];
-	$repair_cost = $_POST['repair_cost'];
-	$diagnostic_fee = $_POST['diagnostic_fee'];
-	$uid = $_POST['uid'];	
-	$post = array(
-		'post_title'    => $model,
-		'post_status'   => 'publish',
-		'post_type'     => 'repair',
-		'meta_input'   => array(
-			'title' => $model,	
-			'model' => $model,				
-			'parts_availablity' => $parts_availablity,
-			'repair_cost' => $repair_cost,
-			'diagnostic_fee' => $diagnostic_fee,
-			'order_uid' => $uid,
-		),
-		'tax_input'    => array(
-			'repair_cat' => array($repair_cat),
-			'cat_fault_type' => array($fault_type)
-		),
+	$parent_id = $_POST['parent_id'];
 
-	);
-
-
-	
-	$inserted_post_id = wp_insert_post($post);
-	echo wp_send_json( array('code' => 200 , 'message'=>__('A new record Entered successfully')));
-	echo "Inserted";
-	die;
+    $subcategories = get_categories( array(
+      'taxonomy' => 'repair_cat',
+      'parent' => $parent_id,
+      'hide_empty' => false
+    ) );
+    $output = '<option value="">Select a Laptop</option>';
+    foreach ( $subcategories as $subcategory ) {
+      $output .= '<option value="' . $subcategory->term_id . '">' . $subcategory->name . '</option>';
+    }
+    wp_send_json($output);
+    wp_die();
 }
+
+
+add_action('wp_ajax_super_get_fault_cat', 'super_get_fault_cat', 0);
+add_action('wp_ajax_nopriv_super_get_fault_cat', 'super_get_fault_cat');
+
+function super_get_fault_cat()
+{
+	$parent_id = $_POST['parent_id'];
+
+    $subcategories = get_categories( array(
+      'taxonomy' => 'repair_cat',
+      'parent' => $parent_id,
+      'hide_empty' => false
+    ) );
+    $output = '<option value="">Select a Laptop</option>';
+    foreach ( $subcategories as $subcategory ) {
+      $output .= '<option value="' . $subcategory->term_id . '">' . $subcategory->name . '</option>';
+    }
+    wp_send_json($output);
+    wp_die();
+}
+
+
+
 
 
 

@@ -140,3 +140,28 @@ add_action( 'wp_enqueue_scripts', 'tme_load_font_awesome' );
 
 /* Disable WordPress Admin Bar for all users */
 //add_filter( 'show_admin_bar', '__return_false' );
+
+
+function enqueue_scripts() {
+    wp_enqueue_script( 'jquery' );
+    wp_enqueue_script( 'ajax-script', get_template_directory_uri() . '/js/ajax.js', array( 'jquery' ), '1.0', true );
+  }
+  add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
+
+
+function load_subcategories() {
+    $parent_id = $_POST['parent_id'];
+    $subcategories = get_categories( array(
+      'taxonomy' => 'cat_fault_type',
+      'parent' => $parent_id,
+      'hide_empty' => false
+    ) );
+    $output = '<option value="">Select a subcategory</option>';
+    foreach ( $subcategories as $subcategory ) {
+      $output .= '<option value="' . $subcategory->term_id . '">' . $subcategory->name . '</option>';
+    }
+    wp_send_json($output);
+    wp_die();
+  }
+  add_action( 'wp_ajax_load_subcategories', 'load_subcategories' );
+  add_action( 'wp_ajax_nopriv_load_subcategories', 'load_subcategories' );

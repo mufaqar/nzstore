@@ -397,7 +397,4 @@ function cptui_register_my_taxes_ticket_fault_type() {
 		register_taxonomy( "repair_cat", [ "repair" ], $args );
 	}
 	add_action( 'init', 'cptui_register_my_taxes_repair_cat' );
-	
-
-
 

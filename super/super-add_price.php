@@ -13,13 +13,15 @@ get_header();?>
             <div class="col-md-6 mb-3">
                     <label for="">Select</label>
                     <div class="_select">
-                        <select id="ticket_cat">                            
+                        <select id="ticket_cat"> 
+                        <option value="">Select a Type</option>                           
                             <?php   
-                            $cat_tax = get_terms( array('taxonomy' => 'repair_cat','hide_empty' => false ) ); 
+                            $cat_tax = get_terms( array('taxonomy' => 'repair_cat','hide_empty' => false ,  'parent' => 0) ); 
                             foreach( $cat_tax as $cat )  {
-                                        $cat_slug = $cat->term_id ;
+                                        $cat_id = $cat->term_id ;
+                                        $cat_slug = $cat->slug ;
                                         $cat_name = $cat->name ; ?>                            
-                                        <option value="<?php echo $cat_slug; ?>" > <?php echo $cat_name; ?> </option>
+                                        <option value="<?php echo $cat_id; ?>" id="<?php echo $cat_slug; ?>" > <?php echo $cat_name; ?> </option>
                                             <?php
                                 }                                                    
                             ?>
@@ -28,15 +30,25 @@ get_header();?>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
+                    <label for="">Model No</label>
+                    <select id="sub-categories"></select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="">Falult Ajax No</label>
+                    <select id="ajax-faltcate"></select>
+                </div>
+                <div class="col-md-6 mb-3">
                     <label for="">Fault Type </label>
                     <div class="_select">
-                        <select id="ticket_status">                            
+                        <select id="ticket_status">  
+                        <option value="">Select a Type</option>                          
                             <?php   
                             $types_tax = get_terms( array('taxonomy' => 'cat_fault_type','hide_empty' => false ) ); 
                             foreach( $types_tax as $type )  {
                                         $type_slug = $type->term_id ;
                                         $type_name = $type->name ; ?>                            
-                                        <option value="<?php echo $type_slug; ?>" > <?php echo $type_name; ?> </option>
+                                        <option value="<?php echo $type_slug; ?>" id="mufaqar" > <?php echo $type_name; ?> </option>
                                             <?php
                                 }                                                    
                             ?>
@@ -44,7 +56,10 @@ get_header();?>
                         <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
                     </div>
                 </div>
-                <div class="col-md-6 mb-3">
+
+                
+                <div class="col-md-6 mb-3">           
+
                     <label for="">Model No</label>
                     <div class="_select">
                         <input type="text" value="" placeholder="Please enter title" id="title" required>
@@ -125,14 +140,66 @@ get_header();?>
  <script type="text/javascript">   
      jQuery(document).ready(function($) {	
 
+
+
       
 
         $('._cross').click(function(){
            
            $(".hideme").css("display", "none");
        });
+
+       $("#ticket_cat").change(function () {
+     
+        var parent_id = this.value ;
+
+        var cat_slug = this.getAttribute("id").value;
+        alert(cat_slug);
+      
+
+        $.ajax(
+                {
+                    type:"POST",
+                    url:"<?php echo admin_url('admin-ajax.php'); ?>",
+                    data: {
+                        action: "super_get_child_cat",
+                        parent_id: parent_id
+                    },   
+                   
+                    success: function(response){                     
+                     
+                        $('#sub-categories').html(response);
+            }
+            
+             });
+
+             $.ajax(
+                {
+                    type:"POST",
+                    url:"<?php echo admin_url('admin-ajax.php'); ?>",
+                    data: {
+                        action: "super_get_fault_cat",
+                        parent_id: parent_id
+                    },   
+                   
+                    success: function(response){                     
+                     
+                        $('#ajax-faltcate').html(response);
+            }
+            
+             });
+       
+                           
+                        
+
+        
+       
+       });
+
+
+
                  
-        $("#add_repair").submit(function(e) {      
+        $("#add_repair").submit(function(e) {  
                         
             e.preventDefault();   
                            
