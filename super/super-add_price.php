@@ -176,7 +176,10 @@ get_header();?>
 
        $("#model_cat").change(function () {
 
-        var parent_id = this.value ;
+        var selected = $(this).find('option:selected');
+        var mod_slug = selected.data('id'); 
+
+        alert(mod_slug);
        
  
        
@@ -187,7 +190,7 @@ get_header();?>
                     url:"<?php echo admin_url('admin-ajax.php'); ?>",
                     data: {
                         action: "super_get_model_cat",
-                        parent_id: parent_id
+                        parent_id: mod_slug
                     },   
                    
                     success: function(response){                     

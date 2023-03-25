@@ -813,7 +813,7 @@ function super_get_child_cat()
     ) );
     $output = '<option value="">Select a Laptop</option>';
     foreach ( $subcategories as $subcategory ) {
-      $output .= '<option value="' . $subcategory->slug . '">' . $subcategory->name . '</option>';
+      $output .= '<option value="'. $subcategory->term_id.'" data-id="'.$subcategory->slug.'">' . $subcategory->name . '</option>';
     }
     wp_send_json($output);
     wp_die();
