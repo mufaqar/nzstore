@@ -116,41 +116,27 @@ get_header();?>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script type="text/javascript">   
      jQuery(document).ready(function($) {	
-
-
-
-      
-
-        $('._cross').click(function(){
-           
+        $('._cross').click(function(){           
            $(".hideme").css("display", "none");
        });
 
-       $("#ticket_cat").change(function () {
-     
-        var parent_id = this.value ;
-        var cat_slug = this.getAttribute("id").value;
-        var selected = $(this).find('option:selected');
-        var category_slug = selected.data('id'); 
-   
-      
-
-        $.ajax(
-                {
-                    type:"POST",
-                    url:"<?php echo admin_url('admin-ajax.php'); ?>",
-                    data: {
-                        action: "super_get_child_cat",
-                        parent_id: parent_id
-                    },   
-                   
-                    success: function(response){                     
-                     
-                        $('#model_cat').html(response);
-            }
-            
-             });
-
+       $("#ticket_cat").change(function () {     
+            var parent_id = this.value ;
+            var cat_slug = this.getAttribute("id").value;
+            var selected = $(this).find('option:selected');
+            var category_slug = selected.data('id');
+            $.ajax(
+                    {
+                        type:"POST",
+                        url:"<?php echo admin_url('admin-ajax.php'); ?>",
+                        data: {
+                            action: "super_get_child_cat",
+                            parent_id: parent_id
+                        },   
+                        success: function(response){      
+                            $('#model_cat').html(response);
+                        }                
+                });
              $.ajax(
                 {
                     type:"POST",
@@ -159,23 +145,13 @@ get_header();?>
                         action: "super_get_fault_cat",
                         parent_id: category_slug
                     },   
-                   
-                    success: function(response){                     
-                     
+                    success: function(response){  
                         $('#falt_cat').html(response);
-            }
-            
-             });
-       
-                           
-                        
-
-        
-       
+                    }            
+                 });       
        });
 
        $("#model_cat").change(function () {
-
                 var selected = $(this).find('option:selected');
                 var mod_slug = selected.data('id'); 
                 $.ajax(
@@ -190,13 +166,8 @@ get_header();?>
                                 $('#model_nocat').html(response);
                             }                    
                     });       
-        });
-
-
-
-                 
-        $("#add_repair").submit(function(e) {  
-                        
+        });                 
+        $("#add_repair").submit(function(e) {                          
             e.preventDefault(); 
             var ticket_cat = jQuery('#ticket_cat').val();
             var model_cat = jQuery('#model_cat').val();	 
@@ -205,7 +176,6 @@ get_header();?>
             var parts_availablity = jQuery('#parts_availablity').val();	  
             var repair_cost = jQuery('#repair_cost').val();	    
             var diagnostic_fee = jQuery('#diagnostic_fee').val();
-
             var uid = jQuery('#uid').val(); 
             form_data = new FormData();      
             form_data.append('action', 'add_repair');                
@@ -215,8 +185,7 @@ get_header();?>
             form_data.append('model_nocat', model_nocat);  
             form_data.append('parts_availablity', parts_availablity);    
             form_data.append('repair_cost', repair_cost);  
-            form_data.append('diagnostic_fee', diagnostic_fee);        
-             
+            form_data.append('diagnostic_fee', diagnostic_fee);   
             $.ajax(
                 {
                     url:"<?php echo admin_url('admin-ajax.php'); ?>",
@@ -231,13 +200,13 @@ get_header();?>
                         $("#spinner-div").hide();  },   
                     success: function(data){ 
                         if(data.code==0) {
-                           alert(data.message);                        }  
+                           alert(data.message); 
+                         }  
                         else {
                            $(".sucess_message").css("display", "flex");
                       
                         }      
-                    }
-            
+                    }            
              });
          }); 
             
