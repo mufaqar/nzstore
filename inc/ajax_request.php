@@ -873,20 +873,21 @@ function add_repair()
 	$repair_cost = $_POST['repair_cost'];
 	$diagnostic_fee = $_POST['diagnostic_fee'];	
 
-	
 
+	$term_model_nocat = get_term( $model_nocat, 'model_cat' );
+	$model_no_cat_name = $term_model_nocat->name;
 
-
+	$term_falt_cat = get_term( $falt_cat, 'cat_fault_type' );
+	$falt_cat_name = $term_falt_cat->name;
 
 
 	$post = array(
-		'post_title'    => $falt_cat." ".$model_nocat,
+		'post_title'    => $falt_cat_name." : ".$model_no_cat_name,
 		'post_status'   => 'publish',
 		'post_type'     => 'repair',
 		'meta_input'   => array(
-			'title' => $falt_cat." ".$model_nocat,
+			'title' => $falt_cat_name." : ".$model_no_cat_name,
 			'parts_availablity' => $parts_availablity,
-			'shipping' => $shipping,
 			'repair_cost' => $repair_cost,
 			'diagnostic_fee' => $diagnostic_fee,
 			
