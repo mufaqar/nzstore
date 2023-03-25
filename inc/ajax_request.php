@@ -825,21 +825,51 @@ add_action('wp_ajax_nopriv_super_get_fault_cat', 'super_get_fault_cat');
 
 function super_get_fault_cat()
 {
-	$parent_id = $_POST['parent_id'];
+	$parent_slug = $_POST['parent_id'];
+
+	$term = get_term_by('slug', $parent_slug, 'cat_fault_type');
+
+	$parent_id = $term->term_id;
+
 
     $subcategories = get_categories( array(
-      'taxonomy' => 'repair_cat',
+      'taxonomy' => 'cat_fault_type',
       'parent' => $parent_id,
       'hide_empty' => false
     ) );
-    $output = '<option value="">Select a Laptop</option>';
+    $output = '<option value="">Select Fault</option>';
     foreach ( $subcategories as $subcategory ) {
       $output .= '<option value="' . $subcategory->term_id . '">' . $subcategory->name . '</option>';
     }
     wp_send_json($output);
     wp_die();
 }
+//super_get_fault_cat
 
+add_action('wp_ajax_super_get_model_cat', 'super_get_model_cat', 0);
+add_action('wp_ajax_nopriv_super_get_model_cat', 'super_get_model_cat');
+
+function super_get_model_cat()
+{
+	$parent_slug = $_POST['parent_id'];
+
+	$term = get_term_by('slug', $parent_slug, 'cat_fault_type');
+
+	$parent_id = $term->term_id;
+
+
+    $subcategories = get_categories( array(
+      'taxonomy' => 'cat_fault_type',
+      'parent' => $parent_id,
+      'hide_empty' => false
+    ) );
+    $output = '<option value="">Select Fault</option>';
+    foreach ( $subcategories as $subcategory ) {
+      $output .= '<option value="' . $subcategory->term_id . '">' . $subcategory->name . '</option>';
+    }
+    wp_send_json($output);
+    wp_die();
+}
 
 
 

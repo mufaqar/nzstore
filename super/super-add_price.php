@@ -21,7 +21,7 @@ get_header();?>
                                         $cat_id = $cat->term_id ;
                                         $cat_slug = $cat->slug ;
                                         $cat_name = $cat->name ; ?>                            
-                                        <option value="<?php echo $cat_id; ?>" id="<?php echo $cat_slug; ?>" > <?php echo $cat_name; ?> </option>
+                                        <option value="<?php echo $cat_id; ?>" data-id="<?php echo $cat_slug; ?>" > <?php echo $cat_name; ?> </option>
                                             <?php
                                 }                                                    
                             ?>
@@ -31,33 +31,19 @@ get_header();?>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Model No</label>
-                    <select id="sub-categories"></select>
+                    <select id="model_cat"></select>
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label for="">Falult Ajax No</label>
+                    <label for="">Falult Type</label>
                     <select id="ajax-faltcate"></select>
                 </div>
-                <div class="col-md-6 mb-3">
-                    <label for="">Fault Type </label>
-                    <div class="_select">
-                        <select id="ticket_status">  
-                        <option value="">Select a Type</option>                          
-                            <?php   
-                            $types_tax = get_terms( array('taxonomy' => 'cat_fault_type','hide_empty' => false ) ); 
-                            foreach( $types_tax as $type )  {
-                                        $type_slug = $type->term_id ;
-                                        $type_name = $type->name ; ?>                            
-                                        <option value="<?php echo $type_slug; ?>" id="mufaqar" > <?php echo $type_name; ?> </option>
-                                            <?php
-                                }                                                    
-                            ?>
-                        </select>
-                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
-                    </div>
-                </div>
 
-                
+                <div class="col-md-6 mb-3">
+                    <label for="">Model Type</label>
+                    <select id="ajax-modelcate"></select>
+                </div>
+                              
                 <div class="col-md-6 mb-3">           
 
                     <label for="">Model No</label>
@@ -152,9 +138,10 @@ get_header();?>
        $("#ticket_cat").change(function () {
      
         var parent_id = this.value ;
-
         var cat_slug = this.getAttribute("id").value;
-        alert(cat_slug);
+        var selected = $(this).find('option:selected');
+        var category_slug = selected.data('id'); 
+   
       
 
         $.ajax(
@@ -168,7 +155,7 @@ get_header();?>
                    
                     success: function(response){                     
                      
-                        $('#sub-categories').html(response);
+                        $('#model_cat').html(response);
             }
             
              });
@@ -179,12 +166,42 @@ get_header();?>
                     url:"<?php echo admin_url('admin-ajax.php'); ?>",
                     data: {
                         action: "super_get_fault_cat",
-                        parent_id: parent_id
+                        parent_id: category_slug
                     },   
                    
                     success: function(response){                     
                      
                         $('#ajax-faltcate').html(response);
+            }
+            
+             });
+       
+                           
+                        
+
+        
+       
+       });
+
+       $("#model_cat").change(function () {
+
+        var parent_id = this.value ;
+       
+        alert(parent_id);
+       
+
+        $.ajax(
+                {
+                    type:"POST",
+                    url:"<?php echo admin_url('admin-ajax.php'); ?>",
+                    data: {
+                        action: "super_get_model_cat",
+                        parent_id: category_slug
+                    },   
+                   
+                    success: function(response){                     
+                     
+                        $('#ajax-modelcate').html(response);
             }
             
              });
