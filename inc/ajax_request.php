@@ -852,13 +852,8 @@ add_action('wp_ajax_nopriv_super_get_model_cat', 'super_get_model_cat');
 function super_get_model_cat()
 {
 	$parent_slug = $_POST['parent_id'];
-	echo $parent_slug;
-
 	$term = get_term_by('slug', $parent_slug, 'model_cat');
-
 	$parent_id = $term->term_id;
-
-
     $subcategories = get_categories( array(
       'taxonomy' => 'model_cat',
       'parent' => $parent_id,

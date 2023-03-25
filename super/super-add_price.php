@@ -22,7 +22,7 @@ get_header();?>
                                         $cat_slug = $cat->slug ;
                                         $cat_name = $cat->name ; ?>                            
                                         <option value="<?php echo $cat_id; ?>" data-id="<?php echo $cat_slug; ?>" > <?php echo $cat_name; ?> </option>
-                                            <?php
+                                   <?php
                                 }                                                    
                             ?>
                         </select>
