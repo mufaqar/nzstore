@@ -30,18 +30,18 @@ get_header();?>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="">Model No</label>
+                    <label for="">Model Type</label>
                     <select id="model_cat"></select>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label for="">Falult Type</label>
-                    <select id="ajax-faltcate"></select>
+                    <select id="falt_cat"></select>
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label for="">Model NO</label>
-                    <select id="ajax-modelcate"></select>
+                    <label for="">Model No</label>
+                    <select id="model_nocat"></select>
                 </div>
                               
                 
@@ -162,7 +162,7 @@ get_header();?>
                    
                     success: function(response){                     
                      
-                        $('#ajax-faltcate').html(response);
+                        $('#falt_cat').html(response);
             }
             
              });
@@ -176,61 +176,47 @@ get_header();?>
 
        $("#model_cat").change(function () {
 
-        var selected = $(this).find('option:selected');
-        var mod_slug = selected.data('id'); 
-
-        alert(mod_slug);
-       
- 
-       
-
-        $.ajax(
-                {
-                    type:"POST",
-                    url:"<?php echo admin_url('admin-ajax.php'); ?>",
-                    data: {
-                        action: "super_get_model_cat",
-                        parent_id: mod_slug
-                    },   
-                   
-                    success: function(response){                     
-                     
-                        $('#ajax-modelcate').html(response);
-            }
-            
-             });
-       
-                           
-                        
-
-        
-       
-       });
+                var selected = $(this).find('option:selected');
+                var mod_slug = selected.data('id'); 
+                $.ajax(
+                        {
+                            type:"POST",
+                            url:"<?php echo admin_url('admin-ajax.php'); ?>",
+                            data: {
+                                action: "super_get_model_cat",
+                                parent_id: mod_slug
+                            },                      
+                            success: function(response){   
+                                $('#model_nocat').html(response);
+                            }                    
+                    });       
+        });
 
 
 
                  
         $("#add_repair").submit(function(e) {  
                         
-            e.preventDefault();   
-                           
-                        
+            e.preventDefault(); 
             var ticket_cat = jQuery('#ticket_cat').val();
-            var model = jQuery('#title').val();	 	       
-            var parts_availablity = jQuery('#parts_availablity').val();	             
-            var fault_type = jQuery('#ticket_status').val();	 
+            var model_cat = jQuery('#model_cat').val();	 
+            var falt_cat = jQuery('#falt_cat').val();	
+            var model_nocat = jQuery('#model_nocat').val();	 
+            var parts_availablity = jQuery('#parts_availablity').val();	  
             var repair_cost = jQuery('#repair_cost').val();	    
-            var diagnostic_fee = jQuery('#diagnostic_fee').val();	           
+            var diagnostic_fee = jQuery('#diagnostic_fee').val();
+
             var uid = jQuery('#uid').val(); 
             form_data = new FormData();      
             form_data.append('action', 'add_repair');                
             form_data.append('ticket_cat', ticket_cat); 
-            form_data.append('model', model);                
-            form_data.append('fault_type', fault_type);  
+            form_data.append('model_cat', model_cat);                
+            form_data.append('falt_cat', falt_cat); 
+            form_data.append('model_nocat', model_nocat);  
             form_data.append('parts_availablity', parts_availablity);    
             form_data.append('repair_cost', repair_cost);  
             form_data.append('diagnostic_fee', diagnostic_fee);        
-            form_data.append('uid', uid);       
+             
             $.ajax(
                 {
                     url:"<?php echo admin_url('admin-ajax.php'); ?>",

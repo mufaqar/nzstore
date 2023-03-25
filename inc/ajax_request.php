@@ -708,23 +708,15 @@ add_action('wp_ajax_nopriv_print_invoice', 'print_invoice');
 add_action('wp_ajax_agent_create_signup', 'agent_create_signup', 0);
 add_action('wp_ajax_nopriv_agent_create_signup', 'agent_create_signup');
 
-function agent_create_signup() {	
-	
-
-
-		global $wpdb;
-	
+function agent_create_signup() {
+		global $wpdb;	
 		$username = $_POST['agent_email'];
 		$agent_email = $_POST['agent_email'];
 		$agent_name = $_POST['agent_name'];
 		$business_address = $_POST['business_address'];	
 		$business_name = $_POST['business_name'];  
 		$business_phone = $_POST['business_phone'];  
-		$postal_code = $_POST['postal_code'];  
-
-
-
-	
+		$postal_code = $_POST['postal_code'];  	
 		$user_data = array(
 			'user_login' => $username,
 			'user_email' => $agent_email,
@@ -732,11 +724,7 @@ function agent_create_signup() {
 			'display_name' => $agent_name,
 			'role' => 'agent'
 		);	
-		
-			
-
-	  $user_id = wp_insert_user($user_data);
-	
+	  $user_id = wp_insert_user($user_data);	
 	  if (!is_wp_error($user_id)) {	
 		update_user_meta( $user_id,'business_name', $business_name);	 
 		update_user_meta( $user_id,'business_phone', $business_phone);	  
@@ -868,6 +856,61 @@ function super_get_model_cat()
 }
 
 
+
+
+
+add_action('wp_ajax_add_repair', 'add_repair', 0);
+add_action('wp_ajax_nopriv_add_repair', 'add_repair');
+
+function add_repair()
+{
+	global $wpdb;
+	$ticket_cat = $_POST['ticket_cat'];
+	$model_cat = $_POST['model_cat'];
+	$falt_cat = $_POST['falt_cat'];
+	$model_nocat = $_POST['model_nocat'];
+	$parts_availablity = $_POST['parts_availablity'];
+	$repair_cost = $_POST['repair_cost'];
+	$diagnostic_fee = $_POST['diagnostic_fee'];	
+
+	
+
+
+
+
+
+	$post = array(
+		'post_title'    => $falt_cat." ".$model_nocat,
+		'post_status'   => 'publish',
+		'post_type'     => 'repair',
+		'meta_input'   => array(
+			'title' => $falt_cat." ".$model_nocat,
+			'parts_availablity' => $parts_availablity,
+			'shipping' => $shipping,
+			'repair_cost' => $repair_cost,
+			'diagnostic_fee' => $diagnostic_fee,
+			
+		),
+		'tax_input'    => array(
+			'repair_cat' => array($ticket_cat),
+			'cat_fault_type' => array($falt_cat),
+			'model_cat' => array($model_nocat)
+		
+		),
+
+	);
+		
+	
+	$inserted_post_id = wp_insert_post($post);
+	if (!is_wp_error($inserted_post_id)) {	
+		echo wp_send_json(array('code' => 200, 'message' => __('Repair Created Sucessfully')));
+		die();
+	} else {
+		echo wp_send_json(array('code' => 0, 'message' => __('Error Occured please fill up form carefully.')));
+		die();
+	}
+
+}
 
 
 
