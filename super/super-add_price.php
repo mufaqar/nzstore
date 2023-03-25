@@ -40,19 +40,10 @@ get_header();?>
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label for="">Model Type</label>
+                    <label for="">Model NO</label>
                     <select id="ajax-modelcate"></select>
                 </div>
                               
-                <div class="col-md-6 mb-3">           
-
-                    <label for="">Model No</label>
-                    <div class="_select">
-                        <input type="text" value="" placeholder="Please enter title" id="title" required>
-                        <input type="hidden" value="<?php echo $uid ?>"  id="uid" >
-                    </div>
-                </div>
-
                 
                 <div class="col-md-6 mb-3">
                     <label for="">Parts availbiility</label>
@@ -187,7 +178,7 @@ get_header();?>
 
         var parent_id = this.value ;
        
-        alert(parent_id);
+ 
        
 
         $.ajax(
@@ -196,7 +187,7 @@ get_header();?>
                     url:"<?php echo admin_url('admin-ajax.php'); ?>",
                     data: {
                         action: "super_get_model_cat",
-                        parent_id: category_slug
+                        parent_id: parent_id
                     },   
                    
                     success: function(response){                     

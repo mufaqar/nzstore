@@ -813,7 +813,7 @@ function super_get_child_cat()
     ) );
     $output = '<option value="">Select a Laptop</option>';
     foreach ( $subcategories as $subcategory ) {
-      $output .= '<option value="' . $subcategory->term_id . '">' . $subcategory->name . '</option>';
+      $output .= '<option value="' . $subcategory->slug . '">' . $subcategory->name . '</option>';
     }
     wp_send_json($output);
     wp_die();
@@ -852,18 +852,19 @@ add_action('wp_ajax_nopriv_super_get_model_cat', 'super_get_model_cat');
 function super_get_model_cat()
 {
 	$parent_slug = $_POST['parent_id'];
+	echo $parent_slug;
 
-	$term = get_term_by('slug', $parent_slug, 'cat_fault_type');
+	$term = get_term_by('slug', $parent_slug, 'model_cat');
 
 	$parent_id = $term->term_id;
 
 
     $subcategories = get_categories( array(
-      'taxonomy' => 'cat_fault_type',
+      'taxonomy' => 'model_cat',
       'parent' => $parent_id,
       'hide_empty' => false
     ) );
-    $output = '<option value="">Select Fault</option>';
+    $output = '<option value="">Select Model</option>';
     foreach ( $subcategories as $subcategory ) {
       $output .= '<option value="' . $subcategory->term_id . '">' . $subcategory->name . '</option>';
     }
