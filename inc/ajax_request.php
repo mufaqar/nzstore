@@ -793,13 +793,12 @@ add_action('wp_ajax_nopriv_super_get_child_cat', 'super_get_child_cat');
 function super_get_child_cat()
 {
 	$parent_id = $_POST['parent_id'];
-
     $subcategories = get_categories( array(
       'taxonomy' => 'repair_cat',
       'parent' => $parent_id,
       'hide_empty' => false
     ) );
-    $output = '<option value="">Select a Laptop</option>';
+    $output = '<option value="">Select a Model</option>';
     foreach ( $subcategories as $subcategory ) {
       $output .= '<option value="'. $subcategory->term_id.'" data-id="'.$subcategory->slug.'">' . $subcategory->name . '</option>';
     }
