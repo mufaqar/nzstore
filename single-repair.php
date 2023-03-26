@@ -1,9 +1,14 @@
 <?php get_header('landing'); ?>
+
+
+<section class="container login mt-5 mb-5" style="margin-bottom:5rem !important">
+        <div class="row align-items-center">           
+            <div class="col-sm-12 right col-md-12 p-3">
+                    <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:350px" >                 
+                    
            
 <main class="launch_calandar">
-        <div class="row d-flex">
-           
-        </div>    
+        
 
 
         <div class="content">
@@ -27,17 +32,7 @@
 <div class="catering_card_wrapper">
             <div class="ajaxload"></div>
             <div class="foodlist">       
-                <?php 
-                        query_posts(array(
-                            'post_type' => 'repair',
-                            'posts_per_page' => 1,
-                            'order' => 'desc',  
-                          
-                        ) ); 
-
-            
-                if (have_posts()) :  while (have_posts()) : the_post();
-                $date = get_field('date'); ?>
+            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                         <div class="catering_card _pro_salat">
                             <h3>Modle  # <?php the_title() ?></h3>  
 
@@ -46,57 +41,29 @@
 
                             <div class="row">
                                 <div class="col-md-4">
-                                    <h6 class="mt-2">Fault Type:</h6>                                                                  
+                                    <h6 class="mt-2">Diagnostic Fee</h6>                                                                  
                                 </div>
                                 <div class="col-md-8">                               
-                                    <?php ?>                               
+                                    <?php   echo get_post_meta( get_the_ID(), 'diagnostic_fee', true );?>                               
                                 </div>                        
                             </div>
 
                             <div class="row">
                                 <div class="col-md-4">
-                                    <h6 class="mt-2">Type:</h6>                                                                  
+                                    <h6 class="mt-2">Parts Availablity:</h6>                                                                  
                                 </div>
                                 <div class="col-md-8">                               
-                                <?php    echo "65" ;?>                                 
-                                </div>                        
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h6 class="mt-2">	Model:</h6>                                                                  
-                                </div>
-                                <div class="col-md-8">                               
-                                <?php    echo "65" ;?>                                 
+                                <?php  echo get_post_meta( get_the_ID(), 'parts_availablity', true );?>                           
                                 </div>                        
                             </div>
 
 
                             <div class="row">
                                 <div class="col-md-4">
-                                    <h6 class="mt-2">Price:</h6>                                                                  
+                                    <h6 class="mt-2">	Repair Cost</h6>                                                                  
                                 </div>
                                 <div class="col-md-8">                               
-                                    <?php    echo "65" ;?>                               
-                                </div>                        
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h6 class="mt-2">Issues:</h6>                                                                  
-                                </div>
-                                <div class="col-md-8">                               
-                                  <?php echo get_post_meta( $post->ID, 'issues', true ); ?>                               
-                                </div>                        
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h6 class="mt-2">Technician Remarks:</h6>                                                                  
-                                </div>
-                                <div class="col-md-8">                               
-                                  <?php echo get_post_meta( $post->ID, 'eng_remarks', true ); ?>                               
+                                <?php  echo get_post_meta( get_the_ID(), 'repair_cost', true );?>                                
                                 </div>                        
                             </div>
 
@@ -113,17 +80,7 @@
 
 
                         </div>
-                    <?php endwhile;
-                    wp_reset_query();
-                else : ?>
-                   
-                    <div class="catering_card _pro_salat">
-                            <h3> 404 Not Found</h3>
-                                             
-                        </div>
-
-
-                <?php endif; ?>
+                        <?php endwhile; endif; ?>
             </div>
             </div>
            
