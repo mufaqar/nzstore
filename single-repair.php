@@ -34,7 +34,7 @@
             <div class="foodlist">       
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                         <div class="catering_card _pro_salat">
-                            <h3>Modle  # <?php the_title() ?></h3>  
+                            <h3><?php the_title() ?></h3>  
 
                             
                             

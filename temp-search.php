@@ -11,20 +11,6 @@ get_header('landing');
                                 <div class="_info mt-5 mb-3">
                                 <h3>Repair Cost Search </h3>
 
-                               
-
-
-
-
-
-
-
-
-
-
-
-
-
                                 </div>
                                 <div class="_form p-4 pt-5 pb-5">
                                 <form class="get_repair_price" id="get_repair_price" action="#" >
