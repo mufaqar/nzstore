@@ -813,12 +813,8 @@ add_action('wp_ajax_nopriv_super_get_fault_cat', 'super_get_fault_cat');
 function super_get_fault_cat()
 {
 	$parent_slug = $_POST['parent_id'];
-
 	$term = get_term_by('slug', $parent_slug, 'cat_fault_type');
-
 	$parent_id = $term->term_id;
-
-
     $subcategories = get_categories( array(
       'taxonomy' => 'cat_fault_type',
       'parent' => $parent_id,
