@@ -87,6 +87,8 @@
             <br/><br/>
 
             <a class="btn_primary"  href="<?php echo home_url('search-price'); ?>.toggle .tabs .tab.active">Check Another Device Price </a>
+
+            <a style="margin-left:30px" class="btn_primary"  href="<?php echo home_url(''); ?>.toggle .tabs .tab.active">Contact Us  </a>
            
     </section>                
   
