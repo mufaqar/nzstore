@@ -909,6 +909,28 @@ function add_repair()
 }
 
 
+function autocomplete_search() {
+	$query = $_POST['query'];
+	$search_results = get_posts(array(
+	   's' => $query,
+	   'post_type' => 'repair',
+	   'posts_per_page' => 5,
+	   'orderby' => 'relevance',
+	   'order' => 'DESC'
+	));
+	if($search_results) {
+	   foreach($search_results as $result) {
+		  echo '<a href="' . get_permalink($result->ID) . '">' . $result->post_title . '</a><br>';
+	   }
+	} else {
+	   echo 'No results found';
+	}
+	die();
+ }
+ add_action('wp_ajax_autocomplete_search', 'autocomplete_search');
+ add_action('wp_ajax_nopriv_autocomplete_search', 'autocomplete_search');
+
+
 
 
 

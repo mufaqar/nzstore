@@ -10,9 +10,28 @@ get_header('landing');
                     <div class="catering_form mt-5 mb-5">
                                 <div class="_info mt-5 mb-3">
                                 <h3>Repair Cost Search </h3>
+
+                               
+
+
+
+
+
+
+
+
+
+
+
+
+
                                 </div>
                                 <div class="_form p-4 pt-5 pb-5">
                                 <form class="get_repair_price" id="get_repair_price" action="#" >
+
+
+                                <input type="text" id="search" name="search" placeholder="Search...">
+   <div id="search-results"></div>
                                     <div class="row">
                                     <div class="col-md-6 mb-3">
                                             <label for="">Select Device</label>
@@ -73,7 +92,31 @@ get_header('landing');
      <!-- Font Awsome -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" ></script> 
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript">   
+        <script type="text/javascript">  
+
+
+            jQuery(document).ready(function($) {
+                var searchTimer;
+                $('#search').on('input', function() {
+                var query = $(this).val();
+                if(query != '') {
+                    $.ajax({
+                        url:"<?php echo admin_url('admin-ajax.php'); ?>",
+                        type: 'post',
+                        data: { action: 'autocomplete_search', query: query },
+                        success: function(data) {
+                        $('#search-results').html(data);
+                        }
+                    });
+                } else {
+                    $('#search-results').html('');
+                }
+            });
+            });
+
+        
+        
+
         jQuery(document).ready(function($) {	
             $('._cross').click(function(){           
             $(".hideme").css("display", "none");
