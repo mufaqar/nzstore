@@ -920,7 +920,7 @@ function autocomplete_search() {
 	));
 	if($search_results) {
 	   foreach($search_results as $result) {
-		  echo '<a href="' . get_permalink($result->ID) . '">' . $result->post_title . '</a><br>';
+		  echo '<a class="result" href="' . get_permalink($result->ID) . '">' . $result->post_title . '</a> <a class="btn_primary"  href="' . get_permalink($result->ID) . '">View Price </a></div>';
 	   }
 	} else {
 	   echo 'No results found';

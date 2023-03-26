@@ -1,7 +1,7 @@
 /*
 Theme Name: NZ Store
 Text Domain:  NZ Store
-Version: 3.1.1
+Version: 4.1.1
 Description: Custom Theme for  NZ Store
 Tags: blog, one-column, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images
 Author: Mufaqar 
@@ -3555,4 +3555,12 @@ body.page-template-temp-landing {
 .show_pdf {
   position: relative;
   z-index: -22;
+}
+
+#search-results {
+  margin: 60px 0;
+}
+.result {
+  margin: 30px 0;
+  font-size: 30px;
 }

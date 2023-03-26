@@ -29,47 +29,16 @@ get_header('landing');
                                 <div class="_form p-4 pt-5 pb-5">
                                 <form class="get_repair_price" id="get_repair_price" action="#" >
 
+                                <div class="row">
+                                <div class="col-md-12 mb-3">
+                                <label for="">Enter Device Name </label>
+                                 <div class="_select">
+                                      <input type="text" id="search" name="search" placeholder="Search...">
+                                  </div>
+                                   <div id="search-results"></div>
 
-                                <input type="text" id="search" name="search" placeholder="Search...">
-   <div id="search-results"></div>
-                                    <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                            <label for="">Select Device</label>
-                                            <div class="_select">
-                                                <select id="ticket_cat"> 
-                                                <option value="">Select Device Type</option>                           
-                                                    <?php   
-                                                    $cat_tax = get_terms( array('taxonomy' => 'repair_cat','hide_empty' => false ,  'parent' => 0) ); 
-                                                    foreach( $cat_tax as $cat )  {
-                                                                $cat_id = $cat->term_id ;
-                                                                $cat_slug = $cat->slug ;
-                                                                $cat_name = $cat->name ; ?>                            
-                                                                <option value="<?php echo $cat_id; ?>" data-id="<?php echo $cat_slug; ?>" > <?php echo $cat_name; ?> </option>
-                                                        <?php
-                                                        }                                                    
-                                                    ?>
-                                                </select>
-                                                <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <label for="">Model Type</label>
-                                            <select id="model_cat"></select>
-                                        </div>
-
-                                        <div class="col-md-6 mb-3">
-                                            <label for="">Falult Type</label>
-                                            <select id="falt_cat"></select>
-                                        </div>
-
-                                        <div class="col-md-6 mb-3">
-                                            <label for="">Model No</label>
-                                            <select id="model_nocat"></select>
-                                        </div>
-                                        <div class="d-flex justify-content-end savebtn">
-                                            <input type="submit" class="btn_primary"  value="Get Price"/>
-                                        </div>
-                                    </div>
+                                                </div>
+                                    
                                 </form>
                             </div>
                         </div>
