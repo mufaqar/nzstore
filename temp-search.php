@@ -2,22 +2,11 @@
 /*
  * Template Name: Price Search
  */
-
 get_header('landing');
-
-
-?>
-
-
-
-    <!-- login section  -->
-
-    <section class="container login mt-5 mb-5" style="margin-bottom:5rem !important">
-        <div class="row align-items-center">
-           
+?>  <section class="container login mt-5 mb-5" style="margin-bottom:5rem !important">
+        <div class="row align-items-center">           
             <div class="col-sm-12 right col-md-12 p-3">
-                    <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:350px" > 
-                
+                    <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:350px" >                 
                     <div class=" catering_form mt-5 mb-5">
                                 <div class="_info mt-5 mb-3">
                                 <h3>Repair Cost Search </h3>
@@ -58,34 +47,8 @@ get_header('landing');
                                             <label for="">Model No</label>
                                             <select id="model_nocat"></select>
                                         </div>
-                                                    
-                                        
-                                        <div class="col-md-6 mb-3">
-                                            <label for="">Parts availbiility</label>
-                                            <div class="_select">
-                                                <input type="text" value="" placeholder="" id="parts_availablity" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 mb-3">
-                                            <label for="">Repair Cost </label>
-                                            <div class="_select">
-                                                <input type="text" value="" placeholder="Cost" id="repair_cost" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 mb-3">
-                                            <label for="">Diagnostic Fee </label>
-                                            <div class="_select">
-                                                <input type="text" value="" placeholder="Fee" id="diagnostic_fee" required>
-                                            </div>
-                                        </div>
-
-
-
-
                                         <div class="d-flex justify-content-end savebtn">
-                                            <input type="submit" class="btn_primary"  value="Add Repair Request"/>
+                                            <input type="submit" class="btn_primary"  value="Get Price"/>
                                         </div>
                                     </div>
                                 </form>
