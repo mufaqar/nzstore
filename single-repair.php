@@ -86,7 +86,7 @@
 
             <br/><br/>
 
-            <a class="btn_primary"  href="https://kiwimobiles.co.nz/jobform/search-price/">Check Another Device Price </a>
+            <a class="btn_primary"  href="<?php echo home_url('search-price'); ?>.toggle .tabs .tab.active">Check Another Device Price </a>
            
     </section>                
   
