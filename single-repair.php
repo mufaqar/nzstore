@@ -83,6 +83,10 @@
                         <?php endwhile; endif; ?>
             </div>
             </div>
+
+            <br/><br/>
+
+            <a class="btn_primary"  href="https://kiwimobiles.co.nz/jobform/search-price/">Check Another Device Price </a>
            
     </section>                
   
