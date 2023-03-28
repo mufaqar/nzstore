@@ -1,5 +1,14 @@
 <?php get_header('landing'); ?>
 
+<style>
+
+.btn_sec {
+  background: #565656 !important;
+  color:#fff !important;  
+}
+
+</style>
+
 
 <section class="container login mt-5 mb-5" style="margin-bottom:5rem !important">
         <div class="row align-items-center">           
@@ -88,7 +97,9 @@
 
             <a class="btn_primary"  href="<?php echo home_url('search-price'); ?>">Check Another Device Price </a>
 
-            <a style="margin-left:30px" class="btn_primary"  href="<?php echo home_url(''); ?>">Contact Us  </a>
+            <a style="margin-left:30px" class="btn_primary btn_sec"  href="tel:073477044">DID: 073477044 </a>
+
+            <a style="margin-left:30px" class="btn_primary btn_sec"  href="mailto:budgetcomputer2013@gmail.com ">budgetcomputer2013@gmail.com </a>
            
     </section>                
   
