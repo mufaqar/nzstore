@@ -918,13 +918,15 @@ function autocomplete_search() {
 	   'orderby' => 'relevance',
 	   'order' => 'DESC'
 	));
+	echo "<ul>";
 	if($search_results) {
 	   foreach($search_results as $result) {
-		  echo '<a class="result" href="' . get_permalink($result->ID) . '">' . $result->post_title . '</a> <a class="btn_primary"  href="' . get_permalink($result->ID) . '">View Price </a></div>';
+		  echo '<li><a class="result" href="' . get_permalink($result->ID) . '">' . $result->post_title . '</a> <a class="btn_primary"  href="' . get_permalink($result->ID) . '">View Price </a></li>';
 	   }
 	} else {
 	   echo 'No results found';
 	}
+	echo "</ul>";
 	die();
  }
  add_action('wp_ajax_autocomplete_search', 'autocomplete_search');

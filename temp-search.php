@@ -3,7 +3,36 @@
  * Template Name: Price Search
  */
 get_header('landing');
-?>  <section class="container login mt-5 mb-5" style="margin-bottom:5rem !important">
+?>  
+<style>
+
+#search-results {
+  margin: 60px 0;
+}
+.result {
+  margin: 30px 0;
+  font-size: 30px;
+}
+
+#search-results ul li {
+  
+  background: #eaeceb;
+    padding: 15px 22px;
+    border: 1px dashed #5fb227;
+    border-radius: 50px;
+    margin-bottom: 20px;
+  
+  
+}
+
+#search-results ul li:odd {
+  background: #d9d9d9;  
+}
+
+#search-results .btn_primary { margin-left:30px}
+
+</style>
+<section class="container login mt-5 mb-5" style="margin-bottom:5rem !important">
         <div class="row align-items-center">           
             <div class="col-sm-12 right col-md-12 p-3">
                     <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:350px" >                 
