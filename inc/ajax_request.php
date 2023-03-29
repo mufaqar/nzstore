@@ -914,7 +914,7 @@ function autocomplete_search() {
 	$search_results = get_posts(array(
 	   's' => $query,
 	   'post_type' => 'repair',
-	   'posts_per_page' => 5,
+	   'posts_per_page' => -1,
 	   'orderby' => 'relevance',
 	   'order' => 'DESC'
 	));
