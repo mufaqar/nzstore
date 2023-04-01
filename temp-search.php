@@ -32,6 +32,8 @@ get_header('landing');
 #search-results .btn_primary { margin-left:30px}
 
 .headerbg { background:#979797dd;}
+.headerbg h4 { color:#fff;}
+.ics_logo { text-align:right;}
 
 
 
@@ -40,24 +42,26 @@ get_header('landing');
 
 
 
-<section class="container login headerbg" >
-    <div class="row">  
-        <div class="col-md-6 p-3">  
-            <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:350px" >  
+<section class="container login " >
+    <div class="row headerbg">  
+        <div class="col-md-4 p-3">  
+            <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:250px" >  
         </div>
-        <div class="col-md-6 p-3">  
-              POWERED BY ICS NS LIMITED , www.icsservices.nz
-              <img src="<?php bloginfo('template_directory'); ?>/reources/ics_logo.png" alt="" style="max-width:350px" >  
+        <div class="col-md-8 p-3 ics_logo">  
+              <h4>POWERED BY ICS NS LIMITED , www.icsservices.nz <h4>
+              <img src="<?php bloginfo('template_directory'); ?>/reources/ics_logo.png" alt="" style="max-width:250px" >  
               
         </div>
     </div>  
-    <div class="row align-items-center">  
-        
-        <div class="col-md-12 p-3">  
-        <h2> HOW TO SEARCH? </h2>
-        <h3>FOR EXAMPLE !PHONE 11 SCREEN BROKEN" OR YOU CAN SEARCH ANY MODELS, LAPTOPS, SMARTPHONES, XBOX, PLAY STATIONS. WE USUALLY REPLY IN TWO HOURS IN WORKING DAYS</h3>
-              
-        </div>
+
+    <div class="row hint">  
+        <div class="col-md-12">  
+       <h4> HOW TO SEARCH?</h4>
+FOR EXAMPLE !PHONE 11 SCREEN BROKEN" OR YOU CAN SEARCH ANY MODELS, LAPTOPS, SMARTPHONES, XBOX, PLAY STATIONS. WE USUALLY REPLY IN TWO HOURS IN WORKING DAYS
+
+           
+    </div> 
+    
     </div>   
 
 </section>
@@ -66,19 +70,10 @@ get_header('landing');
 
 
 
-
-
-
-
-
-
-
-
-
 <section class="container login mt-5 mb-5" style="margin-bottom:5rem !important">
         <div class="row align-items-center">           
             <div class="col-sm-12 right col-md-12 p-3">
-                    <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:350px" >                 
+                               
                     <div class="catering_form mt-5 mb-5">
                                 <div class="_info mt-5 mb-3">
                                 <h3>Repair Cost Search </h3>
