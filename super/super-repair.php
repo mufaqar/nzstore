@@ -14,8 +14,7 @@
                             <th>Fault Type</th>                         
                             <th>Type</th>                             
                             <th>Parts availbiility</th>
-                            <th>Repair Cost</th>
-                            <th>Diagnostic Fee</th>
+                           
                          
                         </tr>
                     </thead>
@@ -32,8 +31,7 @@
                         if (have_posts()) :  while (have_posts()) : the_post();$pid = get_the_ID();
                                 $i++;
                                 $diagnostic_fee = get_post_meta(get_the_ID(), 'diagnostic_fee', true); 
-                                $parts_availablity = get_post_meta($pid, 'parts_availablity', true); 
-                                
+                                $parts_availablity = get_post_meta($pid, 'parts_availablity', true);                                 
                                 $repair_cost = get_post_meta( $pid, 'repair_cost', true );                             
                                 $cat_status  = get_the_terms( $pid, 'cat_fault_type');
                                 foreach($cat_status as $cat_selected)
@@ -54,10 +52,8 @@
                                     <td><?php the_title() ?></td> 
                                     <td><?php echo $cat_name;?></td>
                                     <td><?php echo $repair_cat_name;?></td>
-                                    <td><?php echo $parts_availablity;?></td>
-                                                               
-                                    <td>$ <?php echo get_post_meta(get_the_ID(), 'repair_cost', true); ?></td>           
-                                    <td>$ <?php echo get_post_meta(get_the_ID(), 'diagnostic_fee', true); ?></td>
+                                    <td><?php echo $parts_availablity;?></td>                                                            
+                                   
                                    
                                 
                                 </tr>
