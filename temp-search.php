@@ -51,7 +51,7 @@ get_header('landing');
             <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:250px" >  
         </div>
         <div class="col-md-8 p-3 ics_logo">  
-              <h4>POWERED BY ICS NS LIMITED , www.icsservices.nz <h4>
+              <h4>POWERED BY ICS NZ LIMITED , www.icsservices.nz <h4>
               <img src="<?php bloginfo('template_directory'); ?>/reources/ics_logo.png" alt="" style="max-width:250px" >  
               
         </div>
