@@ -34,6 +34,39 @@ get_header('landing');
 
 
 </style>
+
+
+
+
+<section class="container login mt-5 mb-5" style="margin-bottom:5rem !important">
+                <div class="container_wrapper">
+                    <div class="d-flex align-items-center justify-content-between mt-4">
+                        <div class="hamburger">
+                           
+                        </div>
+                        <div class="proofile_info d-flex align-items-center">
+                            <div class="user">
+                                <h6>ghg</h6>  
+                            </div>
+                            <img src="<?php bloginfo('template_directory'); ?>/reources//images/profile.webp" alt="">
+                        </div>                        
+                    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <section class="container login mt-5 mb-5" style="margin-bottom:5rem !important">
         <div class="row align-items-center">           
             <div class="col-sm-12 right col-md-12 p-3">
@@ -43,6 +76,8 @@ get_header('landing');
                                 <h3>Repair Cost Search </h3>
 
                                 </div>
+
+
                                 <div class="_form p-4 pt-5 pb-5">
                                 <form class="get_repair_price" id="get_repair_price" action="#" >
 
