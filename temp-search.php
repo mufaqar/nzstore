@@ -31,6 +31,8 @@ get_header('landing');
 
 #search-results .btn_primary { margin-left:30px}
 
+.headerbg { background:#979797dd;}
+
 
 
 </style>
@@ -38,13 +40,23 @@ get_header('landing');
 
 
 
-<section class="container login mt-5 mb-5" style="margin-bottom:5rem !important">
-    <div class="row align-items-center">  
+<section class="container login headerbg" >
+    <div class="row">  
         <div class="col-md-6 p-3">  
             <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:350px" >  
         </div>
         <div class="col-md-6 p-3">  
-        POWERED BY ICS NS LIMITED , www.icsservices.nz
+              POWERED BY ICS NS LIMITED , www.icsservices.nz
+              <img src="<?php bloginfo('template_directory'); ?>/reources/ics_logo.png" alt="" style="max-width:350px" >  
+              
+        </div>
+    </div>  
+    <div class="row align-items-center">  
+        
+        <div class="col-md-12 p-3">  
+        <h2> HOW TO SEARCH? </h2>
+        <h3>FOR EXAMPLE !PHONE 11 SCREEN BROKEN" OR YOU CAN SEARCH ANY MODELS, LAPTOPS, SMARTPHONES, XBOX, PLAY STATIONS. WE USUALLY REPLY IN TWO HOURS IN WORKING DAYS</h3>
+              
         </div>
     </div>   
 
