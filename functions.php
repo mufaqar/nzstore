@@ -165,3 +165,37 @@ function load_subcategories() {
   }
   add_action( 'wp_ajax_load_subcategories', 'load_subcategories' );
   add_action( 'wp_ajax_nopriv_load_subcategories', 'load_subcategories' );
+
+
+
+  function update_post_title_with_meta() {
+    $args = array(
+      'post_type' => 'repair',
+      'posts_per_page' => -1, 
+    );
+    $posts = get_posts( $args );
+    foreach ( $posts as $post ) {
+     // $new_title = get_post_meta( $post->ID, 'my_meta_field', true ); // Replace this with the meta field key you want to use
+
+
+     $term_repair_cat =  wp_get_post_terms( $post->ID, 'repair_cat');
+     $term_repair_cat_name = $term_repair_cat[0]->name;
+     $term_model_cat =  wp_get_post_terms( $post->ID, 'model_cat');
+     $term_model_cat_name = $term_repair_cat[0]->name;
+
+     //$old_title = get_the_title($post->ID,);
+
+     $old_title = "-OLD";
+    
+
+     $new_title =  $term_repair_cat_name ." : ".$old_title;
+      if ( !empty( $new_title ) ) {
+        wp_update_post( array(
+          'ID' => $post->ID,
+          'post_title' => $new_title,
+        ) );
+      }
+    }
+  }
+  //add_action( 'init', 'update_post_title_with_meta' );
+  
