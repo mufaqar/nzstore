@@ -39,18 +39,14 @@ get_header('landing');
 
 
 <section class="container login mt-5 mb-5" style="margin-bottom:5rem !important">
-                <div class="container_wrapper">
-                    <div class="d-flex align-items-center justify-content-between mt-4">
-                        <div class="hamburger">
-                           
-                        </div>
-                        <div class="proofile_info d-flex align-items-center">
-                            <div class="user">
-                                <h6>ghg</h6>  
-                            </div>
-                            <img src="<?php bloginfo('template_directory'); ?>/reources//images/profile.webp" alt="">
-                        </div>                        
-                    </div>
+    <div class="row align-items-center">  
+        <div class="col-md-6 p-3">  
+            <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" alt="" style="max-width:350px" >  
+        </div>
+        <div class="col-md-6 p-3">  
+        POWERED BY ICS NS LIMITED , www.icsservices.nz
+        </div>
+    </div>   
 
 </section>
 
