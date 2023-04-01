@@ -863,7 +863,7 @@ function add_repair()
 	$ticket_cat = $_POST['ticket_cat'];
 
 	
-	$repair_cat = $_POST['model_cat'];
+	$model_type_cat = $_POST['model_cat'];
 	$falt_cat = $_POST['falt_cat'];
 	$model_nocat = $_POST['model_nocat'];
 	$parts_availablity = $_POST['parts_availablity'];
@@ -873,16 +873,20 @@ function add_repair()
 	$model_no_cat_name = $term_model_nocat->name;
 	$term_falt_cat = get_term( $falt_cat, 'cat_fault_type' );
 	$falt_cat_name = $term_falt_cat->name;
-	$term_repair_cat = get_term( $repair_cat, 'repair_cat' );	
-	$repair_cat_name = $term_repair_cat->name;
-	
+
+	$term_model_type_cat = get_term( $model_type_cat, 'repair_cat' );	
+	$model_type_name = $term_model_type_cat->name;
+
+	$term_type_cat = get_term( $ticket_cat, 'repair_cat' );	
+	$type_name = $term_type_cat->name;
+	$title =  $type_name ." : ".$model_type_name." : " .$falt_cat_name." : ".$model_no_cat_name;
 
 	$post = array(
-		'post_title'    => $repair_cat_name." : " .$falt_cat_name." : ".$model_no_cat_name,
+		'post_title'    => $title ,
 		'post_status'   => 'publish',
 		'post_type'     => 'repair',
 		'meta_input'   => array(
-			'title' => $repair_cat_name." : " .$falt_cat_name." : ".$model_no_cat_name,
+			'title' => $title ,
 			'parts_availablity' => $parts_availablity,
 			'repair_cost' => $repair_cost,
 			'diagnostic_fee' => $diagnostic_fee,
