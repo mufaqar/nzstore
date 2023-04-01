@@ -35,7 +35,8 @@ get_header('landing');
 .headerbg h4 { color:#fff;}
 .ics_logo { text-align:right;}
 
-.hint {}
+.hint { background: #b7b7b7; padding: 20px;}
+.hint p { font-size:20px; }
 
 
 
@@ -58,8 +59,9 @@ get_header('landing');
 
     <div class="row hint">  
         <div class="col-md-12">  
-                <h4> HOW TO SEARCH?</h4>
-                 <p>FOR EXAMPLE !PHONE 11 SCREEN BROKEN" OR YOU CAN SEARCH ANY MODELS, LAPTOPS, SMARTPHONES, XBOX, PLAY STATIONS. WE USUALLY REPLY IN TWO HOURS IN WORKING DAYS </p>           
+                <h4> HOW TO SEARCH ? </h4>
+                 <p>For example "iPhone 11 screen broken"
+Or you can search any models, laptops, smartphones, xbox, play stations. We usually reply in two hours in working days </p>           
         </div> 
     
     </div>   
@@ -70,12 +72,12 @@ get_header('landing');
 
 
 
-<section class="container login mt-5 mb-5" style="margin-bottom:5rem !important">
+<section class="container login mt-1 mb-5" style="margin-bottom:5rem !important">
         <div class="row align-items-center">           
             <div class="col-sm-12 right col-md-12 p-3">
                                
-                    <div class="catering_form mt-5 mb-5">
-                                <div class="_info mt-5 mb-3">
+                    <div class="catering_form mb-5">
+                                <div class="_info mb-3">
                                 <h3>Repair Cost Search </h3>
 
                                 </div>
