@@ -35,6 +35,8 @@ get_header('landing');
 .headerbg h4 { color:#fff;}
 .ics_logo { text-align:right;}
 
+.hint {}
+
 
 
 </style>
@@ -56,11 +58,9 @@ get_header('landing');
 
     <div class="row hint">  
         <div class="col-md-12">  
-       <h4> HOW TO SEARCH?</h4>
-FOR EXAMPLE !PHONE 11 SCREEN BROKEN" OR YOU CAN SEARCH ANY MODELS, LAPTOPS, SMARTPHONES, XBOX, PLAY STATIONS. WE USUALLY REPLY IN TWO HOURS IN WORKING DAYS
-
-           
-    </div> 
+                <h4> HOW TO SEARCH?</h4>
+                 <p>FOR EXAMPLE !PHONE 11 SCREEN BROKEN" OR YOU CAN SEARCH ANY MODELS, LAPTOPS, SMARTPHONES, XBOX, PLAY STATIONS. WE USUALLY REPLY IN TWO HOURS IN WORKING DAYS </p>           
+        </div> 
     
     </div>   
 
