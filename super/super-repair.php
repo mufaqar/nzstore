@@ -4,9 +4,7 @@
     ?>
     <style>
 
-#div1 {		.width: 90%;
-margin: 0px auto;
-}
+#div1 { width: 90% !important;margin: 0px auto;}
 
 </style>
         <?php include('navigation.php'); ?>
