@@ -38,7 +38,7 @@ get_header('landing');
 .hint { background: #b7b7b7; padding: 20px;}
 .hint p { font-size:20px; }
 
-
+.boxbg { background: #b5b5b5;}
 
 </style>
 
@@ -72,7 +72,7 @@ Or you can search any models, laptops, smartphones, xbox, play stations. We usua
 
 
 
-<section class="container login mt-1 mb-5" style="margin-bottom:5rem !important">
+<section class="container login mt-1 mb-5 boxbg" style="margin-bottom:5rem !important">
         <div class="row align-items-center">           
             <div class="col-sm-12 right col-md-12 p-3">
                                
