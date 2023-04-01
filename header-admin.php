@@ -42,6 +42,7 @@
 	<link rel="icon" type="image/x-icon" href="<?php bloginfo('template_directory'); ?>/reources/images/logo.png">
 	
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/super.css" />	
+
 	
 </head>
 <body <?php body_class("admin_pages"); ?>>
