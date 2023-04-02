@@ -435,4 +435,41 @@ function cptui_register_my_taxes_ticket_fault_type() {
 	}
 	add_action( 'init', 'cptui_register_my_taxes_model_cat' );
 
+	function cptui_register_my_taxes_model_type_cat() {
+
+		/**
+		 * Taxonomy: Model Type.
+		 */
+	
+		$labels = [
+			"name" => __( "Model Type", "twentytwentytwo" ),
+			"singular_name" => __( "Model Type", "twentytwentytwo" ),
+		];
+			
+		$args = [
+			"label" => __( "Model Type", "twentytwentytwo" ),
+			"labels" => $labels,
+			"public" => true,
+			"publicly_queryable" => true,
+			"hierarchical" => true,
+			"show_ui" => true,
+			"show_in_menu" => true,
+			"show_in_nav_menus" => true,
+			"query_var" => true,
+			"rewrite" => [ 'slug' => 'model_type_cat', 'with_front' => true, ],
+			"show_admin_column" => true,
+			"show_in_rest" => true,
+			"show_tagcloud" => false,
+			"rest_base" => "model_type_cat",
+			"rest_controller_class" => "WP_REST_Terms_Controller",
+			"rest_namespace" => "wp/v2",
+			"show_in_quick_edit" => true,
+			"sort" => true,
+			"show_in_graphql" => false,
+		];
+		register_taxonomy( "model_type_cat", [ "repair" ], $args );
+	}
+	add_action( 'init', 'cptui_register_my_taxes_model_type_cat' );
+
+
 

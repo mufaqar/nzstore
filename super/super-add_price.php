@@ -119,13 +119,15 @@ get_header();?>
             var cat_slug = this.getAttribute("id").value;
             var selected = $(this).find('option:selected');
             var category_slug = selected.data('id');
+
+      
             $.ajax(
                     {
                         type:"POST",
                         url:"<?php echo admin_url('admin-ajax.php'); ?>",
                         data: {
                             action: "super_get_child_cat",
-                            parent_id: parent_id
+                            parent_id: category_slug
                         },   
                         success: function(response){      
                             $('#model_cat').html(response);

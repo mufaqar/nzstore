@@ -792,9 +792,14 @@ add_action('wp_ajax_nopriv_super_get_child_cat', 'super_get_child_cat');
 
 function super_get_child_cat()
 {
-	$parent_id = $_POST['parent_id'];
+	
+	$parent_slug = $_POST['parent_id'];
+	$term = get_term_by('slug', $parent_slug, 'model_type_cat');
+	$parent_id = $term->term_id;
+
+	//echo $parent_id;
     $subcategories = get_categories( array(
-      'taxonomy' => 'repair_cat',
+      'taxonomy' => 'model_type_cat',
       'parent' => $parent_id,
       'hide_empty' => false
     ) );
@@ -869,18 +874,22 @@ function add_repair()
 	$parts_availablity = $_POST['parts_availablity'];
 	$repair_cost = $_POST['repair_cost'];
 	$diagnostic_fee = $_POST['diagnostic_fee'];	
+
+	// Model NO
 	$term_model_nocat = get_term( $model_nocat, 'model_cat' );
 	$model_no_cat_name = $term_model_nocat->name;
+
+	// Fault Cat
 	$term_falt_cat = get_term( $falt_cat, 'cat_fault_type' );
 	$falt_cat_name = $term_falt_cat->name;
 
-	$term_model_type_cat = get_term( $model_type_cat, 'repair_cat' );	
+	//model type Cate
+	$term_model_type_cat = get_term( $model_type_cat, 'model_type_cat' );	
 	$model_type_name = $term_model_type_cat->name;
-
+	// Type 
 	$term_type_cat = get_term( $ticket_cat, 'repair_cat' );	
 	$type_name = $term_type_cat->name;
 	$title =  $type_name ." : ".$model_type_name." : " .$falt_cat_name." : ".$model_no_cat_name;
-
 	$post = array(
 		'post_title'    => $title ,
 		'post_status'   => 'publish',
@@ -889,18 +898,16 @@ function add_repair()
 			'title' => $title ,
 			'parts_availablity' => $parts_availablity,
 			'repair_cost' => $repair_cost,
-			'diagnostic_fee' => $diagnostic_fee,
-			
+			'diagnostic_fee' => $diagnostic_fee,			
 		),
 		'tax_input'    => array(
 			'repair_cat' => array($ticket_cat),
 			'cat_fault_type' => array($falt_cat),
-			'model_cat' => array($model_nocat)
-		
+			'model_cat' => array($model_nocat),
+			'model_type_cat' => array($model_type_cat)		
 		),
 
-	);
-		
+	);	
 	
 	$inserted_post_id = wp_insert_post($post);
 	if (!is_wp_error($inserted_post_id)) {	

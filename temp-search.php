@@ -9,8 +9,8 @@ get_header('landing');
 $term_repair_cat =  wp_get_post_terms( 231, 'repair_cat');
 
 
-// print "<pre>";
-// print_r($term_repair_cat);
+print "<pre>";
+print_r($term_repair_cat);
 
 
 
