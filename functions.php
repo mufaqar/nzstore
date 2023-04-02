@@ -179,7 +179,6 @@ function load_subcategories() {
     foreach ( $posts as $post ) {
      // $new_title = get_post_meta( $post->ID, 'my_meta_field', true ); // Replace this with the meta field key you want to use
 
-
      // Model NO
       $term_model_nocat = get_term( $model_nocat, 'model_cat' );
       $model_no_cat_name = $term_model_nocat->name;
@@ -197,7 +196,7 @@ function load_subcategories() {
       
       $title =  $type_name ." : ".$model_type_name." : " .$falt_cat_name." : ".$model_no_cat_name;    
 
-      if ( !empty( $new_title ) ) {
+      if ( !empty( $title ) ) {
         wp_update_post( array(
           'ID' => $post->ID,
           'post_title' => $title,
