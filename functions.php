@@ -181,14 +181,11 @@ function load_subcategories() {
 
      // Model NO
       $term_model_nocat = get_the_terms($post->ID, 'model_cat' );
-      $model_no_cat_name = $term_model_nocat[0]->name;
-
-      
+      $model_no_cat_name = $term_model_nocat[0]->name;   
 
       // Fault Cat
       $term_falt_cat = get_the_terms( $post->ID, 'cat_fault_type' );
       $falt_cat_name = $term_falt_cat[0]->name;
-
       //model type Cate
       $term_model_type_cat = get_the_terms($post->ID, 'model_type_cat' );	
       $model_type_name = $term_model_type_cat[0]->name;
@@ -210,7 +207,7 @@ function load_subcategories() {
       }
     }
   }
-  add_action( 'init', 'update_post_title_with_meta' );
+  //add_action( 'init', 'update_post_title_with_meta' );
 
 
   
