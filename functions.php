@@ -181,25 +181,22 @@ function load_subcategories() {
 
 
      // Model NO
-	$term_model_nocat = get_term( $model_nocat, 'model_cat' );
-	$model_no_cat_name = $term_model_nocat->name;
+      $term_model_nocat = get_term( $model_nocat, 'model_cat' );
+      $model_no_cat_name = $term_model_nocat->name;
 
-	// Fault Cat
-	$term_falt_cat = get_term( $falt_cat, 'cat_fault_type' );
-	$falt_cat_name = $term_falt_cat->name;
+      // Fault Cat
+      $term_falt_cat = get_term( $falt_cat, 'cat_fault_type' );
+      $falt_cat_name = $term_falt_cat->name;
 
-	//model type Cate
-	$term_model_type_cat = get_term( $model_type_cat, 'model_type_cat' );	
-	$model_type_name = $term_model_type_cat->name;
-	// Type 
-	$term_type_cat = get_term( $ticket_cat, 'repair_cat' );	
-	$type_name = $term_type_cat->name;
-	
-	$title =  $type_name ." : ".$model_type_name." : " .$falt_cat_name." : ".$model_no_cat_name;
+      //model type Cate
+      $term_model_type_cat = get_term( $model_type_cat, 'model_type_cat' );	
+      $model_type_name = $term_model_type_cat->name;
+      // Type 
+      $term_type_cat = get_term( $ticket_cat, 'repair_cat' );	
+      $type_name = $term_type_cat->name;
+      
+      $title =  $type_name ." : ".$model_type_name." : " .$falt_cat_name." : ".$model_no_cat_name;    
 
-    
-
-     echo $new_title;
       if ( !empty( $new_title ) ) {
         wp_update_post( array(
           'ID' => $post->ID,
