@@ -889,6 +889,7 @@ function add_repair()
 	// Type 
 	$term_type_cat = get_term( $ticket_cat, 'repair_cat' );	
 	$type_name = $term_type_cat->name;
+	
 	$title =  $type_name ." : ".$model_type_name." : " .$falt_cat_name." : ".$model_no_cat_name;
 	$post = array(
 		'post_title'    => $title ,

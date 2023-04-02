@@ -180,33 +180,35 @@ function load_subcategories() {
      // $new_title = get_post_meta( $post->ID, 'my_meta_field', true ); // Replace this with the meta field key you want to use
 
 
-     $term_repair_cat =  wp_get_post_terms( $post->ID, 'repair_cat');
+     // Model NO
+	$term_model_nocat = get_term( $model_nocat, 'model_cat' );
+	$model_no_cat_name = $term_model_nocat->name;
 
-     print_r($term_repair_cat);
+	// Fault Cat
+	$term_falt_cat = get_term( $falt_cat, 'cat_fault_type' );
+	$falt_cat_name = $term_falt_cat->name;
 
+	//model type Cate
+	$term_model_type_cat = get_term( $model_type_cat, 'model_type_cat' );	
+	$model_type_name = $term_model_type_cat->name;
+	// Type 
+	$term_type_cat = get_term( $ticket_cat, 'repair_cat' );	
+	$type_name = $term_type_cat->name;
+	
+	$title =  $type_name ." : ".$model_type_name." : " .$falt_cat_name." : ".$model_no_cat_name;
 
-
-     //$term_repair_cat_name = $term_repair_cat[0]->name;
-    // $term_model_cat =  wp_get_post_terms( $post->ID, 'model_cat');
-    // $term_model_cat_name = $term_repair_cat[0]->name;
-
-     //$old_title = get_the_title($post->ID,);
-
-     //$old_title = "-OLD";
     
 
-    // $new_title =  $term_repair_cat_name ." : ".$old_title;
-
      echo $new_title;
-      // if ( !empty( $new_title ) ) {
-      //   wp_update_post( array(
-      //     'ID' => $post->ID,
-      //     'post_title' => $new_title,
-      //   ) );
-      // }
+      if ( !empty( $new_title ) ) {
+        wp_update_post( array(
+          'ID' => $post->ID,
+          'post_title' => $title,
+        ) );
+      }
     }
   }
-  //add_action( 'init', 'update_post_title_with_meta' );
+  add_action( 'init', 'update_post_title_with_meta' );
 
-  //update_post_title_with_meta();
+
   
