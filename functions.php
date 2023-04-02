@@ -1,8 +1,10 @@
-<?php load_theme_textdomain('dd_domain'); 
+<?php
+
+  load_theme_textdomain('dd_domain'); 
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 140, 140, true );
 	add_image_size( 'single-post-thumbnail', 300, 9999 );
-    add_image_size( 'product-thumbnail', 260, 220, true );
+  add_image_size( 'product-thumbnail', 260, 220, true );
 
     
 
@@ -179,23 +181,32 @@ function load_subcategories() {
 
 
      $term_repair_cat =  wp_get_post_terms( $post->ID, 'repair_cat');
-     $term_repair_cat_name = $term_repair_cat[0]->name;
-     $term_model_cat =  wp_get_post_terms( $post->ID, 'model_cat');
-     $term_model_cat_name = $term_repair_cat[0]->name;
+
+     print_r($term_repair_cat);
+
+
+
+     //$term_repair_cat_name = $term_repair_cat[0]->name;
+    // $term_model_cat =  wp_get_post_terms( $post->ID, 'model_cat');
+    // $term_model_cat_name = $term_repair_cat[0]->name;
 
      //$old_title = get_the_title($post->ID,);
 
-     $old_title = "-OLD";
+     //$old_title = "-OLD";
     
 
-     $new_title =  $term_repair_cat_name ." : ".$old_title;
-      if ( !empty( $new_title ) ) {
-        wp_update_post( array(
-          'ID' => $post->ID,
-          'post_title' => $new_title,
-        ) );
-      }
+    // $new_title =  $term_repair_cat_name ." : ".$old_title;
+
+     echo $new_title;
+      // if ( !empty( $new_title ) ) {
+      //   wp_update_post( array(
+      //     'ID' => $post->ID,
+      //     'post_title' => $new_title,
+      //   ) );
+      // }
     }
   }
   //add_action( 'init', 'update_post_title_with_meta' );
+
+  //update_post_title_with_meta();
   
