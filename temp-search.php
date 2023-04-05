@@ -217,7 +217,7 @@ Or you can search any models, laptops, smartphones, xbox, play stations. We usua
                 var ticket_cat = jQuery('#ticket_cat').val();
                 var model_cat = jQuery('#model_cat').val();	 
                 var falt_cat = jQuery('#falt_cat').val();	
-                var model_name = jQuery('#search').val();
+                var model_name = jQuery('#model_name').val();
                 form_data = new FormData();      
                 form_data.append('action', 'get_repair_price');                
                 form_data.append('ticket_cat', ticket_cat); 

@@ -950,31 +950,56 @@ function autocomplete_search() {
 	$ticket_cat = $_POST['ticket_cat'];
 	$falt_cat = $_POST['falt_cat'];
 	$model_name = $_POST['model_name'];	
-	$search_results = get_posts(array(
+	$model_cat = $_POST['model_cat'];	
+
+	echo $ticket_cat . "-Ticket <br/>" ;
+	echo $model_cat . "-Model Cate <br/>" ;
+	echo $falt_cat . "-Fault <br/>" ;	
+	echo $model_name . "-Model  Name <br/>" ;
+	$tax_query = array('relation' => 'AND');
+    if (!empty($ticket_cat))
+    {
+        $tax_query[] =  array(
+                'taxonomy' => 'repair_cat',
+                'field' => 'term_id',
+                'terms' => $ticket_cat
+            );
+    }
+    if (!empty($falt_cat))
+    {
+        $tax_query[] =  array(
+                'taxonomy' => 'cat_fault_type',
+                'field' => 'id',
+                'terms' => $falt_cat
+            );
+    }
+  
+    if (!empty($model_cat))
+    {
+        $tax_query[] =  array(
+                'taxonomy' => 'model_type_cat',
+                'field' => 'id',
+                'terms' => $model_cat
+            );
+    }
+	if (!empty($model_name))
+    {
+        $tax_query[] =  array(
+                'taxonomy' => 'model_cat',
+                'field' => 'id',
+                'terms' => $model_name
+            );
+    }
+
+	// print "<pre>";
+	// print_r($tax_query);
+  	$search_results = get_posts(array(
 	  // 's' => $query,
 	   'post_type' => 'repair',
 	   'posts_per_page' => -1,
 	   'orderby' => 'relevance',
 	   'order' => 'DESC',
-	   'tax_query' => array(
-		'relation' => 'OR',
-		array(
-			'taxonomy' => 'repair_cat', 
-			'field' => 'term_id', 
-			'terms' => $ticket_cat,
-		),
-		array(
-			'taxonomy' => 'cat_fault_type', 
-			'field' => 'term_id', 
-			'terms' => $falt_cat,
-		),
-		array(
-			'taxonomy' => 'model_cat', 
-			'field' => 'term_id', 
-			'terms' => $model_name,
-		)
-	)
-	   
+	   'tax_query' => $tax_query	   
 	));
 	echo "<ul>";
 
