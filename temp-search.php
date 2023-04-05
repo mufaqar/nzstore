@@ -5,9 +5,6 @@
 get_header('landing');
 
 
-
-
-
 ?>  
 <style>
 

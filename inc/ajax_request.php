@@ -951,11 +951,10 @@ function autocomplete_search() {
 	$falt_cat = $_POST['falt_cat'];
 	$model_name = $_POST['model_name'];	
 	$model_cat = $_POST['model_cat'];	
-
-	echo $ticket_cat . "-Ticket <br/>" ;
-	echo $model_cat . "-Model Cate <br/>" ;
-	echo $falt_cat . "-Fault <br/>" ;	
-	echo $model_name . "-Model  Name <br/>" ;
+	// echo $ticket_cat . "-Ticket <br/>" ;
+	// echo $model_cat . "-Model Cate <br/>" ;
+	// echo $falt_cat . "-Fault <br/>" ;	
+	// echo $model_name . "-Model  Name <br/>" ;
 	$tax_query = array('relation' => 'AND');
     if (!empty($ticket_cat))
     {
