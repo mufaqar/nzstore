@@ -949,9 +949,7 @@ function autocomplete_search() {
  function get_repair_price() {
 	$ticket_cat = $_POST['ticket_cat'];
 	$falt_cat = $_POST['falt_cat'];
-	$model_name = $_POST['model_name'];
-
-	
+	$model_name = $_POST['model_name'];	
 	$search_results = get_posts(array(
 	  // 's' => $query,
 	   'post_type' => 'repair',
@@ -959,7 +957,7 @@ function autocomplete_search() {
 	   'orderby' => 'relevance',
 	   'order' => 'DESC',
 	   'tax_query' => array(
-		'relation' => 'AND',
+		'relation' => 'OR',
 		array(
 			'taxonomy' => 'repair_cat', 
 			'field' => 'term_id', 
@@ -979,6 +977,10 @@ function autocomplete_search() {
 	   
 	));
 	echo "<ul>";
+
+	//print_r($search_results);
+
+
 	if($search_results) {
 	   foreach($search_results as $result) {
 		  echo '<li><a class="result" href="' . get_permalink($result->ID) . '">' . $result->post_title . '</a> <a class="btn_primary"  href="' . get_permalink($result->ID) . '">View Price </a></li>';
