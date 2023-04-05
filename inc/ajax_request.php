@@ -946,6 +946,54 @@ function autocomplete_search() {
  add_action('wp_ajax_nopriv_autocomplete_search', 'autocomplete_search');
 
 
+ function get_repair_price() {
+	$ticket_cat = $_POST['ticket_cat'];
+	$falt_cat = $_POST['falt_cat'];
+	$model_name = $_POST['model_name'];
+
+	
+	$search_results = get_posts(array(
+	  // 's' => $query,
+	   'post_type' => 'repair',
+	   'posts_per_page' => -1,
+	   'orderby' => 'relevance',
+	   'order' => 'DESC',
+	   'tax_query' => array(
+		'relation' => 'AND',
+		array(
+			'taxonomy' => 'repair_cat', 
+			'field' => 'term_id', 
+			'terms' => $ticket_cat,
+		),
+		array(
+			'taxonomy' => 'cat_fault_type', 
+			'field' => 'term_id', 
+			'terms' => $falt_cat,
+		),
+		array(
+			'taxonomy' => 'model_cat', 
+			'field' => 'term_id', 
+			'terms' => $model_name,
+		)
+	)
+	   
+	));
+	echo "<ul>";
+	if($search_results) {
+	   foreach($search_results as $result) {
+		  echo '<li><a class="result" href="' . get_permalink($result->ID) . '">' . $result->post_title . '</a> <a class="btn_primary"  href="' . get_permalink($result->ID) . '">View Price </a></li>';
+	   }
+	} else {
+	   echo 'No results found';
+	}
+	echo "</ul>";
+	die();
+ }
+ add_action('wp_ajax_get_repair_price', 'get_repair_price');
+ add_action('wp_ajax_nopriv_get_repair_price', 'get_repair_price');
+
+
+
 
 
 
