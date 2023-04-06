@@ -193,7 +193,7 @@ function load_subcategories() {
       $term_type_cat = get_the_terms( $post->ID, 'repair_cat' );	
       $type_name = $term_type_cat[0]->name;
       
-    $title =  $type_name ." : ".$model_type_name." : " .$falt_cat_name." : ".$model_no_cat_name; 
+    $title =  $model_no_cat_name; 
      
      
 
@@ -207,7 +207,7 @@ function load_subcategories() {
       }
     }
   }
-  //add_action( 'init', 'update_post_title_with_meta' );
+  add_action( 'init', 'update_post_title_with_meta' );
 
 
   
