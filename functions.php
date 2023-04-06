@@ -207,7 +207,7 @@ function load_subcategories() {
       }
     }
   }
-  add_action( 'init', 'update_post_title_with_meta' );
+ // add_action( 'init', 'update_post_title_with_meta' );
 
 
   
