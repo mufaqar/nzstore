@@ -78,9 +78,8 @@
                                     <h6 class="mt-2">Diagnostic Fee</h6>                                                                  
                                 </div>
                                 <div class="col-md-8">                               
-                                    $30, Diagnostic fee will be charged under the below circumstances.
-If after the diagnostic, other issues pop up, except for the device received for the mentioned issue. Which may impact more cost of fixing. We will first ask you via email, text message or a call for your advice and you may cancel the job or we advise you whether the device has worth fixing with extra cost or not. 
-                                                         
+                                A $30, Diagnostic fee will be charged under the below circumstances.
+If, after the diagnostic, other issues pop up, except for the device received for the mentioned issue. Which may impact more cost of fixing. We will first ask you via email, text message or a call for your advice, and you may cancel the job or we will advise you whether the device has worth fixing with extra cost or not. For any further queries, Call us, Email us or leave a message via FB Messenger from the same page.                          
                                 </div>                        
                             </div>
 
