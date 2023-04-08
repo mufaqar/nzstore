@@ -62,10 +62,10 @@
 
                             <div class="row">
                                 <div class="col-md-4">
-                                    <h6 class="mt-2">	Repair Cost</h6>                                                                  
+                                    <h6 class="mt-2">Repair Cost</h6>                                                                  
                                 </div>
                                 <div class="col-md-8">                               
-                                 $ <?php  echo get_post_meta( get_the_ID(), 'repair_cost', true );?>   
+                                 <?php  echo get_post_meta( get_the_ID(), 'repair_cost', true );?>   
                                 
                                 
                                 </div>                        

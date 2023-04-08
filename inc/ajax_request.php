@@ -1010,7 +1010,16 @@ function autocomplete_search() {
 		  echo '<li><a class="result" href="' . get_permalink($result->ID) . '">' . $result->post_title . '</a> <a class="btn_primary"  href="' . get_permalink($result->ID) . '">View Price </a></li>';
 	   }
 	} else {
-	   echo 'No results found';
+	    ?>
+		  	
+			<h2 style="margin-left:30px" >Message or call for a quote </h2> <hr/><br/>
+			
+
+            <a style="margin-left:30px" class="btn_primary btn_sec"  href="tel:073477044">DID: 073477044 </a>
+
+            <a style="margin-left:30px" class="btn_primary btn_sec"  href="mailto:budgetcomputer2013@gmail.com ">budgetcomputer2013@gmail.com </a>
+
+		<?php
 	}
 	echo "</ul>";
 	die();
