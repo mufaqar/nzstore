@@ -688,16 +688,13 @@ add_action('wp_ajax_nopriv_print_invoice', 'print_invoice');
 
 
 		<?php
-
 		// ob_start();
 		// require_once __DIR__ . '/vendor/autoload.php';
 
 		// $mpdf = new \Mpdf\Mpdf();
 		// $mpdf->WriteHTML('<h1>Hello world!</h1>');
 		// $mpdf->Output();
-
 		// echo "Hi";
-		
 							
 		die;
 	}
