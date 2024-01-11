@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                                 <br /><br />
-                                <a class="btn_primary" href="<?php echo home_url('search-price'); ?>">Check Another
+                                <a class="btn_primary" href="<?php echo home_url('search'); ?>">Check Another
                                     Device Price </a>
                                 <a style="margin-left:30px" class="btn_primary btn_sec" href="tel:073477044">DID:
                                     073477044 </a>
