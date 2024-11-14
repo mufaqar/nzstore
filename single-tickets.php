@@ -32,21 +32,27 @@
                         </div>
                         <div class="proofile_info d-flex align-items-center">
                         <div class="user">
-                                <h6><?php global $current_user; wp_get_current_user();  $uid = $current_user->ID;?>
-                                    <?php if ( is_user_logged_in() ) { 
-                                    echo 'Hey, ' .  $current_user->display_name . "<br/>" ; } 
-                                    else {
-                                        wp_redirect( home_url('login'));                                     
-                                        exit;
+                                <h6><?php 
+                                    // Ensure the user is logged in
+                                    if ( is_user_logged_in() ) { 
+                                        // Get the current user information
+                                        $current_user = wp_get_current_user(); 
+                                        $uid = $current_user->ID;
 
+                                        // Display a greeting message
+                                        echo 'Hey, ' . $current_user->display_name . "<br/>";
+
+                                        // Get user roles
+                                        $role = $current_user->roles;
+                                        echo $role[0]; // Display the first role
+
+                                    } else {
+                                        // Redirect to login page if user is not logged in
+                                        wp_redirect( home_url('login') );                                     
+                                        exit;
                                     }
-                                    global $user_login, $current_user; 
-                                    get_currentuserinfo();
-                                    $user_info = get_userdata($current_user->ID);
-                                    $role = $user_info->roles;
-                                    echo $role[0];                                   
-                                   
-                                    ?></h6>
+                                    ?>
+                                    </h6>
                                </p>                            
 
                             </div>

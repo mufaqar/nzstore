@@ -836,20 +836,30 @@ add_action('wp_ajax_nopriv_super_get_model_cat', 'super_get_model_cat');
 
 function super_get_model_cat()
 {
-	$parent_slug = $_POST['parent_id'];
-	$term = get_term_by('slug', $parent_slug, 'model_cat');
-	$parent_id = $term->term_id;
-    $subcategories = get_categories( array(
-      'taxonomy' => 'model_cat',
-      'parent' => $parent_id,
-      'hide_empty' => false
-    ) );
-    $output = '<option value="">Select Model</option>';
-    foreach ( $subcategories as $subcategory ) {
-      $output .= '<option value="' . $subcategory->term_id . '">' . $subcategory->name . '</option>';
+	$parent_slug = $_POST['parent_id'];	
+$term = get_term_by('slug', $parent_slug, 'model_cat');	
+
+if ($term && !is_wp_error($term)) {
+    $cat_id = $term->term_id;
+    echo $cat_id;
+
+    $subcategories = get_terms(array(
+        'taxonomy' => 'model_cat',
+        'parent' => 86,
+        'hide_empty' => false
+    ));
+
+    $output = '<option value="">Choose Model</option>';
+    foreach ($subcategories as $subcategory) {
+        $output .= '<option value="' . $subcategory->term_id . '">' . esc_html($subcategory->name) . '</option>';
     }
     wp_send_json($output);
-    wp_die();
+} else {
+    wp_send_json_error('Invalid parent term.');
+}
+
+wp_die();
+
 }
 
 
@@ -1023,6 +1033,36 @@ function autocomplete_search() {
  }
  add_action('wp_ajax_get_repair_price', 'get_repair_price');
  add_action('wp_ajax_nopriv_get_repair_price', 'get_repair_price');
+
+
+
+ add_action('wp_ajax_super_add_model', 'super_add_model', 0);
+add_action('wp_ajax_nopriv_super_add_model', 'super_add_model');
+
+function super_add_model()
+{
+	$ticket_cat = $_POST['ticket_cat'];	
+	$model_name = $_POST['model_name'];	
+	echo $ticket_cat;	
+	$term_name = $model_name;
+	$taxonomy = 'model_cat'; 
+	$parent_id = $ticket_cat;
+
+	$result = wp_insert_term($term_name, $taxonomy, array(
+		'parent' => $parent_id,
+	));
+
+	if (!is_wp_error($result)) {
+		echo 'Term inserted successfully. Term ID: ' . $result['term_id'];
+	} else {
+		echo 'Error: ' . $result->get_error_message();
+	}
+
+
+	wp_die();
+
+}
+
 
 
 
