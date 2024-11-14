@@ -841,8 +841,6 @@ $term = get_term_by('slug', $parent_slug, 'model_cat');
 
 if ($term && !is_wp_error($term)) {
     $cat_id = $term->term_id;
-    echo $cat_id;
-
     $subcategories = get_terms(array(
         'taxonomy' => 'model_cat',
         'parent' => 86,
@@ -1043,7 +1041,6 @@ function super_add_model()
 {
 	$ticket_cat = $_POST['ticket_cat'];	
 	$model_name = $_POST['model_name'];	
-	echo $ticket_cat;	
 	$term_name = $model_name;
 	$taxonomy = 'model_cat'; 
 	$parent_id = $ticket_cat;
@@ -1057,7 +1054,6 @@ function super_add_model()
 	} else {
 		echo 'Error: ' . $result->get_error_message();
 	}
-
 
 	wp_die();
 
