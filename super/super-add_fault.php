@@ -7,7 +7,7 @@ get_header();
 
 <div class="custom_container catering_form mt-5 mb-5">
     <div class="_info mt-5 mb-3">
-        <h2>Create New Failt  </h2>
+        <h2>Create New Fault  </h2>
     </div>
     <div class="_form p-4 pt-5 pb-5">
     <form class="add_model" id="add_model" action="#" enctype="multipart/form-data">
