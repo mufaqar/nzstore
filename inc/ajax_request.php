@@ -1060,6 +1060,33 @@ function super_add_model()
 }
 
 
+add_action('wp_ajax_super_add_fault', 'super_add_fault', 0);
+add_action('wp_ajax_nopriv_super_add_fault', 'super_add_fault');
+
+function super_add_fault()
+{
+	$ticket_cat = $_POST['ticket_cat'];	
+	$model_name = $_POST['model_name'];	
+	$term_name = $model_name;
+	$taxonomy = 'cat_fault_type'; 
+	$parent_id = $ticket_cat;
+
+	$result = wp_insert_term($term_name, $taxonomy, array(
+		'parent' => $parent_id,
+	));
+
+	if (!is_wp_error($result)) {
+		echo 'Term inserted successfully. Term ID: ' . $result['term_id'];
+	} else {
+		echo 'Error: ' . $result->get_error_message();
+	}
+
+	wp_die();
+
+}
+
+
+
 
 
 
