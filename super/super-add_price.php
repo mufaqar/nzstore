@@ -36,7 +36,20 @@ get_header();?>
 
                 <div class="col-md-6 mb-3">
                     <label for="">Falult Type</label>
-                    <select id="falt_cat"></select>
+                    <select id="falt_cat">
+                    <?php   
+                            $cat_tax = get_terms( array('taxonomy' => 'cat_fault_type','hide_empty' => false ,  'parent' => 0) ); 
+                            foreach( $cat_tax as $cat )  {
+                                        $cat_id = $cat->term_id ;
+                                        $cat_slug = $cat->slug ;
+                                        $cat_name = $cat->name ; ?>                            
+                                        <option value="<?php echo $cat_id; ?>" data-id="<?php echo $cat_slug; ?>" > <?php echo $cat_name; ?> </option>
+                                   <?php
+                                }                                                    
+                            ?>
+                        <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
+
+                    </select>
                 </div>
 
                 <div class="col-md-6 mb-3">
@@ -133,18 +146,18 @@ get_header();?>
                             $('#model_cat').html(response);
                         }                
                 });
-             $.ajax(
-                {
-                    type:"POST",
-                    url:"<?php echo admin_url('admin-ajax.php'); ?>",
-                    data: {
-                        action: "super_get_fault_cat",
-                        parent_id: category_slug
-                    },   
-                    success: function(response){  
-                        $('#falt_cat').html(response);
-                    }            
-                 });       
+            //  $.ajax(
+            //     {
+            //         type:"POST",
+            //         url:"<?php echo admin_url('admin-ajax.php'); ?>",
+            //         data: {
+            //             action: "super_get_fault_cat",
+            //             parent_id: category_slug
+            //         },   
+            //         success: function(response){  
+            //             $('#falt_cat').html(response);
+            //         }            
+            //      });       
        });
 
        $("#model_cat").change(function () {
