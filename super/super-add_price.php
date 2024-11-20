@@ -10,7 +10,7 @@ get_header();?>
     <div class="_form p-4 pt-5 pb-5">
     <form class="add_repair" id="add_repair" action="#" >
             <div class="row">
-            <div class="col-md-6 mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="">Select</label>
                     <div class="_select">
                         <select id="ticket_cat"> 
@@ -41,7 +41,6 @@ get_header();?>
 
                 <div class="col-md-6 mb-3">
                     <label for="">Model No</label>
-                    123
                     <select id="model_nocat"></select>
                 </div>
                               
@@ -121,7 +120,7 @@ get_header();?>
             var selected = $(this).find('option:selected');
             var category_slug = selected.data('id');
 
-      
+          
             $.ajax(
                     {
                         type:"POST",
@@ -149,21 +148,40 @@ get_header();?>
        });
 
        $("#model_cat").change(function () {
-                var selected = $(this).find('option:selected');
-                var mod_slug = selected.data('id'); 
-                $.ajax(
-                        {
-                            type:"POST",
-                            url:"<?php echo admin_url('admin-ajax.php'); ?>",
-                            data: {
-                                action: "super_get_model_cat",
-                                parent_id: mod_slug
-                            },                      
-                            success: function(response){   
-                                $('#model_nocat').html(response);
-                            }                    
-                    });       
-        });                 
+    var selected = $(this).find('option:selected');
+    var mod_slug = selected.data('id'); // Assuming 'data-id' holds the slug
+    var mod_id = selected.val();        // Get the value of the selected option
+
+    $.ajax({
+        type: "POST",
+        url: "<?php echo admin_url('admin-ajax.php'); ?>",
+        data: {
+            action: "super_get_model_cat",
+            parent_slug: mod_slug,
+            parent_id: mod_id
+        },
+        beforeSend: function () {
+            // Optionally, show a loader or disable the dropdown while loading
+            $('#model_nocat').html('<option>Loading...</option>');
+        },
+        success: function (response) {
+            if (response.success) {
+                // Update the dropdown with the received HTML
+                $('#model_nocat').html(response.data);
+            } else {
+                // Handle error response
+                $('#model_nocat').html('<option>No models found</option>');
+                console.error('Error:', response.data);
+            }
+        },
+        error: function (xhr, status, error) {
+            // Handle AJAX errors
+            console.error('AJAX Error:', error);
+            $('#model_nocat').html('<option>Error loading models</option>');
+        }
+    });
+});
+               
         $("#add_repair").submit(function(e) {                          
             e.preventDefault(); 
             var ticket_cat = jQuery('#ticket_cat').val();
@@ -175,6 +193,8 @@ get_header();?>
             var diagnostic_fee = jQuery('#diagnostic_fee').val();
             var uid = jQuery('#uid').val(); 
             form_data = new FormData();      
+
+           
             form_data.append('action', 'add_repair');                
             form_data.append('ticket_cat', ticket_cat); 
             form_data.append('model_cat', model_cat);                
@@ -183,6 +203,8 @@ get_header();?>
             form_data.append('parts_availablity', parts_availablity);    
             form_data.append('repair_cost', repair_cost);  
             form_data.append('diagnostic_fee', diagnostic_fee);   
+
+          
             $.ajax(
                 {
                     url:"<?php echo admin_url('admin-ajax.php'); ?>",
@@ -197,10 +219,10 @@ get_header();?>
                         $("#spinner-div").hide();  },   
                     success: function(data){ 
                         if(data.code==0) {
-                           alert(data.message); 
+                        alert(data.message); 
                          }  
                         else {
-                           $(".sucess_message").css("display", "flex");
+                          $(".sucess_message").css("display", "flex");
                       
                         }      
                     }            

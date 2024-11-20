@@ -502,135 +502,157 @@ add_action('wp_ajax_nopriv_get_invoice_detail', 'get_invoice_detail');
 							
 							?>
 
-				
-						            
-						   <div class="invoice_table">
-						   <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" style="max-width:150px">							
-							<p>1191 Eruera Street, Rotorua 3010, Bay of Plenty, New Zealand</p>
-							<p>Mobile 02102838349, Phone 0064-7-3477044 <br> Email: info@smartphonesrepair.co.nz  </p>
-							<h6>Bank ASB #: 12-3155-0266675-00</h6>
-							<h6>GST #: 115-122-770</h6>
-								<table class="invoice_slip_table">
-									<thead>
-									<tr>
-										<th scope="col">Name</th>
-										<th scope="col">Details</th>
-									</tr>
-									</thead>							
-									<tbody>
-									<tr>
-										<td scope="row"><strong>Invoice Id: </strong></td>
-										<td scope="row"><?php echo get_the_title($orderid);?></td>
-										
-									</tr>
-									<tr>
-										<td scope="row"><strong>Created Date</strong></td>
-										<td scope="row"><?php echo  get_post_meta( $orderid, 'date', true ); ;?></td>
-										
-									</tr>
-									<tr>
-										<td scope="row"><strong>Created By: </strong></td>
-										<td scope="row"><?php echo $user_info->user_login ?></td>
-									</tr>
-									<tr>
-										<td scope="row"><strong>Price: </strong></td>
-										<td scope="row"><strong>$ </strong><?php echo $order_total?></td>
-									</tr>
-									<tr>
-										<td scope="row"><strong>GST</strong></td>
-										<td scope="row">( 15% = <?php echo $order_price_gst?>) </td>
-									</tr>
-									<tr>
-										<td scope="row"><strong>Total </strong></td>
-										<td scope="row"><strong>$ </strong> <?php echo $order_price?> </td>
-									</tr>
-									
-									</tbody>
-								</table>
-							
-								<h5 class="mt-4">Ticket Summary</h5>
-								<table class="invoice_slip_table">
-									<thead>
-									<th scope="col">Name</th>
-									<th scope="col">Details</th>
-								
-									</thead>
-									<tbody>
 
-									<tr>
-										<td scope="row"><strong>Ticket Id </strong></td>
-										<td scope="row"><?php echo get_the_title($ticket_id); ?></td>
-										
-									</tr>									
-									
-									<tr>
-										<td scope="row"><strong>Agent Remarks: </strong></td>
-										<td scope="row"><?php echo get_post_meta( $ticket_id, 'issues', true ); ?></td>
-										
-									</tr>
-									<tr>
-										<td scope="row"><strong>Technician Remarks </strong></td>
-										<td scope="row"><?php echo get_post_meta( $ticket_id, 'eng_remarks', true ); ?></td>
-										
-									</tr>
-									<tr>
-										<td scope="row"><strong>Address </strong></td>
-										<td scope="row"><?php echo get_post_meta( $ticket_id, 'address', true ); ?></td>
-										
-									</tr>
-									<tr>
-										<td scope="row"><strong>Shipping Details </strong></td>
-										<td scope="row"><?php echo get_post_meta( $ticket_id, 'shipping', true ); ?></td>
-										
-									</tr>
 
-									<tr>
-								
-										<td colspan="2" scope="row">
-										<strong>Terms and Conditions </strong>										
-										<ul>
-											<li>1: Diagnosed fees will apply for all repairs even if the gadget is not repairable or job cancelled by customer.</li>
-											<li></li>
-											<li>2: Part order on customer behalf and deposit is 50% is taken the deposit is nonrefundable as we order part on customer behalf.</li>
-											<li></li>
-											<li>3: All the parts fitted come with 3 month warranty unless specified. We will fix the fault & check with which gadget is booked. No other functionality checked unless a thorough assessment is requested & assessment fee is paid and also provide the password or login id.</li>
-											<li></li>
-											<li>4: All repair come with 3 month warranty unless specified. LCD are fragile any external pressure while in pocket or any other place or harsh use will break without damaging the top glass as top glass is harder/ stronger then underneath LCD in such case warranty will be voided.</li>
-											<li></li>
-											<li>5: Any physical damage which includes liquid damage, dropped, and any pressure on the LCD which break the display will not be covered in warranty. Any gadget returned under warranty and it is find out to be physical damage diagnostic will apply. In any dispute customer is required to get third party opinion on their own cost from a reputable repair shop and provide a copy of the report.</li>
-											<li></li>
-											<li>6: Warranty is provided only on the part we have replaced not any other part of gadget.</li>
-											<li></li>
-											<li>7: No responsibility taken of any data loss while working on any gadget. Backup all your data before it is booked for a repair.</li>
-											<li></li>
-											<li>8: Customer ‘s responsibility to pick their gadget within 2 months’ time after it fixed and pay repairing fee in full. No gadget will be delivered if not aid In full or sell my gadget is not picked within 2 month time it will be disposed off or sold to recover the cost. I authorize budget computer to dispose off or sell my gadget to recover cost if not picked and paid within 2 month time.</li>
-											<li></li>
-											<li>9: Warranty repair cannot be checked straight away. We need reasonable time to check and fix.</li>
-											<li></li>
-											<li>10: Software/ operating system installation if virus infected or corrupted by customer negligence or misuse or any third party software not working no responsibility taken.</li>
-											<li></li>
-											<li>11: Customer advised to take their SD card/sim cards out from phone before they give for as budget computer takes no responsibility for any loss SD sim card/SD card etc.</li>
-											<li></li>
-											<li>If you damage or lose or do not return the loan equipment you will be charged for its repair or replacement. For more details of your terms & conditions please visit our website at www.smartphonesrepair.co.nz</li>
-										</ul>
-										</td>
-										
-									</tr>
-										
-									<tbody>
-								</table>
+<div class="invoice_table">
+    <img src="<?php bloginfo('template_directory'); ?>/reources/images/logo.png" style="max-width:150px">
+    <p>1191 Eruera Street, Rotorua 3010, Bay of Plenty, New Zealand</p>
+    <p>Mobile 02102838349, Phone 0064-7-3477044 <br> Email: info@smartphonesrepair.co.nz </p>
+    <h6>Bank ASB #: 12-3155-0266675-00</h6>
+    <h6>GST #: 115-122-770</h6>
+    <table class="invoice_slip_table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row"><strong>Invoice Id: </strong></td>
+                <td scope="row"><?php echo get_the_title($orderid);?></td>
 
-								  
-   
-							
-                      
-                     
+            </tr>
+            <tr>
+                <td scope="row"><strong>Created Date</strong></td>
+                <td scope="row"><?php echo  get_post_meta( $orderid, 'date', true ); ;?></td>
 
-				 
-						   
-	
+            </tr>
+            <tr>
+                <td scope="row"><strong>Created By: </strong></td>
+                <td scope="row"><?php echo $user_info->user_login ?></td>
+            </tr>
+            <tr>
+                <td scope="row"><strong>Price: </strong></td>
+                <td scope="row"><strong>$ </strong><?php echo $order_total?></td>
+            </tr>
+            <tr>
+                <td scope="row"><strong>GST</strong></td>
+                <td scope="row">( 15% = <?php echo $order_price_gst?>) </td>
+            </tr>
+            <tr>
+                <td scope="row"><strong>Total </strong></td>
+                <td scope="row"><strong>$ </strong> <?php echo $order_price?> </td>
+            </tr>
 
-					<?php	die;
+        </tbody>
+    </table>
+
+    <h5 class="mt-4">Ticket Summary</h5>
+    <table class="invoice_slip_table">
+        <thead>
+            <th scope="col">Name</th>
+            <th scope="col">Details</th>
+
+        </thead>
+        <tbody>
+
+            <tr>
+                <td scope="row"><strong>Ticket Id </strong></td>
+                <td scope="row"><?php echo get_the_title($ticket_id); ?></td>
+
+            </tr>
+
+            <tr>
+                <td scope="row"><strong>Agent Remarks: </strong></td>
+                <td scope="row"><?php echo get_post_meta( $ticket_id, 'issues', true ); ?></td>
+
+            </tr>
+            <tr>
+                <td scope="row"><strong>Technician Remarks </strong></td>
+                <td scope="row"><?php echo get_post_meta( $ticket_id, 'eng_remarks', true ); ?></td>
+
+            </tr>
+            <tr>
+                <td scope="row"><strong>Address </strong></td>
+                <td scope="row"><?php echo get_post_meta( $ticket_id, 'address', true ); ?></td>
+
+            </tr>
+            <tr>
+                <td scope="row"><strong>Shipping Details </strong></td>
+                <td scope="row"><?php echo get_post_meta( $ticket_id, 'shipping', true ); ?></td>
+
+            </tr>
+
+            <tr>
+
+                <td colspan="2" scope="row">
+                    <strong>Terms and Conditions </strong>
+                    <ul>
+                        <li>1: Diagnosed fees will apply for all repairs even if the gadget is not repairable or job
+                            cancelled by customer.</li>
+                        <li></li>
+                        <li>2: Part order on customer behalf and deposit is 50% is taken the deposit is nonrefundable as
+                            we order part on customer behalf.</li>
+                        <li></li>
+                        <li>3: All the parts fitted come with 3 month warranty unless specified. We will fix the fault &
+                            check with which gadget is booked. No other functionality checked unless a thorough
+                            assessment is requested & assessment fee is paid and also provide the password or login id.
+                        </li>
+                        <li></li>
+                        <li>4: All repair come with 3 month warranty unless specified. LCD are fragile any external
+                            pressure while in pocket or any other place or harsh use will break without damaging the top
+                            glass as top glass is harder/ stronger then underneath LCD in such case warranty will be
+                            voided.</li>
+                        <li></li>
+                        <li>5: Any physical damage which includes liquid damage, dropped, and any pressure on the LCD
+                            which break the display will not be covered in warranty. Any gadget returned under warranty
+                            and it is find out to be physical damage diagnostic will apply. In any dispute customer is
+                            required to get third party opinion on their own cost from a reputable repair shop and
+                            provide a copy of the report.</li>
+                        <li></li>
+                        <li>6: Warranty is provided only on the part we have replaced not any other part of gadget.</li>
+                        <li></li>
+                        <li>7: No responsibility taken of any data loss while working on any gadget. Backup all your
+                            data before it is booked for a repair.</li>
+                        <li></li>
+                        <li>8: Customer ‘s responsibility to pick their gadget within 2 months’ time after it fixed and
+                            pay repairing fee in full. No gadget will be delivered if not aid In full or sell my gadget
+                            is not picked within 2 month time it will be disposed off or sold to recover the cost. I
+                            authorize budget computer to dispose off or sell my gadget to recover cost if not picked and
+                            paid within 2 month time.</li>
+                        <li></li>
+                        <li>9: Warranty repair cannot be checked straight away. We need reasonable time to check and
+                            fix.</li>
+                        <li></li>
+                        <li>10: Software/ operating system installation if virus infected or corrupted by customer
+                            negligence or misuse or any third party software not working no responsibility taken.</li>
+                        <li></li>
+                        <li>11: Customer advised to take their SD card/sim cards out from phone before they give for as
+                            budget computer takes no responsibility for any loss SD sim card/SD card etc.</li>
+                        <li></li>
+                        <li>If you damage or lose or do not return the loan equipment you will be charged for its repair
+                            or replacement. For more details of your terms & conditions please visit our website at
+                            www.smartphonesrepair.co.nz</li>
+                    </ul>
+                </td>
+
+            </tr>
+
+        <tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+    <?php	die;
 	}
 
 
@@ -645,49 +667,49 @@ add_action('wp_ajax_nopriv_print_invoice', 'print_invoice');
 
 		?>
 
-			<div id='pdf'>
-			<div class="popup_wrapper">
-					<h3 class="ad_productss">Invoice</h3>
+    <div id='pdf'>
+        <div class="popup_wrapper">
+            <h3 class="ad_productss">Invoice</h3>
 
-					<div class="invoice_table">
-					<table class="_table">
-						<thead>
-						<tr>
-							<th scope="col">Invoice Date</th>
-							<th scope="col">Total</th>
-							<th scope="col">Total</th>
-							<th scope="col">Status</th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td scope="row">Sunday, May 29, 2022</td>
-							<td>80</td>
-							<td>459.2</td>
-							<td>Complete <i class="fa-solid fa-down-to-line"></i></td>
-						</tr>
-						<tr>
-							<td scope="row">Sunday, June 5, 2022</td>
-							<td>80</td>
-							<td>459.2</td>
-							<td>Pending <i class="fa-solid fa-down-to-line"></i></td>
-						</tr>
-						<tr>
-							<td scope="row">Sunday, June 6, 2022</td>
-							<td>80</td>
-							<td>459.2</td>
-							<td>Pending <i class="fa-solid fa-down-to-line"></i></td>
-						</tr>
-						</tbody>
-					</table>
-					</div>     
-				</div>
-			</div>
-
-			
+            <div class="invoice_table">
+                <table class="_table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Invoice Date</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row">Sunday, May 29, 2022</td>
+                            <td>80</td>
+                            <td>459.2</td>
+                            <td>Complete <i class="fa-solid fa-down-to-line"></i></td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Sunday, June 5, 2022</td>
+                            <td>80</td>
+                            <td>459.2</td>
+                            <td>Pending <i class="fa-solid fa-down-to-line"></i></td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Sunday, June 6, 2022</td>
+                            <td>80</td>
+                            <td>459.2</td>
+                            <td>Pending <i class="fa-solid fa-down-to-line"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 
-		<?php
+
+
+    <?php
 		// ob_start();
 		// require_once __DIR__ . '/vendor/autoload.php';
 
@@ -831,33 +853,44 @@ function super_get_fault_cat()
 }
 //super_get_fault_cat
 
-add_action('wp_ajax_super_get_model_cat', 'super_get_model_cat', 0);
+
+
+
+add_action('wp_ajax_super_get_model_cat', 'super_get_model_cat');
 add_action('wp_ajax_nopriv_super_get_model_cat', 'super_get_model_cat');
 
-function super_get_model_cat()
-{
-	$parent_slug = $_POST['parent_id'];	
-$term = get_term_by('slug', $parent_slug, 'model_cat');	
+function super_get_model_cat() {
+    // Check for required POST data
+    if (!isset($_POST['parent_id'], $_POST['parent_slug'])) {
+        wp_send_json_error('Invalid input', 400);
+    }
 
-if ($term && !is_wp_error($term)) {
-    $cat_id = $term->term_id;
-    $subcategories = get_terms(array(
-        'taxonomy' => 'model_cat',
-        'parent' => 86,
-        'hide_empty' => false
-    ));
+    // Sanitize input data
+    $parent_id = intval($_POST['parent_id']);
+    $parent_slug = sanitize_text_field($_POST['parent_slug']);
 
+    // Get child terms for the specified taxonomy and parent
+    $subcategories = get_terms([
+        'taxonomy' => 'model_type_cat',
+        'parent' => $parent_id,
+        'hide_empty' => false,
+    ]);
+
+    // Check for errors or empty result
+    if (is_wp_error($subcategories) || empty($subcategories)) {
+        wp_send_json_error('No subcategories found', 404);
+    }
+
+    // Build the dropdown options
     $output = '<option value="">Choose Model</option>';
     foreach ($subcategories as $subcategory) {
-        $output .= '<option value="' . $subcategory->term_id . '">' . esc_html($subcategory->name) . '</option>';
+        $output .= '<option value="' . esc_attr($subcategory->term_id) . '">' . esc_html($subcategory->name) . '</option>';
     }
-    wp_send_json($output);
-} else {
-    wp_send_json_error('Invalid parent term.');
-}
 
-wp_die();
+    // Send the HTML as a JSON response
+    wp_send_json_success($output);
 
+    wp_die(); // Always include this to properly terminate
 }
 
 
@@ -870,9 +903,7 @@ add_action('wp_ajax_nopriv_add_repair', 'add_repair');
 function add_repair()
 {
 	global $wpdb;
-	$ticket_cat = $_POST['ticket_cat'];
-
-	
+	$ticket_cat = $_POST['ticket_cat'];	
 	$model_type_cat = $_POST['model_cat'];
 	$falt_cat = $_POST['falt_cat'];
 	$model_nocat = $_POST['model_nocat'];
@@ -880,10 +911,18 @@ function add_repair()
 	$repair_cost = $_POST['repair_cost'];
 	$diagnostic_fee = $_POST['diagnostic_fee'];	
 
-	// Model NO
-	$term_model_nocat = get_term( $model_nocat, 'model_cat' );
-	$model_no_cat_name = $term_model_nocat->name;
+	
 
+	// Type 
+	$term_type_cat = get_term( $ticket_cat, 'model_type_cat' );	
+	$type_name = $term_type_cat->name;
+
+	
+
+	// Model NO
+	$term_model_nocat = get_term( $model_nocat, 'model_type_cat' );
+	$model_no_cat_name = $term_model_nocat->name;
+	
 	// Fault Cat
 	$term_falt_cat = get_term( $falt_cat, 'cat_fault_type' );
 	$falt_cat_name = $term_falt_cat->name;
@@ -891,11 +930,11 @@ function add_repair()
 	//model type Cate
 	$term_model_type_cat = get_term( $model_type_cat, 'model_type_cat' );	
 	$model_type_name = $term_model_type_cat->name;
-	// Type 
-	$term_type_cat = get_term( $ticket_cat, 'repair_cat' );	
-	$type_name = $term_type_cat->name;
+	
 	
 	$title =  $type_name ." : ".$model_type_name." : " .$falt_cat_name." : ".$model_no_cat_name;
+
+	echo $title;
 	$post = array(
 		'post_title'    => $title ,
 		'post_status'   => 'publish',
@@ -907,9 +946,9 @@ function add_repair()
 			'diagnostic_fee' => $diagnostic_fee,			
 		),
 		'tax_input'    => array(
-			'repair_cat' => array($ticket_cat),
+			'model_type_cat' => array($ticket_cat),
 			'cat_fault_type' => array($falt_cat),
-			'model_cat' => array($model_nocat),
+			'model_type_cat' => array($model_nocat),
 			'model_type_cat' => array($model_type_cat)		
 		),
 
@@ -1016,15 +1055,17 @@ function autocomplete_search() {
 	   }
 	} else {
 	    ?>
-		  	
-			<h2 style="margin-left:30px" >Message or call for a quote </h2> <hr/><br/>
-			
 
-            <a style="margin-left:30px" class="btn_primary btn_sec"  href="tel:073477044">DID: 073477044 </a>
+    <h2 style="margin-left:30px">Message or call for a quote </h2>
+    <hr /><br />
 
-            <a style="margin-left:30px" class="btn_primary btn_sec"  href="mailto:budgetcomputer2013@gmail.com ">budgetcomputer2013@gmail.com </a>
 
-		<?php
+    <a style="margin-left:30px" class="btn_primary btn_sec" href="tel:073477044">DID: 073477044 </a>
+
+    <a style="margin-left:30px" class="btn_primary btn_sec"
+        href="mailto:budgetcomputer2013@gmail.com ">budgetcomputer2013@gmail.com </a>
+
+    <?php
 	}
 	echo "</ul>";
 	die();
@@ -1040,10 +1081,11 @@ add_action('wp_ajax_nopriv_super_add_model', 'super_add_model');
 function super_add_model()
 {
 	$ticket_cat = $_POST['ticket_cat'];	
+	$model_cat = $_POST['model_cat'];	
 	$model_name = $_POST['model_name'];	
 	$term_name = $model_name;
-	$taxonomy = 'model_cat'; 
-	$parent_id = $ticket_cat;
+	$taxonomy = 'model_type_cat'; 
+	$parent_id = $model_cat;
 
 	$result = wp_insert_term($term_name, $taxonomy, array(
 		'parent' => $parent_id,
@@ -1084,12 +1126,3 @@ function super_add_fault()
 	wp_die();
 
 }
-
-
-
-
-
-
-
-
-

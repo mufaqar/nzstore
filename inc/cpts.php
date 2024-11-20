@@ -361,7 +361,7 @@ function cptui_register_my_taxes_ticket_fault_type() {
 	register_taxonomy( "cat_fault_type", [ "repair" ], $args );
 	}
 	
-	add_action( 'init', 'cptui_register_my_taxes_repair_cat' );
+	
 	function cptui_register_my_taxes_model_type_cat() {
 
 		/**
@@ -369,12 +369,12 @@ function cptui_register_my_taxes_ticket_fault_type() {
 		 */
 	
 		$labels = [
-			"name" => __( "Model Type", "twentytwentytwo" ),
-			"singular_name" => __( "Model Type", "twentytwentytwo" ),
+			"name" => __( "Type", "twentytwentytwo" ),
+			"singular_name" => __( "Type", "twentytwentytwo" ),
 		];
 			
 		$args = [
-			"label" => __( "Model Type", "twentytwentytwo" ),
+			"label" => __( "Type", "twentytwentytwo" ),
 			"labels" => $labels,
 			"public" => true,
 			"publicly_queryable" => true,
@@ -399,41 +399,6 @@ function cptui_register_my_taxes_ticket_fault_type() {
 	add_action( 'init', 'cptui_register_my_taxes_model_type_cat' );
 
 	add_action( 'init', 'cptui_register_my_taxes_ticket_fault_type' );
-
-	function cptui_register_my_taxes_repair_cat() {
-
-		/**
-		 * Taxonomy: Type.
-		 */
-	
-		$labels = [
-			"name" => __( "Type", "twentytwentytwo" ),
-			"singular_name" => __( "Type", "twentytwentytwo" ),
-		];
-			
-		$args = [
-			"label" => __( "Type", "twentytwentytwo" ),
-			"labels" => $labels,
-			"public" => true,
-			"publicly_queryable" => true,
-			"hierarchical" => true,
-			"show_ui" => true,
-			"show_in_menu" => true,
-			"show_in_nav_menus" => true,
-			"query_var" => true,
-			"rewrite" => [ 'slug' => 'repair_cat', 'with_front' => true, ],
-			"show_admin_column" => true,
-			"show_in_rest" => true,
-			"show_tagcloud" => false,
-			"rest_base" => "repair_cat",
-			"rest_controller_class" => "WP_REST_Terms_Controller",
-			"rest_namespace" => "wp/v2",
-			"show_in_quick_edit" => true,
-			"sort" => true,
-			"show_in_graphql" => false,
-		];
-		register_taxonomy( "repair_cat", [ "repair" ], $args );
-	}
 
 
 	function cptui_register_my_taxes_model_cat() {
@@ -470,7 +435,7 @@ function cptui_register_my_taxes_ticket_fault_type() {
 		];
 		register_taxonomy( "model_cat", [ "repair" ], $args );
 	}
-	add_action( 'init', 'cptui_register_my_taxes_model_cat' );
+	//add_action( 'init', 'cptui_register_my_taxes_model_cat' );
 
 	
 

@@ -13,13 +13,13 @@ get_header();
     <form class="add_model" id="add_model" action="#" enctype="multipart/form-data">
             <div class="row">
 
-            <div class="col-md-6 mb-3">
-                    <label for="">Select Model Type</label>
+            <div class="col-md-4 mb-3">
+                    <label for="">Select</label>
                     <div class="_select">
                         <select id="ticket_cat"> 
-                        <option value="">Select a Model</option>                           
+                        <option value="">Select a Type</option>                           
                             <?php   
-                            $cat_tax = get_terms( array('taxonomy' => 'model_cat','hide_empty' => false ,  'parent' => 0) ); 
+                            $cat_tax = get_terms( array('taxonomy' => 'model_type_cat','hide_empty' => false ,  'parent' => 0) ); 
                             foreach( $cat_tax as $cat )  {
                                         $cat_id = $cat->term_id ;
                                         $cat_slug = $cat->slug ;
@@ -32,9 +32,14 @@ get_header();
                         <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
                     </div>
                 </div>
+                <div class="col-md-4 mb-3">
+                    <label for="">Model Type</label>
+                    <select id="model_cat"></select>
+                </div>
+
 
                  
-                <div class="col-md-6 mb-3">
+                <div class="col-md-4 mb-3">
                     <label for="">Model Name</label>
                     <div class="_select">
                         <input type="text" value="" placeholder="" id="model_name" required>
@@ -89,19 +94,51 @@ get_header();
            
            $(".hideme").css("display", "none");
        });
+
+       $("#ticket_cat").change(function () {     
+            var parent_id = this.value ;
+            var cat_slug = this.getAttribute("id").value;
+            var selected = $(this).find('option:selected');
+            var category_slug = selected.data('id');
+
+          
+            $.ajax(
+                    {
+                        type:"POST",
+                        url:"<?php echo admin_url('admin-ajax.php'); ?>",
+                        data: {
+                            action: "super_get_child_cat",
+                            parent_id: category_slug
+                        },   
+                        success: function(response){      
+                            $('#model_cat').html(response);
+                        }                
+                });
+             $.ajax(
+                {
+                    type:"POST",
+                    url:"<?php echo admin_url('admin-ajax.php'); ?>",
+                    data: {
+                        action: "super_get_fault_cat",
+                        parent_id: category_slug
+                    },   
+                    success: function(response){  
+                        $('#falt_cat').html(response);
+                    }            
+                 });       
+       });
                  
         $("#add_model").submit(function(e) {                     
             e.preventDefault();   
-
-          
-
             $("#spinner-div").show();                     
-            var ticket_cat = jQuery('#ticket_cat').val();	             
+            var ticket_cat = jQuery('#ticket_cat').val();	
+            var model_cat = jQuery('#model_cat').val();	             
             var model_name = jQuery('#model_name').val();
            
             form_data = new FormData();   
             form_data.append('action', 'super_add_model');
             form_data.append('ticket_cat', ticket_cat);
+            form_data.append('model_cat', model_cat);
             form_data.append('model_name', model_name);	
             $.ajax(
                 {
