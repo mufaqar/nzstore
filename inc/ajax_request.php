@@ -934,7 +934,6 @@ function add_repair()
 	
 	$title =  $type_name ." : ".$model_type_name." : " .$falt_cat_name." : ".$model_no_cat_name;
 
-	echo $title;
 	$post = array(
 		'post_title'    => $title ,
 		'post_status'   => 'publish',
@@ -954,14 +953,18 @@ function add_repair()
 
 	);	
 	
-	$inserted_post_id = wp_insert_post($post);
-	if (!is_wp_error($inserted_post_id)) {	
-		echo wp_send_json(array('code' => 200, 'message' => __('Repair Created Sucessfully')));
-		die();
-	} else {
-		echo wp_send_json(array('code' => 0, 'message' => __('Error Occured please fill up form carefully.')));
-		die();
-	}
+	 // Insert the post
+	 $inserted_post_id = wp_insert_post($post);
+
+	 // Check if the post was created successfully
+	 if (!is_wp_error($inserted_post_id)) {
+		 wp_send_json(array('code' => 200, 'message' => __('Repair Created Successfully')));
+	 } else {
+		 wp_send_json(array('code' => 0, 'message' => __('Error occurred, please fill up the form carefully.')));
+	 }
+ 
+	 wp_die(); // Terminate execution
+	
 
 }
 
