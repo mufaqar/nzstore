@@ -16,7 +16,7 @@ get_header();?>
                         <select id="ticket_cat"> 
                         <option value="">Select a Type</option>                           
                             <?php   
-                            $cat_tax = get_terms( array('taxonomy' => 'repair_cat','hide_empty' => false ,  'parent' => 0) ); 
+                            $cat_tax = get_terms( array('taxonomy' => 'model_type_cat','hide_empty' => false ,  'parent' => 0) ); 
                             foreach( $cat_tax as $cat )  {
                                         $cat_id = $cat->term_id ;
                                         $cat_slug = $cat->slug ;

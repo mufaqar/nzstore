@@ -14,7 +14,7 @@ get_header();
             <div class="row">
 
             <div class="col-md-6 mb-3">
-                    <label for="">Select  Type</label>
+                    <label for="">Select Type</label>
                     <div class="_select">
                         <select id="ticket_cat"> 
                         <option value="">Select Type</option>                           
