@@ -278,3 +278,37 @@ function  page_title() {
             }
         }
     }
+
+
+    
+    function check_user_role_and_redirect($required_role) {
+        // Get the current user object
+        $current_user = wp_get_current_user();
+    
+        // Check if the user is logged in
+        if ( is_user_logged_in() ) {
+            // Display a greeting message
+            echo 'Hey, ' . esc_html( $current_user->display_name ) . "<br/>";
+    
+            // Get the user's roles
+            $roles = $current_user->roles;
+    
+            // Check if the user has the required role
+            if ( ! in_array( $required_role, $roles ) ) {
+                // If not, terminate with a message
+                wp_die( __( 'Not Allowed', 'your-text-domain' ) );
+            } else {
+                // Optional: Add further logic for users with the required role
+                return true;
+            }
+        } else {
+            // Redirect to the login page if the user is not logged in
+            wp_redirect( home_url( '/login' ) );
+            exit;
+        }
+    }
+    
+   
+    
+    
+    
