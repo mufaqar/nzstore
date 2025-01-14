@@ -851,6 +851,54 @@ function super_get_fault_cat()
     wp_send_json($output);
     wp_die();
 }
+
+
+
+add_action('wp_ajax_super_get_models', 'super_get_models', 0);
+add_action('wp_ajax_nopriv_super_get_models', 'super_get_models');
+
+function super_get_models()
+{
+	
+$parent_slug = isset( $_POST['parent_id'] ) ? sanitize_text_field( $_POST['parent_id'] ) : '';
+
+if ( ! empty( $parent_slug ) ) {
+    // Get the term by slug
+    $term = get_term_by( 'slug', $parent_slug, 'model_type_cat' );
+
+    if ( $term && ! is_wp_error( $term ) ) {
+        $parent_id = $term->term_id;
+
+        // Retrieve the subcategories of the parent term
+        $subcategories = get_categories( array(
+            'taxonomy'   => 'model_type_cat',
+            'parent'     => $parent_id,
+            'hide_empty' => false, // Include empty subcategories
+        ) );
+
+        // Generate the dropdown options
+        $output = '<option value="">Select Model</option>';
+        if ( ! empty( $subcategories ) ) {
+            foreach ( $subcategories as $subcategory ) {
+                $output .= '<option value="' . esc_attr( $subcategory->term_id ) . '">' . esc_html( $subcategory->name ) . '</option>';
+            }
+        } else {
+            $output .= '<option value="">No models available</option>';
+        }
+
+        // Send JSON response
+        wp_send_json_success( $output );
+    } else {
+        wp_send_json_error( 'Parent term not found or invalid.' );
+    }
+} else {
+    wp_send_json_error( 'No parent slug provided.' );
+}
+
+// Ensure proper termination
+wp_die();
+
+}
 //super_get_fault_cat
 
 
@@ -865,6 +913,8 @@ function super_get_model_cat() {
         wp_send_json_error('Invalid input', 400);
     }
 
+	die($_POST['parent_id']);
+
     // Sanitize input data
     $parent_id = intval($_POST['parent_id']);
     $parent_slug = sanitize_text_field($_POST['parent_slug']);
@@ -875,6 +925,8 @@ function super_get_model_cat() {
         'parent' => $parent_id,
         'hide_empty' => false,
     ]);
+
+	var_dump($subcategories);
 
     // Check for errors or empty result
     if (is_wp_error($subcategories) || empty($subcategories)) {

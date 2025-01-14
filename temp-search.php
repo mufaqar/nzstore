@@ -63,7 +63,7 @@ get_header('landing');
         <div class="col-md-12">  
                 <h4> HOW TO SEARCH ? </h4>
                  <p>For example "iPhone 11 screen broken"
-Or you can search any models, laptops, smartphones, xbox, play stations. We usually reply in two hours in working days </p>           
+                    Or you can search any models, laptops, smartphones, xbox, play stations. We usually reply in two hours in working days </p>           
         </div> 
     
     </div>   
@@ -88,21 +88,21 @@ Or you can search any models, laptops, smartphones, xbox, play stations. We usua
                                        
                                         <div class="col-md-3 mb-3">
                                             <label for="">Select</label>
-                                            <div class="_select">
+                                                <div class="_select">
                                                 <select id="ticket_cat"> 
-                                                <option value="">Select a Type</option>                           
-                                                    <?php   
-                                                    $cat_tax = get_terms( array('taxonomy' => 'repair_cat','hide_empty' => false ,  'parent' => 0) ); 
-                                                    foreach( $cat_tax as $cat )  {
-                                                                $cat_id = $cat->term_id ;
-                                                                $cat_slug = $cat->slug ;
-                                                                $cat_name = $cat->name ; ?>                            
-                                                                <option value="<?php echo $cat_id; ?>" data-id="<?php echo $cat_slug; ?>" > <?php echo $cat_name; ?> </option>
-                                                        <?php
-                                                        }                                                    
-                                                    ?>
-                                                </select>
-                                                <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
+                                                    <option value="">Select a Type</option>                           
+                                                        <?php   
+                                                        $cat_tax = get_terms( array('taxonomy' => 'model_type_cat','hide_empty' => false ,  'parent' => 0) ); 
+                                                        foreach( $cat_tax as $cat )  {
+                                                                    $cat_id = $cat->term_id ;
+                                                                    $cat_slug = $cat->slug ;
+                                                                    $cat_name = $cat->name ; ?>                            
+                                                                    <option value="<?php echo $cat_id; ?>" data-id="<?php echo $cat_slug; ?>" > <?php echo $cat_name; ?> </option>
+                                                            <?php
+                                                            }                                                    
+                                                        ?>
+                                                    </select>
+                                                    <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
                                                 </div>
                                         </div>
                                         <div class="col-md-3 mb-3">
@@ -112,8 +112,23 @@ Or you can search any models, laptops, smartphones, xbox, play stations. We usua
                                         </div>
                                         
                                         <div class="col-md-3 mb-3">
-                                            <label for="">Falult Type</label>
-                                            <select id="falt_cat"></select>
+                                            <label for="">Fault Type</label>
+                                            <div class="_select">
+                                                <select id="ticket_cat"> 
+                                                    <option value="">Select a Type</option>                           
+                                                        <?php   
+                                                        $cat_tax = get_terms( array('taxonomy' => 'cat_fault_type','hide_empty' => false ,  'parent' => 0) ); 
+                                                        foreach( $cat_tax as $cat )  {
+                                                                    $cat_id = $cat->term_id ;
+                                                                    $cat_slug = $cat->slug ;
+                                                                    $cat_name = $cat->name ; ?>                            
+                                                                    <option value="<?php echo $cat_id; ?>" data-id="<?php echo $cat_slug; ?>" > <?php echo $cat_name; ?> </option>
+                                                            <?php
+                                                            }                                                    
+                                                        ?>
+                                                    </select>
+                                                    <img src="<?php bloginfo('template_directory'); ?>/reources/images/down-arrow.png" alt="">
+                                                </div>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="">Model No</label>
@@ -173,18 +188,18 @@ Or you can search any models, laptops, smartphones, xbox, play stations. We usua
                                         $('#model_cat').html(response);
                                     }                
                             });
-                        $.ajax(
-                            {
-                                type:"POST",
-                                url:"<?php echo admin_url('admin-ajax.php'); ?>",
-                                data: {
-                                    action: "super_get_fault_cat",
-                                    parent_id: category_slug
-                                },   
-                                success: function(response){  
-                                    $('#falt_cat').html(response);
-                                }            
-                            });       
+                        // $.ajax(
+                        //     {
+                        //         type:"POST",
+                        //         url:"<?php echo admin_url('admin-ajax.php'); ?>",
+                        //         data: {
+                        //             action: "super_get_fault_cat",
+                        //             parent_id: category_slug
+                        //         },   
+                        //         success: function(response){  
+                        //             $('#falt_cat').html(response);
+                        //         }            
+                        //     });       
             });
 
 
@@ -196,11 +211,13 @@ Or you can search any models, laptops, smartphones, xbox, play stations. We usua
                             type:"POST",
                             url:"<?php echo admin_url('admin-ajax.php'); ?>",
                             data: {
-                                action: "super_get_model_cat",
+                                action: "super_get_models",
                                 parent_id: mod_slug
                             },                      
-                            success: function(response){   
-                                $('#model_name').html(response);
+                            success: function(response){
+                                if (response.success) {  
+                                $('#model_name').html(response.data);
+                                }
                             }                    
                     });       
         });
@@ -234,7 +251,6 @@ Or you can search any models, laptops, smartphones, xbox, play stations. We usua
                         complete: function () {
                             $("#spinner-div").hide();  },   
                         success: function(data){ 
-
                             $('#search-results').html(data);
                              
                                 

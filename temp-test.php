@@ -1,6 +1,59 @@
 <?php /* Template Name: Test  */ 
         get_header();
-       // reddirectProfile();
+     
+
+
+
+
+
+
+
+   
+        // Define the parent term slug
+        $parent_slug = 'apple-peripherals';
+        
+        // Get the parent term by slug
+        $term = get_term_by('slug', $parent_slug, 'model_type_cat');
+        
+        if ( $term && ! is_wp_error( $term ) ) {
+            $parent_id = $term->term_id;
+        
+            // Output the parent ID for debugging
+            echo 'Parent ID: ' . esc_html( $parent_id ) . '<br>';
+        
+            // Retrieve the subcategories of the parent term
+            $subcategories = get_categories( array(
+                'taxonomy' => 'model_type_cat',
+                'parent'   => $parent_id,
+                'hide_empty' => false, // Include empty subcategories
+            ) );
+        
+        
+            // Generate the dropdown options
+            $output = '<option value="">Select Model</option>';
+            if ( ! empty( $subcategories ) ) {
+                foreach ( $subcategories as $subcategory ) {
+                    $output .= '<option value="' . esc_attr( $subcategory->term_id ) . '">' . esc_html( $subcategory->name ) . '</option>';
+                }
+            } else {
+                $output .= '<option value="">No models available</option>';
+            }
+        
+            // Output the generated dropdown
+            echo '<select>' . $output . '</select>';
+        } else {
+            echo 'Parent term not found or invalid.';
+        }
+   
+        
+
+
+
+
+
+
+
+
                 ?> 
  <div class="container mt-5">
     <h3>Search Repairs</h3>
