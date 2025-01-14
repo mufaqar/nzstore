@@ -103,13 +103,7 @@ function add_more_buttons($buttons) {
 }
 add_filter("mce_buttons_3", "add_more_buttons");
 
-function add_first_and_last($items) {
-    $items[1]->classes[] = 'first-menu-item';
-    $items[count($items)]->classes[] = 'last-menu-item';
-    return $items;
-}
- 
-add_filter('wp_nav_menu_objects', 'add_first_and_last');
+
 
 // Theme Options
 //include_once('admin/index.php');
