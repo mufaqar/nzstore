@@ -908,41 +908,36 @@ add_action('wp_ajax_super_get_model_cat', 'super_get_model_cat');
 add_action('wp_ajax_nopriv_super_get_model_cat', 'super_get_model_cat');
 
 function super_get_model_cat() {
-    // Check for required POST data
-    if (!isset($_POST['parent_id'], $_POST['parent_slug'])) {
-        wp_send_json_error('Invalid input', 400);
-    }
+   // Get parent ID (slug) from POST request
+   $parent_id = isset( $_POST['parent_id'] ) ? sanitize_text_field( $_POST['parent_id'] ) : '';
 
-	die($_POST['parent_id']);
+   if ( ! empty( $parent_id ) ) {	   
 
-    // Sanitize input data
-    $parent_id = intval($_POST['parent_id']);
-    $parent_slug = sanitize_text_field($_POST['parent_slug']);
+		   // Get child terms
+		   $subcategories = get_categories( array(
+			   'taxonomy'   => 'model_type_cat',
+			   'parent'     => $parent_id,
+			   'hide_empty' => false,
+		   ) );
 
-    // Get child terms for the specified taxonomy and parent
-    $subcategories = get_terms([
-        'taxonomy' => 'model_type_cat',
-        'parent' => $parent_id,
-        'hide_empty' => false,
-    ]);
+		   // Generate the dropdown options
+		   $output = '<option value="">Select Model</option>';
+		   if ( ! empty( $subcategories ) ) {
+			   foreach ( $subcategories as $subcategory ) {
+				   $output .= '<option value="' . esc_attr( $subcategory->term_id ) . '">' . esc_html( $subcategory->name ) . '</option>';
+			   }
+		   } else {
+			   $output .= '<option value="">No models available</option>';
+		   }
 
-	var_dump($subcategories);
+		   // Send the options as response
+		   wp_send_json_success( $output );
+	  
+   } else {
+	   wp_send_json_error( 'No parent ID provided.' );
+   }
 
-    // Check for errors or empty result
-    if (is_wp_error($subcategories) || empty($subcategories)) {
-        wp_send_json_error('No subcategories found', 404);
-    }
-
-    // Build the dropdown options
-    $output = '<option value="">Choose Model</option>';
-    foreach ($subcategories as $subcategory) {
-        $output .= '<option value="' . esc_attr($subcategory->term_id) . '">' . esc_html($subcategory->name) . '</option>';
-    }
-
-    // Send the HTML as a JSON response
-    wp_send_json_success($output);
-
-    wp_die(); // Always include this to properly terminate
+   wp_die(); // Terminate script
 }
 
 
@@ -1099,8 +1094,8 @@ function autocomplete_search() {
 			'terms'    => $falt_cat,
 		);
 	}
-	print "<pre>";
-	print_r($tax_query);
+	// print "<pre>";
+	// print_r($tax_query);
   	$search_results = get_posts(array(
 	  // 's' => $query,
 	   'post_type' => 'repair',
