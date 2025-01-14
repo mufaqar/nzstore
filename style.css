@@ -479,6 +479,7 @@ footer .footer_social img:hover {
 .container_wrapper {
   width: 100%;
   margin: 0 auto;
+  padding: 0 5%;
 }
 
 .launch_calandar .content {

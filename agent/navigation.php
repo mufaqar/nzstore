@@ -32,9 +32,7 @@
                         <div class="proofile_info d-flex align-items-center">
                         <div class="user">
                                 <h6><?php check_user_role_and_redirect('agent');?></h6>
-                               </p>                            
-
-                            </div>
+                         </div>
                             <img src="<?php bloginfo('template_directory'); ?>/reources//images/profile.webp" alt="">
                         </div>                        
                     </div>

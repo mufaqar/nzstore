@@ -31,27 +31,8 @@
                             <img src="<?php bloginfo('template_directory'); ?>/reources/images/hamburger.png" alt="" id="hamburgerbtn" onclick="hamburger()">
                         </div>
                         <div class="proofile_info d-flex align-items-center">
-                            <div class="user">
-                            <h6><?php global $current_user; wp_get_current_user();
-                                 if ( is_user_logged_in() ) { 
-                                    echo 'Hey, ' .  $current_user->display_name ."<br/>" ; } 
-                                    else {
-                                        wp_redirect( home_url('login'));                                     
-                                        exit;
-                                    }
-
-                                    global $user_login, $current_user; 
-                                    get_currentuserinfo();
-                                    $user_info = get_userdata($current_user->ID);
-                                   
-                                   $role = $user_info->roles;
-                                   echo $role[0];                                 
-                                   
-                                    if (!in_array('administrator', $user_info->roles)) {   
-                                        //wp_redirect( home_url('login'));                                                                         
-                                        die("Not Allowed");                              
-                                    }
-                                    ?></h6>  
+                            <div class="user">                             
+                                    <h6><?php check_user_role_and_redirect('administrator');?></h6>
                             </div>
                             <img src="<?php bloginfo('template_directory'); ?>/reources//images/profile.webp" alt="">
                         </div>                        
