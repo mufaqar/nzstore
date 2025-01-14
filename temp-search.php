@@ -114,7 +114,7 @@ get_header('landing');
                                         <div class="col-md-3 mb-3">
                                             <label for="">Fault Type</label>
                                             <div class="_select">
-                                                <select id="ticket_cat"> 
+                                                <select id="falt_cat"> 
                                                     <option value="">Select a Type</option>                           
                                                         <?php   
                                                         $cat_tax = get_terms( array('taxonomy' => 'cat_fault_type','hide_empty' => false ,  'parent' => 0) ); 

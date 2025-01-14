@@ -1046,49 +1046,59 @@ function autocomplete_search() {
 
 
  function get_repair_price() {
-	$ticket_cat = $_POST['ticket_cat'];
-	$falt_cat = $_POST['falt_cat'];
+
+
 	$model_name = $_POST['model_name'];	
 	$model_cat = $_POST['model_cat'];	
 	// echo $ticket_cat . "-Ticket <br/>" ;
 	// echo $model_cat . "-Model Cate <br/>" ;
 	// echo $falt_cat . "-Fault <br/>" ;	
 	// echo $model_name . "-Model  Name <br/>" ;
+
+	$ticket_cat = isset($_POST['ticket_cat']) ? $_POST['ticket_cat'] : null;
+	$falt_cat = isset($_POST['falt_cat']) ? $_POST['falt_cat'] : null;
+
+
 	$tax_query = array('relation' => 'AND');
+	if (!empty($falt_cat)) {
+		$tax_query[] = array(
+			'taxonomy' => 'cat_fault_type',
+			'field'    => 'id',
+			'terms'    => $falt_cat,
+		);
+	}
     if (!empty($ticket_cat))
     {
         $tax_query[] =  array(
-                'taxonomy' => 'repair_cat',
+                'taxonomy' => 'model_type_cat',
                 'field' => 'term_id',
                 'terms' => $ticket_cat
             );
     }
-    if (!empty($falt_cat))
-    {
-        $tax_query[] =  array(
-                'taxonomy' => 'cat_fault_type',
-                'field' => 'id',
-                'terms' => $falt_cat
-            );
-    }
+    // if (!empty($falt_cat))
+    // {
+    //     $tax_query[] =  array(
+    //             'taxonomy' => 'cat_fault_type',
+    //             'field' => 'id',
+    //             'terms' => $falt_cat
+    //         );
+    // }
   
-    if (!empty($model_cat))
-    {
-        $tax_query[] =  array(
-                'taxonomy' => 'model_type_cat',
-                'field' => 'id',
-                'terms' => $model_cat
-            );
-    }
-	if (!empty($model_name))
-    {
-        $tax_query[] =  array(
-                'taxonomy' => 'model_cat',
-                'field' => 'id',
-                'terms' => $model_name
-            );
-    }
-
+    // if (!empty($model_cat))
+    // {
+    //     $tax_query[] =  array(
+    //             'taxonomy' => 'model_type_cat',
+    //             'field' => 'id',
+    //             'terms' => $model_cat
+    //         );
+    // }
+	if (!empty($falt_cat)) {
+		$tax_query[] = array(
+			'taxonomy' => 'cat_fault_type',
+			'field'    => 'id',
+			'terms'    => $falt_cat,
+		);
+	}
 	// print "<pre>";
 	// print_r($tax_query);
   	$search_results = get_posts(array(
@@ -1097,11 +1107,11 @@ function autocomplete_search() {
 	   'posts_per_page' => -1,
 	   'orderby' => 'relevance',
 	   'order' => 'DESC',
-	   'tax_query' => $tax_query	   
+	   'tax_query'      => !empty($tax_query) ? $tax_query : null, 
 	));
 	echo "<ul>";
 
-	//print_r($search_results);
+	// print_r($search_results);
 
 
 	if($search_results) {
