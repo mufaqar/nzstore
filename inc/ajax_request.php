@@ -1099,8 +1099,8 @@ function autocomplete_search() {
 			'terms'    => $falt_cat,
 		);
 	}
-	// print "<pre>";
-	// print_r($tax_query);
+	print "<pre>";
+	print_r($tax_query);
   	$search_results = get_posts(array(
 	  // 's' => $query,
 	   'post_type' => 'repair',
