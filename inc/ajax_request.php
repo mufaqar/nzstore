@@ -814,7 +814,7 @@ function resetpassword() {
         // Send reset password email
         send_reset_password($email, $password);
 
-        wp_send_json(array('code' => 200, 'message' => __('Password updated. Please check your email.')));
+        wp_send_json(array('code' => 200, 'message' => __('Password sent .Please check your email.')));
     } else {
         wp_send_json(array('code' => 0, 'message' => __('Failed to reset password. Please try again.')));
     }
