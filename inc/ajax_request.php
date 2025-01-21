@@ -736,36 +736,43 @@ function agent_create_signup() {
 		$business_name = $_POST['business_name'];  
 		$business_phone = $_POST['business_phone'];  
 		$postal_code = $_POST['postal_code'];  	
+		
 		$user_data = array(
 			'user_login' => $username,
 			'user_email' => $agent_email,
-			'user_pass' => $password,	
+			'user_pass' => $password,
 			'display_name' => $agent_name,
 			'role' => 'agent'
-		);	
-	  $user_id = wp_insert_user($user_data);	
-	  if (!is_wp_error($user_id)) {	
-		update_user_meta( $user_id,'business_name', $business_name);	 
-		update_user_meta( $user_id,'business_phone', $business_phone);	  
-		update_user_meta( $user_id,'postal_code', $postal_code);
-		$code = sha1( $user_id);		
-		$activation_link = add_query_arg( array( 'key' => $code, 'user' => $user_id ), get_permalink(125));
-		add_user_meta( $user_id, 'has_to_be_activated', $code, true );
-		activation_mail($agent_email, $activation_link);			
-		echo wp_send_json( array('code' => 200 , 'message'=>__('We have Created an account for you.')));
-	  	
-		
-	  } else {
-		if (isset($user_id->errors['empty_user_login'])) {	          
-		  echo wp_send_json( array('code' => 0 , 'message'=>__('User Name and Email are mandatory')));
-		  } elseif (isset($user_id->errors['existing_user_login'])) {
-		  echo wp_send_json( array('code' => 0 , 'message'=>__('This email address is already registered.')));
-		  } else {	         
-		  echo wp_send_json( array('code' => 0 , 'message'=>__('Error Occured please fill up the sign up form carefully.')));
-		  }
-	  }
-       
-	die;   
+		);
+
+		$user_id = wp_insert_user($user_data);
+
+		if (!is_wp_error($user_id)) {
+			// Update user meta
+			update_user_meta($user_id, 'business_name', $business_name);
+			update_user_meta($user_id, 'business_phone', $business_phone);
+			update_user_meta($user_id, 'postal_code', $postal_code);
+
+			// Generate activation code and link
+			$code = sha1($user_id);
+			$activation_link = add_query_arg(array('key' => $code, 'user' => $user_id), get_permalink(125));
+			add_user_meta($user_id, 'has_to_be_activated', $code, true);
+
+			// Send activation email
+			activation_mail($agent_email, $activation_link);
+
+			wp_send_json(array('code' => 200, 'message' => __('We have created an account for you.'), 'activation_link' => $activation_link));
+		} else {
+			$error_message = __('Error occurred, please fill up the sign-up form carefully.');
+			if (isset($user_id->errors['empty_user_login'])) {
+				$error_message = __('User Name and Email are mandatory.');
+			} elseif (isset($user_id->errors['existing_user_login'])) {
+				$error_message = __('This email address is already registered.');
+			}
+			wp_send_json(array('code' => 0, 'message' => $error_message));
+		}
+
+		die; 
 		
 }
 

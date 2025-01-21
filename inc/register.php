@@ -28,7 +28,7 @@
 		$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
 		$body  .= "<p><strong> Email:   </strong>budgetcomputer@kiwimobiles.co.nz</p> ";
 		wp_mail( $to, $subject, $body, $headers );
-		echo "Email Sent";
+		
 	}
 
 		// Reset Password Email 
