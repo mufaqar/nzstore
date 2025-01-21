@@ -40,7 +40,7 @@
 		$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
 		$body  .= "<p><strong> Username : </strong>$username </p> ";
 		$body  .= "<p><strong> Password : </strong>$password </p> ";
-		wp_mail( $to, $subject, $body, $headers );
+		wp_mail( $username, $subject, $body, $headers );
 	}
 
 
