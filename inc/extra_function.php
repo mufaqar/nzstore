@@ -321,7 +321,7 @@ function sendmail($agent_email, $message, $postid) {
         'Content-Type: text/html; charset=UTF-8'
     );
 
-    $body  = "<p><img src='https://budgetrepaircenter.nz/jobform/wp-content/themes/nzstore/resources/images/logo.png' width='320px' alt='Logo'></p><hr/>";
+    $body  = "<p><img src='https://jobform.budgetrepaircenter.nz/wp-content/themes/nzstore/reources//images/logo.png' width='320px' alt='Logo'></p><hr/>";
     $body .= "<p><strong>$message</strong><br/> Ticket: <a href='" . get_permalink($postid) . "'>" . get_permalink($postid) . "</a></p>";
 
     // Send the email
@@ -336,16 +336,23 @@ function sendmail($agent_email, $message, $postid) {
 
 // Agent Activation Email 
 
-function activation_mail($to,$activation_link) {
-    $subject = 'Budget Computer & Kiwi Mobiles | User Account Activation';	
-    $headers[] = 'From: info@budgetrepaircenter.nz" . "\r\n';
-    $headers[] = "Content-Type: text/html; charset=UTF-8\r\n";
-    $body   = "<p><img src='https://budgetrepaircenter.nz/jobform/wp-content/themes/nzstore/reources/images/logo.png' width='320px'></img></p><hr/> ";
-    $body  .= "<p><strong> Account Activation Link: </strong><a href='$activation_link' >Activate your Account</a> </p> ";
-    $body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
-    $body  .= "<p><strong> Email:   </strong>info@budgetrepaircenter.nz</p> ";
-    wp_mail( $to, $subject, $body, $headers );
+function activation_mail($to, $activation_link) {
+    $subject = 'Budget Computer & Kiwi Mobiles | User Account Activation';
     
+    // Properly formatted headers
+    $headers = array(
+        'From: Budget Computer <info@budgetrepaircenter.nz>',
+        'Content-Type: text/html; charset=UTF-8'
+    );
+    
+    // Corrected image path and HTML content
+    $body  = "<p><img src='https://jobform.budgetrepaircenter.nz/wp-content/themes/nzstore/resources/images/logo.png' width='320px' alt='Budget Computer Logo'></p><hr/>";
+    $body .= "<p><strong>Account Activation Link:</strong> <a href='$activation_link'>Activate your Account</a></p>";
+    $body .= "<p><strong>DID:</strong> 09 9508717</p>";
+    $body .= "<p><strong>Email:</strong> info@budgetrepaircenter.nz</p>";
+    
+    // Sending email
+    wp_mail($to, $subject, $body, $headers);
 }
 
     // Reset Password Email 
@@ -356,7 +363,7 @@ function Send_Password($username,$password) {
         'From: Budget Computer <info@budgetrepaircenter.nz>',
         'Content-Type: text/html; charset=UTF-8'
     );
-    $body   = "<p><img src='https://budgetrepaircenter.nz/jobform/wp-content/themes/nzstore/reources/images/logo.png' width='320px'></img></p><hr/> ";
+    $body   = "<p><img src='https://jobform.budgetrepaircenter.nz/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
     $body  .= "<p><strong> Username : </strong>$username </p> ";
     $body  .= "<p><strong> Password : </strong>$password </p> ";
     wp_mail( $username, $subject, $body, $headers );
@@ -365,23 +372,31 @@ function Send_Password($username,$password) {
 
 
 // Send mail to Agent Email 
-function sendmail_agent($to,$password) {
+function sendmail_agent($to, $password) {
     $subject = 'Budget Computer & Kiwi Mobiles | User Login Details';
-    $body  = "<h1>Budget Computer & Kiwi Mobiles </h1> ";
-    $body  .= "<p><img src='https://budgetrepaircenter.nz/jobform/wp-content/themes/nzstore/reources/images/logo.png' width='320px'></img></p><hr/> ";
-    $body  .= "<p><strong> Username: </strong> $to </p> ";
-    $body  .= "<p><strong> Password:   </strong> $password </p> ";
-    $body  .= "<h1 style='color:#5fb227;margin:20px 0;'> YOUR ONLINE REPAIR PARTNER </h1>";
-    $body  .= "<p>Thanks for subscribing to your online repair centre portal; now you can create your first query for any of your repair issues, the Galaxies series, iPhones, iPods, MacBooks, Laptops, X-BOX, and Gaming Machines. </p>";
-    $body  .= "<p>We often stock all parts of the products mentioned above to repair fast. Online portal updates of your queries are generated until we receive your product repair and send them back with online tracking details in your dedicated login portal with us.  </p>";
-    $body  .= "<p><strong> Email: </strong>  info@budgetrepaircenter.nz </p> ";
-    $body  .= "<p><strong> DID: </strong>  073477044 -  099508717 </p> ";
-    $body  .= "<p> <a href='http://icsservices.nz' target='_blank'>www.icsservices.nz </a>   &nbsp;&nbsp;&nbsp;  <a href='http://smartphonesrepair.co.nz' target='_blank'> www.smartphonesrepair.co.nz</a> </p> ";
-    $body  .= "<p>Follow Us</p>";
-    $body  .= "<p> <a href='https://www.facebook.com/smartphonesrepair.co.nz' target='_blank'>Facebook</a> &nbsp;&nbsp;&nbsp; <a href='https://www.youtube.com/channel/UC9DOgY5L5oAudmVE8V5D66g' target='_blank'>Youtube</a><p> ";
-    $headers[] = 'From: info@budgetrepaircenter.nz" . "\r\n';
-    $headers[] = "Content-Type: text/html; charset=UTF-8\r\n";
-    wp_mail( $to, $subject, $body, $headers );
+    
+    // Properly formatted email headers
+    $headers = array(
+        'From: Budget Computer <info@budgetrepaircenter.nz>',
+        'Content-Type: text/html; charset=UTF-8'
+    );
+    
+    // Email body with improved HTML structure
+    $body  = "<h1>Budget Computer & Kiwi Mobiles</h1>";
+    $body .= "<p><img src='https://jobform.budgetrepaircenter.nz/wp-content/themes/nzstore/resources/images/logo.png' width='320px' alt='Budget Computer Logo'></p><hr/>";
+    $body .= "<p><strong>Username:</strong> $to</p>";
+    $body .= "<p><strong>Password:</strong> $password</p>";
+    $body .= "<h1 style='color:#5fb227; margin:20px 0;'>YOUR ONLINE REPAIR PARTNER</h1>";
+    $body .= "<p>Thanks for subscribing to your online repair center portal. You can now create your first query for any repair issues, including Galaxy series, iPhones, iPods, MacBooks, Laptops, X-BOX, and Gaming Machines.</p>";
+    $body .= "<p>We often stock parts for the products mentioned above to ensure fast repairs. The online portal updates your queries until we receive your product for repair and send it back with online tracking details available in your dedicated login portal.</p>";
+    $body .= "<p><strong>Email:</strong> info@budgetrepaircenter.nz</p>";
+    $body .= "<p><strong>DID:</strong> 073477044 - 099508717</p>";
+    $body .= "<p><a href='http://icsservices.nz' target='_blank'>www.icsservices.nz</a> &nbsp;&nbsp;&nbsp; <a href='http://smartphonesrepair.co.nz' target='_blank'>www.smartphonesrepair.co.nz</a></p>";
+    $body .= "<p>Follow Us:</p>";
+    $body .= "<p><a href='https://www.facebook.com/smartphonesrepair.co.nz' target='_blank'>Facebook</a> &nbsp;&nbsp;&nbsp; <a href='https://www.youtube.com/channel/UC9DOgY5L5oAudmVE8V5D66g' target='_blank'>YouTube</a></p>";
+
+    // Send the email
+    wp_mail($to, $subject, $body, $headers);
 }
 
 // Send Admint Notification 
@@ -389,14 +404,22 @@ function sendmail_agent($to,$password) {
 
 function sendmail_admin($user_email) {
     $admin = 'choudhry.asif@gmail.com';
-    $subject = 'Budget Computer & Kiwi Mobiles | New User Registerd  ';
-    $body  = "<h1>Budget Computer & Kiwi Mobiles </h1> ";
-    $body  .= "<p><img src='https://budgetrepaircenter.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
-    $body  .= "<p><strong> Email Address: </strong> $user_email </p> ";
-    $headers[] = 'From: info@budgetrepaircenter.nz" . "\r\n';
-    $headers[] = 'Cc: choudhry.asif@gmail.com';
-    $headers[] = 'Cc: budgetcomputer2013@gmail.com';
-    $headers[] = 'Cc: uziasif06@gmail.com,mufaqar@gmail.com';
-    $headers[] = "Content-Type: text/html; charset=UTF-8\r\n";
-    wp_mail( $admin, $subject, $body, $headers );
+    $subject = 'Budget Computer & Kiwi Mobiles | New User Registered';
+    
+    // Email headers
+    $headers = array(
+        'From: Budget Computer <info@budgetrepaircenter.nz>',
+        'Cc: choudhry.asif@gmail.com',
+        'Cc: budgetcomputer2013@gmail.com',
+        'Cc: uziasif06@gmail.com, mufaqar@gmail.com',
+        'Content-Type: text/html; charset=UTF-8'
+    );
+
+    // Email body
+    $body  = "<h1>Budget Computer & Kiwi Mobiles</h1>";
+    $body .= "<p><img src='https://budgetrepaircenter.nz/jobform/wp-content/themes/nzstore/resources/images/logo.png' width='320px' alt='Budget Computer Logo'></p><hr/>";
+    $body .= "<p><strong>Email Address:</strong> $user_email</p>";
+    
+    // Send email
+    wp_mail($admin, $subject, $body, $headers);
 }
