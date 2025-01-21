@@ -35,9 +35,8 @@
 
 	function send_reset_password($username,$password) {
 		$subject = 'Budget Computer & Kiwi Mobiles | User Account Activation';	
-		$headers[] = 'From: budgetcomputer@kiwimobiles.co.nz" . "\r\n';
-		$headers[] = "Content-Type: text/html; charset=UTF-8\r\n";
-		$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
+		$headers[] = 'From: Budget Computer <budgetcomputer@kiwimobiles.co.nz>';
+		$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources/images/logo.png' width='320px'></img></p><hr/> ";
 		$body  .= "<p><strong> Username : </strong>$username </p> ";
 		$body  .= "<p><strong> Password : </strong>$password </p> ";
 		wp_mail( $username, $subject, $body, $headers );
@@ -48,7 +47,7 @@
 	function sendmail_agent($to,$password) {
 		$subject = 'Budget Computer & Kiwi Mobiles | User Login Details';
 		$body  = "<h1>Budget Computer & Kiwi Mobiles </h1> ";
-		$body  .= "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
+		$body  .= "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources/images/logo.png' width='320px'></img></p><hr/> ";
 		$body  .= "<p><strong> Username: </strong> $to </p> ";
 		$body  .= "<p><strong> Password:   </strong> $password </p> ";
 		$body  .= "<h1 style='color:#5fb227;margin:20px 0;'> YOUR ONLINE REPAIR PARTNER </h1>";
