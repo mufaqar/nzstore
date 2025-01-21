@@ -63,7 +63,7 @@ if ( is_user_logged_in() ) {
                     
                         <button type="submit" class="green_btn">Reset Password</button>
 
-                        <a href="https://kiwimobiles.co.nz/jobform" class="green_btn">Login</a>
+                        <a href="https://jobform.budgetrepaircenter.nz/" class="green_btn">Login</a>
                     </div>
                     
                 </form>

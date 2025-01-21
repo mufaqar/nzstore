@@ -811,15 +811,8 @@ function resetpassword() {
     $user_id = wp_update_user(array('ID' => $user->ID, 'user_pass' => $password));
 
     if (!is_wp_error($user_id)) {
-
-		$subject = 'Budget Computer & Kiwi Mobiles | Reset Password';	
-		$headers[] = 'From: Budget Computer <budgetcomputer@kiwimobiles.co.nz>';
-		$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources/images/logo.png' width='320px'></img></p><hr/> ";
-		$body  .= "<p><strong> Username : </strong>$username </p> ";
-		$body  .= "<p><strong> Password : </strong>$password </p> ";
-		wp_mail( $email, $subject, $body, $headers );
-       
-        wp_send_json(array('code' => 200, 'message' => __('Password Sent .Please check your email.')));
+        Send_Password($email, $password);
+        wp_send_json(array('code' => 200, 'message' => __('Password sentPlease check your email.')));
     } else {
         wp_send_json(array('code' => 0, 'message' => __('Failed to reset password. Please try again.')));
     }
