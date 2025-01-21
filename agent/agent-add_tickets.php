@@ -98,13 +98,13 @@ get_header();?>
                 <div class="col-md-6 mt-3 mt-md-0 mb-3">
                     <label for="">Address</label>
                     <div class="_select">                    
-                        <textarea id="address"><?php echo get_post_meta($pid, 'address', true ); ?></textarea>
+                        <textarea id="address"></textarea>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                 <label for="">Issue Details</label>
                     <div class="_select">                       
-                        <textarea id="issues"><?php echo get_post_meta($pid, 'issues', true ); ?></textarea>
+                        <textarea id="issues"></textarea>
                     </div>
                 </div>
 
@@ -112,7 +112,7 @@ get_header();?>
                 <div class="col-md-6 mb-3">
                 <label for="">Shipping Details</label>
                     <div class="_select">                        
-                        <textarea id="shipping"><?php echo get_post_meta($pid, 'shipping', true ); ?></textarea>
+                        <textarea id="shipping"></textarea>
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">                       
