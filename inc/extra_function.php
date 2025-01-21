@@ -417,7 +417,7 @@ function sendmail_admin($user_email) {
 
     // Email body
     $body  = "<h1>Budget Computer & Kiwi Mobiles</h1>";
-    $body .= "<p><img src='https://budgetrepaircenter.nz/jobform/wp-content/themes/nzstore/resources/images/logo.png' width='320px' alt='Budget Computer Logo'></p><hr/>";
+    $body .= "<p><img src='https://jobform.budgetrepaircenter.nz/wp-content/themes/nzstore/resources/images/logo.png' width='320px' alt='Budget Computer Logo'></p><hr/>";
     $body .= "<p><strong>Email Address:</strong> $user_email</p>";
     
     // Send email
