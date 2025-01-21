@@ -802,6 +802,8 @@ function resetpassword() {
    
 	   // Generate random password
 	   $password = wp_generate_password();
+
+	   echo $password;
    
 	   // Update user password
 	   $user_id = wp_update_user(array('ID' => $user->ID, 'user_pass' => $password));
