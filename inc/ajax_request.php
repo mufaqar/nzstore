@@ -780,10 +780,8 @@ function agent_create_signup() {
 
 add_action('wp_ajax_resetpassword', 'resetpassword', 0);
 add_action('wp_ajax_nopriv_resetpassword', 'resetpassword');
-function resetpassword() {	
-		
-	  global $wpdb;  
- 
+function resetpassword() {			
+	  global $wpdb;   
       $username = $_POST['username'];
       $email = $_POST['username'];    
 	  $password = generateRandomString();	
@@ -793,16 +791,15 @@ function resetpassword() {
 		'user_pass' => $password,	
 		
 		);
-
 		$user = get_user_by( 'email', $email );
 		$user_id = $user->ID;
 	    $user_id = wp_update_user( array ( 'ID' => $user_id, 'user_pass' => $password ) );	
 	  	if (!is_wp_error($user_id)) {		    
 			send_reset_password($username,$password);
-			echo wp_send_json( array('code' => 200 , 'message'=>__('Password Updated , Please check your email')));
+			echo wp_send_json( array('code' => 200 , 'message'=>__('Password Updated, Please check your email')));
 	  	} else {	    		         
 			  echo wp_send_json( array('code' => 0 , 'message'=>__('Error Occured please check your email address')));
-	      	}
+	    }
 	  	
 	die;   	
 		
