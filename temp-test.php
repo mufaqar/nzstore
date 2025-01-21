@@ -6,7 +6,7 @@
 
 
     
-            if (isset($_GET['test_email'])) {
+        
                 $to = 'mufaqar@gmail.com'; // Replace with your email
                 $subject = 'Test Email from WordPress';
                 $message = 'This is a test email sent from your WordPress site.';
@@ -17,6 +17,6 @@
                 } else {
                     echo '<p style="color: red;">Test email failed. Check your server configuration.</p>';
                 }
-            }
+          
  
         
