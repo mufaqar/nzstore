@@ -1,22 +1,6 @@
 <?php
 
 
-function send_reset_password($username,$password) {
-	$to = 'mufaqar@gmail.com'; // Replace with your email
-			$subject = 'Test Email from WordPress';
-			$message = 'This is a test email sent from your WordPress site.';
-			$headers = ['Content-Type: text/html; charset=UTF-8'];
-	
-			if (wp_mail($to, $subject, $message, $headers)) {
-				echo '<p style="color: green;">Test email sent successfully!</p>';
-			} else {
-				echo '<p style="color: red;">Test email failed. Check your server configuration.</p>';
-			}
-	  
-}
-
-
-
 
 add_action('wp_ajax_add_ticket', 'add_ticket', 0);
 add_action('wp_ajax_nopriv_add_ticket', 'add_ticket');
@@ -828,9 +812,9 @@ function resetpassword() {
 
     if (!is_wp_error($user_id)) {
         // Send reset password email
-        send_reset_password($email, $password);
+      //  send_reset_password($email, $password);
 
-        wp_send_json(array('code' => 200, 'message' => __('Password sent .Please check your email.')));
+        wp_send_json(array('code' => 200, 'message' => __('Password sentPlease check your email.')));
     } else {
         wp_send_json(array('code' => 0, 'message' => __('Failed to reset password. Please try again.')));
     }
