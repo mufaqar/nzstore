@@ -343,6 +343,7 @@ function activation_mail($to,$activation_link) {
     // Reset Password Email 
 
 function Send_Password($username,$password) {
+    echo $username;
     $subject = 'Budget Computer & Kiwi Mobiles | User Account Activation';	
     $headers[] = 'From: Budget Computer <budgetcomputer@kiwimobiles.co.nz>';
     $body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources/images/logo.png' width='320px'></img></p><hr/> ";
