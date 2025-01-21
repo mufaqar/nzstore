@@ -783,8 +783,7 @@ add_action('wp_ajax_nopriv_resetpassword', 'resetpassword');
 function resetpassword() {			
 	  global $wpdb;   
    
-      $email = $_POST['username'];    
-	   // Sanitize input
+       
 	   $email = sanitize_email($_POST['username']);
 
 	   // Validate email
@@ -803,7 +802,8 @@ function resetpassword() {
 	   // Generate random password
 	   $password = wp_generate_password();
 
-	   echo $password;
+	   echo $email;
+	
    
 	   // Update user password
 	   $user_id = wp_update_user(array('ID' => $user->ID, 'user_pass' => $password));
