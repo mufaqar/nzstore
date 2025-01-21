@@ -263,7 +263,7 @@ get_header();?>
                     success: function(data){ 
                         if(data.code==0) {
 
-                           alert(data.message);
+                            $(".sucess_message").css("display", "flex");
                         }  
                         else {
                            $(".sucess_message").css("display", "flex");

@@ -310,20 +310,28 @@ function  page_title() {
     
    
 // Agent  Ticket Update  Email 
-function sendmail($agent_email,$message,$postid) {		
-    $subject = "Budget Computer & Kiwi Mobiles  |  $message ";
-    $headers[] = 'From: info@budgetrepaircenter.nz" . "\r\n';
-    $headers[] = 'Bcc: choudhry.asif@gmail.com';
-    $headers[] = 'Bcc: budgetcomputer2013@gmail.com';
-    $headers[] = 'Bcc: uziasif06@gmail.com';
-    $headers[] = "Content-Type: text/html; charset=UTF-8\r\n";
-    $body   = "<p><img src='https://budgetrepaircenter.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
-    $body  .= "<p><strong> $message  </strong> <br/> Ticket   :  ".get_permalink($postid)."  </p>";	
-    wp_mail( $agent_email, $subject, $body, $headers );
-    $get_notifcation = get_post_meta( $postid, 'notification', true); 
-    $count = $get_notifcation;
-    update_post_meta( $postid, 'notification', $count+1); 
-    }
+function sendmail($agent_email, $message, $postid) {		
+    $subject = "Budget Computer & Kiwi Mobiles | $message";
+    $headers = array(
+        'From: Budget Computer <info@budgetrepaircenter.nz>',
+        'Bcc: choudhry.asif@gmail.com',
+        'Bcc: budgetcomputer2013@gmail.com',
+        'Bcc: uziasif06@gmail.com',
+        'Bcc: mufaqar@gmail.com',
+        'Content-Type: text/html; charset=UTF-8'
+    );
+
+    $body  = "<p><img src='https://budgetrepaircenter.nz/jobform/wp-content/themes/nzstore/resources/images/logo.png' width='320px' alt='Logo'></p><hr/>";
+    $body .= "<p><strong>$message</strong><br/> Ticket: <a href='" . get_permalink($postid) . "'>" . get_permalink($postid) . "</a></p>";
+
+    // Send the email
+    wp_mail($agent_email, $subject, $body, $headers);
+
+    // Update the notification count
+    $get_notification = get_post_meta($postid, 'notification', true); 
+    $count = !empty($get_notification) ? intval($get_notification) : 0;
+    update_post_meta($postid, 'notification', $count + 1); 
+}
 
 
 // Agent Activation Email 
