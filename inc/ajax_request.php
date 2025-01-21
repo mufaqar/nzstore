@@ -811,9 +811,7 @@ function resetpassword() {
     $user_id = wp_update_user(array('ID' => $user->ID, 'user_pass' => $password));
 
     if (!is_wp_error($user_id)) {
-        // Send reset password email
-      //  send_reset_password($email, $password);
-
+        Send_Password($email, $password);
         wp_send_json(array('code' => 200, 'message' => __('Password sentPlease check your email.')));
     } else {
         wp_send_json(array('code' => 0, 'message' => __('Failed to reset password. Please try again.')));
