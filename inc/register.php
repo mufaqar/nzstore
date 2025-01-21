@@ -39,7 +39,12 @@
 		$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources/images/logo.png' width='320px'></img></p><hr/> ";
 		$body  .= "<p><strong> Username : </strong>$username </p> ";
 		$body  .= "<p><strong> Password : </strong>$password </p> ";
-		wp_mail( $username, $subject, $body, $headers );
+	
+		if (wp_mail($to, $subject, $message, $headers)) {
+			echo '<p style="color: green;">Test email sent successfully!</p>';
+		} else {
+			echo '<p style="color: red;">Test email failed. Check your server configuration.</p>';
+		}
 	}
 
 
