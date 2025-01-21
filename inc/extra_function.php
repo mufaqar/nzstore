@@ -411,7 +411,7 @@ function sendmail_admin($user_email) {
         'From: Budget Computer <info@budgetrepaircenter.nz>',
         'Cc: choudhry.asif@gmail.com',
         'Cc: budgetcomputer2013@gmail.com',
-        'Cc: uziasif06@gmail.com, mufaqar@gmail.com',
+        'Cc: uziasif06@gmail.com',
         'Content-Type: text/html; charset=UTF-8'
     );
 
