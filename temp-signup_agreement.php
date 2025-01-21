@@ -10,8 +10,7 @@
                     <div class="d-flex justify-content-center flex-column align-items-center text-center">
                     <a href="<?php echo home_url(); ?>"> <img src="<?php bloginfo('template_directory'); ?>/reources/images/left arrow.png" class="arrow position-absolute" alt="back arrow"> </a>
                     <h2 class="">Create User Profile</h2>   
-                    <p>Register With Us for Your Smarphone, Laptop, Ipads, Iphones, Samsung Galaxy,<br/> X-box, Gamingmachine,
-Repair Diagnostic @ Competitive Prices</p>
+                    <p>Register With Us for Your Smarphone, Laptop, Ipads, Iphones, Samsung Galaxy,<br/> X-box, Gamingmachine,Repair Diagnostic @ Competitive Prices</p>
                         <div id="first_step" class="pl-4 pt-3 pr-4 ">
                             
                         <div class="form-group w-100  mb-2">
