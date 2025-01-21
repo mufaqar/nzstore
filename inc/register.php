@@ -5,7 +5,7 @@
 		$subject = "Budget Computer & Kiwi Mobiles  |  $message ";
 		$headers[] = 'From: budgetcomputer@kiwimobiles.co.nz" . "\r\n';
 		$headers[] = 'Bcc: choudhry.asif@gmail.com';
-		$headers[] = 'Bcc: budgetcomputer2013@gmail.co';
+		$headers[] = 'Bcc: budgetcomputer2013@gmail.com';
 		$headers[] = 'Bcc: uziasif06@gmail.com';
 		$headers[] = "Content-Type: text/html; charset=UTF-8\r\n";
 		$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
@@ -23,11 +23,12 @@
 		$subject = 'Budget Computer & Kiwi Mobiles | User Account Activation';	
 		$headers[] = 'From: budgetcomputer@kiwimobiles.co.nz" . "\r\n';
 		$headers[] = "Content-Type: text/html; charset=UTF-8\r\n";
-		$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources//images/logo.png' width='320px'></img></p><hr/> ";
+		$body   = "<p><img src='https://kiwimobiles.co.nz/jobform/wp-content/themes/nzstore/reources/images/logo.png' width='320px'></img></p><hr/> ";
 		$body  .= "<p><strong> Account Activation Link: </strong><a href='$activation_link' >Activate your Account</a> </p> ";
 		$body  .= "<p><strong> DID:   </strong> 09 9508717 </p> ";
 		$body  .= "<p><strong> Email:   </strong>budgetcomputer@kiwimobiles.co.nz</p> ";
 		wp_mail( $to, $subject, $body, $headers );
+		echo "Email Sent";
 	}
 
 		// Reset Password Email 
@@ -74,8 +75,8 @@
 		$body  .= "<p><strong> Email Address: </strong> $user_email </p> ";
 		$headers[] = 'From: budgetcomputer@kiwimobiles.co.nz" . "\r\n';
 		$headers[] = 'Cc: choudhry.asif@gmail.com';
-		$headers[] = 'Cc: budgetcomputer2013@gmail.co';
-		$headers[] = 'Cc: uziasif06@gmail.com';
+		$headers[] = 'Cc: budgetcomputer2013@gmail.com';
+		$headers[] = 'Cc: uziasif06@gmail.com,mufaqar@gmail.com';
 		$headers[] = "Content-Type: text/html; charset=UTF-8\r\n";
 		wp_mail( $admin, $subject, $body, $headers );
 	}
