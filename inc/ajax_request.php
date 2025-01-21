@@ -782,26 +782,42 @@ add_action('wp_ajax_resetpassword', 'resetpassword', 0);
 add_action('wp_ajax_nopriv_resetpassword', 'resetpassword');
 function resetpassword() {			
 	  global $wpdb;   
-      $username = $_POST['username'];
+   
       $email = $_POST['username'];    
-	  $password = generateRandomString();	
-	  $user_data = array(
-		'user_login' => $username,
-		'user_email' => $username,
-		'user_pass' => $password,	
-		
-		);
-		$user = get_user_by( 'email', $email );
-		$user_id = $user->ID;
-	    $user_id = wp_update_user( array ( 'ID' => $user_id, 'user_pass' => $password ) );	
-	  	if (!is_wp_error($user_id)) {		    
-			send_reset_password($username,$password);
-			echo wp_send_json( array('code' => 200 , 'message'=>__('Password Updated, Please check your email')));
-	  	} else {	    		         
-			  echo wp_send_json( array('code' => 0 , 'message'=>__('Error Occured please check your email address')));
-	    }
-	  	
-	die;   	
+	   // Sanitize input
+	   $email = sanitize_email($_POST['username']);
+
+	   // Validate email
+	   if (!is_email($email)) {
+		   wp_send_json(array('code' => 0, 'message' => __('Invalid email address.')));
+		   die;
+	   }
+   
+	   // Get user by email
+	   $user = get_user_by('email', $email);
+	   if (!$user) {
+		   wp_send_json(array('code' => 0, 'message' => __('No user found with this email address.')));
+		   die;
+	   }
+   
+	   // Generate random password
+	   $password = wp_generate_password();
+   
+	   // Update user password
+	   $user_id = wp_update_user(array('ID' => $user->ID, 'user_pass' => $password));
+   
+	   if (!is_wp_error($user_id)) {
+		   // Send reset password email
+		   if (send_reset_password($email, $password)) {
+			   wp_send_json(array('code' => 200, 'message' => __('Password updated. Please check your email.')));
+		   } else {
+			   wp_send_json(array('code' => 0, 'message' => __('Failed to send the reset email.')));
+		   }
+	   } else {
+		   wp_send_json(array('code' => 0, 'message' => __('Error occurred while updating the password.')));
+	   }
+   
+	   die;	
 		
 }
 
