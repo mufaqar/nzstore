@@ -64,10 +64,10 @@
     <section class="hideme overlay term_popup">
         <div class="popup">
         <form class="update_agreement" id="update_agreement" action="#" > 
-                <div class="popup_wrapper">
+                <div class="popup_wrapper ">
                     <h3 class="ad_productss">Terms and Conditions </h3>               
-                    <div class="termlist">
-                    <ul>
+                    <div class="termlist popup_box">
+                    <ul >
                         <li> Diagnosed fees will apply for all repairs even if the gadget is not repairable or the customer cancels the job. </li>
                         <li> A part order on the customer's behalf and a deposit of 50% is taken. The warranty is non-refundable as we order the part on the customer's behalf. </li>
                         <li> All the parts fined come with a three-month warranty unless specified. We will fix the fault & check with which gadget is booked. No other-􀃒functionality is limited unless a thorough assessment is requested & assessment fee is paid. Also, provide the password or login id. </li>

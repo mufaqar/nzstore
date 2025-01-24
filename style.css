@@ -1612,6 +1612,7 @@ section .popup {
   left: 50%;
   padding: 1rem;
   transform: translate(-50%, -50%);
+ 
 }
 
 section .popup .popup_wrapper {
@@ -1628,9 +1629,12 @@ section .popup .popup_wrapper {
   flex-direction: column;
   align-items: center;
   position: relative;
-  max-height: 350px;
-  overflow: scroll;
+  
+ 
 }
+
+.popup_box
+{ max-height: 360px; overflow: auto; list-style-type: disc;}
 
 section .popup .popup_wrapper h3 {
   font-weight: 700;
@@ -3570,6 +3574,7 @@ body.page-template-temp-landing {
 
 .termlist ul li {
   list-style: decimal;
+  padding-bottom: 10px;
 }
 
 .noti_bag {
