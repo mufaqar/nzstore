@@ -1,6 +1,4 @@
     <?php /* Template Name: Super-Order  */    get_header('admin');
-
-
     ?>
         <?php include('navigation.php'); ?>
         <div class="admin_parrent">

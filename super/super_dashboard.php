@@ -7,20 +7,20 @@
     <section id="div1" class="targetDiv activediv tablediv">
         <table id="all_tickets" class="table table-striped orders_table export_table" style="width:100%">
             <thead>
-                    <tr>
-                            <th>Sr #</th>
-                            <th>Ticket ID</th>
-                            <th>Date</th>
-                            <th>Title</th>
-                             <th>Agent</th>                             
-                            <th>Price</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
+                <tr>
+                    <th>Sr #</th>
+                    <th>Ticket ID</th>
+                    <th>Date</th>
+                    <th>Title</th>
+                    <th>Agent</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
             </thead>
             <tbody>
-                    <?php 
+                <?php 
                         $i = 0;
                         query_posts(array(
                             'post_type' => 'tickets',
@@ -34,15 +34,15 @@
                                             
                         
                         ?>
-                                 <tr>
-                                                <td><?php echo $i;?></td>
-                                                <td><?php echo $pid?></td>                                                
-                                                <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?> </td>
-                                                <td><?php the_title();  get_noftication($pid);?>  </td>    
-                                                <td><?php echo $user_info->user_login ?></td>                                              
-                                                <td><?php echo get_post_meta( get_the_ID(), 'price', true ); ?></td>
-                                               
-                                                <td><?php   
+                <tr>
+                    <td><?php echo $i;?></td>
+                    <td><?php echo $pid?></td>
+                    <td><?php echo get_post_meta( get_the_ID(), 'date', true ); ?> </td>
+                    <td><?php the_title();  get_noftication($pid);?> </td>
+                    <td><?php echo $user_info->user_login ?></td>
+                    <td><?php echo get_post_meta( get_the_ID(), 'price', true ); ?></td>
+
+                    <td><?php   
                                                         $term_list = get_the_terms($post->ID, 'ticket_type');
                                                         $types ='';
                                                         foreach($term_list as $term_single) {
@@ -51,8 +51,8 @@
                                                         $typesz = rtrim($types, ', ');
                                                         echo $typesz;                                                    
                                                      ?>
-                                                </td>
-                                                <td><?php   
+                    </td>
+                    <td><?php   
                                                         $term_ticket_status = get_the_terms($post->ID, 'ticket_status');
                                                      
                                                         foreach($term_ticket_status as $term_status) {
@@ -60,24 +60,25 @@
                                                         }
                                                                                                       
                                                      ?>
-                                                </td>
-                                                <td> <a href="<?php echo home_url('/admin-dashboard/edit-ticket?id='.$pid.''); ?>">Edit </a>  <i class="fa-solid fa-down-to-line"></i></td>
-                                                </tr>
-                            <?php endwhile;
+                    </td>
+                    <td> <a href="<?php echo home_url('/admin-dashboard/edit-ticket?id='.$pid.''); ?>">Edit </a> <i
+                            class="fa-solid fa-down-to-line"></i></td>
+                </tr>
+                <?php endwhile;
                             wp_reset_query();
                         else : ?>
-                            <h2><?php _e('Nothing Found', 'lbt_translate'); ?></h2>
-                        <?php endif; ?>
+                <h2><?php _e('Nothing Found', 'lbt_translate'); ?></h2>
+                <?php endif; ?>
 
-                    </tbody>
+            </tbody>
 
-           
+
         </table>
 
 
 
     </section>
-    
+
 </div>
 
 
