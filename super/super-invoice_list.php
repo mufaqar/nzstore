@@ -23,7 +23,7 @@ get_header('admin');
             <thead>
                 <tr>
                     <th>Sr #</th>
-                    <th>Client Name</th>
+                    <th>Name/Company</th>
                     <th>Date</th>
                     <th>Device</th>
                     <th>Total</th>
