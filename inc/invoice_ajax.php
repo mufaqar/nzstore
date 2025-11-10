@@ -25,7 +25,6 @@ function admin_create_invoice() {
     wp_send_json_success(['invoice_id' => $invoice_id]);
 }
 
-
 // ==========================
 // GENERATE PDF 
 // ==========================
@@ -46,16 +45,20 @@ function admin_generate_invoice_pdf() {
 
     $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
     $pdf->SetCreator('Invoice System');
-    $pdf->SetAuthor('Your Company');
+    $pdf->SetAuthor('Budget Computers & Kiwi Mobiles');
     $pdf->SetTitle('Invoice #' . $invoice_id);
     $pdf->SetMargins(15, 20, 15);
     $pdf->AddPage();
 
-    $logo_path = get_template_directory() . '/images/logo.png';
-    if (file_exists($logo_path)) {
-        $pdf->Image($logo_path, 160, 10, 30);
-    }
+    // ==========================
+    // COMPANY LOGO - Top Right
+    // ==========================
+    $logo_url = 'https://jobform.budgetrepaircenter.nz/wp-content/themes/nzstore/reources//images/logo.png';
+    $pdf->Image($logo_url, 160, 10, 35, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
+    // ==========================
+    // INVOICE HEADER
+    // ==========================
     $html = '
     <h2 style="text-align:center;">TAX INVOICE</h2>
     <table border="0" cellpadding="5" width="100%">
@@ -96,7 +99,15 @@ function admin_generate_invoice_pdf() {
     </table>
 
     <br><hr><br>
+
     <p><strong>Payment Advice</strong><br>
+    <strong>Budget Computers & Kiwi Mobiles</strong><br>
+    <a href="https://budgetrepaircenter.nz/" target="_blank">https://budgetrepaircenter.nz/</a><br>
+    1191 Eruera Street, Rotorua, Bay of Plenty, 3010<br>
+    DID: 07 347 7044<br>
+    Email: <a href="mailto:info@budgetrepaircenter.nz">info@budgetrepaircenter.nz</a><br>
+    Alternate Email: <a href="mailto:budgetcomputers2013@gmail.com">budgetcomputers2013@gmail.com</a><br><br>
+    <strong>Bank Details:</strong><br>
     Bank Name: ABC Traders<br>
     Account: 12-3456-7890-00<br>
     Reference: Invoice ' . $invoice_id . '<br>
@@ -107,6 +118,10 @@ function admin_generate_invoice_pdf() {
     <p style="text-align:center; font-size:10px; color:#777;">
     Thank you for your business!<br>
     This is a computer-generated invoice. No signature required.<br>
+    <strong>Terms & Conditions:</strong> 
+    <a href="https://budgetrepaircenter.nz/https-budgetrepaircenter-nz-services-iphone-repair/terms-conditions/" target="_blank">
+      View here
+    </a><br>
     <strong>Footer Note:</strong> All payments are subject to our standard terms.
     </p>';
 
@@ -119,3 +134,5 @@ function admin_generate_invoice_pdf() {
     $file_url = $upload_dir['baseurl'] . "/invoice-$invoice_id.pdf";
     wp_send_json_success(['pdf_url' => $file_url]);
 }
+// ==========================
+// EMAIL INVOICE  
