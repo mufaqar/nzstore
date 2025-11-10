@@ -129,7 +129,7 @@ jQuery(document).ready(function($){
           invoice_id: invoiceId
         }, function(pdfRes){
           if(pdfRes.success){
-            window.open(pdfRes.data.pdf_url, '_blank');
+           // window.open(pdfRes.data.pdf_url, '_blank');
             $(".overlay").show();
           } else {
             alert("PDF Error: " + pdfRes.data);
