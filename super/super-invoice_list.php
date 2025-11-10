@@ -8,6 +8,7 @@ get_header('admin');
     width: 90% !important;
     margin: 0 auto;
 }
+
 .action-btns button {
     margin-right: 5px;
     font-size: 13px;
@@ -22,10 +23,9 @@ get_header('admin');
             <thead>
                 <tr>
                     <th>Sr #</th>
-                    <th>Model</th>
-                    <th>Fault Type</th>
-                    <th>Type</th>
-                    <th>Parts availability</th>
+                    <th>Client Name</th>
+                    <th>Date</th>
+                    <th>Device</th>
                     <th>Total</th>
                     <th>Actions</th>
                 </tr>
@@ -43,30 +43,28 @@ get_header('admin');
                     while ($invoices->have_posts()) : $invoices->the_post(); 
                         $pid = get_the_ID();
                         $i++;
-
-                        $parts_availablity = get_post_meta($pid, 'parts_availablity', true); 
-                        $repair_cost = get_post_meta($pid, 'repair_cost', true);  
-                        $total = get_post_meta($pid, 'total', true);  
                         $client_name = get_post_meta($pid, 'client_name', true);  
+                        $device_type =  get_post_meta($pid, 'device_type', true); 
+                        $invoice_date =  get_post_meta($pid, 'invoice_date', true); 
+              
+                        $repair = get_post_meta($pid, 'repair', true);  
+                        $gst = get_post_meta($pid, 'gst', true);  
+                        $total = get_post_meta($pid, 'total', true);  
+                          ?>
 
-                        $cat_status = get_the_terms($pid, 'cat_fault_type');
-                        $cat_name = $cat_status && !is_wp_error($cat_status) ? $cat_status[0]->name : '-';
-                        $repair_cats = get_the_terms($pid, 'repair_cat');
-                        $repair_cat_name = $repair_cats && !is_wp_error($repair_cats) ? $repair_cats[0]->name : '-';
-                ?>
                 <tr>
                     <td><?php echo $i ?></td>
-                    <td><?php the_title() ?></td>
-                    <td><?php echo esc_html($cat_name); ?></td>
-                    <td><?php echo esc_html($repair_cat_name); ?></td>
-                    <td><?php echo esc_html($parts_availablity); ?></td>
-                    <td><?php echo $total ? esc_html($total) : '—'; ?></td>
+                    <td><?php echo $client_name ?></td>
+                    <td><?php echo $invoice_date ?></td>
+                    <td><?php echo $device_type ?></td>
+
+                    <td><?php echo $total?></td>
                     <td class="action-btns">
-                        <button class="btn btn-sm btn-success whatsapp-btn" 
-                            data-id="<?php echo $pid; ?>" 
+                        <button class="btn btn-sm btn-success whatsapp-btn" data-id="<?php echo $pid; ?>"
                             data-name="<?php echo esc_attr($client_name); ?>">📱 WhatsApp</button>
 
-                        <button class="btn btn-sm btn-info view-pdf-btn" data-id="<?php echo $pid; ?>">📄 View PDF</button>
+                        <button class="btn btn-sm btn-info view-pdf-btn" data-id="<?php echo $pid; ?>">📄 View
+                            PDF</button>
 
                         <button class="btn btn-sm btn-primary email-btn" data-id="<?php echo $pid; ?>">✉️ Email</button>
                     </td>
@@ -90,7 +88,7 @@ get_header('admin');
 // ===============================
 // ✅ View PDF in Modal
 // ===============================
-$(document).on('click', '.view-pdf-btn', function(){
+$(document).on('click', '.view-pdf-btn', function() {
     const invoice_id = $(this).data('id');
     $('#pdfFrame').attr('src', '');
     $('#pdfModal').fadeIn();
@@ -102,11 +100,11 @@ $(document).on('click', '.view-pdf-btn', function(){
             action: 'admin_generate_invoice_pdf',
             invoice_id: invoice_id
         },
-        beforeSend: function(){
+        beforeSend: function() {
             $('#pdfFrame').attr('src', 'about:blank');
         },
-        success: function(res){
-            if(res.success){
+        success: function(res) {
+            if (res.success) {
                 const pdf_url = res.data.pdf_url;
                 $('#pdfFrame').attr('src', pdf_url);
             } else {
@@ -114,7 +112,7 @@ $(document).on('click', '.view-pdf-btn', function(){
                 $('#pdfModal').fadeOut();
             }
         },
-        error: function(){
+        error: function() {
             alert('❌ AJAX error while generating PDF');
             $('#pdfModal').fadeOut();
         }
@@ -122,7 +120,7 @@ $(document).on('click', '.view-pdf-btn', function(){
 });
 
 // Close modal
-$(document).on('click', '#closePdfModal', function(){
+$(document).on('click', '#closePdfModal', function() {
     $('#pdfModal').fadeOut();
     $('#pdfFrame').attr('src', '');
 });
@@ -130,7 +128,7 @@ $(document).on('click', '#closePdfModal', function(){
 // ===============================
 // ✅ WhatsApp Share Button
 // ===============================
-$(document).on('click', '.whatsapp-btn', function(){
+$(document).on('click', '.whatsapp-btn', function() {
     const invoice_id = $(this).data('id');
     const client_name = $(this).data('name') || 'Client';
 
@@ -142,8 +140,8 @@ $(document).on('click', '.whatsapp-btn', function(){
             action: 'admin_generate_invoice_pdf',
             invoice_id: invoice_id
         },
-        success: function(res){
-            if(res.success){
+        success: function(res) {
+            if (res.success) {
                 const pdf_url = res.data.pdf_url;
                 const message = `Hello ${client_name}, here is your repair invoice:\n${pdf_url}`;
                 const whatsapp_url = `https://wa.me/?text=${encodeURIComponent(message)}`;
@@ -152,7 +150,7 @@ $(document).on('click', '.whatsapp-btn', function(){
                 alert('❌ Failed to generate invoice PDF: ' + res.data);
             }
         },
-        error: function(){
+        error: function() {
             alert('❌ Error contacting server.');
         }
     });
@@ -160,10 +158,11 @@ $(document).on('click', '.whatsapp-btn', function(){
 </script>
 
 <!-- ✅ PDF Modal -->
-<div id="pdfModal" 
+<div id="pdfModal"
     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999;">
-    <div style="position:relative; width:80%; height:90%; margin:5% auto; background:#fff; padding:10px; border-radius:8px;">
-        <button id="closePdfModal" 
+    <div
+        style="position:relative; width:80%; height:90%; margin:5% auto; background:#fff; padding:10px; border-radius:8px;">
+        <button id="closePdfModal"
             style="position:absolute; top:5px; right:10px; font-size:20px; background:none; border:none; cursor:pointer;">❌</button>
         <iframe id="pdfFrame" src="" style="width:100%; height:100%; border:none;"></iframe>
     </div>
