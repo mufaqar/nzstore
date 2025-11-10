@@ -4,6 +4,7 @@ include_once('register.php');
 include_once('cpts.php');
 include_once('class-wp-bootstrap-navwalker.php');
 include_once('ajax_request.php');
+include_once('invoice_ajax.php');
 
 
 add_action('after_setup_theme', 'remove_admin_bar');

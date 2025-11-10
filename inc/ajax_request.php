@@ -1248,3 +1248,5 @@ function super_add_fault()
 	wp_die();
 
 }
+
+
